@@ -28,11 +28,11 @@ claim_scope 为 single_case、reported_trend、company_claim、multiple_sources�
 
 ## 缺少语义 API 的生产行为
 
-API 不可用时，从 Stage A 中优先取有摘录、来源可靠且 Discovery 靠前的最多10条，形成 Human Review Queue。明确 NEEDS_HUMAN_REVIEW、unavailable、null Human/Viral；原始标题、链接、摘录、作者和审稿问题仍可读。不会假装已完成人性评估。
+API 不可用时，从 Stage A 中优先取 Discovery 排名靠前的最多10条；同分时优先有摘录、来源可靠的材料，形成 Human Review Queue。明确 NEEDS_HUMAN_REVIEW、unavailable、null Human/Viral；原始标题、链接、摘录、作者和审稿问题仍可读。不会假装已完成人性评估。
 
 部分请求失败时，已完成判断可形成 Deep，失败素材单独排队。整批有材料但都被降级时保留原拒绝码供人工复核。没有任何 Stage A 材料时无法凭空创造队列，采集审计保留原因。
 
-原文平台专名只保留在内部证据包。主审稿页中的原句若包含禁止专名，整段引导至证据包，不机械替换成“海外”；其他原句照录。公开 brief 和审稿摘要都运行相同检查。
+原文平台专名只保留在内部证据包。主审稿页中的场景原句若包含禁止专名，引导至证据包；待审队列可取不含专名的原文子句并标注“原文片段”，否则引导完整证据包。不机械替换成“海外”；其他原句照录。公开 brief 和审稿摘要都运行相同检查。
 
 ## 验证
 

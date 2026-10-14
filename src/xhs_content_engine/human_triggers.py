@@ -446,9 +446,9 @@ def human_review_queue(assessed, deep, config, limit=10):
     pending.sort(
         key=lambda i: (
             i.semantic_status == "unavailable",
+            -i.discovery_score,
             -bool(i.raw_excerpt),
             -i.source_reliability,
-            -i.discovery_score,
             i.id,
         )
     )

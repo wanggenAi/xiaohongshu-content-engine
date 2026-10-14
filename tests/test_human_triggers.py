@@ -431,3 +431,40 @@ def test_export_after_run_refreshes_counts_instead_of_leaving_old_report(tmp_pat
     report = json.loads((tmp_path / "outputs/run_report.json").read_text())
     assert report["human_review_queue"] == 2
     verify_outputs(tmp_path / "outputs", pipeline.style, report)
+
+
+def test_unavailable_packet_never_displays_fake_zero_score_or_scene_judgment(config):
+    from xhs_content_engine.editorial import packet
+    from xhs_content_engine.editorial_screening import compose_assessment
+
+    editorial = yaml.safe_load((ROOT / "config/editorial_scoring.yaml").read_text())
+    lenses = yaml.safe_load((ROOT / "config/editorial_lenses.yaml").read_text())["lenses"]
+    style = yaml.safe_load((ROOT / "config/editorial_style.yaml").read_text())
+    pending = compose_assessment(item(), None, editorial, lenses, "unavailable")
+    pending = compose_human(pending, None, config, "unavailable")
+    text = packet(human_review_queue([pending], [], config)[0], style)
+    assert "编辑价值：未评估" in text
+    assert "编辑价值：0.00" not in text
+    assert "WEAK_EVIDENCE" not in text
+    assert "NO STRONG SCENE FOUND" not in text
+
+
+def test_unavailable_queue_preserves_discovery_priority_and_evidence_tiebreak(config):
+    high = compose_human(item(id="high", score=50, raw_excerpt=""), None, config, "unavailable")
+    low = compose_human(item(id="low", score=20), None, config, "unavailable")
+    assert human_review_queue([low, high], [], config)[0].id == "high"
+    equal = compose_human(item(id="equal", score=50), None, config, "unavailable")
+    assert human_review_queue([high, equal], [], config)[0].id == "equal"
+
+
+def test_unavailable_queue_can_show_verbatim_clause_without_platform_leak(config):
+    from xhs_content_engine.editorial import queue_evidence, validate_public
+
+    style = yaml.safe_load((ROOT / "config/editorial_style.yaml").read_text())
+    source = item(
+        title="I posted to HN, and then my website was flooded with AI bot traffic", raw_excerpt=""
+    )
+    quote = queue_evidence(source, style)
+    assert "my website was flooded with AI bot traffic" in quote
+    assert "原文片段" in quote
+    validate_public(quote, style)

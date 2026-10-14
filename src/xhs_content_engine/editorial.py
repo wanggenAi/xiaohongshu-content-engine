@@ -46,7 +46,7 @@ def public_brief(item: ContentItem, style: dict) -> str:
     title = public_title(item, style)
     angles = item.possible_angles or ["先核实具体的人、行为和变化，不直接发布标题或宣传声明。"]
     text = f"候选议题：{title}\n公开来源称呼：{item.public_source_label}\n"
-    text += f"编辑初筛：{item.editorial_verdict}；{item.editorial_score:.2f}/100\n"
+    text += f"编辑初筛：{item.editorial_verdict}；{editorial_number(item)}\n"
     text += f"故事核心（调查方向）：{item.core_story or '等待证据与编辑判断。'}\n\n"
     text += "具体角度：\n" + "\n".join(f"- {angle}" for angle in angles)
     text += "\n\n这是候选表达，需核实事实并由 ChatGPT 与用户决定最终标题和文案。\n"
@@ -56,6 +56,12 @@ def public_brief(item: ContentItem, style: dict) -> str:
 
 def bullet_list(values):
     return "\n".join(f"- {value}" for value in values) or "- 尚未取得证据，不补造。"
+
+
+def editorial_number(item):
+    if item.editorial_value.get("status") != "assessed":
+        return "未评估（语义判断不可用）"
+    return f"{item.editorial_score:.2f}/100"
 
 
 def packet(item: ContentItem, style: dict) -> str:
@@ -78,7 +84,7 @@ def packet(item: ContentItem, style: dict) -> str:
 
 ## Editorial Score
 
-编辑价值：{item.editorial_score:.2f}/100；discovery_score：{item.discovery_score:.2f}/100。
+编辑价值：{editorial_number(item)}；discovery_score：{item.discovery_score:.2f}/100。
 
 {scores}
 
@@ -188,12 +194,32 @@ def safe_review_evidence(text, style):
         return "原文含来源专名，完整证据见内部素材包。"
 
 
+def queue_evidence(item, style):
+    from .human_triggers import human_spans
+
+    try:
+        validate_public(item.title, style)
+        return item.title
+    except ValueError:
+        # Raw evidence, not a composed/translated title: copy a safe source clause.
+        for quote in sorted(human_spans(item).values(), key=len, reverse=True):
+            try:
+                validate_public(quote, style)
+                if len(quote) >= 20:
+                    return "原文片段（完整见证据包）：" + quote
+            except ValueError:
+                continue
+        return "原文含来源专名，完整证据见内部素材包。"
+
+
 def human_sections(item, style=None):
     def evidence(text):
         return safe_review_evidence(text, style) if style else text
 
     strong_scene = item.human_trigger_breakdown.get("strong_scene", False)
     scene = "NO STRONG SCENE FOUND"
+    if item.human_trigger_breakdown.get("mode") == "unavailable":
+        scene = "未评估（语义判断不可用）"
     if strong_scene:
         scene = "\n".join(
             f"- {key}: {evidence(value) or '未取得'}" for key, value in item.scene.items()
@@ -203,6 +229,8 @@ def human_sections(item, style=None):
         if item.reversal
         else "NONE"
     )
+    if item.human_trigger_breakdown.get("mode") == "unavailable":
+        reversal = "未评估（语义判断不可用）"
     seeds = (
         "\n".join(
             f"- {s['angle']} [{s['claim_scope']}]: {s['text']}" for s in item.human_title_seeds
@@ -283,7 +311,7 @@ def export(items: list[ContentItem], destination: Path, style: dict, now, review
             str(index),
             item.semantic_status,
             "NEEDS_HUMAN_REVIEW",
-            safe_review_evidence(item.title, style),
+            queue_evidence(item, style),
             item.human_review_reason,
             f"[原始证据与审稿问题](human_review/{day}/{name})",
         ]

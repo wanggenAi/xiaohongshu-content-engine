@@ -326,9 +326,9 @@ def compose_assessment(item, response, config, lenses, mode="live", error=None):
     }
     if response is None:
         result.editorial_value["provider_error"] = error
-        result.editorial_verdict = "WEAK"
+        result.editorial_verdict = "NEEDS_HUMAN_REVIEW"
         result.missing_evidence = ["编辑语义评估不可用；配置凭证或录入结构化人工审稿。"]
-        result.editorial_reject_reason = ["WEAK_EVIDENCE"]
+        result.editorial_reject_reason = []
         return result
     answers = response.answers
     thresholds = config["thresholds"]

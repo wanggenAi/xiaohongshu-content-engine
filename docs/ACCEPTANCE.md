@@ -17,7 +17,7 @@
 | Deep packets / public briefs | 1 / 1 |
 | Human Review packets | 0 |
 
-本轮 Editorial live/cache：3/35；Human Trigger live/cache：0/38。缓存只复用完全一致的来源证据和问题定义。
+本轮 Editorial live/cache：0/38；Human Trigger live/cache：0/38。缓存只复用完全一致的来源证据和问题定义。
 
 ## 当前真实 Deep：1 条
 
@@ -87,7 +87,7 @@ Reversal：NONE；原文没有充分给出期待与结果的两段对照，不�
 
 ## 测试与一致性
 
-- pytest：98 passed。ruff check / format --check 通过。
+- pytest：101 passed。ruff check / format --check 通过。
 - 覆盖触发加分、无场景降级、正负样本、范围与标题约束、不同标题角度、读者代入、评论路由、缺key/超时/陈旧判断清除、人工队列和数量篡改。
 - LIKE / MAYBE / DISLIKE 及新旧 reason codes 兼容；未把任何自动判断写成人工标签。
 - verify-outputs 读取真实文件，验证标题数量、表格行、JSON、候选身份、packet、公开简报、别名页与 run report；任一不一致失败。
@@ -95,7 +95,14 @@ Reversal：NONE；原文没有充分给出期待与结果的两段对照，不�
 
 ## GitHub Actions 与实际 artifact
 
-代码提交后运行完整 workflow，再从下载的 artifact 补入实测结果；这里不提前宣称通过。
+[完整手动 workflow / checks 与采集通过](https://github.com/wanggenAi/xiaohongshu-content-engine/actions/runs/38528449193)。已下载该 run artifact 并独立读取、核对文件。
+
+| Cloud raw | Stage A | Stage B | Deep | Human Review Queue | Review packets |
+|---|---|---|---|---|---|
+| 232 | 38 | 0 | 0 | 10 | 10 |
+
+artifact 内 editorial_review.md 含实际候选、原始证据包链接和明确状态，verify-outputs 通过。
+本次云端未取得语义判断：队列全部标记 NEEDS_HUMAN_REVIEW / semantic_status=unavailable，Human/Viral=null。实际验证无 API 仍产生可读候选，不宣称云端完成语义筛选，也没有转移本地凭证。
 
 ## 实际限制
 
