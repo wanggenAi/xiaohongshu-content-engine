@@ -281,3 +281,23 @@ def test_queue_orders_story_evidence_above_authoritative_news():
     queue = human_review_queue(items, [], human_config)
     assert queue[0].id == "story"
     assert all(item.human_trigger_score is None for item in queue)
+
+
+def test_keyless_packet_displays_original_comments_without_inventing_stances():
+    from xhs_content_engine.editorial import packet
+
+    source = make({"title": "AI tool discussion", "raw_excerpt": "A public discussion."})
+    source.metadata["discussion_comments"] = [
+        {
+            "evidence": "I tried it and lost time.",
+            "author": "worker",
+            "url": "https://example.org/comment-1",
+            "parent": "post-1",
+        }
+    ]
+    style = yaml.safe_load((ROOT / "config/editorial_style.yaml").read_text())
+    rendered = packet(source, style)
+    assert "未评估 / worker" in rendered
+    assert "I tried it and lost time." in rendered
+    assert "https://example.org/comment-1" in rendered
+    assert source.discussion_viewpoints == []

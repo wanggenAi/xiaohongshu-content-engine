@@ -72,11 +72,12 @@ def packet(item: ContentItem, style: dict) -> str:
     signals = json.dumps(item.story_signals, ensure_ascii=False, indent=2)
     answers = json.dumps(item.editorial_value.get("deep_answers", {}), ensure_ascii=False, indent=2)
     excerpt = item.raw_excerpt or "仅有标题；完整过程尚未取得，需查原作者记录。"
+    discussion_evidence = item.discussion_viewpoints or item.metadata.get("discussion_comments", [])
     viewpoints = (
         "\n".join(
             f"- {v.get('stance', '未评估')} / {v.get('author', '未提供作者')}："
             f"{v['evidence']}（{v.get('url', 'URL 未提供')}）"
-            for v in item.discussion_viewpoints
+            for v in discussion_evidence
         )
         or "尚未采集真实观点。评论数量不等于用户观点。"
     )
