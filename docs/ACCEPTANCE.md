@@ -7,7 +7,8 @@
 - Top candidates：20；内部 Editorial Packets：20。
 - 公开候选简报：20；全部通过平台名检查。内部数据库/packets 保留真实来源。
 - pytest：30 passed；ruff check 与 ruff format --check 通过。
-- GitHub Actions：推送后触发 CI，并手动触发真实采集；结果将在下方补记。
+- GitHub Actions：[push CI](https://github.com/wanggenAi/xiaohongshu-content-engine/actions/runs/38509076828) 与 [完整采集验收](https://github.com/wanggenAi/xiaohongshu-content-engine/actions/runs/38509095330) 均 success。
+- 已下载并检查线上 artifact：从空数据状态采集 232 条、去重后 227 条，Top 20、20 份内部素材包和 20 份通过检查的公开简报；各启用来源均 ok，Telegram/受限 adapter 正常 skip。线上运行时间 2026-10-14 12:00（Asia/Shanghai）。
 
 ## 来源审计
 
@@ -30,8 +31,6 @@
 | manual_inbox | empty | 0 |  |
 
 ## Top 20 与评分
-
-
 
 | # | 分数 | 类型初筛 | 标题 | 内部来源 |
 |---|---:|---|---|---|
