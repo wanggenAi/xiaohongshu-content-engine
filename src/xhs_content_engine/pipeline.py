@@ -6,6 +6,7 @@ import yaml
 
 from .collectors import ADAPTERS, SkipSource, client, collect_manual, telegram_batch
 from .editorial import export
+from .editorial_screening import screen
 from .normalize import normalize
 from .ranking import dedupe, rank
 from .storage import Store
@@ -18,6 +19,10 @@ class Pipeline:
         self.sources = self.load("sources.yaml")
         self.scoring = self.load("scoring.yaml")
         self.style = self.load("editorial_style.yaml")
+        self.editorial_scoring = self.load("editorial_scoring.yaml")
+        self.lenses = self.load("editorial_lenses.yaml")["lenses"]
+        if sum(self.editorial_scoring["weights"].values()) != 100:
+            raise ValueError("editorial scoring weights must total 100")
         if abs(sum(self.scoring["weights"].values()) - 100) > 0.001:
             raise ValueError("scoring weights must total 100")
         if any(v < 0 for v in self.scoring["weights"].values()):
@@ -108,17 +113,52 @@ class Pipeline:
         )
         return report
 
-    def rank(self, limit=20):
-        return rank(self.store.items(), self.scoring, limit)
+    def screen(self, limit=10, http=None):
+        assessed, stage_b, deep, report = screen(
+            self.store.items(),
+            self.scoring,
+            self.editorial_scoring,
+            self.lenses,
+            self.store,
+            limit=limit,
+            http=http,
+        )
+        self.store.save_assessments(assessed)
+        destination = self.root / "outputs"
+        destination.mkdir(exist_ok=True)
+        (destination / "editorial_screening.json").write_text(
+            json.dumps(
+                {
+                    **report,
+                    "assessments": [i.model_dump(mode="json") for i in assessed],
+                    "stage_b_ids": [i.id for i in stage_b],
+                    "deep_candidate_ids": [i.id for i in deep],
+                },
+                ensure_ascii=False,
+                indent=2,
+            ),
+            encoding="utf-8",
+        )
+        return deep, report
 
-    def export(self, limit=20):
+    def rank(self, limit=10):
+        return self.screen(limit)[0]
+
+    def export(self, limit=10):
         return export(self.rank(limit), self.root / "outputs", self.style, datetime.now(UTC))
 
-    def run(self, limit=20):
+    def run(self, limit=10):
         report = self.collect()
-        candidates = self.rank(limit)
+        # Retain a V1 ranking of the same current evidence for comparisons.
+        old = rank(self.store.items(), self.scoring, 20)
+        (self.root / "outputs" / "discovery_top20.json").write_text(
+            json.dumps([i.model_dump(mode="json") for i in old], ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+        candidates, funnel = self.screen(limit)
         folder = export(candidates, self.root / "outputs", self.style, datetime.now(UTC))
         report.update(
+            funnel,
             top_candidates=len(candidates),
             editorial_packets=len(candidates),
             public_briefs_checked=len(candidates),

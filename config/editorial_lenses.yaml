@@ -1,0 +1,131 @@
+# Reusable human-consequence lenses. No sample IDs, original headlines or company rules.
+# Jev selects a lens by meaning; code builds review questions, not final copy.
+lenses:
+  automated_attention:
+    meaning: Automation changes who visits or interacts with a creator's work, causing an unexpected burden, attention distortion or measurement problem.
+    audience: 网站作者、独立创作者和依赖流量判断效果的小团队
+    seed: 看起来访问量涨了，来的却可能是机器人：创作者该怎么算真实关注？
+    core: 值得追查的是自动化访问与真实人的关注之间出现了什么差异，以及作者需要承担什么成本。
+    questions: [新增访问来自哪些客户端，作者怎样识别？, 流量变化影响了带宽费用、服务稳定性还是统计判断？, 有作者自己的日志或同类站点案例吗？]
+    angles: [流量指标为什么可能越来越难代表真实关注, 分享作品之后可能出现的意外运维负担, 区分真实读者与自动化访问的可核实方法]
+    content_type: INTERESTING_INTERNET
+  user_control:
+    meaning: People gain or lose concrete control over algorithmic recommendations, data, feeds or automated decisions affecting what they see.
+    audience: 每天使用推荐流、想减少信息干扰的普通用户
+    seed: 推荐什么终于能自己改一点了：用户真的拿回了选择权吗？
+    core: 故事入口是平台给出的控制选项是否真的改变用户看到的内容，而不只是增加一个设置入口。
+    questions: [用户具体能改哪些推荐因素，哪些仍由系统决定？, 关闭或修改选项后，内容分布实际发生了什么变化？, 国内常见推荐产品有没有可比较的控制机制？]
+    angles: [一个设置能改变多少推荐结果, 用户控制与平台默认推荐之间的边界, 按真实体验比较控制入口的作用]
+    content_type: INTERESTING_INTERNET
+  fraud_privacy:
+    meaning: Tools or practices aim to prevent scams or financial deception while creating a meaningful privacy, false-positive or decision tradeoff for people.
+    audience: 担心诈骗、需要保护家人并在意聊天隐私的用户
+    seed: AI能帮我们识别诈骗，但它需要看到多少私人对话？
+    core: 防诈骗与聊天隐私之间的取舍是普通人能代入的问题；应核实检测在哪里发生、效果与误报如何。
+    questions: [检测在本地还是云端，哪些聊天信息会被读取？, 有真实诈骗样本、检测结果和误报数据吗？, 提醒出现后用户能否自主决定，国内场景有什么不同？]
+    angles: [防诈骗工具如何处理私人信息, 有效提醒与误报打扰之间的取舍, 给家人使用之前应该核实什么]
+    content_type: HUMAN_AI_STORY
+  creative_work:
+    meaning: An employer or creative organization proposes or requires AI-based creation instead of previous coding, art, design, writing or production practices.
+    audience: 程序员、美术、设计师以及准备进入创意行业的学生
+    seed: 当创作流程开始要求AI优先，手写代码和手工美术会放在什么位置？
+    core: 关键是组织改变了什么具体创作要求，以及从业者的任务、责任和选择会怎样变化；不能直接推断裁员。
+    questions: [这是正式工作要求、内部计划还是媒体转述？, 哪些岗位和制作环节被要求使用AI，是否允许例外？, 从业者的实际反馈、质量责任与作品权利如何处理？]
+    angles: [从工具选择变成工作要求的变化, 创作效率与作者自主权的冲突, 具体岗位任务怎样改变而非笼统宣称人被替代]
+    content_type: CAREER_SHIFT
+  creation_limits:
+    meaning: A creation tool changes a concrete limit such as duration, size or continuity substantially enough to enable a different workflow for creators.
+    audience: 做短视频、广告、课程或叙事内容的创作者
+    seed: 生成内容的长度限制变了，创作者能否因此完成一个更完整的作品？
+    core: 应比较以前的限制与现在可完成的工作，核实长度增长是否同时保留连续性、质量和可承担的成本。
+    questions: [长度或容量具体从多少变成多少，有可复查样片吗？, 更长输出能否保持人物、叙事和画面一致？, 普通创作者的使用条件、成本和作品权利是什么？]
+    angles: [从片段到完整作品还差哪些能力, 长度提升与实际可用性是否同步, 创作者会少做哪些拼接工作又多做哪些审核]
+    content_type: AI_PRODUCT
+  patient_access:
+    meaning: A concrete patient or person receives a medical, assistive or accessibility intervention with identifiable practical stakes rather than a generic research promise.
+    audience: 关注视力、健康和辅助技术可用性的人及其家人
+    seed: 辅助技术走到了具体患者身上：它究竟能恢复哪些日常能力？
+    core: 值得讲的是具体患者进入了什么阶段、可测量的日常能力如何，而不是把治疗或植入等同于治愈。
+    questions: [目前是试验、植入还是已有随访结果，分别有何记录？, 改善了哪项可测量能力，哪些限制仍存在？, 患者选择、风险、费用和普遍可及性如何？]
+    angles: [一次干预与长期生活改善之间的距离, 从患者日常活动理解技术效果, 小样本案例怎样避免被讲成普遍治愈]
+    content_type: HUMAN_AI_STORY
+  digital_relationships:
+    meaning: AI companionship or chatbot products have concrete consequences for relationships, children, emotional reliance, safety or responsibility, including disputed commercial use.
+    audience: 使用陪伴产品的用户、家长及关注孩子数字生活的人
+    seed: 陪伴型聊天产品进入商业合作时，谁来承担关系与安全的责任？
+    core: 故事核心是商业价值与使用者尤其是未成年人的保护之间有什么未解决的责任问题；交易与争议事实需分别核实。
+    questions: [商业合作或交易是报价、洽谈还是已经完成？, 安全争议涉及什么已证实事实，哪些仅为指控？, 产品提供者、合作方和家长各有什么实际控制手段？]
+    angles: [商业扩张是否伴随更清晰的安全责任, 陪伴体验与情绪依赖之间的边界, 把交易事实与争议指控分开核实]
+    content_type: INTERESTING_INTERNET
+  junior_careers:
+    meaning: Explicit changes to junior hiring, entry-level jobs, apprenticeships or learning paths affect how newcomers enter a profession.
+    audience: 学生、求职者和刚入行的工作人员
+    seed: 入门岗位的要求变了，新人该怎样获得第一段工作经验？
+    core: 要核实具体岗位、招聘行为和培养路径的变化，避免把一家公司或一份预测概括成整个行业。
+    questions: [哪些真实招聘记录能说明入门要求变化？, 是个别公司调整还是同类岗位的共同变化？, 企业怎样培养新人，国内岗位是否有同样现象？]
+    angles: [第一段工作经验从哪里来, 招聘要求与实际任务之间的落差, 比较新人培养而非渲染职业消失]
+    content_type: CAREER_SHIFT
+  workplace_risk:
+    meaning: Ordinary workers use new tools in unexpected ways that create concrete security, privacy, liability or workflow risks at work.
+    audience: 使用AI处理工作材料的员工和管理小团队的人
+    seed: 把AI交给每个人使用之后，公司最难管理的会是什么？
+    core: 入口是员工的实际使用行为与组织预期之间的差异，应核实哪种数据或工作流程因此产生具体风险。
+    questions: [具体哪种员工操作造成了什么风险，有真实案例吗？, 风险已发生还是厂商用于销售的预测？, 组织的限制与普通员工完成任务的需要如何协调？]
+    angles: [方便的工具如何改变数据流向, 安全规则与真实工作需要的碰撞, 从具体操作说明风险而非宣传一家安全公司]
+    content_type: HUMAN_AI_STORY
+  physical_work:
+    meaning: Automation changes the duration, skill or human labor required for a concrete physical task in a factory, shop or workplace.
+    audience: 关注制造业工作、技能要求和自动化成本的人
+    seed: 一项工作从耗时很久变成很快，改变的只是效率吗？
+    core: 应从一个具体工作任务入手，比较换任务的时间、人的参与和质量要求，不能由自动化演示直接断言岗位消失。
+    questions: [同一任务前后分别需要多长时间，测量条件一致吗？, 人负责设置、检查和异常处理中的哪些环节？, 真实生产场景的成本、失误率和培训要求是什么？]
+    angles: [换任务速度怎样改变岗位技能, 演示效率与真实生产的差距, 自动化之后人仍承担哪些责任]
+    content_type: CAREER_SHIFT
+  wildlife_coexistence:
+    meaning: A concrete technology or behavior changes conflicts between human infrastructure and wildlife with consequences for safety or animal welfare.
+    audience: 关注出行安全、城市生活与动物保护的人
+    seed: 不伤害动物，也能让它们远离危险设施吗？
+    core: 看点是减少人类设施与动物冲突的具体方法，需核实安全效果和对动物行为的长期影响。
+    questions: [针对哪些动物和设施，有现场测试记录吗？, 是否只是把风险转移到了别处，动物会适应吗？, 效果如何测量，与已有办法有什么差异？]
+    angles: [安全与动物保护能否同时满足, 设备如何利用动物行为而非伤害动物, 短期驱离与长期共存的区别]
+    content_type: INTERESTING_INTERNET
+  accountability:
+    meaning: A concrete person or organization acts contrary to a rule, commitment or public statement, exposing questions about accountability and enforcement.
+    audience: 关注公众人物行为、制度执行和普通人权益的用户
+    seed: 规则写在那里，当事人却公开做了另一件事：约束到底怎样生效？
+    core: 值得讲的是具体行为与规则之间的冲突，以及谁提供了证据、谁有责任执行；指控不能写成已裁定事实。
+    questions: [具体违反了什么规则，行为证据和完整语境是什么？, 目前是指控、调查还是已经作出裁定？, 这件事怎样影响普通人的权益或对制度的信任？]
+    angles: [公开行为与承诺之间的落差, 从证据链区分指控与事实, 规则怎样从文字变成实际约束]
+    content_type: BIG_PERSON_IDEA
+  code_maintenance:
+    meaning: Concrete developer experience shows generated code increases maintenance, debugging or review burdens beyond impressive generation speed.
+    audience: 程序员、技术团队和学习编程的人
+    seed: 代码写得更快之后，后面要维护的东西会不会反而更多？
+    core: 应比较生成速度与维护成本这两个不同指标，核实额外代码如何被测量以及是否真的增加人的工作。
+    questions: [测量的是代码数量、复杂度还是后续维护时间？, 不同任务与模型的比较条件是否一致？, 有没有真实项目中的审核或维护案例，而非只有基准数据？]
+    angles: [生成效率与长期维护负担的分离, 基准指标遗漏了哪些人的工作, 谁负责验证生成的额外代码是否必要]
+    content_type: DEVELOPER_STORY
+  public_statements:
+    meaning: A tool or investigation makes a person's changing public statements comparable over time, raising questions about consistency and context.
+    audience: 想判断行业观点是否可信的普通读者
+    seed: 把一个人不同时期说的话放在一起，会看见什么变化？
+    core: 入口是观点如何随时间或情境变化，应核实完整语境，避免把片段差异包装成自相矛盾。
+    questions: [有哪些带日期的原始讲话片段可逐一复查？, 前后变化来自观点改变还是上下文不同？, 工具的选段、转录和归因是否准确？]
+    angles: [观点变化能否与行动对照, 片段对比怎样保留完整语境, 一个核实工具是否真的帮助普通读者判断]
+    content_type: DEVELOPER_STORY
+  learning:
+    meaning: A real learner or teacher changes how they practice, evaluate learning or use AI in education with concrete outcomes or tensions.
+    audience: 学生、教师和关心学习质量的家长
+    seed: 学习方式变了，我们怎样判断是真的学会了？
+    core: 关注具体练习、反馈和评估行为的变化，区分完成作业与掌握能力。
+    questions: [具体哪类学习任务发生了什么变化？, 有独立评估或持续学习结果吗？, 老师和学生的体验有哪些差异，国内是否适用？]
+    angles: [完成速度与真实掌握的区别, 教师反馈如何改变, 从具体学习活动验证效果]
+    content_type: HUMAN_AI_STORY
+  small_business:
+    meaning: A small team or founder changes how they serve customers or earn income, with concrete customer behavior or operating outcomes rather than ordinary funding.
+    audience: 独立开发者、创业者和经营小生意的人
+    seed: 小团队改变了一种做事方式，真实客户会因此买单吗？
+    core: 应追问真实客户、收入或成本变化，区分创业宣传与得到验证的经营经验。
+    questions: [客户具体是谁，原先怎样解决问题？, 有实际付款、留存或成本数据吗？, 经验来自个案还是可以复制的条件？]
+    angles: [需求怎样从猜测变成真实付款, 小团队省下的成本与新增工作, 个人经营经验的适用边界]
+    content_type: BUSINESS_SIGNAL

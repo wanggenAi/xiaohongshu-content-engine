@@ -41,6 +41,25 @@ class ContentItem(BaseModel):
     public_source_label: str = "海外"
     metadata: dict[str, Any] = Field(default_factory=dict)
 
+    editorial_score: float = Field(default=0, ge=0, le=100)
+    editorial_value: dict[str, Any] = Field(default_factory=dict)
+    editorial_score_breakdown: dict[str, Any] = Field(default_factory=dict)
+    editorial_reject_reason: list[str] = Field(default_factory=list)
+    editorial_verdict: str = "WEAK"
+    editorial_title_seed: str = ""
+    story_signals: dict[str, list[str]] = Field(default_factory=dict)
+    editorial_questions: list[str] = Field(default_factory=list)
+    core_story: str = ""
+    why_this_may_work: str = ""
+    why_this_may_fail: str = ""
+    missing_evidence: list[str] = Field(default_factory=list)
+    possible_angles: list[str] = Field(default_factory=list)
+
+    @computed_field
+    @property
+    def discovery_score(self) -> float:
+        return self.score
+
     @computed_field
     @property
     def total_score(self) -> float:
@@ -92,4 +111,25 @@ class ContentPerformance(BaseModel):
         allowed = {"views", "likes", "saves", "comments", "shares", "follows"}
         if set(value) - allowed or any(v < 0 for v in value.values()):
             raise ValueError("invalid performance metrics")
+        return value
+
+
+class EditorialFeedback(BaseModel):
+    candidate_id: str = Field(min_length=1)
+    decision: str
+    reasons: list[str] = Field(min_length=1)
+    reviewed_at: datetime = Field(default_factory=lambda: datetime.now(UTC))
+
+    @field_validator("decision")
+    @classmethod
+    def valid_decision(cls, value):
+        if value not in {"LIKE", "MAYBE", "DISLIKE"}:
+            raise ValueError("decision must be LIKE, MAYBE or DISLIKE")
+        return value
+
+    @field_validator("reasons")
+    @classmethod
+    def valid_reasons(cls, value):
+        if any(not reason.strip() or len(reason) > 500 for reason in value):
+            raise ValueError("reasons must be nonempty and at most 500 characters")
         return value

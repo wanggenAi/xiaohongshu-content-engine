@@ -1,0 +1,142 @@
+version: editorial-v1.1
+provider:
+  model: jev-latest
+  key_env: TYPESAFE_API_KEY
+  timeout_seconds: 45
+  concurrency: 3
+stages:
+  discovery_limit: 40
+  minimum_discovery_score: 12
+  screening_limit: 20
+  deep_limit: 10
+  discovery_source_cap: 8
+thresholds:
+  screening_score: 48
+  deep_score: 60
+  strong_score: 75
+  minimum_human_relevance: 0.4
+  minimum_china_relevance: 0.5
+  reject_probability: 0.85
+  lens_probability: 0.55
+  signal_probability: 0.65
+  novelty_without_chinese_evidence_cap: 0.35
+weights:
+  human_relevance: 20
+  curiosity_gap: 15
+  story_strength: 15
+  discussion_potential: 15
+  china_audience_relevance: 15
+  novelty: 10
+  evidence_quality: 10
+rubrics:
+  human_relevance:
+    question: What concrete consequence for people's work, income, learning, life, health, privacy, relationships
+      or consumption is supported by this item? AI or company names alone do not count.
+    levels:
+    - No identifiable human stakes; only parameters, B2B compliance, investments or infrastructure.
+    - Vague potential benefit, ordinary product promotion or hypothetical user with no specific decision.
+    - A clear group faces a concrete change in work, safety, creation, learning, agency, daily costs or
+      relationships.
+    - The reported subject directly affects personal safety, livelihood, autonomy, health, creative roles
+      or a concrete lived burden; actual outcome verification is scored separately.
+  curiosity_gap:
+    question: Is there a specific unexpected relationship or change that makes an ordinary reader ask
+      why or what happened next? Ignore promotional adjectives and new/first/launch wording alone.
+    levels:
+    - Predictable announcement with nothing beyond promotion or release facts.
+    - Useful but expected development without an unusual consequence or contrast.
+    - A concrete surprising connection, limit change, tradeoff or unintended consequence worth asking
+      about.
+    - A strong reversal or uncomfortable contrast between expected behavior and reported reality, with
+      understandable stakes.
+  story_strength:
+    question: Does the evidence describe actors doing something consequential, a conflict, a before/after
+      change or a causal chain? A named company or large funding number alone is not a story.
+    levels:
+    - Only abstract claims, no identifiable action, change or meaningful event.
+    - An organization announces ordinary funding, specifications or a release without a meaningful human
+      consequence.
+    - Specific actors and an action, change or conflict provide a clear story to investigate; headline-only
+      evidence can qualify but its evidence quality is low.
+    - Concrete actors, a cause/action and consequence or a before-after contrast form a compelling story;
+      do not require independent verification here.
+  discussion_potential:
+    question: Can ordinary readers relate their own experience or hold reasonable different views about
+      this concrete change? Never infer consensus or controversy from engagement numbers alone.
+    levels:
+    - Only release news or specialist facts with no relatable reader question.
+    - Narrow specialist preference or predictable praise with little experiential relevance.
+    - A specific user decision or tradeoff invites relevant experiences or reasonable different perspectives.
+    - Work, personal safety, autonomy, relationships or creation involves a clear tension ordinary readers
+      can discuss without manufactured outrage.
+  china_audience_relevance:
+    question: Given `audience_context`, how relatable is the specific reported problem or change for ordinary
+      Chinese Xiaohongshu readers? Relatability does NOT require the foreign company to operate in China,
+      or the source to mention China. Overseas B2B infrastructure and normal fundraising alone are not
+      a useful bridge. Do not claim local product availability or that the same event already occurred
+      in China.
+    levels:
+    - Remote US-only B2B/legal infrastructure or financing details with no everyday audience bridge.
+    - Generic AI interest or narrow industry curiosity without a specific life/work concern.
+    - Students, workers, creators, parents or consumers can relate a concrete decision or concern, even
+      if local access still needs checking.
+    - A familiar concern about work tasks, scams, recommended feeds, health, creative production or relationships
+      provides a direct audience bridge. The source need not mention China; this is editorial association,
+      not proof the same event happened in China.
+  novelty:
+    question: Judge the unusual information/angle in the supplied evidence. Do not equate publication
+      recency with novelty. Absence of Chinese-coverage evidence means Chinese saturation is UNKNOWN,
+      never assume unreported.
+    levels:
+    - Routine reannouncement or explicit evidence of ubiquitous Chinese coverage.
+    - Familiar development with no new human angle.
+    - Concrete unusual detail or underexamined question, Chinese coverage unknown.
+    - Distinctively new angle with supplied Chinese-coverage comparison.
+    - Strong information gap supported by actual Chinese-coverage evidence.
+  evidence_quality:
+    question: Rate the supplied evidence, not the brand. Shared URL duplicates are not independent corroboration.
+      Do not invent full article contents, reactions, verification or deployment outcomes.
+    levels:
+    - Vague headline, empty excerpt, anonymous unsupported claim or placeholder.
+    - Specific attributed headline/claim but little context and no independent verification.
+    - Bounded attributed reporting or original author's concrete account; missing corroboration.
+    - Original source and genuinely independent reporting or authentic measurements support the same core
+      claim.
+    - Multiple independent sources plus original records support a well-bounded claim with documented
+      limitations.
+rejects:
+  TOO_TECHNICAL: Only specialized implementation or enterprise infrastructure details; no concrete reader-life
+    or work consequence. Technical content with an actual human consequence does not qualify.
+  PR_ONLY: A vendor investment, ecosystem or capability promotion with no substantive human change, usable
+    evidence or editorial tension. Being official alone is not enough.
+  MINOR_UPDATE: Routine version, parameter, pricing or small-feature update without meaningful changed
+    activity, access or human consequence.
+  NO_HUMAN_ANGLE: No identifiable affected people or human decisions, even after reading the excerpt.
+    Do not infer layoffs from an AI announcement.
+  NO_STORY: No concrete actor doing something, no meaningful change or conflict; mere product/company
+    nouns and funding numbers do not count.
+  LOW_CHINA_RELEVANCE: No specific relatable concern for Chinese ordinary readers beyond remote specialized
+    business details.
+  SATURATED: Explicit supplied Chinese coverage evidence establishes this is already widely repeated.
+    If no Chinese coverage audit exists, answer no.
+  WEAK_EVIDENCE: So vague, unattributed, empty or unsupported that even the core event cannot be stated
+    responsibly. Specific attributed headline-only stories can remain research candidates with low evidence
+    score.
+  BORING: Predictable truthful announcement with no human stakes, unexpected relationship, useful decision
+    or story worth telling. Do not confuse technical importance with editorial interest.
+signal_definitions:
+  person: A concrete identifiable person or first-person author involved in an action or experience; not
+    an imagined future user.
+  company: A named organization acting in the event, not a guessed entity.
+  conflict: A stated tension, disputed action, harm, tradeoff or competing interests; not fabricated disagreement.
+  before_after: A stated change between previous and current conditions, ideally including times, quantities
+    or explicit contrast.
+  surprise: A specific reversal, unintended consequence or contrast supported by wording, not just new/first
+    wording.
+  ordinary_people_impact: A stated effect on everyday decisions, health, safety, control, learning, consumption
+    or relationships.
+  career_impact: A stated change to hiring, work tasks, skills, roles or employment; do not assume AI
+    means job loss.
+  money_impact: A stated cost, income or spending consequence for people; a funding headline alone is
+    not ordinary income impact.
+  behavior_change: A stated change in what people or organizations actually do or propose to require.

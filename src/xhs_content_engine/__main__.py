@@ -6,14 +6,16 @@ from typing import Annotated
 import typer
 
 from .editorial import validate_public
-from .models import ContentPerformance
+from .models import ContentPerformance, EditorialFeedback
 from .pipeline import Pipeline
 
 app = typer.Typer(no_args_is_help=True, pretty_exceptions_show_locals=False)
 inbox = typer.Typer()
 performance = typer.Typer()
+review = typer.Typer()
 app.add_typer(inbox, name="inbox")
 app.add_typer(performance, name="performance")
+app.add_typer(review, name="review")
 Root = Annotated[Path, typer.Option(help="Directory containing config/ and data/")]
 Limit = Annotated[int, typer.Option(min=1, max=30)]
 
@@ -24,18 +26,22 @@ def collect(root: Root = Path(".")):
 
 
 @app.command()
-def rank(root: Root = Path("."), limit: Limit = 20):
+def rank(root: Root = Path("."), limit: Limit = 10):
     for index, item in enumerate(Pipeline(root).rank(limit), 1):
-        typer.echo(f"{index:02d}  {item.score:6.2f}  {item.title}")
+        typer.echo(
+            f"{index:02d}  {item.editorial_verdict}  "
+            f"editorial={item.editorial_score:.2f} discovery={item.discovery_score:.2f}  "
+            f"{item.editorial_title_seed}"
+        )
 
 
 @app.command()
-def export(root: Root = Path("."), limit: Limit = 20):
+def export(root: Root = Path("."), limit: Limit = 10):
     typer.echo(str(Pipeline(root).export(limit)))
 
 
 @app.command()
-def run(root: Root = Path("."), limit: Limit = 20):
+def run(root: Root = Path("."), limit: Limit = 10):
     typer.echo(json.dumps(Pipeline(root).run(limit), ensure_ascii=False, indent=2))
 
 
@@ -64,6 +70,32 @@ def performance_add(file: Path, root: Root = Path(".")):
     record = ContentPerformance.model_validate_json(file.read_text(encoding="utf-8"))
     Pipeline(root).store.save_performance(record)
     typer.echo(record.id)
+
+
+@review.command("add")
+def review_add(file: Path, root: Root = Path(".")):
+    data = json.loads(file.read_text(encoding="utf-8"))
+    records = data if isinstance(data, list) else [data]
+    # Validate the whole batch before persisting any feedback.
+    feedback = [EditorialFeedback.model_validate(row) for row in records]
+    store = Pipeline(root).store
+    for record in feedback:
+        store.save_editorial_feedback(record)
+    typer.echo(f"saved {len(feedback)} editorial reviews")
+
+
+@review.command("list")
+def review_list(root: Root = Path("."), candidate_id: str | None = None):
+    typer.echo(
+        json.dumps(
+            [
+                r.model_dump(mode="json")
+                for r in Pipeline(root).store.editorial_feedback(candidate_id)
+            ],
+            ensure_ascii=False,
+            indent=2,
+        )
+    )
 
 
 @app.command("check-public")

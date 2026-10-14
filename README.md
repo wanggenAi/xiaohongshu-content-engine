@@ -35,6 +35,21 @@ uv run ruff format --check .
 
 增加 RSS 只需修改 `config/sources.yaml`。受限来源可以配置 `type: restricted_adapter` 和 skip reason；未来合法 API 的 collector 注册到 `ADAPTERS` 即可，不影响现有来源。
 
+
+## Editorial quality funnel (V1.1)
+
+Each run preserves the original `discovery_score` and adds a separate semantic `editorial_score`. The bounded funnel is:
+
+`RAW → Stage A Discovery (up to 40, source caps) → Stage B Editorial Screening (up to 20) → Deep Candidates (up to 10)`.
+
+Stage A uses the existing deterministic discovery score. Stage B uses seven independently described dimensions: human relevance, curiosity gap, story strength, discussion potential, China audience relevance, novelty and evidence quality. Hard rejects include `TOO_TECHNICAL`, `PR_ONLY`, `MINOR_UPDATE`, `NO_HUMAN_ANGLE`, `NO_STORY`, `LOW_CHINA_RELEVANCE`, `SATURATED`, `WEAK_EVIDENCE` and `BORING`. `SATURATED` is only accepted with an actual Chinese-coverage audit; missing evidence is not treated as proof of an information gap.
+
+When `TYPESAFE_API_KEY` is present, a bounded structured judgment evaluates only Stage A and is cached by exact evidence plus rubric. The provider receives source text as quoted, untrusted evidence and cannot write final copy. If the key is absent or the provider fails, candidates stay `awaiting_review` and do not enter Deep Candidates. The workflow accepts an optional repository secret of the same name.
+
+The primary daily entry is `outputs/editorial_review.md`. It contains only Deep Candidates with `STRONG`, `POSSIBLE`, `WEAK` or `REJECT`, a Chinese editorial title seed, concrete core story, why it may work/fail, story signals copied from evidence, missing evidence, investigation questions, ten deep-candidate fields and specific angles. The page is a research brief, not a final post. Human feedback can be stored with `python -m xhs_content_engine review add feedback.json`, using `LIKE`, `MAYBE` or `DISLIKE` plus reasons.
+
+`docs/ACCEPTANCE.md` records the V1.1 backtest and live run. `outputs/v1_vs_v11_backtest.json` is a local generated comparison of the frozen V1 Top 20; daily SQLite/output artifacts remain ignored.
+
 ## 输出与持久化
 
 - `data/content.sqlite3`：统一 ContentItem、Manual Inbox、Telegram cursor 和 content_performance。
