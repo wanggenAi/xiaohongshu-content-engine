@@ -71,6 +71,16 @@ class ContentItem(BaseModel):
     claim_scope: str = "unassessed"
     story_patterns: list[str] = Field(default_factory=list)
     human_review_reason: str = ""
+    # Story Mining is deliberately separate from semantic editorial scores. These
+    # fields contain extracted evidence and deterministic triage signals only.
+    story_richness_score: float = Field(default=0, ge=0, le=100)
+    fallback_story_score: float = Field(default=0, ge=0, le=100)
+    story_structure: dict[str, str] = Field(default_factory=dict)
+    story_conflict: str = ""
+    discussion_viewpoints: list[dict[str, Any]] = Field(default_factory=list)
+    story_cluster_id: str = ""
+    story_cluster: dict[str, Any] = Field(default_factory=dict)
+    story_mining_status: str = "unassessed"
 
     @computed_field
     @property
@@ -129,6 +139,38 @@ class ContentPerformance(BaseModel):
         if set(value) - allowed or any(v < 0 for v in value.values()):
             raise ValueError("invalid performance metrics")
         return value
+
+
+class StoryCandidate(BaseModel):
+    """Evidence-backed person/event record produced before Human Trigger scoring."""
+
+    id: str
+    source_item_ids: list[str] = Field(min_length=1)
+    story_type: str = "single_case"
+    primary_person: str = ""
+    identity_group: list[str] = Field(default_factory=list)
+    action: str = ""
+    context: str = ""
+    before_state: str = ""
+    change_event: str = ""
+    after_state: str = ""
+    result: str = ""
+    conflict: str = ""
+    surprise: str = ""
+    money_signal: str = ""
+    job_signal: str = ""
+    emotion_signal: str = ""
+    evidence_spans: list[str] = Field(default_factory=list)
+    discussion_evidence: list[dict[str, Any]] = Field(default_factory=list)
+    engagement: dict[str, int] = Field(default_factory=dict)
+    claim_scope: str = "single_case"
+    verification_state: str = "needs_review"
+    story_strength: float = Field(default=0, ge=0, le=100)
+    fallback_story_score: float = Field(default=0, ge=0, le=100)
+    story_cluster_id: str = ""
+    source_tier: str = "C"
+    source_authority: float = Field(default=0.5, ge=0, le=1)
+    story_value: float = Field(default=0, ge=0, le=100)
 
 
 class EditorialFeedback(BaseModel):

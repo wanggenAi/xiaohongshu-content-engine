@@ -1,0 +1,21 @@
+version: story-sources-v1
+tiers:
+  S:
+    label: Human Story Sources
+    purpose: 第一人称、具体行为和前后变化优先进入 Story Mining。
+    source_types: [personal_blog, developer_blog, creator_post, manual, telegram]
+  A:
+    label: Discussion Sources
+    purpose: 高互动讨论和真实回复用于提炼不同经历。
+    source_types: [discussion, hacker_news, reddit_public, forum]
+  B:
+    label: Evidence Sources
+    purpose: 用于核实故事，不自动替代当事人的经历。
+    source_types: [rss, github_search, github_releases, official_blog, company_news]
+  C:
+    label: Pure News
+    purpose: 没有人的行为和结果时保持低优先级。
+    source_types: [news]
+defaults:
+  unknown_tier: C
+  authority_weight: separate_from_story_value

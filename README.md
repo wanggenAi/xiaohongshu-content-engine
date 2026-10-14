@@ -2,7 +2,7 @@
 
 持续发现海外 AI、科技、人物观点、工作变化和互联网讨论，生成供 ChatGPT 与用户判断的高质量候选素材。工程初筛不替代最终编辑判断，不自动发布小红书。
 
-`SOURCE → COLLECT → NORMALIZE → DEDUPE → SCORE → RANK → EDITORIAL PACKET`
+`SOURCE → COLLECT → NORMALIZE → DEDUPE → DISCOVERY → STORY MINING → EVIDENCE → HUMAN TRIGGER → EDITORIAL PACKET`
 
 ## 使用
 
@@ -44,6 +44,12 @@ uv run ruff format --check .
 
 `config/human_triggers.yaml` 配置十个触发维度、证据门槛、可追溯加分与场景/评论缺失降级。场景和反转只选取来源片段；没有具体故事时，不由 AI、公司名、融资额或技术参数自动加分。详见 [Human Trigger 规则](docs/HUMAN_TRIGGERS.md)。
 
+## Story Mining（V1.3）
+
+V1.3 在语义判断前增加 `config/story_mining.yaml` 的确定性 Fast Story Filter：从第一人称、身份、具体行动、结果、前后变化、冲突、数字、评论观点和证据跨度中提取 `StoryCandidate`。`story_richness_score` 描述故事原料，`fallback_story_score` 只控制语义成本和人工队列顺序，绝不冒充 Human Trigger。来源层级在 `config/source_priority.yaml` 中分开记录 `source_authority` 与 `story_value`；合法可读的评论观点保留证据片段，受限平台进入 restricted adapter 或 Manual Inbox。
+
+`outputs/story_candidates.json` 保存每轮发现到的有证据候选；`editorial_review.md` 顶部区分 Assessed Stories 与 Human Review Queue，并显示 Person、Action、Result、Before/After、Conflict、Claim Scope、Evidence Status。查询组合和普通读者身份分别配置在 `story_mining.yaml` 与 `reader_identities.yaml`。
+
 有 `TYPESAFE_API_KEY` 时，Stage A 做有界语义判断并按证据与问题定义缓存。没有 key、请求失败或语义不完整时，输出 `NEEDS_HUMAN_REVIEW` 队列，标明 `semantic_status = unavailable`，Human/Viral 分数为 null，不冒充 Deep。如果整批都被降级且没有 Deep，也保留带原降级原因的人工复核素材；无来源材料时保留采集错误审计。
 
 日常入口为 `outputs/editorial_review.md`：顶部 Today’s Human Stories 显示排名、三个编辑信号、最强触发器和具体读者身份；每条 Deep 包含场景、反转、讨论入口和三个不同角度的调查标题。原文、真实平台与证据保留在内部 packet；审稿摘要和公开简报通过平台名/机械替换检查。
@@ -63,7 +69,8 @@ uv run python -m xhs_content_engine review add feedback.json
 - `data/content.sqlite3`：统一 ContentItem、Manual Inbox、Telegram cursor 和 content_performance。
 - `outputs/collection_audit.json` / `run_report.json`：每个来源的状态、原始数量、存储数量、去重数量及错误原因。
 - `outputs/top_candidates.md` / `.json`：Human Stories 审稿页别名 / Deep 完整候选对象（最多 10 条）。
-- `outputs/human_review_queue.json` 与 `human_review/YYYY-MM-DD/*.md`：明确状态的人工队列及原始证据。
+- `outputs/story_candidates.json`：Story Mining 提取的原料、来源证据、故事类型、聚类和独立案例。
+- `outputs/human_review_queue.json` 与 `human_review/YYYY-MM-DD/*.md`：按 Fallback Story Score 排序、明确状态的人工队列及原始证据。
 - `outputs/export_manifest.json`：当前导出数量，供数量一致性检查。
 - `outputs/editorial/YYYY-MM-DD/*.md`：内部证据包（Asia/Shanghai 日期）。真实来源、全部去重 provenance、不同事实核实问题、3 个编辑角度、风险和版权说明。
 - `outputs/public_briefs/YYYY-MM-DD/*.md`：来源泛化且经检查的公开候选简报。不是最终文案，也不自动翻译或编造文章。
@@ -92,4 +99,4 @@ SQLite 通过 Actions cache 跨运行恢复，候选与审计通过 artifacts �
 
 ## 当前限制与下一步
 
-V1 不抓评论、不做独立交叉核验、中文饱和度检测或历史增长估计，不自动生成最终文案。来源健康状态和首次真实数据验收见 [验收记录](docs/ACCEPTANCE.md)。下一步：由 ChatGPT/用户对 Human Stories 标注真实审美反馈，并补足原作者记录、实际行为变化和核验材料。
+系统只处理合法公开摘录，不绕过登录、验证码、robots 或私人数据；没有合法评论数据时不会把评论数量写成观点。不做独立交叉核验、中文饱和度检测或历史增长估计，不自动生成最终文案。来源健康状态和真实数据验收见 [验收记录](docs/ACCEPTANCE.md)。下一步：由 ChatGPT/用户对 Story Candidates 标注真实审美反馈，并补足原作者记录、实际行为变化和核验材料。

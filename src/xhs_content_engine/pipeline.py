@@ -22,7 +22,12 @@ class Pipeline:
         self.style = self.load("editorial_style.yaml")
         self.editorial_scoring = self.load("editorial_scoring.yaml")
         self.human_config = self.load("human_triggers.yaml")
+        self.story_config = self.load("story_mining.yaml")
+        self.source_priority = self.load("source_priority.yaml")
+        self.reader_identities = self.load("reader_identities.yaml")
         self.editorial_scoring["human_triggers"] = self.human_config
+        self.editorial_scoring["story_mining"] = self.story_config
+        self.editorial_scoring["source_priority"] = self.source_priority
         if sum(self.human_config["weights"].values()) != 100:
             raise ValueError("human trigger weights must total 100")
         if abs(sum(self.human_config["viral_weights"].values()) - 1) > 0.001:
@@ -145,10 +150,16 @@ class Pipeline:
                     "human_review_queue_items": [
                         i.model_dump(mode="json") for i in self.review_queue
                     ],
+                    "story_candidates": report.get("story_candidates_data", []),
                 },
                 ensure_ascii=False,
                 indent=2,
             ),
+            encoding="utf-8",
+        )
+        story_candidates = report.pop("story_candidates_data", [])
+        (destination / "story_candidates.json").write_text(
+            json.dumps(story_candidates, ensure_ascii=False, indent=2),
             encoding="utf-8",
         )
         return deep, report

@@ -1,0 +1,52 @@
+version: story-mining-v1
+fast_filter:
+  minimum_score: 40
+  limit: 50
+  minimum_semantic_candidates: 10
+  maximum_semantic_candidates: 20
+weights:
+  first_person: 15
+  concrete_actor: 15
+  specific_action: 15
+  consequence: 15
+  before_after: 10
+  conflict: 10
+  numbers: 5
+  first_person_comments: 5
+  multiple_viewpoints: 5
+  evidence_quality: 5
+identity_terms:
+  程序员: [developer, programmer, engineer, coder, maintainer, 程序员, 开发者]
+  设计师: [designer, design, 设计师]
+  学生: [student, learner, 学生, 大学生]
+  创作者: [creator, writer, streamer, creator, 创作者, 自媒体]
+  独立开发者: [indie hacker, solo founder, independent developer, 独立开发]
+  创业者: [founder, startup, entrepreneur, 创业者]
+  打工人: [employee, worker, job, boss, team, 员工, 工作, 老板]
+  求职者: [job seeker, interview, hiring, 求职, 面试]
+  消费者: [customer, user, privacy, scam, 用户, 隐私, 消费者]
+action_terms: [built, tried, stopped, switched, used, posted, noticed, lost, made, started, quit, hired, fired, wrote, launched, 试了, 停止, 转向, 使用, 发了, 发现, 失去, 做了, 开始, 离职, 招聘]
+consequence_terms: [result, outcome, earned, sale, paid, gained, failed, worried, fear, cost, revenue, salary, traffic, bill, price, broke, changed, lost, result, 结果, 后来, 担心, 成本, 收入, 工资, 流量, 爆了, 改变, 失去, 失败]
+before_after_terms: [before, now, used to, previously, today, after, before/after, 以前, 现在, 原来, 后来, 之后]
+conflict_terms: [but, however, versus, while, instead, worry, concern, replaced, privacy, cost, 但, 却, 然而, 担心, 替代, 隐私, 成本, 反而]
+first_person_terms: [i, i'm, ive, my, me, we, our, my team, my boss, my clients, i built, i tried, i stopped, i lost, i made, i got, i switched, i used, i posted, i noticed, 我, 我的, 我们, 我试了, 我开始, 我发现]
+story_queries:
+  - AI + my job
+  - AI + my team
+  - AI + I built
+  - AI + I lost
+  - AI + I stopped
+  - AI + I switched
+  - AI + client
+  - AI + junior developer
+  - AI + designer
+  - AI + student
+  - AI + salary
+  - AI + fired
+  - AI + hiring
+  - AI + workflow
+  - AI + traffic
+  - AI + customers
+  - AI + revenue
+  - AI + burnout
+  - AI + replaced

@@ -561,9 +561,26 @@ def select_screened(assessed, config, source_cap, limit=10):
 
 def screen(items, discovery_config, editorial_config, lenses, store, limit=10, now=None, http=None):
     from .human_triggers import HumanJudge, compose_human, human_review_queue
+    from .story_mining import enrich_story_items, fast_story_filter, story_semantic_filter
 
     now = now or datetime.now(UTC)
-    stage_a = discovery_candidates(items, discovery_config, editorial_config, now)
+    story_config = editorial_config.get("story_mining", {})
+    story_items, story_candidates = enrich_story_items(
+        items,
+        story_config,
+        editorial_config.get("source_priority"),
+        now,
+    )
+    discovered = discovery_candidates(story_items, discovery_config, editorial_config, now)
+    fast_candidates = fast_story_filter(discovered, story_config)
+    stage_a = story_semantic_filter(fast_candidates, story_config)
+    # A fast filter is a cost boundary, not an editorial rejection. Keep the
+    # extracted record for every discovered item so a reviewer can inspect gaps.
+    candidate_by_item = {
+        item_id: candidate
+        for candidate in story_candidates
+        for item_id in candidate.source_item_ids
+    }
     judge = SemanticJudge(editorial_config, lenses, store, http)
     responses = judge.assess(stage_a)
     assessed = [
@@ -596,6 +613,18 @@ def screen(items, discovery_config, editorial_config, lenses, store, limit=10, n
     )
     queue = human_review_queue(assessed, deep, human_config, limit) if human_config else []
     report = {
+        "raw_story_items": len(items),
+        "story_discovered": len(discovered),
+        "story_fast_filter": len(fast_candidates),
+        "story_candidate_count": sum(
+            1 for item in discovered if item.story_mining_status == "candidate"
+        ),
+        "story_semantic_candidates": len(stage_a),
+        "story_candidates_data": [
+            candidate_by_item[item.id].model_dump(mode="json")
+            for item in discovered
+            if item.id in candidate_by_item
+        ],
         "stage_a": len(stage_a),
         "stage_b": len(stage_b),
         "deep_candidates": len(deep),

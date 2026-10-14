@@ -237,6 +237,11 @@ def human_sections(item, style=None):
         )
         or "未评估，不生成标题。"
     )
+    fallback_note = f"{item.fallback_story_score:.2f}/100（仅用于人工队列排序，不是 Human Trigger）"
+    before_after = (
+        f"{item.story_structure.get('before_state') or '未识别'} → "
+        f"{item.story_structure.get('after_state') or '未识别'}"
+    )
     return f"""## Human Trigger Summary
 
 {item.human_trigger_summary or "未评估；请先阅读原始证据。"}
@@ -272,6 +277,18 @@ semantic_status = {item.semantic_status}；claim_scope = {item.claim_scope}
 ## Human Title Seeds
 
 {seeds}
+
+## Story Mining
+
+- Story Richness：{item.story_richness_score:.2f}/100
+- Fallback Story Score：{fallback_note}
+- Person：{item.story_structure.get("who") or "未识别"}
+- Action：{item.story_structure.get("did_what") or "未识别"}
+- Result：{item.story_structure.get("what_happened") or "未识别"}
+- Before / After：{before_after}
+- Conflict：{item.story_conflict or "未识别"}
+- Evidence Status：{item.verification_state}
+- Story Cluster：{item.story_cluster_id or "single_case / 未聚类"}
 """
 
 
@@ -292,6 +309,7 @@ def export(items: list[ContentItem], destination: Path, style: dict, now, review
         name = f"{index:03d}-{item.id}.md"
         cells = [
             str(index),
+            f"{item.story_richness_score:.2f}",
             number(item.viral_potential),
             number(item.human_trigger_score),
             f"{item.editorial_score:.2f}",
@@ -311,6 +329,14 @@ def export(items: list[ContentItem], destination: Path, style: dict, now, review
             str(index),
             item.semantic_status,
             "NEEDS_HUMAN_REVIEW",
+            f"{item.story_richness_score:.2f}",
+            f"{item.fallback_story_score:.2f}",
+            number(item.human_trigger_score),
+            item.story_structure.get("who") or "未识别",
+            item.story_structure.get("did_what") or "未识别",
+            item.story_structure.get("what_happened") or "未识别",
+            item.claim_scope,
+            item.verification_state,
             queue_evidence(item, style),
             item.human_review_reason,
             f"[原始证据与审稿问题](human_review/{day}/{name})",
@@ -318,19 +344,24 @@ def export(items: list[ContentItem], destination: Path, style: dict, now, review
         queue_rows.append("| " + " | ".join(table_cell(c) for c in cells) + " |")
     review = (
         "# Today’s Human Stories\n\n"
+        "## A. Assessed Stories\n\n"
         f"Deep Candidates：{len(items)}；Human Review Queue：{len(review_queue)}。\n\n"
         "Viral Potential 是内部排序信号，不是爆款承诺；证据与可能性仍需人工核实。\n\n"
-        "| Rank | Viral Potential | Human Trigger | Editorial Score |"
+        "| Rank | Story Richness | Viral Potential | Human Trigger | Editorial Score |"
         " Human Title Seed | Trigger | Reader Identity |\n"
-        "|---|---:|---:|---:|---|---|---|\n"
+        "|---|---:|---:|---:|---:|---|---|---|\n"
         + "\n".join(rows)
         + "\n\n"
         + "\n\n".join(details)
-        + "\n\n# Human Review Queue\n\n"
+        + "\n\n## B. Human Review Queue\n\n"
         "语义服务不可用的素材明确标为 unavailable；未评估的分数不显示为零分，"
         "不冒充 Deep。原文及全部来源保留在内部证据包，候选不是发布文案。\n\n"
-        "| Rank | Semantic Status | Verdict | Source Evidence | Review Reason | Packet |\n"
-        "|---|---|---|---|---|---|\n" + "\n".join(queue_rows) + "\n"
+        "| Rank | Semantic Status | Verdict | Story Richness | Fallback Story Score | "
+        "Human Trigger | Person | Action | Result | Claim Scope | Evidence Status | "
+        "Source Evidence | Review Reason | Packet |\n"
+        "|---|---|---|---:|---:|---:|---|---|---|---|---|---|---|---|\n"
+        + "\n".join(queue_rows)
+        + "\n"
     )
     if not items and not review_queue:
         review += "\n没有通过门槛的故事或可用待审素材；请检查来源审计。\n"
@@ -401,7 +432,10 @@ def verify_outputs(destination, style, report=None):
         heading = re.search(re.escape(label) + r"：(\d+)", review)
         if not heading or int(heading.group(1)) != count:
             raise ValueError(f"Markdown heading count mismatch: {key}")
-        section = review.split("# Human Review Queue")[0 if key == "deep_candidates" else 1]
+        sections = re.split(r"#+ (?:B\. )?Human Review Queue", review, maxsplit=1)
+        section = (
+            sections[0] if key == "deep_candidates" else (sections[1] if len(sections) > 1 else "")
+        )
         rows = re.findall(r"^\| \d+ \|", section, re.M)
         if len(rows) != count or (marker and review.count("<!-- " + marker) != count):
             raise ValueError(f"Markdown table/detail count mismatch: {key}")

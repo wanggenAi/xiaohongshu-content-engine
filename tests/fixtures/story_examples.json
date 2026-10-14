@@ -1,0 +1,182 @@
+[
+  {
+    "id": "strong-01",
+    "expected": "strong",
+    "title": "I used AI to build my store and made my first sale",
+    "raw_excerpt": "I tried an AI workflow, launched a store, and earned $800 in a week."
+  },
+  {
+    "id": "strong-02",
+    "expected": "strong",
+    "title": "A junior developer worries AI is erasing basic skills",
+    "raw_excerpt": "I used to write every function. Now my team asks me to accept generated code."
+  },
+  {
+    "id": "strong-03",
+    "expected": "strong",
+    "title": "My site traffic exploded but the visitors were bots",
+    "raw_excerpt": "I posted a launch and saw 20,000 visits. Logs showed automated clients."
+  },
+  {
+    "id": "strong-04",
+    "expected": "strong",
+    "title": "A designer switched to AI and changed her workflow",
+    "raw_excerpt": "I stopped drawing drafts by hand and now spend time checking client feedback."
+  },
+  {
+    "id": "strong-05",
+    "expected": "strong",
+    "title": "My company required an AI-first workflow",
+    "raw_excerpt": "We used to plan together. Now my boss requires every task to start with an AI draft."
+  },
+  {
+    "id": "strong-06",
+    "expected": "strong",
+    "title": "I lost a client after automating support replies",
+    "raw_excerpt": "I tried automatic replies, but a customer left after a bot misunderstood a refund."
+  },
+  {
+    "id": "strong-07",
+    "expected": "strong",
+    "title": "A student used AI for homework and stopped feeling she learned",
+    "raw_excerpt": "I finished faster, yet worried I could not explain the answers."
+  },
+  {
+    "id": "strong-08",
+    "expected": "strong",
+    "title": "An indie founder found revenue after a failed launch",
+    "raw_excerpt": "I expected a viral launch, but only three people paid, so I changed the product."
+  },
+  {
+    "id": "strong-09",
+    "expected": "strong",
+    "title": "A creator says AI changed her income",
+    "raw_excerpt": "I used to sell five illustrations a month. After switching, my prices changed."
+  },
+  {
+    "id": "strong-10",
+    "expected": "strong",
+    "title": "I was replaced on a small contract by an automated tool",
+    "raw_excerpt": "A client said software would handle the task. I lost the job."
+  },
+  {
+    "id": "strong-11",
+    "expected": "strong",
+    "title": "A programmer found a hidden cost in an AI subscription",
+    "raw_excerpt": "I saved time but spent more on retries. My monthly bill reached $240."
+  },
+  {
+    "id": "strong-12",
+    "expected": "strong",
+    "title": "My first AI video brought attention and a copyright dispute",
+    "raw_excerpt": "I posted a film that gained 50,000 views, then an artist asked about the style."
+  },
+  {
+    "id": "strong-13",
+    "expected": "strong",
+    "title": "A job seeker used AI for interviews and failed the real test",
+    "raw_excerpt": "I passed screening with an assistant, but could not explain my choices live."
+  },
+  {
+    "id": "strong-14",
+    "expected": "strong",
+    "title": "I switched from a big model after a privacy scare",
+    "raw_excerpt": "I uploaded client notes, noticed the retention policy, and moved offline."
+  },
+  {
+    "id": "strong-15",
+    "expected": "strong",
+    "title": "A parent tried an AI tutor and changed homework",
+    "raw_excerpt": "We expected less conflict, but my child stopped showing work."
+  },
+  {
+    "id": "weak-01",
+    "expected": "weak",
+    "title": "New language model reaches 1 trillion parameters",
+    "raw_excerpt": "The company announced a larger model with improved benchmarks."
+  },
+  {
+    "id": "weak-02",
+    "expected": "weak",
+    "title": "Startup raises $40 million for AI infrastructure",
+    "raw_excerpt": "Investors participated in the funding round."
+  },
+  {
+    "id": "weak-03",
+    "expected": "weak",
+    "title": "Chipmaker launches an accelerator",
+    "raw_excerpt": "The hardware offers faster inference and better energy efficiency."
+  },
+  {
+    "id": "weak-04",
+    "expected": "weak",
+    "title": "API adds structured outputs",
+    "raw_excerpt": "Developers can now request JSON responses."
+  },
+  {
+    "id": "weak-05",
+    "expected": "weak",
+    "title": "Company partners with cloud provider",
+    "raw_excerpt": "The agreement expands access to enterprise services."
+  },
+  {
+    "id": "weak-06",
+    "expected": "weak",
+    "title": "Research paper introduces a new benchmark",
+    "raw_excerpt": "The authors report state of the art accuracy."
+  },
+  {
+    "id": "weak-07",
+    "expected": "weak",
+    "title": "Open source release improves tokenization",
+    "raw_excerpt": "Version 2.0 includes faster preprocessing."
+  },
+  {
+    "id": "weak-08",
+    "expected": "weak",
+    "title": "AI market forecast grows this decade",
+    "raw_excerpt": "Analysts expect spending to increase."
+  },
+  {
+    "id": "weak-09",
+    "expected": "weak",
+    "title": "Platform adds an image editing feature",
+    "raw_excerpt": "Users can remove backgrounds in one click."
+  },
+  {
+    "id": "weak-10",
+    "expected": "weak",
+    "title": "New safety framework published",
+    "raw_excerpt": "The framework outlines evaluation principles."
+  },
+  {
+    "id": "borderline-01",
+    "expected": "borderline",
+    "title": "Study says AI may change hiring",
+    "raw_excerpt": "Researchers estimate some occupations could see fewer openings, but no worker account is included."
+  },
+  {
+    "id": "borderline-02",
+    "expected": "borderline",
+    "title": "Hospital deploys an AI assistant",
+    "raw_excerpt": "The hospital says doctors may save time, with no patient experience."
+  },
+  {
+    "id": "borderline-03",
+    "expected": "borderline",
+    "title": "Creator tools promise more revenue",
+    "raw_excerpt": "The vendor says creators can earn more, but provides no case."
+  },
+  {
+    "id": "borderline-04",
+    "expected": "borderline",
+    "title": "Students discuss an AI policy",
+    "raw_excerpt": "A school changed rules and students debate fairness, but no first-person reply is recorded."
+  },
+  {
+    "id": "borderline-05",
+    "expected": "borderline",
+    "title": "A report describes automation pressure",
+    "raw_excerpt": "The report cites a trend but does not name a worker or result."
+  }
+]
