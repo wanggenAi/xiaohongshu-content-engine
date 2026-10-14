@@ -238,10 +238,14 @@ def human_sections(item, style=None):
         or "未评估，不生成标题。"
     )
     fallback_note = f"{item.fallback_story_score:.2f}/100（仅用于人工队列排序，不是 Human Trigger）"
+    person = evidence(item.story_structure.get("who", "") or "未识别")
+    action = evidence(item.story_structure.get("did_what", "") or "未识别")
+    result = evidence(item.story_structure.get("what_happened", "") or "未识别")
     before_after = (
-        f"{item.story_structure.get('before_state') or '未识别'} → "
-        f"{item.story_structure.get('after_state') or '未识别'}"
+        f"{evidence(item.story_structure.get('before_state', '') or '未识别')} → "
+        f"{evidence(item.story_structure.get('after_state', '') or '未识别')}"
     )
+    conflict = evidence(item.story_conflict or "未识别")
     return f"""## Human Trigger Summary
 
 {item.human_trigger_summary or "未评估；请先阅读原始证据。"}
@@ -282,11 +286,11 @@ semantic_status = {item.semantic_status}；claim_scope = {item.claim_scope}
 
 - Story Richness：{item.story_richness_score:.2f}/100
 - Fallback Story Score：{fallback_note}
-- Person：{item.story_structure.get("who") or "未识别"}
-- Action：{item.story_structure.get("did_what") or "未识别"}
-- Result：{item.story_structure.get("what_happened") or "未识别"}
+- Person：{person}
+- Action：{action}
+- Result：{result}
 - Before / After：{before_after}
-- Conflict：{item.story_conflict or "未识别"}
+- Conflict：{conflict}
 - Evidence Status：{item.verification_state}
 - Story Cluster：{item.story_cluster_id or "single_case / 未聚类"}
 """
@@ -325,6 +329,11 @@ def export(items: list[ContentItem], destination: Path, style: dict, now, review
         )
     for index, item in enumerate(review_queue, 1):
         name = f"{index:03d}-{item.id}.md"
+        person = safe_review_evidence(item.story_structure.get("who", "") or "未识别", style)
+        action = safe_review_evidence(item.story_structure.get("did_what", "") or "未识别", style)
+        result = safe_review_evidence(
+            item.story_structure.get("what_happened", "") or "未识别", style
+        )
         cells = [
             str(index),
             item.semantic_status,
@@ -332,9 +341,9 @@ def export(items: list[ContentItem], destination: Path, style: dict, now, review
             f"{item.story_richness_score:.2f}",
             f"{item.fallback_story_score:.2f}",
             number(item.human_trigger_score),
-            item.story_structure.get("who") or "未识别",
-            item.story_structure.get("did_what") or "未识别",
-            item.story_structure.get("what_happened") or "未识别",
+            person,
+            action,
+            result,
             item.claim_scope,
             item.verification_state,
             queue_evidence(item, style),
