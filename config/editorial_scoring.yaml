@@ -4,6 +4,7 @@ provider:
   key_env: TYPESAFE_API_KEY
   timeout_seconds: 45
   concurrency: 3
+  budget_seconds: 180
 stages:
   discovery_limit: 40
   minimum_discovery_score: 12

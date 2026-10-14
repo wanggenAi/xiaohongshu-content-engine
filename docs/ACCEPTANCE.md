@@ -47,7 +47,7 @@ Reversal：NONE；原文没有充分给出期待与结果的两段对照，不�
 
 三个不同角度的调查标题：
 
-- scene [single_case]：单个案例待核：发出作品之后，网站多出来的访问来自哪里？
+- scene [single_case]：单个案例待核：发布一条内容后，网站多出来的访问来自哪里？
 - reversal [single_case]：单个案例待核：访问量涨了，真实读者却未必变多：这些访问来自哪里？
 - identity_interest [single_case]：单个案例待核：每天盯着流量做内容的人，还能靠访问量判断有没有人看吗？
 
@@ -87,7 +87,7 @@ Reversal：NONE；原文没有充分给出期待与结果的两段对照，不�
 
 ## 测试与一致性
 
-- pytest：101 passed。ruff check / format --check 通过。
+- pytest：103 passed。ruff check / format --check 通过。
 - 覆盖触发加分、无场景降级、正负样本、范围与标题约束、不同标题角度、读者代入、评论路由、缺key/超时/陈旧判断清除、人工队列和数量篡改。
 - LIKE / MAYBE / DISLIKE 及新旧 reason codes 兼容；未把任何自动判断写成人工标签。
 - verify-outputs 读取真实文件，验证标题数量、表格行、JSON、候选身份、packet、公开简报、别名页与 run report；任一不一致失败。
@@ -95,7 +95,7 @@ Reversal：NONE；原文没有充分给出期待与结果的两段对照，不�
 
 ## GitHub Actions 与实际 artifact
 
-[完整手动 workflow / checks 与采集通过](https://github.com/wanggenAi/xiaohongshu-content-engine/actions/runs/38528449193)。已下载该 run artifact 并独立读取、核对文件。
+[完整手动 workflow / checks 与采集通过](https://github.com/wanggenAi/xiaohongshu-content-engine/actions/runs/38529474739)。已下载该 run artifact 并独立读取、核对文件。
 
 | Cloud raw | Stage A | Stage B | Deep | Human Review Queue | Review packets |
 |---|---|---|---|---|---|

@@ -6,6 +6,7 @@ import os
 import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import UTC, datetime
+from time import monotonic
 
 import httpx
 from pydantic import BaseModel, Field
@@ -181,21 +182,36 @@ class SemanticJudge:
                 except ValueError:
                     pass
             pending.append((item, request, key))
-        with ThreadPoolExecutor(max_workers=self.config["provider"]["concurrency"]) as pool:
-            futures = {
-                pool.submit(self.fetch, request): (item, request, key)
-                for item, request, key in pending
-            }
-            for future in as_completed(futures):
-                item, request, key = futures[future]
-                try:
-                    data = future.result()
-                    self.store.save_batch([], {key: data})
-                    completed[item.id] = (validate_response(data, request), "live", None)
-                except Exception as exc:
-                    # Error text and headers can contain credentials; expose only class/status.
-                    status = getattr(getattr(exc, "response", None), "status_code", None)
-                    completed[item.id] = (None, "unavailable", f"{type(exc).__name__}:{status}")
+        size = self.config["provider"]["concurrency"]
+        deadline = monotonic() + self.config["provider"].get("budget_seconds", 180)
+        with ThreadPoolExecutor(max_workers=size) as pool:
+            stopped = None
+            for start in range(0, len(pending), size):
+                if monotonic() >= deadline:
+                    stopped = (start, "ProviderBudgetExhausted:not_attempted")
+                    break
+                batch = pending[start : start + size]
+                futures = {
+                    pool.submit(self.fetch, request): (item, request, key)
+                    for item, request, key in batch
+                }
+                for future in as_completed(futures):
+                    item, request, key = futures[future]
+                    try:
+                        data = future.result()
+                        self.store.save_batch([], {key: data})
+                        completed[item.id] = (validate_response(data, request), "live", None)
+                    except Exception as exc:
+                        # Error text/headers can contain credentials; expose only class/status.
+                        status = getattr(getattr(exc, "response", None), "status_code", None)
+                        completed[item.id] = (None, "unavailable", f"{type(exc).__name__}:{status}")
+                if all(completed[item.id][0] is None for item, _, _ in batch):
+                    stopped = (start + size, "ProviderCircuitOpen:not_attempted")
+                    break
+            if stopped:
+                start, reason = stopped
+                for item, _, _ in pending[start:]:
+                    completed[item.id] = (None, "unavailable", reason)
         return completed
 
 

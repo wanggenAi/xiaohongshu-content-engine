@@ -468,3 +468,47 @@ def test_unavailable_queue_can_show_verbatim_clause_without_platform_leak(config
     assert "my website was flooded with AI bot traffic" in quote
     assert "原文片段" in quote
     validate_public(quote, style)
+
+
+def test_failed_batch_opens_circuit_instead_of_waiting_for_all_items(tmp_path, monkeypatch):
+    monkeypatch.setenv("TYPESAFE_API_KEY", "test-not-secret")
+    shutil.copytree(ROOT / "config", tmp_path / "config")
+    pipeline = Pipeline(tmp_path)
+    calls = []
+
+    def handler(request):
+        calls.append(request)
+        return httpx.Response(503)
+
+    items = [item(id=str(index), title=f"Worker account {index}") for index in range(15)]
+    with httpx.Client(transport=httpx.MockTransport(handler)) as http:
+        results = HumanJudge(
+            pipeline.editorial_scoring, pipeline.human_config, pipeline.store, http
+        ).assess(items)
+    assert len(calls) == pipeline.editorial_scoring["provider"]["concurrency"]
+    assert len(results) == len(items)
+    assert all(v[1] == "unavailable" for v in results.values())
+    assert sum(v[2] == "ProviderCircuitOpen:not_attempted" for v in results.values()) == 12
+
+
+def test_budget_expiry_keeps_successful_judgment_and_queues_remaining(
+    tmp_path, config, monkeypatch
+):
+    shutil.copytree(ROOT / "config", tmp_path / "config")
+    pipeline = Pipeline(tmp_path)
+    pipeline.editorial_scoring["provider"].update(concurrency=1, budget_seconds=1)
+    clock = [0]
+    monkeypatch.setattr("xhs_content_engine.editorial_screening.monotonic", lambda: clock[0])
+    items = [item(id=str(index), title=item().title + f" ({index})") for index in range(4)]
+    judge = HumanJudge(pipeline.editorial_scoring, config, pipeline.store)
+
+    def fetch(request):
+        clock[0] = 2
+        return judgments(items[0], config).model_dump(mode="json")
+
+    monkeypatch.setattr(judge, "fetch", fetch)
+    results = judge.assess(items)
+    assert results["0"][1] == "live"
+    assert all(
+        results[str(index)][2] == "ProviderBudgetExhausted:not_attempted" for index in range(1, 4)
+    )
