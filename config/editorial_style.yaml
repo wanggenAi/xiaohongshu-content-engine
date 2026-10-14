@@ -1,0 +1,15 @@
+public_platform_name_policy:
+  banned_names: [Reddit, X, Twitter, Hacker News, HackerNews, HN, hacker_news, Discord, Telegram, t.me, telegram.me, GitHub]
+  replacement: 海外
+public_labels:
+  hacker_news: 海外开发者社区
+  github: 海外开发者社区
+  telegram: 海外社区
+  rss: 海外科技圈
+  manual: 海外
+voice: [理性, 平静, 好奇, 个人观察, 不装专家, 不制造焦虑]
+requirements:
+  - 不虚构经历、事实、讨论规模或共识
+  - 最终选题与文案由 ChatGPT 判断，用户审核发布
+  - 内部来源必须完整保存，来源泛化只作用于公开表达
+  - 不自动发布、不复制全文、不默认拥有图片或视频转载权限

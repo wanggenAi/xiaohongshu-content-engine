@@ -1,0 +1,36 @@
+# Public APIs and publisher-provided RSS only. Each source fails independently.
+sources:
+  - {name: hacker_news, type: hacker_news, enabled: true, limit: 60, reliability: 0.65}
+  - name: github_search
+    type: github_search
+    enabled: true
+    limit: 30
+    reliability: 0.75
+    query: 'topic:artificial-intelligence stars:>20'
+  - name: github_releases
+    type: github_releases
+    enabled: true
+    limit: 3
+    reliability: 0.85
+    repositories: [huggingface/transformers, ollama/ollama, langchain-ai/langchain]
+  - {name: openai_blog, type: rss, url: 'https://openai.com/news/rss.xml', reliability: 0.9}
+  - {name: deepmind_blog, type: rss, url: 'https://deepmind.google/blog/rss.xml', reliability: 0.9}
+  - {name: google_ai_blog, type: rss, url: 'https://blog.google/technology/ai/rss/', reliability: 0.9}
+  - {name: microsoft_ai_blog, type: rss, url: 'https://blogs.microsoft.com/feed/', reliability: 0.9}
+  - {name: meta_ai_blog, type: restricted_adapter, reason: 'Publisher RSS returned 404; use manual URLs until a stable official feed/API is verified.'}
+  - {name: nvidia_blog, type: rss, url: 'https://blogs.nvidia.com/feed/', reliability: 0.9}
+  - {name: huggingface_blog, type: rss, url: 'https://huggingface.co/blog/feed.xml', reliability: 0.85}
+  - {name: techcrunch, type: rss, url: 'https://techcrunch.com/feed/', reliability: 0.7}
+  - {name: ars_technica, type: rss, url: 'https://feeds.arstechnica.com/arstechnica/index', reliability: 0.75}
+  - name: anthropic_blog
+    type: restricted_adapter
+    enabled: true
+    reason: No configured stable publisher RSS/API; use manual URLs until one is verified.
+  - name: telegram
+    type: telegram_bot
+    enabled: true
+    token_env: TELEGRAM_BOT_TOKEN
+    # Add public channel usernames where YOUR dedicated bot is an authorized member.
+    channels: []
+    max_batches: 5
+    reliability: 0.45

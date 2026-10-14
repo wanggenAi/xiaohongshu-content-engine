@@ -1,0 +1,27 @@
+weights:
+  freshness: 25
+  engagement: 15
+  china_relevance: 20
+  novelty: 15
+  human_interest: 10
+  authority: 5
+  discussion: 10
+penalties:
+  duplicate: 30
+  stale: 20
+  unverified: 8
+  advertising: 18
+  clickbait: 12
+  china_saturated: 20
+  minor_parameter_update: 12
+  unclear_source: 10
+  copyright_risk: 20
+freshness_half_life_hours: 48
+max_age_days: 7
+max_per_source: 5
+max_per_content_type: 7
+keywords:
+  china_relevance: [ai, artificial intelligence, model, agent, job, career, work, developer, design, education, privacy, robot, startup, programming, internet, social, health, security]
+  novelty: [first, new, launch, breakthrough, discover, unexpected, open source]
+  human_interest: [people, person, family, child, student, teacher, worker, employee, job, career, salary, experience, story, life, designer]
+  discussion: [why, how, debate, question, risk, future, impact, change, worry, discuss, trust]
