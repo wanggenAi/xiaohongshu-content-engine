@@ -2,7 +2,7 @@
 
 本记录从实际导出生成。合成测试样本不进入生产数据库；原句是来源自述，尚非独立核验。
 
-采集时间：2026-10-14T12:19:50.299608+00:00；筛选时间：2026-10-14T12:27:03.600076+00:00。
+采集时间：2026-10-14T12:19:50.299608+00:00；筛选时间：2026-10-14T12:38:19.232961+00:00。
 
 | 指标 | 本地真实运行 |
 |---|---:|
@@ -145,8 +145,20 @@
 - Claim Scope: single_case
 - Evidence Gaps: ['Missing: before_state', 'Missing: after_state', 'Firsthand account is not independently verified']
 
+## GitHub Actions artifact
+
+[完整运行](https://github.com/wanggenAi/xiaohongshu-content-engine/actions/runs/38565125461)
+
+Raw 337 → Fast 50 → Story Candidates 0 → Deep 0；Human Review Queue 10。
+
+人工队列 Fallback Story Score：[100.0, 95.0, 90.0, 85.0, 85.0, 85.0, 80.0, 75.0, 75.0, 75.0]。
+
+artifact 已下载后独立检查 Markdown、JSON、packet 数量、候选身份与来源片段。
+
+云端没有语义 key；本地分数仅是人工排序信号，Human/Viral 均为 null。
+
 ## 自动检查
 
-pytest：117 passed；ruff check / format 与 diff 检查通过。
+pytest：118 passed；ruff check / format 与 diff 检查通过。
 
 测试包含 30 条明确标注的合成示例及 8 条冻结真实素材，另检验企业 we、评论归属、独立案例、低权威个人来源与无 API 排序。
