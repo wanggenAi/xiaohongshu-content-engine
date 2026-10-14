@@ -345,8 +345,17 @@ def fast_story_filter(
     items: list[ContentItem], config: dict, limit: int | None = None
 ) -> list[ContentItem]:
     limit = limit or config.get("fast_filter", {}).get("limit", 50)
-    threshold = config.get("fast_filter", {}).get("minimum_score", 40)
-    eligible = [item for item in items if item.story_richness_score >= threshold]
+    fast_config = config.get("fast_filter", {})
+    threshold = fast_config.get("minimum_score", 40)
+    ranked = sorted(
+        items,
+        key=lambda item: (-item.story_richness_score, -item.fallback_story_score, item.id),
+    )
+    eligible = [item for item in ranked if item.story_richness_score >= threshold]
+    target = min(limit, fast_config.get("target_minimum", 30))
+    if len(eligible) < target:
+        selected_ids = {item.id for item in eligible}
+        eligible.extend(item for item in ranked if item.id not in selected_ids)
     eligible.sort(
         key=lambda item: (-item.fallback_story_score, -item.story_richness_score, item.id)
     )

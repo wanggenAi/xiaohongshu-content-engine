@@ -1,6 +1,7 @@
 version: story-mining-v1
 fast_filter:
   minimum_score: 40
+  target_minimum: 30
   limit: 50
   minimum_semantic_candidates: 10
   maximum_semantic_candidates: 20
