@@ -91,6 +91,8 @@ V1.1 新排序（同一批内容先走 Stage A，再经过语义筛选；Deep �
 
 ## 反馈与限制
 
+五个边界案例的可视化内部审稿页见 [review_boundary_cases.html](review_boundary_cases.html)。页面明确标出“待人工判断”，不会把模型 REJECT/WEAK 当作用户 DISLIKE。
+
 人工审美反馈表和 CLI 已落地：`review add` 接收 `LIKE` / `MAYBE` / `DISLIKE` 与 reason，写入 SQLite。当前仓库没有真实的五条人工 DISLIKE 记录，因此没有伪造人工标签；后续应由 ChatGPT/用户对 Deep Candidates 逐条补录。
 
 当前仍没有自动评论采集、中文覆盖审计、独立事实交叉核验或真实发布表现。没有 `TYPESAFE_API_KEY` 时，候选会标记 `awaiting_review`，不会被假装成 Deep Candidate；GitHub Actions 已加入可选同名 secret。
