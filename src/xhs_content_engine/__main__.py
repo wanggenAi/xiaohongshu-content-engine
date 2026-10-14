@@ -5,7 +5,7 @@ from typing import Annotated
 
 import typer
 
-from .editorial import validate_public
+from .editorial import validate_public, verify_outputs
 from .models import ContentPerformance, EditorialFeedback
 from .pipeline import Pipeline
 
@@ -31,7 +31,8 @@ def rank(root: Root = Path("."), limit: Limit = 10):
         typer.echo(
             f"{index:02d}  {item.editorial_verdict}  "
             f"editorial={item.editorial_score:.2f} discovery={item.discovery_score:.2f}  "
-            f"{item.editorial_title_seed}"
+            f"human={item.human_trigger_score} viral={item.viral_potential} "
+            f"{item.human_title_seed or item.editorial_title_seed}"
         )
 
 
@@ -103,6 +104,15 @@ def check_public(file: Path, root: Root = Path(".")):
     """Check an eventual human/ChatGPT-written public draft before publication."""
     validate_public(file.read_text(encoding="utf-8"), Pipeline(root).style)
     typer.echo("public platform policy: PASS")
+
+
+@app.command("verify-outputs")
+def verify_output_files(root: Root = Path(".")):
+    pipeline = Pipeline(root)
+    destination = root / "outputs"
+    report_file = destination / "run_report.json"
+    report = json.loads(report_file.read_text()) if report_file.exists() else None
+    typer.echo(json.dumps(verify_outputs(destination, pipeline.style, report)))
 
 
 if __name__ == "__main__":

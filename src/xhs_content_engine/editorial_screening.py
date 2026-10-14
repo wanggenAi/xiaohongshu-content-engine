@@ -484,7 +484,8 @@ def select_screened(assessed, config, source_cap, limit=10):
     eligible = [
         item
         for item in assessed
-        if not item.editorial_reject_reason and item.editorial_value.get("status") == "assessed"
+        if not (set(item.editorial_reject_reason) - {"LOW_HUMAN_TRIGGER"})
+        and item.editorial_value.get("status") == "assessed"
     ]
     # Human story categories break ties; a category cannot compensate for low editorial value.
     priority = {
@@ -496,8 +497,19 @@ def select_screened(assessed, config, source_cap, limit=10):
         "BUSINESS_SIGNAL",
         "INTERESTING_INTERNET",
     }
+    human_config = config.get("human_triggers")
     eligible.sort(
-        key=lambda i: (-i.editorial_score, i.content_type not in priority, -i.score, i.id)
+        key=lambda i: (
+            -(
+                i.viral_potential
+                if human_config and i.viral_potential is not None
+                else i.editorial_score
+            ),
+            -(i.human_trigger_score or 0),
+            i.content_type not in priority,
+            -i.score,
+            i.id,
+        )
     )
     stage_b = [i for i in eligible if i.editorial_score >= config["thresholds"]["screening_score"]][
         : config["stages"]["screening_limit"]
@@ -505,11 +517,21 @@ def select_screened(assessed, config, source_cap, limit=10):
     selected, counts = [], {}
     for item in stage_b:
         dims = item.editorial_score_breakdown["dimensions"]
+        minimum = (
+            human_config["thresholds"]["minimum_editorial_score"]
+            if human_config
+            else config["thresholds"]["deep_score"]
+        )
         if (
-            item.editorial_score < config["thresholds"]["deep_score"]
+            item.editorial_score < minimum
             or dims["human_relevance"] < config["thresholds"]["minimum_human_relevance"]
             or dims["china_audience_relevance"] < config["thresholds"]["minimum_china_relevance"]
             or item.editorial_value.get("lens") in {None, "NONE"}
+        ):
+            continue
+        if human_config and (
+            item.semantic_status != "assessed"
+            or item.human_trigger_breakdown.get("gate") not in {"A", "B"}
         ):
             continue
         if counts.get(item.source, 0) >= source_cap:
@@ -522,6 +544,8 @@ def select_screened(assessed, config, source_cap, limit=10):
 
 
 def screen(items, discovery_config, editorial_config, lenses, store, limit=10, now=None, http=None):
+    from .human_triggers import HumanJudge, compose_human, human_review_queue
+
     now = now or datetime.now(UTC)
     stage_a = discovery_candidates(items, discovery_config, editorial_config, now)
     judge = SemanticJudge(editorial_config, lenses, store, http)
@@ -537,13 +561,32 @@ def screen(items, discovery_config, editorial_config, lenses, store, limit=10, n
         )
         for item in stage_a
     ]
+    human_config = editorial_config.get("human_triggers")
+    human_responses = {}
+    if human_config:
+        human_responses = HumanJudge(editorial_config, human_config, store, http).assess(stage_a)
+        assessed = [
+            compose_human(
+                item,
+                human_responses[item.id][0],
+                human_config,
+                human_responses[item.id][1],
+                human_responses[item.id][2],
+            )
+            for item in assessed
+        ]
     stage_b, deep = select_screened(
         assessed, editorial_config, discovery_config.get("max_per_source", 5), limit
     )
+    queue = human_review_queue(assessed, deep, human_config, limit) if human_config else []
     report = {
         "stage_a": len(stage_a),
         "stage_b": len(stage_b),
         "deep_candidates": len(deep),
+        "human_review_queue": len(queue),
+        "human_review_queue_ids": [i.id for i in queue],
+        "human_provider_live_requests": sum(v[1] == "live" for v in human_responses.values()),
+        "human_provider_cache_hits": sum(v[1] == "cache" for v in human_responses.values()),
         "rejected": sum(i.editorial_verdict == "REJECT" for i in assessed),
         "awaiting_review": sum(i.editorial_value["status"] != "assessed" for i in assessed),
         "provider_live_requests": sum(i.editorial_value["mode"] == "live" for i in assessed),

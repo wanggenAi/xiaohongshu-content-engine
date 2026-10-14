@@ -1,0 +1,8 @@
+[
+  {"id":"parameter", "title":"Model X context window increased from 32K to 64K", "raw_excerpt":"Vendor announces the new limit. No user workflow or outcome is described.", "expected":"low"},
+  {"id":"investment", "title":"Company A invests $50M in startup ecosystem", "raw_excerpt":"The company announced a corporate investment program. No personal income or operating outcome is reported.", "expected":"low"},
+  {"id":"funding", "title":"Startup raises Series B", "raw_excerpt":"The startup announced its financing. No customer experience, employee story or changed activity is reported.", "expected":"low"},
+  {"id":"api", "title":"New API parameter available", "raw_excerpt":"An optional response format parameter was added in version 2.4.", "expected":"low"},
+  {"id":"junior", "title":"A junior programmer worries he is losing basic coding skills", "raw_excerpt":"A junior programmer says his team now generates almost all code with AI before review. He worries that he is losing the ability to write basic code himself. This is one person's account, not evidence of layoffs.", "expected":"high"},
+  {"id":"bot", "title":"A website's visits suddenly surged, but analysis found many visits were AI bots", "raw_excerpt":"The website owner expected new readers after sharing his work, but his access logs showed many automated clients. He says the extra bot requests made it harder to measure real reader interest. This is a single author's account.", "expected":"high"}
+]

@@ -54,6 +54,23 @@ class ContentItem(BaseModel):
     why_this_may_fail: str = ""
     missing_evidence: list[str] = Field(default_factory=list)
     possible_angles: list[str] = Field(default_factory=list)
+    semantic_status: str = "unavailable"
+    human_trigger_score: float | None = Field(default=None, ge=0, le=100)
+    human_trigger_map: dict[str, Any] = Field(default_factory=dict)
+    human_trigger_breakdown: dict[str, Any] = Field(default_factory=dict)
+    viral_potential: float | None = Field(default=None, ge=0, le=100)
+    strongest_triggers: list[str] = Field(default_factory=list, max_length=2)
+    human_trigger_summary: str = ""
+    scene: dict[str, str] = Field(default_factory=dict)
+    reader_self_projection: str = ""
+    emotional_tension: str = ""
+    reversal: dict[str, str] = Field(default_factory=dict)
+    likely_comment_routes: list[str] = Field(default_factory=list)
+    human_title_seed: str = ""
+    human_title_seeds: list[dict[str, str]] = Field(default_factory=list)
+    claim_scope: str = "unassessed"
+    story_patterns: list[str] = Field(default_factory=list)
+    human_review_reason: str = ""
 
     @computed_field
     @property

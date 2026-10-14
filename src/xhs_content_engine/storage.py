@@ -80,7 +80,8 @@ class Store:
             )
 
             self.db.execute(
-                """DELETE FROM state WHERE key LIKE 'editorial_judgment:%'
+                """DELETE FROM state WHERE (key LIKE 'editorial_judgment:%'
+                OR key LIKE 'human_judgment:%')
                 AND (json_extract(value, '$.evaluated_at') < ?
                 OR json_extract(value, '$.evaluated_at') IS NULL)""",
                 (cutoff,),

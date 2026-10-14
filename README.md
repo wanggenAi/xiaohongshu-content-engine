@@ -36,25 +36,35 @@ uv run ruff format --check .
 增加 RSS 只需修改 `config/sources.yaml`。受限来源可以配置 `type: restricted_adapter` 和 skip reason；未来合法 API 的 collector 注册到 `ADAPTERS` 即可，不影响现有来源。
 
 
-## Editorial quality funnel (V1.1)
+## Human Story funnel（V1.2）
 
-Each run preserves the original `discovery_score` and adds a separate semantic `editorial_score`. The bounded funnel is:
+`RAW → Stage A Discovery（≤40）→ Stage B Editorial（≤20）→ Human Trigger gates → Deep（≤10）`
 
-`RAW → Stage A Discovery (up to 40, source caps) → Stage B Editorial Screening (up to 20) → Deep Candidates (up to 10)`.
+三个分数分开保留：Discovery 判断素材是否值得进入候选池；Editorial 判断内容价值；Human Trigger 判断真实事件的人性张力。最终排序采用 `viral_potential = human × 0.55 + editorial × 0.30 + evidence_quality × 0.15`（evidence 换算为 0–100）。这是内部排序信号，不承诺爆款。
 
-Stage A uses the existing deterministic discovery score. Stage B uses seven independently described value dimensions plus a separate decision-risk axis: human relevance, curiosity gap, story strength, discussion potential, China audience relevance, novelty and evidence quality. Hard rejects include `TOO_TECHNICAL`, `PR_ONLY`, `MINOR_UPDATE`, `NO_HUMAN_ANGLE`, `NO_STORY`, `LOW_CHINA_RELEVANCE`, `SATURATED`, `WEAK_EVIDENCE` and `BORING`. `SATURATED` is only accepted with an actual Chinese-coverage audit; missing evidence is not treated as proof of an information gap.
+`config/human_triggers.yaml` 配置十个触发维度、证据门槛、可追溯加分与场景/评论缺失降级。场景和反转只选取来源片段；没有具体故事时，不由 AI、公司名、融资额或技术参数自动加分。详见 [Human Trigger 规则](docs/HUMAN_TRIGGERS.md)。
 
-When `TYPESAFE_API_KEY` is present, a bounded structured judgment evaluates only Stage A and is cached by exact evidence plus rubric. The provider receives source text as quoted, untrusted evidence and cannot write final copy. If the key is absent or the provider fails, candidates stay `awaiting_review` and do not enter Deep Candidates. The workflow accepts an optional repository secret of the same name.
+有 `TYPESAFE_API_KEY` 时，Stage A 做有界语义判断并按证据与问题定义缓存。没有 key、请求失败或语义不完整时，输出 `NEEDS_HUMAN_REVIEW` 队列，标明 `semantic_status = unavailable`，Human/Viral 分数为 null，不冒充 Deep。如果整批都被降级且没有 Deep，也保留带原降级原因的人工复核素材；无来源材料时保留采集错误审计。
 
-The primary daily entry is `outputs/editorial_review.md`. It contains only Deep Candidates with `STRONG` (≥70), `POSSIBLE` (≥60), `WEAK` (<60) or `REJECT`, a Chinese editorial title seed, concrete core story, why it may work/fail, story signals copied from evidence, missing evidence, investigation questions, ten deep-candidate fields and specific angles. The page is a research brief, not a final post. Human feedback can be stored with `python -m xhs_content_engine review add feedback.json`, using `LIKE`, `MAYBE` or `DISLIKE` plus reasons.
+日常入口为 `outputs/editorial_review.md`：顶部 Today’s Human Stories 显示排名、三个编辑信号、最强触发器和具体读者身份；每条 Deep 包含场景、反转、讨论入口和三个不同角度的调查标题。原文、真实平台与证据保留在内部 packet；审稿摘要和公开简报通过平台名/机械替换检查。
 
-`docs/ACCEPTANCE.md` records the V1.1 backtest and live run. `outputs/v1_vs_v11_backtest.json` is a local generated comparison of the frozen V1 Top 20; daily SQLite/output artifacts remain ignored.
+```bash
+uv run python scripts/backtest_human.py  # 八个冻结真实素材 + 六个明确标注的合成测试样本
+uv run python -m xhs_content_engine verify-outputs
+uv run python -m xhs_content_engine review add feedback.json
+```
+
+反馈继续兼容 LIKE / MAYBE / DISLIKE，增加 strong_reversal、strong_identity、strong_scene、strong_money、strong_job_angle、strong_fear、strong_desire、strong_fairness、too_news_like、no_human_tension、no_scene 等 reasons；旧 reasons 也保留。不自动训练，不伪造人工标签。
+
+[验收记录](docs/ACCEPTANCE.md)对应真实运行。日常数据和输出仍不入 Git；Actions artifacts 保存完整队列与证据包。导出后自动检查 Markdown 标题、表格、JSON、packet、public briefs 和 run report 的数量与候选身份；工作流再独立运行 verify-outputs。
 
 ## 输出与持久化
 
 - `data/content.sqlite3`：统一 ContentItem、Manual Inbox、Telegram cursor 和 content_performance。
 - `outputs/collection_audit.json` / `run_report.json`：每个来源的状态、原始数量、存储数量、去重数量及错误原因。
-- `outputs/top_candidates.md` / `.json`：内部 Top 20 标题、得分、来源和完整候选对象。
+- `outputs/top_candidates.md` / `.json`：Human Stories 审稿页别名 / Deep 完整候选对象（最多 10 条）。
+- `outputs/human_review_queue.json` 与 `human_review/YYYY-MM-DD/*.md`：明确状态的人工队列及原始证据。
+- `outputs/export_manifest.json`：当前导出数量，供数量一致性检查。
 - `outputs/editorial/YYYY-MM-DD/*.md`：内部证据包（Asia/Shanghai 日期）。真实来源、全部去重 provenance、不同事实核实问题、3 个编辑角度、风险和版权说明。
 - `outputs/public_briefs/YYYY-MM-DD/*.md`：来源泛化且经检查的公开候选简报。不是最终文案，也不自动翻译或编造文章。
 
@@ -82,4 +92,4 @@ SQLite 通过 Actions cache 跨运行恢复，候选与审计通过 artifacts �
 
 ## 当前限制与下一步
 
-V1 不抓评论、不做独立交叉核验、中文饱和度检测或历史增长估计，不自动生成最终文案。来源健康状态和首次真实数据验收见 [验收记录](docs/ACCEPTANCE.md)。最值得做的下一步：让 ChatGPT 对 Top 20 标出想发/不想发及原因，再据此调整评分和来源配额，避免仅凭工程关键词提高“新闻感”。
+V1 不抓评论、不做独立交叉核验、中文饱和度检测或历史增长估计，不自动生成最终文案。来源健康状态和首次真实数据验收见 [验收记录](docs/ACCEPTANCE.md)。下一步：由 ChatGPT/用户对 Human Stories 标注真实审美反馈，并补足原作者记录、实际行为变化和核验材料。

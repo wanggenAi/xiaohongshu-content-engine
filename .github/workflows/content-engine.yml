@@ -51,6 +51,8 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
         run: uv run python -m xhs_content_engine run
+      - name: Validate artifact counts and public wording
+        run: uv run python -m xhs_content_engine verify-outputs
       - name: Job summary
         run: cat outputs/top_candidates.md >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/cache/save@v4

@@ -5,8 +5,9 @@ from pathlib import Path
 import yaml
 
 from .collectors import ADAPTERS, SkipSource, client, collect_manual, telegram_batch
-from .editorial import export
+from .editorial import export, verify_outputs
 from .editorial_screening import screen
+from .human_triggers import human_review_queue
 from .normalize import normalize
 from .ranking import dedupe, rank
 from .storage import Store
@@ -20,6 +21,13 @@ class Pipeline:
         self.scoring = self.load("scoring.yaml")
         self.style = self.load("editorial_style.yaml")
         self.editorial_scoring = self.load("editorial_scoring.yaml")
+        self.human_config = self.load("human_triggers.yaml")
+        self.editorial_scoring["human_triggers"] = self.human_config
+        if sum(self.human_config["weights"].values()) != 100:
+            raise ValueError("human trigger weights must total 100")
+        if abs(sum(self.human_config["viral_weights"].values()) - 1) > 0.001:
+            raise ValueError("viral weights must total 1")
+        self.review_queue = []
         self.lenses = self.load("editorial_lenses.yaml")["lenses"]
         if sum(self.editorial_scoring["weights"].values()) != 100:
             raise ValueError("editorial scoring weights must total 100")
@@ -124,6 +132,7 @@ class Pipeline:
             http=http,
         )
         self.store.save_assessments(assessed)
+        self.review_queue = human_review_queue(assessed, deep, self.human_config, limit)
         destination = self.root / "outputs"
         destination.mkdir(exist_ok=True)
         (destination / "editorial_screening.json").write_text(
@@ -133,6 +142,9 @@ class Pipeline:
                     "assessments": [i.model_dump(mode="json") for i in assessed],
                     "stage_b_ids": [i.id for i in stage_b],
                     "deep_candidate_ids": [i.id for i in deep],
+                    "human_review_queue_items": [
+                        i.model_dump(mode="json") for i in self.review_queue
+                    ],
                 },
                 ensure_ascii=False,
                 indent=2,
@@ -145,7 +157,27 @@ class Pipeline:
         return self.screen(limit)[0]
 
     def export(self, limit=10):
-        return export(self.rank(limit), self.root / "outputs", self.style, datetime.now(UTC))
+        candidates, funnel = self.screen(limit)
+        folder = export(
+            candidates, self.root / "outputs", self.style, datetime.now(UTC), self.review_queue
+        )
+        audit_file = self.root / "outputs" / "collection_audit.json"
+        report = json.loads(audit_file.read_text()) if audit_file.exists() else {}
+        report.update(
+            funnel,
+            operation="export",
+            exported_at=datetime.now(UTC).isoformat(),
+            top_candidates=len(candidates),
+            editorial_packets=len(candidates),
+            public_briefs_checked=len(candidates),
+            human_review_packets=len(self.review_queue),
+            editorial_directory=str(folder),
+        )
+        (self.root / "outputs" / "run_report.json").write_text(
+            json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+        verify_outputs(self.root / "outputs", self.style, report)
+        return folder
 
     def run(self, limit=10):
         report = self.collect()
@@ -156,15 +188,19 @@ class Pipeline:
             encoding="utf-8",
         )
         candidates, funnel = self.screen(limit)
-        folder = export(candidates, self.root / "outputs", self.style, datetime.now(UTC))
+        folder = export(
+            candidates, self.root / "outputs", self.style, datetime.now(UTC), self.review_queue
+        )
         report.update(
             funnel,
             top_candidates=len(candidates),
             editorial_packets=len(candidates),
             public_briefs_checked=len(candidates),
+            human_review_packets=len(self.review_queue),
             editorial_directory=str(folder),
         )
         (self.root / "outputs" / "run_report.json").write_text(
             json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8"
         )
+        verify_outputs(self.root / "outputs", self.style, report)
         return report

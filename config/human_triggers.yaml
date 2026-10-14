@@ -1,0 +1,261 @@
+version: human-v1.2
+weights:
+  money: 12
+  job_survival: 12
+  identity: 10
+  fear_loss: 10
+  desire: 10
+  reversal: 12
+  scene: 10
+  fairness: 8
+  secret_insider: 8
+  commentability: 8
+viral_weights:
+  human_trigger: 0.55
+  editorial: 0.3
+  evidence: 0.15
+thresholds:
+  deep_score: 65
+  strong_trigger: 0.75
+  strong_reversal: 0.85
+  concrete_scene: 0.65
+  identity: 0.6
+  evidence_probability: 0.65
+  minimum_editorial_score: 45
+  low_trigger: 30
+  review_queue_limit: 10
+boosts:
+  reversal: 12
+  scene: 5
+  identity: 3
+  livelihood: 5
+no_scene_multiplier: 0.65
+no_comment_multiplier: 0.85
+levels:
+- No supported human stake of this kind; only technology, funding or publicity.
+- A vague or hypothetical stake; no concrete affected group or consequential action.
+- An identifiable group faces a specific supported choice, change or tradeoff.
+- A vivid supported human tension with specific actors, actions or consequences; no
+  invented outcomes.
+triggers:
+  money:
+    label: 钱与权益
+    meaning: Personal income, spending, operating costs, consumer rights or who pays.
+      Investment/fundraising amount alone is NOT personal material stakes.
+    levels:
+    - Only investment/funding or no personal cost or benefit.
+    - A possible generic cost or benefit without a concrete payer.
+    - An identified person/group faces a stated spending, operating cost, earning
+      or rights decision.
+    - A concrete account shows who pays, saves or loses money/rights and what action
+      caused it.
+  job_survival:
+    label: 工作与生存
+    meaning: Explicit change to work tasks, hiring, skills, career entry, accountability
+      or livelihood. Never infer layoffs from AI use.
+    levels:
+    - No change to human work, hiring, learning or skills.
+    - A tool announcement or vague work efficiency promise.
+    - Specific work tasks, tool choices or responsibilities change for an identified
+      role, even if the change is only reported.
+    - A concrete worker/team account shows changing skills, career entry, autonomy
+      or livelihood; layoffs are not required and must not be invented.
+  identity:
+    label: 身份代入
+    meaning: A specific human role can recognize its own experience. A named company
+      or all technology users is not a specific identity.
+    levels:
+    - No concrete human reader role.
+    - Only a generic technology audience or distant business interest.
+    - A specific recognizable role has a directly relatable decision, experience or
+      changed activity.
+    - A first-person or concrete role-specific account makes its stakes easy to recognize;
+      a website owner or learner is a real role, not merely ordinary users.
+  fear_loss:
+    label: 失去与安全
+    meaning: A supported risk of deception, losing privacy, income, control, authenticity
+      or safety. Distinguish possible risk from actual loss.
+    levels:
+    - No supported safety, privacy, control or skill loss stake.
+    - Only a generic possible risk or sales claim.
+    - A bounded reported change presents a specific risk to scams, privacy, control
+      or ability; preserve uncertainty.
+    - A concrete account states actual loss or a specific person's fear/experience;
+      do not invent loss or exaggerate scope.
+  desire:
+    label: 愿望与机会
+    meaning: A supported opportunity for autonomy, earning, creative capacity or doing
+      something previously difficult. Marketing promises alone are weak.
+    levels:
+    - Only latest/AI/brand/parameter publicity.
+    - A possible generic improvement without a specific human task.
+    - A concrete group gains a claimed opportunity for autonomy, creation or work
+      that previously had a meaningful limit.
+    - An actual person/group uses that opportunity with a stated result, not merely
+      a demonstration or promise.
+  reversal:
+    label: 反转
+    meaning: Explicit expected A versus observed/reported B, unintended consequence
+      or genuine contrast. New/first/big is not a reversal; a hypothesized twist is
+      not evidence.
+    levels:
+    - No contrast beyond new/first/large release.
+    - Novel information but no understandable expectation versus consequence.
+    - A reported outcome conflicts with a natural ordinary expectation; if expectation
+      is inferred label it as a reading hypothesis, never as an observed fact.
+    - Source explicitly states expected A versus observed B, or a concrete unintended
+      consequence/measurement mismatch.
+  scene:
+    label: 具体场景
+    meaning: A concrete person or narrowly identified human group does a specific
+      action with a reported result or consequence. Funding, announcing a product
+      and company names alone do not form a human scene.
+    levels:
+    - Company release, funding, generic risk or abstract prediction only.
+    - A human setting or actor is mentioned but no action-result chain is supplied.
+    - A specific person or narrowly identified group takes an action with a stated
+      result, even if only a bounded headline account.
+    - Concrete lived detail about who did what, in which setting, and what resulted,
+      not inferred from a vendor announcement.
+  fairness:
+    label: 公平
+    meaning: Supported unequal costs, rights, consent, compensation or control. Never
+      invent a victim, abuse or an opposing side.
+    levels:
+    - No supported rights, consent, unequal costs or control stake.
+    - Hypothetical inequality or generic ethical interest.
+    - A stated change creates a specific consent, control or cost-allocation question
+      for people.
+    - An actual supported conflict identifies the parties, contested right and who
+      bears a concrete burden.
+  secret_insider:
+    label: 幕后真实
+    meaning: A concrete first-hand workflow, hidden cost, observed behavior or difference
+      between a surface metric and reality. Not a claim of privileged access or leaked
+      secrets.
+    levels:
+    - Only public launch details or no observed behavior.
+    - A vague behind-the-scenes suggestion with no observation.
+    - A bounded account reveals a real workflow, hidden cost or gap between a surface
+      metric and actual behavior.
+    - First-hand evidence or actual measurements reveal a surprising workflow/consequence
+      that outsiders would otherwise miss.
+  commentability:
+    label: 自然讨论
+    meaning: A particular personal experience, real tradeoff or reasonable disagreement
+      readers can discuss. No invented comments, consensus or engagement prediction.
+    levels:
+    - Only specialist specs, finance or publicity.
+    - A useful but generic question, little personal connection.
+    - A specific experience or real tradeoff gives identifiable readers a natural
+      way to agree, disagree or share experience.
+    - A concrete lived tension invites different reasonable experiences/opinions without
+      fabricated outrage, consensus or actual comments.
+scene_fields:
+  who: A specific person, first-person narrator or narrowly identified group actually
+    involved. A company alone is NONE. Copy supporting words, not an imagined beneficiary.
+  where: An explicitly stated place or concrete work/use setting. Do not infer a country
+    or physical location from a company name.
+  action: An action actually performed by that person/group. A company announcement
+    alone is NONE.
+  unexpected_result: A reported result or before/after change of that action; do not
+    invent an unexpected outcome.
+  human_consequence: An explicitly supported consequence, feeling, risk or decision
+    for that person/group. Possibility stays possibility.
+identities:
+  developers: 在团队写代码、关心工作任务和技能变化的程序员
+  creators: 每天看流量、经营网站或独立作品的创作者
+  designers: 在团队里做美术或设计、需要对作品负责的人
+  students: 正在学习、准备找第一份工作的学生
+  workers: 用AI处理工作资料、需要承担操作责任的员工
+  managers: 需要安排团队任务和审核结果的小团队负责人
+  parents: 关心孩子数字生活和陪伴产品的家长
+  consumers: 经常接陌生电话、担心诈骗或隐私泄露的手机用户
+  feed_users: 每天刷推荐流、想自己决定看什么的人
+  patients: 关注具体治疗阶段和日常能力改善的患者及家人
+  video_creators: 需要把零散镜头做成完整作品的视频创作者
+  founders: 自己付运营成本、寻找真实付费客户的独立创业者
+  learners: 想确认自己是真的学会而非只完成任务的学习者
+comment_routes:
+  experience: 个人经历
+  disagreement: 反对观点
+  career: 工作与技能变化
+  privacy: 隐私与控制权
+  skepticism: 技术与证据质疑
+  usage: 现实使用反馈
+  money: 成本与赚钱机会
+  ethics: 权利与责任
+patterns:
+  A: 'Reversal: explicit expectation versus unexpected reported result.'
+  B: 'Identity crisis: a supported change to a human role, skills or sense of competence.'
+  C: 'Material tradeoff: identifiable beneficiary and bearer of a concrete cost.'
+  D: 'Real life: a concrete account of how a person or team actually works or lives.'
+  E: 'Future becomes real: capability change causes a stated real change in human
+    activity, not only longer parameters.'
+  F: 'Fairness conflict: evidence supports a rights/control conflict between identified
+    people and an organization.'
+title_lenses:
+  automated_attention:
+  - 发出作品之后，网站多出来的访问来自哪里？
+  - 访问量涨了，真实读者却未必变多：这些访问来自哪里？
+  - 每天盯着流量做内容的人，还能靠访问量判断有没有人看吗？
+  user_control:
+  - 打开推荐设置之后，自己看到的内容能改多少？
+  - 多了一个控制入口，就等于拿回了选择权吗？
+  - 每天被推荐内容包围的人，能自己决定少看什么吗？
+  fraud_privacy:
+  - 收到陌生消息时，防诈工具会怎样提醒你？
+  - 想让工具识别骗局，需要先让它看多少私人信息？
+  - 给家人装防诈工具前，隐私和误报要先问清楚什么？
+  creative_work:
+  - 团队若要求AI优先，原来自己动手的环节怎么办？
+  - AI从可选工具变成工作要求，谁来对结果负责？
+  - 靠代码或作品吃饭的人，工具选择权会怎样变化？
+  creation_limits:
+  - 从做一个片段到做完整内容，创作者还要补多少工作？
+  - 生成得更长，就意味着完整作品更好做了吗？
+  - 自己做视频的人，能少拼接镜头还是要多审核内容？
+  patient_access:
+  - 具体患者进入了治疗哪一步，日常能力改变了吗？
+  - 接受一次干预，就等于能恢复原来的生活吗？
+  - 患者和家人最想知道的：效果、限制和费用到底怎样？
+  digital_relationships:
+  - 如果把聊天产品当陪伴，谁来帮使用者划清边界？
+  - 陪伴能成为生意，使用者的安全责任由谁承担？
+  - 家长面对孩子使用陪伴产品，究竟能控制哪些环节？
+  junior_careers:
+  - 新人进入团队后，哪些任务还需要亲手练习？
+  - 工具让任务完成得更快，新人学会的东西也更多吗？
+  - 准备找第一份工作的人，怎样证明自己有基本能力？
+  workplace_risk:
+  - 员工把工作交给AI时，资料经过了哪些地方？
+  - 工具方便了，操作责任也变轻了吗？
+  - 每天用AI赶工作的人，哪些方便可能需要自己承担代价？
+  physical_work:
+  - 同一项现场任务，换了工具后人还要做什么？
+  - 切换任务更快了，人的工作就一定更少吗？
+  - 做这项工作的普通人，需要重新学哪些技能？
+  wildlife_coexistence:
+  - 动物接近人类设施时，有没有更安全的处理办法？
+  - 让动物离开危险区域，会把风险带到别处吗？
+  - 在乎出行安全又不想伤害动物的人，会怎样选？
+  accountability:
+  - 一个具体行为发生后，写好的规则怎样执行？
+  - 有了规则，为什么还需要追问谁来执行？
+  - 依靠规则保护自己的人，怎样分清指控和裁定？
+  code_maintenance:
+  - 代码生成之后，接手审核和维护的人要做什么？
+  - 代码写得快了，后面的维护也会更轻松吗？
+  - 每天要为代码负责的人，究竟省下了哪部分工作？
+  public_statements:
+  - 把同一个人不同时期的话放在一起，会看见什么？
+  - 两段话看起来不一样，是改口还是语境变了？
+  - 靠行业观点作判断的人，怎样自己核对原话？
+  learning:
+  - 学习者完成任务后，怎样确认自己真的会了？
+  - 答案来得更快，理解也一定更深了吗？
+  - 正在学这项技能的人，哪些练习还需要自己做？
+  small_business:
+  - 一个人改了经营方式，真实客户随后做了什么？
+  - 工具省下了时间，顾客就一定会付钱吗？
+  - 自己承担成本的小团队，怎样判断新办法真的划算？

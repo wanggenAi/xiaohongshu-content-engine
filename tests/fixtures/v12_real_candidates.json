@@ -1,0 +1,264 @@
+[
+  {
+    "id": "4a4beda8ac4127f127cf2afa",
+    "source": "deepmind_blog",
+    "source_type": "rss",
+    "canonical_url": "https://deepmind.google/blog/on-device-ai-scam-detection-mddi/",
+    "title": "Google DeepMind and Singapore Government announce new AI tool to protect citizens against scams",
+    "raw_excerpt": "Learn how Google DeepMind and GovTech Singapore uses lightweight on-device Gemma models to intercept conversational scams in private chats with zero cloud data egress.",
+    "author": null,
+    "published_at": "2026-10-14T02:00:14Z",
+    "fetched_at": "2026-10-14T04:59:39.988761Z",
+    "source_reliability": 0.9,
+    "verification_state": "needs_review",
+    "engagement_metrics": {},
+    "metadata": {
+      "original_url": "https://deepmind.google/blog/on-device-ai-scam-detection-mddi/",
+      "feed_url": "https://deepmind.google/blog/rss.xml",
+      "evidence_scope": "publisher RSS excerpt",
+      "provenance": [
+        {
+          "source": "deepmind_blog",
+          "source_type": "rss",
+          "canonical_url": "https://deepmind.google/blog/on-device-ai-scam-detection-mddi/",
+          "original_url": "https://deepmind.google/blog/on-device-ai-scam-detection-mddi/",
+          "author": null,
+          "published_at": "2026-10-14T02:00:14+00:00",
+          "engagement_metrics": {},
+          "observed_at": "2026-10-14T04:59:39.988761+00:00"
+        }
+      ],
+      "duplicate_count": 0
+    }
+  },
+  {
+    "id": "a83bcac334388d2ad09da3e2",
+    "source": "ars_technica",
+    "source_type": "rss",
+    "canonical_url": "https://arstechnica.com/gaming/2026/10/report-epic-games-goes-all-in-on-ai-for-disney-collaboration/",
+    "title": "Epic Games reportedly pivoting to \"AI first\" game development model",
+    "raw_excerpt": "\"No more hand-written code\" or AI-free art for delayed Marvel/Star Wars shooter.",
+    "author": "Kyle Orland",
+    "published_at": "2026-10-12T20:59:50Z",
+    "fetched_at": "2026-10-14T04:59:54.583995Z",
+    "source_reliability": 0.75,
+    "verification_state": "needs_review",
+    "engagement_metrics": {},
+    "metadata": {
+      "original_url": "https://arstechnica.com/gaming/2026/10/report-epic-games-goes-all-in-on-ai-for-disney-collaboration/",
+      "feed_url": "https://feeds.arstechnica.com/arstechnica/index",
+      "evidence_scope": "publisher RSS excerpt",
+      "provenance": [
+        {
+          "source": "ars_technica",
+          "source_type": "rss",
+          "canonical_url": "https://arstechnica.com/gaming/2026/10/report-epic-games-goes-all-in-on-ai-for-disney-collaboration/",
+          "original_url": "https://arstechnica.com/gaming/2026/10/report-epic-games-goes-all-in-on-ai-for-disney-collaboration/",
+          "author": "Kyle Orland",
+          "published_at": "2026-10-12T20:59:50+00:00",
+          "engagement_metrics": {},
+          "observed_at": "2026-10-14T04:59:54.583995+00:00"
+        }
+      ],
+      "duplicate_count": 0
+    }
+  },
+  {
+    "id": "457a1ac27774d000c352270a",
+    "source": "hacker_news",
+    "source_type": "hacker_news",
+    "canonical_url": "https://www.sammystraus.com/",
+    "title": "I posted to HN, and then my website was flooded with AI bot traffic",
+    "raw_excerpt": "",
+    "author": "sammy0910",
+    "published_at": "2026-10-13T15:25:50Z",
+    "fetched_at": "2026-10-14T04:59:28.624716Z",
+    "source_reliability": 0.65,
+    "verification_state": "needs_review",
+    "engagement_metrics": {
+      "points": 294,
+      "comments": 160
+    },
+    "metadata": {
+      "original_url": "https://news.ycombinator.com/item?id=50073221",
+      "discussion_url": "https://news.ycombinator.com/item?id=50073221",
+      "evidence_scope": "headline and public discussion metrics",
+      "provenance": [
+        {
+          "source": "hacker_news",
+          "source_type": "hacker_news",
+          "canonical_url": "https://www.sammystraus.com/",
+          "original_url": "https://news.ycombinator.com/item?id=50073221",
+          "author": "sammy0910",
+          "published_at": "2026-10-13T15:25:50+00:00",
+          "engagement_metrics": {
+            "points": 294,
+            "comments": 160
+          },
+          "observed_at": "2026-10-14T04:59:28.624716+00:00"
+        }
+      ],
+      "duplicate_count": 0
+    }
+  },
+  {
+    "id": "1225edf4367995a5f46ddb7b",
+    "source": "techcrunch",
+    "source_type": "rss",
+    "canonical_url": "https://techcrunch.com/2026/10/13/pluto-security-raises-42m-as-ai-gives-enterprise-security-teams-a-new-headache/",
+    "title": "Pluto Security raises $42M as AI gives enterprise security teams a new headache",
+    "raw_excerpt": "The problem with giving everyone in a company access to AI tools is that people will use them in unexpected ways. And that fact is steadily seeding fears that companies now have new, gaping security holes in their systems or, at least, will soon.",
+    "author": "Ram Iyer",
+    "published_at": "2026-10-13T17:18:25Z",
+    "fetched_at": "2026-10-14T04:59:52.586800Z",
+    "source_reliability": 0.7,
+    "verification_state": "needs_review",
+    "engagement_metrics": {},
+    "metadata": {
+      "original_url": "https://techcrunch.com/2026/10/13/pluto-security-raises-42m-as-ai-gives-enterprise-security-teams-a-new-headache/",
+      "feed_url": "https://techcrunch.com/feed/",
+      "evidence_scope": "publisher RSS excerpt",
+      "provenance": [
+        {
+          "source": "techcrunch",
+          "source_type": "rss",
+          "canonical_url": "https://techcrunch.com/2026/10/13/pluto-security-raises-42m-as-ai-gives-enterprise-security-teams-a-new-headache/",
+          "original_url": "https://techcrunch.com/2026/10/13/pluto-security-raises-42m-as-ai-gives-enterprise-security-teams-a-new-headache/",
+          "author": "Ram Iyer",
+          "published_at": "2026-10-13T17:18:25+00:00",
+          "engagement_metrics": {},
+          "observed_at": "2026-10-14T04:59:52.586800+00:00"
+        }
+      ],
+      "duplicate_count": 0
+    }
+  },
+  {
+    "id": "462712f37f263afc17250e9f",
+    "source": "ars_technica",
+    "source_type": "rss",
+    "canonical_url": "https://arstechnica.com/tech-policy/2026/10/disney-offers-20m-for-character-ais-scandal-plagued-chatbot-tech/",
+    "title": "Disney offers $20M for Character.AI’s scandal-plagued chatbot tech",
+    "raw_excerpt": "Disney may acquire tech from one of the first chatbot makers linked to child suicide.",
+    "author": "Ashley Belanger",
+    "published_at": "2026-10-13T18:23:33Z",
+    "fetched_at": "2026-10-14T04:59:54.583557Z",
+    "source_reliability": 0.75,
+    "verification_state": "needs_review",
+    "engagement_metrics": {},
+    "metadata": {
+      "original_url": "https://arstechnica.com/tech-policy/2026/10/disney-offers-20m-for-character-ais-scandal-plagued-chatbot-tech/",
+      "feed_url": "https://feeds.arstechnica.com/arstechnica/index",
+      "evidence_scope": "publisher RSS excerpt",
+      "provenance": [
+        {
+          "source": "ars_technica",
+          "source_type": "rss",
+          "canonical_url": "https://arstechnica.com/tech-policy/2026/10/disney-offers-20m-for-character-ais-scandal-plagued-chatbot-tech/",
+          "original_url": "https://arstechnica.com/tech-policy/2026/10/disney-offers-20m-for-character-ais-scandal-plagued-chatbot-tech/",
+          "author": "Ashley Belanger",
+          "published_at": "2026-10-13T18:23:33+00:00",
+          "engagement_metrics": {},
+          "observed_at": "2026-10-14T04:59:54.583557+00:00"
+        }
+      ],
+      "duplicate_count": 0
+    }
+  },
+  {
+    "id": "0a96ef162d899359f2b92ddb",
+    "source": "techcrunch",
+    "source_type": "rss",
+    "canonical_url": "https://techcrunch.com/2026/10/13/science-corporation-implants-its-vision-restoring-chip-in-its-first-stargardt-disease-patient/",
+    "title": "Science Corporation implants its vision-restoring chip in its first Stargardt disease patient",
+    "raw_excerpt": "Max Hodak, the former president and co-founder of Neuralink, detailed on stage at TechCrunch Disrupt how his company's work with PRIMA is part of its path toward a novel brain-computer interface (BCI).",
+    "author": "Aisha Malik",
+    "published_at": "2026-10-13T23:13:31Z",
+    "fetched_at": "2026-10-14T04:59:52.585133Z",
+    "source_reliability": 0.7,
+    "verification_state": "needs_review",
+    "engagement_metrics": {},
+    "metadata": {
+      "original_url": "https://techcrunch.com/2026/10/13/science-corporation-implants-its-vision-restoring-chip-in-its-first-stargardt-disease-patient/",
+      "feed_url": "https://techcrunch.com/feed/",
+      "evidence_scope": "publisher RSS excerpt",
+      "provenance": [
+        {
+          "source": "techcrunch",
+          "source_type": "rss",
+          "canonical_url": "https://techcrunch.com/2026/10/13/science-corporation-implants-its-vision-restoring-chip-in-its-first-stargardt-disease-patient/",
+          "original_url": "https://techcrunch.com/2026/10/13/science-corporation-implants-its-vision-restoring-chip-in-its-first-stargardt-disease-patient/",
+          "author": "Aisha Malik",
+          "published_at": "2026-10-13T23:13:31+00:00",
+          "engagement_metrics": {},
+          "observed_at": "2026-10-14T04:59:52.585133+00:00"
+        }
+      ],
+      "duplicate_count": 0
+    }
+  },
+  {
+    "id": "96c92bac753a4d4903a18b66",
+    "source": "techcrunch",
+    "source_type": "rss",
+    "canonical_url": "https://techcrunch.com/2026/10/13/facebook-is-giving-users-more-control-over-their-algorithm/",
+    "title": "Facebook is giving users more control over their algorithm",
+    "raw_excerpt": "Meta announced the launch of its new AI-powered feature, “Your Algorithm,” a feature it first launched on Instagram.",
+    "author": "Lauren Forristal",
+    "published_at": "2026-10-13T18:05:24Z",
+    "fetched_at": "2026-10-14T04:59:52.586453Z",
+    "source_reliability": 0.7,
+    "verification_state": "needs_review",
+    "engagement_metrics": {},
+    "metadata": {
+      "original_url": "https://techcrunch.com/2026/10/13/facebook-is-giving-users-more-control-over-their-algorithm/",
+      "feed_url": "https://techcrunch.com/feed/",
+      "evidence_scope": "publisher RSS excerpt",
+      "provenance": [
+        {
+          "source": "techcrunch",
+          "source_type": "rss",
+          "canonical_url": "https://techcrunch.com/2026/10/13/facebook-is-giving-users-more-control-over-their-algorithm/",
+          "original_url": "https://techcrunch.com/2026/10/13/facebook-is-giving-users-more-control-over-their-algorithm/",
+          "author": "Lauren Forristal",
+          "published_at": "2026-10-13T18:05:24+00:00",
+          "engagement_metrics": {},
+          "observed_at": "2026-10-14T04:59:52.586453+00:00"
+        }
+      ],
+      "duplicate_count": 0
+    }
+  },
+  {
+    "id": "5023bd47f7a6d0ee5fee3f04",
+    "source": "openai_blog",
+    "source_type": "rss",
+    "canonical_url": "https://openai.com/index/higgsfield-longer-videos-voice",
+    "title": "Higgsfield takes AI video from 1 minute to over 10",
+    "raw_excerpt": "Higgsfield brings creators longer videos with GPT-6 Astra, precise visuals with GPT-Image-2.5, and a path to voice filmmaking with GPT-Live.",
+    "author": null,
+    "published_at": "2026-10-13T12:00:00Z",
+    "fetched_at": "2026-10-14T04:59:36.560218Z",
+    "source_reliability": 0.9,
+    "verification_state": "needs_review",
+    "engagement_metrics": {},
+    "metadata": {
+      "original_url": "https://openai.com/index/higgsfield-longer-videos-voice",
+      "feed_url": "https://openai.com/news/rss.xml",
+      "evidence_scope": "publisher RSS excerpt",
+      "provenance": [
+        {
+          "source": "openai_blog",
+          "source_type": "rss",
+          "canonical_url": "https://openai.com/index/higgsfield-longer-videos-voice",
+          "original_url": "https://openai.com/index/higgsfield-longer-videos-voice",
+          "author": null,
+          "published_at": "2026-10-13T12:00:00+00:00",
+          "engagement_metrics": {},
+          "observed_at": "2026-10-14T04:59:36.560218+00:00"
+        }
+      ],
+      "duplicate_count": 0
+    }
+  }
+]

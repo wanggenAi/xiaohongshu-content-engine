@@ -1,100 +1,104 @@
-# V1.1 选题质量验收 — 2026-10-14（Asia/Shanghai）
+# V1.2 Human Story 验收
 
-本记录对应仓库 `main` 的 V1.1 实现。没有自动发布小红书，也没有把语义判断写成事实。
+本记录由 scripts/write_acceptance.py 读取实际 run report、JSON 与 manifest 生成。内部验收材料含真实来源；日常摘要与公开简报另行检查平台名。没有自动发布，也没有伪造人工审美反馈。
 
-## 真实运行
+## 本地真实完整链
 
-- 采集：raw **232**，本轮保守去重 **227**；数据库现存 **234**，全部去重后 **229**。
-- Stage A Discovery：**37**（来源上限只用于覆盖面）。
-- Stage B Editorial Screening：**17**。
-- Deep Candidates：**8**；没有为了凑数补入内容。
-- Editorial Packets / public briefs：**8 / 8**。
-- TypeSafe 请求（含独立 decision-risk 轴）：live **1**、cache **36**；token 使用记录在 `run_report.json`，凭证未写入日志或输出。
-- `pytest`：59 passed；`ruff check` 与 `ruff format --check` 通过。
-- 公开简报全部通过平台名检查，未发现 `Show 海外`、`Ask 海外`、`海外 post` 等机械替换。
+运行时间：2026-10-14T07:24:38.274496+00:00。
 
-启用来源审计：
+| 指标 | 实际数量 |
+|---|---|
+| Raw | 232 |
+| 本轮去重 | 227 |
+| Stage A | 38 |
+| Stage B | 10 |
+| Deep | 1 |
+| Human Review Queue | 0 |
+| Deep packets / public briefs | 1 / 1 |
+| Human Review packets | 0 |
 
-| 来源 | 状态 | 条数 | 原因 |
-|---|---|---:|---|
-| hacker_news | ok | 60 |  |
-| github_search | ok | 15 |  |
-| github_releases | ok | 9 |  |
-| openai_blog | ok | 20 |  |
-| deepmind_blog | ok | 20 |  |
-| google_ai_blog | ok | 20 |  |
-| microsoft_ai_blog | ok | 10 |  |
-| meta_ai_blog | skip | 0 | Publisher RSS returned 404; use manual URLs until a stable official feed/API is verified. |
-| nvidia_blog | ok | 18 |  |
-| huggingface_blog | ok | 20 |  |
-| techcrunch | ok | 20 |  |
-| ars_technica | ok | 20 |  |
-| anthropic_blog | skip | 0 | No configured stable publisher RSS/API; use manual URLs until one is verified. |
-| telegram | skip | 0 | missing TELEGRAM_BOT_TOKEN |
-| manual_inbox | empty | 0 |  |
+本轮 Editorial live/cache：3/35；Human Trigger live/cache：0/38。缓存只复用完全一致的来源证据和问题定义。
 
-主要入口是 [editorial_review.md](../outputs/editorial_review.md)，只含 Deep Candidates、编辑价值分数、Verdict、中文 title seed、Core Story、Why It Matters、缺证据和调查问题。
+## 当前真实 Deep：1 条
 
-## 当前真实 Top 8
+| Rank | Editorial | Human Trigger | Viral | Strongest Trigger | Human Title Seed |
+|---|---|---|---|---|---|
+| 1 | 59.73 | 50.91 | 49.67 | identity + fear_loss | 单个案例待核：每天盯着流量做内容的人，还能靠访问量判断有没有人看吗？ |
 
-1. **71.94 / POSSIBLE** — Google DeepMind：AI能帮我们识别诈骗，但它需要看到多少私人对话？
-2. **65.80 / POSSIBLE** — Epic Games：当创作流程开始要求AI优先，手写代码和手工美术会放在什么位置？
-3. **62.92 / POSSIBLE** — 看起来访问量涨了，来的却可能是机器人：创作者该怎么算真实关注？
-4. **62.60 / POSSIBLE** — Pluto Security：把AI交给每个人使用之后，公司最难管理的会是什么？
-5. **62.07 / POSSIBLE** — Disney：陪伴型聊天产品进入商业合作时，谁来承担关系与安全的责任？
-6. **60.30 / POSSIBLE** — Science Corporation：辅助技术走到了具体患者身上：它究竟能恢复哪些日常能力？
+### 1. 场景、身份与标题
 
-这些都是 `POSSIBLE`，没有候选达到 `STRONG` 门槛；`decision-risk` 独立扣分，未把医疗、隐私、未成年人或指控类风险混入人的相关性。它们是调查候选，不是已核实事实或最终文案；编辑页逐条保留作者、时间、摘录、原始 URL、证据缺口和不确定性。
+claim_scope：single_case；semantic_status：assessed；Human gate：B。
 
-## 冻结的 V1 Top 20 回测
+读者身份：每天看流量、经营网站或独立作品的创作者（读者代入假设，不代表国内已发生）
 
-旧排序（同一份 `data/v1_top20_snapshot.json`）：
+Concrete Scene（来源原句）：
 
-| 旧排名 | discovery score | 标题 |
-|---:|---:|---|
-| 1 | 47.17 | Science Corporation implants its vision-restoring chip in its first Stargardt disease patient |
-| 2 | 45.51 | Facebook is giving users more control over their algorithm |
-| 3 | 44.40 | Show HN: Parsimony – an open-source benchmark for how much code AI models add |
-| 4 | 43.96 | Launch HN: Consus (YC F24) – LLM gateway for companies handling sensitive data |
-| 5 | 43.60 | Pluto Security raises $42M as AI gives enterprise security teams a new headache |
-| 6 | 43.45 | I posted to HN, and then my website was flooded with AI bot traffic |
-| 7 | 42.58 | We turned EmbeddingGemma 2 into a speech-to-text model |
-| 8 | 42.25 | I built a tool to track what AI leaders say and how their views change on video |
-| 9 | 41.11 | NVIDIA Announces New Investments in France’s Startups |
-| 10 | 39.69 | All Systems Go: Global PC App Ecosystem Ready for NVIDIA RTX Spark |
-| 11 | 35.80 | Google DeepMind and Singapore Government announce new AI tool to protect citizens against scams |
-| 12 | 32.52 | Disney offers $20M for Character.AI’s scandal-plagued chatbot tech |
-| 13 | 32.10 | Industrial Next wants factory robots to switch tasks in minutes, not weeks |
-| 14 | 30.64 | Flox Intelligence is building AI to keep wildlife away from trains, airports, and roads |
-| 15 | 30.11 | Gemini 4 Argon begins rolling out in Gemini app and Antigravity, but only if you pay |
-| 16 | 30.07 | Epic Games reportedly pivoting to "AI first" game development model |
-| 17 | 29.68 | Higgsfield takes AI video from 1 minute to over 10 |
-| 18 | 25.90 | NVIDIA, Microsoft Kick Off a New Beginning for Windows PCs With RTX Spark and AI Agents |
-| 19 | 25.62 | Martin Shkreli livestreamed himself violating lifetime pharma ban, FTC says |
-| 20 | 24.20 | Gemini 4 Argon: Built to solve your hardest problems |
+```json
+{
+  "who": "I posted to HN, and then my website was flooded with AI bot traffic",
+  "where": "my website was flooded with AI bot traffic",
+  "action": "I posted to HN",
+  "unexpected_result": "my website was flooded with AI bot traffic",
+  "human_consequence": "my website was flooded with AI bot traffic"
+}
+```
 
-V1.1 新排序（同一批内容先走 Stage A，再经过语义筛选；Deep 上限 10）：
+Reversal：NONE；原文没有充分给出期待与结果的两段对照，不补造期待。
 
-| 新排名 | Verdict | editorial score | editorial title seed |
-|---:|---|---:|---|
-| 1 | POSSIBLE | 71.94 | Google DeepMind：AI能帮我们识别诈骗，但它需要看到多少私人对话？ |
-| 2 | POSSIBLE | 65.80 | Epic Games：当创作流程开始要求AI优先，手写代码和手工美术会放在什么位置？ |
-| 3 | POSSIBLE | 62.92 | 看起来访问量涨了，来的却可能是机器人：创作者该怎么算真实关注？ |
-| 4 | POSSIBLE | 62.60 | Pluto Security：把AI交给每个人使用之后，公司最难管理的会是什么？ |
-| 5 | POSSIBLE | 62.07 | Disney：陪伴型聊天产品进入商业合作时，谁来承担关系与安全的责任？ |
-| 6 | POSSIBLE | 60.30 | Science Corporation：辅助技术走到了具体患者身上：它究竟能恢复哪些日常能力？ |
+三个不同角度的调查标题：
 
-- **明显降级/剔除：** 普通 LLM gateway、NVIDIA 普通投资、NVIDIA PC 生态宣传、Embedding 模型转换被 `NO_HUMAN_ANGLE`、`PR_ONLY`、`LOW_CHINA_RELEVANCE`、`BORING` 等原因拦截；原本高 discovery 分数不能绕过编辑门槛。
-- **进入前列：** 防诈骗与隐私、AI 优先创作流程、机器人流量、工作场景的 AI 安全风险、陪伴型聊天产品的责任、具体患者辅助技术。它们分别有可调查的安全取舍、工作变化、异常流量、关系/责任或具体人物入口；并没有因为“AI”一词自动加分。
-- **被保留但仍待核实：** Facebook 推荐控制、视频长度提升等具备受众入口，但证据、效果和中国适用性仍不足，所以是 `POSSIBLE` 而非 `STRONG`。
-- 冻结回测数量：Stage A **20**、Stage B **9**、Deep **6**。
+- scene [single_case]：单个案例待核：发出作品之后，网站多出来的访问来自哪里？
+- reversal [single_case]：单个案例待核：访问量涨了，真实读者却未必变多：这些访问来自哪里？
+- identity_interest [single_case]：单个案例待核：每天盯着流量做内容的人，还能靠访问量判断有没有人看吗？
 
-## 反馈与限制
+自然讨论入口：个人经历（是假设入口，不是已取得评论）。
 
-五个边界案例的可视化内部审稿页见 [review_boundary_cases.html](review_boundary_cases.html)。页面明确标出“待人工判断”，不会把模型 REJECT/WEAK 当作用户 DISLIKE。
+## 冻结真实候选回测：8 条
 
-人工审美反馈表和 CLI 已落地：`review add` 接收 `LIKE` / `MAYBE` / `DISLIKE` 与 reason，写入 SQLite。当前仓库没有真实的五条人工 DISLIKE 记录，因此没有伪造人工标签；后续应由 ChatGPT/用户对 Deep Candidates 逐条补录。
+使用 fixtures 中保存的真实原始标题、必要摘录、链接、时间与来源，不补写人物经历。算法中没有这些标题/品牌的得分分支。
 
-当前仍没有自动评论采集、中文覆盖审计、独立事实交叉核验或真实发布表现。没有 `TYPESAFE_API_KEY` 时，候选会标记 `awaiting_review`，不会被假装成 Deep Candidate；GitHub Actions 已加入可选同名 secret。
+| 原始题目 | Editorial | Human | Viral | 场景 | Gate | 降级原因 |
+|---|---|---|---|---|---|---|
+| Google DeepMind and Singapore Government announce new AI tool to protect citizens against scams | 55.6 | 15.5 | 29.55 | False | NONE | NO_STORY, LOW_HUMAN_TRIGGER |
+| Epic Games reportedly pivoting to "AI first" game development model | 61.98 | 17.69 | 33.09 | False | NONE | LOW_HUMAN_TRIGGER |
+| I posted to HN, and then my website was flooded with AI bot traffic | 60.08 | 50.91 | 49.77 | True | B | 无 |
+| Pluto Security raises $42M as AI gives enterprise security teams a new headache | 59.14 | 16.88 | 32.09 | False | NONE | LOW_HUMAN_TRIGGER |
+| Disney offers $20M for Character.AI’s scandal-plagued chatbot tech | 49.73 | 14.39 | 27.18 | False | NONE | LOW_HUMAN_TRIGGER |
+| Science Corporation implants its vision-restoring chip in its first Stargardt disease patient | 46.77 | 16.9 | 27.86 | False | NONE | LOW_HUMAN_TRIGGER |
+| Facebook is giving users more control over their algorithm | 47.08 | 10.6 | 25.05 | False | NONE | LOW_HUMAN_TRIGGER |
+| Higgsfield takes AI video from 1 minute to over 10 | 49.17 | 11.87 | 25.1 | False | NONE | LOW_HUMAN_TRIGGER |
 
-下一步最值得做：对这 8 条 Deep Candidates 补充原始页面核验、独立报道和真实不同观点，再由 ChatGPT 标注 LIKE/MAYBE/DISLIKE；只有之后才调整权重。
+机器人流量明显高于没有具体员工经历的 B2B 安全融资材料。高编辑价值不再保证进入 Deep；官方防诈、AI-first、交易、医疗、推荐控制与视频长度仍需具体人、实际行为和后果，不能把标题扩写成已经发生的故事。
+
+## 合成测试样本的真实语义回测
+
+以下是显式标注的测试文本，不是新闻，不入生产库。pytest 的受控判断只验证组合逻辑；这里另外调用实际语义服务。
+
+| Fixture | Human | 预期 | 实际门槛 |
+|---|---|---|---|
+| fixture-parameter | 3.83 | low | LOW_HUMAN_TRIGGER |
+| fixture-investment | 4.19 | low | LOW_HUMAN_TRIGGER |
+| fixture-funding | 2.71 | low | LOW_HUMAN_TRIGGER |
+| fixture-api | 4.78 | low | LOW_HUMAN_TRIGGER |
+| fixture-junior | 78.54 | high | A |
+| fixture-bot | 73.97 | high | A |
+
+回测脚本自动断言四个负样本 <30、两个强样本 ≥65，且机器人场景高于无具体人的 B2B 材料；语义不完整则失败，不报告通过。
+
+## 测试与一致性
+
+- pytest：98 passed。ruff check / format --check 通过。
+- 覆盖触发加分、无场景降级、正负样本、范围与标题约束、不同标题角度、读者代入、评论路由、缺key/超时/陈旧判断清除、人工队列和数量篡改。
+- LIKE / MAYBE / DISLIKE 及新旧 reason codes 兼容；未把任何自动判断写成人工标签。
+- verify-outputs 读取真实文件，验证标题数量、表格行、JSON、候选身份、packet、公开简报、别名页与 run report；任一不一致失败。
+- 本地审稿摘要与全部 public briefs 通过禁止平台名与 Show 海外 / Ask 海外 / 海外 post 机械表达检查；原始专名只保留在内部证据。
+
+## GitHub Actions 与实际 artifact
+
+代码提交后运行完整 workflow，再从下载的 artifact 补入实测结果；这里不提前宣称通过。
+
+## 实际限制
+
+当前真实 Deep 只有 1 条，数量与 JSON、Markdown、manifest、证据包一致，不为了得到四个故事而补齐。现有来源多为短摘录/标题，部分高价值新闻尚不能支撑人的具体经历；此层会把缺失显式暴露给编辑。
+
+尚无独立交叉核验、真实评论采集或中文饱和度审计。情绪与受众是明确标注的调查假设，Viral Potential 不等于确定会爆。
