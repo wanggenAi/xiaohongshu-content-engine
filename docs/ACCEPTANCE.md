@@ -95,7 +95,7 @@ Reversal：NONE；原文没有充分给出期待与结果的两段对照，不�
 
 ## GitHub Actions 与实际 artifact
 
-[完整手动 workflow / checks 与采集通过](https://github.com/wanggenAi/xiaohongshu-content-engine/actions/runs/38529474739)。已下载该 run artifact 并独立读取、核对文件。
+[完整手动 workflow / checks 与采集通过](https://github.com/wanggenAi/xiaohongshu-content-engine/actions/runs/38530788846)。已下载该 run artifact 并独立读取、核对文件。
 
 | Cloud raw | Stage A | Stage B | Deep | Human Review Queue | Review packets |
 |---|---|---|---|---|---|
