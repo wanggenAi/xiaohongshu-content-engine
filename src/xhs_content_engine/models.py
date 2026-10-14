@@ -81,6 +81,7 @@ class ContentItem(BaseModel):
     story_cluster_id: str = ""
     story_cluster: dict[str, Any] = Field(default_factory=dict)
     story_mining_status: str = "unassessed"
+    first_person_signal: list[str] = Field(default_factory=list)
 
     @computed_field
     @property
@@ -160,7 +161,7 @@ class StoryCandidate(BaseModel):
     money_signal: str = ""
     job_signal: str = ""
     emotion_signal: str = ""
-    evidence_spans: list[str] = Field(default_factory=list)
+    evidence_spans: list[str] = Field(min_length=1)
     discussion_evidence: list[dict[str, Any]] = Field(default_factory=list)
     engagement: dict[str, int] = Field(default_factory=dict)
     claim_scope: str = "single_case"
@@ -171,6 +172,14 @@ class StoryCandidate(BaseModel):
     source_tier: str = "C"
     source_authority: float = Field(default=0.5, ge=0, le=1)
     story_value: float = Field(default=0, ge=0, le=100)
+    evidence_gaps: list[str] = Field(default_factory=list)
+    human_trigger_score: float | None = Field(default=None, ge=0, le=100)
+    viral_potential: float | None = Field(default=None, ge=0, le=100)
+
+    @computed_field
+    @property
+    def story_richness_score(self) -> float:
+        return self.story_strength
 
 
 class EditorialFeedback(BaseModel):

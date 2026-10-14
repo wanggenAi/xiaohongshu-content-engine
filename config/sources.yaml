@@ -1,5 +1,44 @@
 # Public APIs and publisher-provided RSS only. Each source fails independently.
 sources:
+  - name: simon_willison
+    type: rss
+    url: https://simonwillison.net/atom/everything/
+    reliability: 0.6
+    source_tier: S
+    evidence_role: personal_author_account
+    limit: 20
+  - name: armin_ronacher
+    type: rss
+    url: https://lucumr.pocoo.org/feed.atom
+    reliability: 0.6
+    source_tier: S
+    evidence_role: personal_author_account
+    limit: 10
+  - name: ethan_mollick
+    type: rss
+    url: https://www.oneusefulthing.org/feed
+    reliability: 0.6
+    source_tier: S
+    evidence_role: personal_author_account
+    limit: 10
+  - name: human_story_search
+    type: hn_story_search
+    enabled: true
+    reliability: 0.55
+    limit: 80
+    hits_per_query: 5
+    max_age_days: 7
+    comment_stories: 20
+    comments_per_story: 6
+    replies_per_comment: 1
+    # Public search index for discovery; original text/comments via official Firebase API.
+    query_config: story_mining.yaml
+  - name: reddit_experiences
+    type: restricted_adapter
+    reason: No authorized API configured; add public experience URLs and necessary excerpts through Manual Inbox.
+  - name: creator_communities
+    type: restricted_adapter
+    reason: Login-gated communities are not collected; use Manual Inbox with supplied evidence.
   - {name: hacker_news, type: hacker_news, enabled: true, limit: 60, reliability: 0.65}
   - name: github_search
     type: github_search

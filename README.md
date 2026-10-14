@@ -26,7 +26,8 @@ uv run ruff format --check .
 
 ## 内容源
 
-- Hacker News 官方 Firebase API：标题、短摘录、讨论 URL、作者、发布时间和公开 points/comments；不抓评论或外部文章正文。
+- Hacker News 官方 Firebase API：标题、短摘录、讨论 URL、作者、发布时间和公开 points/comments。Story Search 使用公开搜索索引查询配置中的经历组合，并用官方 API 读取有限的 ranked comments 与回复；不抓外部文章全文，不推测评论共识或争议程度。
+- 个人博客/创作者 RSS：Simon Willison、Armin Ronacher、Ethan Mollick 的公开 publisher feeds，标为 Tier S。普通产品更新仍须满足人物、行动和实际结果门槛。
 - GitHub 官方 API：最近 30 天创建的 AI 仓库按 stars 排序，以及配置中仓库的 releases。stars 是快照，不宣称 fast-growing；未抓 trending HTML。无 token 尝试公开 API，有 `GITHUB_TOKEN` 时使用，超限隔离。
 - 公司官方 RSS：OpenAI、DeepMind、Google AI、Microsoft 官方博客、NVIDIA、Hugging Face；媒体 RSS：TechCrunch、Ars Technica。链接和条目可能失效，逐源记录 error/empty，不绕过限制。
 - Anthropic、Meta AI：保留 restricted adapter；前者尚无已验证稳定配置，后者 RSS 实测 404，通过 Manual Inbox 录入。
@@ -36,9 +37,9 @@ uv run ruff format --check .
 增加 RSS 只需修改 `config/sources.yaml`。受限来源可以配置 `type: restricted_adapter` 和 skip reason；未来合法 API 的 collector 注册到 `ADAPTERS` 即可，不影响现有来源。
 
 
-## Human Story funnel（V1.2）
+## Human Story funnel（V1.3）
 
-`RAW → Stage A Discovery（≤40）→ Stage B Editorial（≤20）→ Human Trigger gates → Deep（≤10）`
+`STORY-RICH SOURCES → Fast Story Filter（≤50）→ Story Mining Semantic Pass → Candidates（≤20 进入后续语义）→ Human Trigger / Editorial → Deep（≤10）`
 
 三个分数分开保留：Discovery 判断素材是否值得进入候选池；Editorial 判断内容价值；Human Trigger 判断真实事件的人性张力。最终排序采用 `viral_potential = human × 0.55 + editorial × 0.30 + evidence_quality × 0.15`（evidence 换算为 0–100）。这是内部排序信号，不承诺爆款。
 
@@ -46,11 +47,13 @@ uv run ruff format --check .
 
 ## Story Mining（V1.3）
 
-V1.3 在语义判断前增加 `config/story_mining.yaml` 的确定性 Fast Story Filter：从第一人称、身份、具体行动、结果、前后变化、冲突、数字、评论观点和证据跨度中提取 `StoryCandidate`。`story_richness_score` 描述故事原料，`fallback_story_score` 只控制语义成本和人工队列顺序，绝不冒充 Human Trigger。来源层级在 `config/source_priority.yaml` 中分开记录 `source_authority` 与 `story_value`；合法可读的评论观点保留证据片段，受限平台进入 restricted adapter 或 Manual Inbox。
+V1.3 在复杂语义判断前增加 `config/story_mining.yaml` 的确定性 Fast Story Filter，优先处理 30～50 条有本地故事信号的素材。轻量 Story Mining 再选来源片段，验证真实个人经历、实际结果、前后变化和冲突；不足证据进人工队列。只有满足人物＋行动＋结果且 Story Richness ≥40 的记录才成为 `StoryCandidate`，最多 20 条进入现有 Human/Editorial 语义。来源权威度不再控制 Story Mining 的准入，分别记录 `source_authority` 与 `story_value`。
 
-`outputs/story_candidates.json` 保存每轮发现到的有证据候选；`editorial_review.md` 顶部区分 Assessed Stories 与 Human Review Queue，并显示 Person、Action、Result、Before/After、Conflict、Claim Scope、Evidence Status。查询组合和普通读者身份分别配置在 `story_mining.yaml` 与 `reader_identities.yaml`。
+`story_richness_score` 描述故事原料，`fallback_story_score` 只控制成本和人工队列顺序，绝不冒充 Human Trigger。评论来源保留作者、URL、父回复与必要摘录；独立字段只从一个选定的个人叙述中选取，不能拼接甲的行动与乙的后果。受限平台进入 restricted adapter 或 Manual Inbox。多个明确不同作者的案例可以标为 `multiple_cases`，不能自动称为趋势。
 
-有 `TYPESAFE_API_KEY` 时，Stage A 做有界语义判断并按证据与问题定义缓存。没有 key、请求失败或语义不完整时，输出 `NEEDS_HUMAN_REVIEW` 队列，标明 `semantic_status = unavailable`，Human/Viral 分数为 null，不冒充 Deep。如果整批都被降级且没有 Deep，也保留带原降级原因的人工复核素材；无来源材料时保留采集错误审计。
+`outputs/story_candidates.json` 保存完整有证据候选，`story_candidates.md` 展示最多十条及证据缺口；`editorial_review.md` 顶部区分 Assessed Stories 与 Human Review Queue，并显示 Person、Action、Result、Before/After、Conflict、Claim Scope、Evidence Status。查询组合和普通读者身份分别配置在 `story_mining.yaml` 与 `reader_identities.yaml`。测试集包含 30 条明确标注的合成示例和 8 条冻结真实素材。
+
+有 `TYPESAFE_API_KEY` 时，各语义阶段按完整来源证据和问题定义缓存。Story Mining 不可用时直接输出 `NEEDS_HUMAN_REVIEW` 队列，跳过复杂 Human/Editorial 请求，Human/Viral 分数为 null。如果整批都被降级且没有 Deep，也保留带原降级原因的人工复核素材；无来源材料时保留采集错误审计。
 
 日常入口为 `outputs/editorial_review.md`：顶部 Today’s Human Stories 显示排名、三个编辑信号、最强触发器和具体读者身份；每条 Deep 包含场景、反转、讨论入口和三个不同角度的调查标题。原文、真实平台与证据保留在内部 packet；审稿摘要和公开简报通过平台名/机械替换检查。
 

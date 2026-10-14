@@ -25,6 +25,9 @@ class Pipeline:
         self.story_config = self.load("story_mining.yaml")
         self.source_priority = self.load("source_priority.yaml")
         self.reader_identities = self.load("reader_identities.yaml")
+        self.story_config["reader_identities"] = self.reader_identities["identities"]
+        if sum(self.story_config["weights"].values()) != 100:
+            raise ValueError("story richness weights must total 100")
         self.editorial_scoring["human_triggers"] = self.human_config
         self.editorial_scoring["story_mining"] = self.story_config
         self.editorial_scoring["source_priority"] = self.source_priority
@@ -88,7 +91,10 @@ class Pipeline:
                         if config["type"] == "manual":
                             raw, details = collect_manual(self.store.inbox()), {}
                         else:
-                            raw, details = ADAPTERS[config["type"]](config, http)
+                            source_config = dict(config)
+                            if config["type"] == "hn_story_search":
+                                source_config["queries"] = self.story_config["story_queries"]
+                            raw, details = ADAPTERS[config["type"]](source_config, http)
                         row["raw_items"] = len(raw)
                         items, errors = self.save_raw(raw)
                         row.update(details, saved_items=len(items), normalization_errors=errors)
@@ -140,6 +146,8 @@ class Pipeline:
         self.review_queue = human_review_queue(assessed, deep, self.human_config, limit)
         destination = self.root / "outputs"
         destination.mkdir(exist_ok=True)
+        story_candidates = report.pop("story_candidates_data", [])
+        story_mining_items = report.pop("story_mining_items", [])
         (destination / "editorial_screening.json").write_text(
             json.dumps(
                 {
@@ -150,18 +158,47 @@ class Pipeline:
                     "human_review_queue_items": [
                         i.model_dump(mode="json") for i in self.review_queue
                     ],
-                    "story_candidates": report.get("story_candidates_data", []),
+                    "story_candidates": story_candidates,
+                    "story_mining_items": story_mining_items,
                 },
                 ensure_ascii=False,
                 indent=2,
             ),
             encoding="utf-8",
         )
-        story_candidates = report.pop("story_candidates_data", [])
         (destination / "story_candidates.json").write_text(
             json.dumps(story_candidates, ensure_ascii=False, indent=2),
             encoding="utf-8",
         )
+        ranked_stories = sorted(story_candidates, key=lambda c: -c["story_strength"])[:10]
+        lines = [
+            "# Story Candidates — Top 10（最多十条，不补足）",
+            "",
+            "INTERNAL ONLY。来源原句是待核实自述，不是最终文章。",
+            "",
+        ]
+        for index, candidate in enumerate(ranked_stories, 1):
+            lines.extend([f"## {index}. {candidate['context']}", ""])
+            for label, key in [
+                ("Who", "primary_person"),
+                ("Did what", "action"),
+                ("What happened", "result"),
+                ("Before", "before_state"),
+                ("After", "after_state"),
+                ("Conflict", "conflict"),
+                ("Story Richness", "story_richness_score"),
+                ("Fallback Story Score", "fallback_story_score"),
+                ("Human Trigger", "human_trigger_score"),
+                ("Viral Potential", "viral_potential"),
+                ("Claim Scope", "claim_scope"),
+                ("Evidence Gaps", "evidence_gaps"),
+            ]:
+                value = candidate.get(key)
+                lines.append(
+                    f"- {label}: {value if value not in (None, '', []) else '未取得 / 未评估'}"
+                )
+            lines.append("")
+        (destination / "story_candidates.md").write_text("\n".join(lines), encoding="utf-8")
         return deep, report
 
     def rank(self, limit=10):

@@ -3,11 +3,11 @@ tiers:
   S:
     label: Human Story Sources
     purpose: 第一人称、具体行为和前后变化优先进入 Story Mining。
-    source_types: [personal_blog, developer_blog, creator_post, manual, telegram]
+    source_types: [personal_blog, developer_blog, creator_post, manual, telegram, telegram_bot]
   A:
     label: Discussion Sources
     purpose: 高互动讨论和真实回复用于提炼不同经历。
-    source_types: [discussion, hacker_news, reddit_public, forum]
+    source_types: [discussion, hacker_news, hn_story_search, reddit_public, forum]
   B:
     label: Evidence Sources
     purpose: 用于核实故事，不自动替代当事人的经历。

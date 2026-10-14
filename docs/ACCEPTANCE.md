@@ -1,5 +1,7 @@
 # V1.2 Human Story 验收
 
+最新 Story Mining 阶段另见 [V1.3 验收](STORY_MINING_ACCEPTANCE.md)。本文件保留 V1.2 的历史运行记录。
+
 本记录由 scripts/write_acceptance.py 读取实际 run report、JSON 与 manifest 生成。内部验收材料含真实来源；日常摘要与公开简报另行检查平台名。没有自动发布，也没有伪造人工审美反馈。
 
 ## 本地真实完整链

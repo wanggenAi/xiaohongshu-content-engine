@@ -43,6 +43,16 @@ def evidence_spans(item: ContentItem):
         excerpt = ""
     spans = [item.title]
     spans.extend(re.split(r'(?<=[.!?。！？])\s+(?=[A-Z“"\d])|\n+', excerpt) if excerpt else [])
+    if item.story_mining_status == "candidate":
+        # Only allow extracted substrings of actual post/comment evidence into judgments.
+        originals = [item.title, item.raw_excerpt] + [
+            comment.get("evidence", "") for comment in item.metadata.get("discussion_comments", [])
+        ]
+        spans.extend(
+            value
+            for value in item.story_structure.values()
+            if value and any(value in original for original in originals)
+        )
     return {f"s{i}": text for i, text in enumerate(dict.fromkeys(spans)) if text.strip()}
 
 
@@ -58,6 +68,8 @@ def judgment_request(item: ContentItem, config: dict, lenses: dict):
             "engagement": item.engagement_metrics,
             "chinese_coverage": item.metadata.get("chinese_coverage", "UNKNOWN"),
             "note": "Duplicate source URLs do not prove independent corroboration.",
+            "mined_story": item.story_structure,
+            "discussion_viewpoints": item.discussion_viewpoints,
         },
         "spans": spans,
         "audience_context": "中国普通读者包括学生、程序员、设计师、创作者、家长与消费者。"
@@ -561,26 +573,44 @@ def select_screened(assessed, config, source_cap, limit=10):
 
 def screen(items, discovery_config, editorial_config, lenses, store, limit=10, now=None, http=None):
     from .human_triggers import HumanJudge, compose_human, human_review_queue
-    from .story_mining import enrich_story_items, fast_story_filter, story_semantic_filter
+    from .story_mining import (
+        StoryJudge,
+        _assign_clusters,
+        candidate_from_item,
+        compose_story,
+        discover_stories,
+        fast_story_filter,
+    )
 
     now = now or datetime.now(UTC)
     story_config = editorial_config.get("story_mining", {})
-    story_items, story_candidates = enrich_story_items(
-        items,
-        story_config,
-        editorial_config.get("source_priority"),
-        now,
-    )
-    discovered = discovery_candidates(story_items, discovery_config, editorial_config, now)
-    fast_candidates = fast_story_filter(discovered, story_config)
-    stage_a = story_semantic_filter(fast_candidates, story_config)
-    # A fast filter is a cost boundary, not an editorial rejection. Keep the
-    # extracted record for every discovered item so a reviewer can inspect gaps.
-    candidate_by_item = {
-        item_id: candidate
-        for candidate in story_candidates
-        for item_id in candidate.source_item_ids
-    }
+    mining_responses, mined, candidates = {}, [], []
+    if story_config:
+        discovered = discover_stories(
+            items, discovery_config, story_config, editorial_config.get("source_priority"), now
+        )
+        fast_candidates = fast_story_filter(discovered, story_config)
+        mining_responses = StoryJudge(editorial_config, story_config, store, http).assess(
+            fast_candidates
+        )
+        mined = [
+            compose_story(
+                item, *mining_responses[item.id][:1], story_config, *mining_responses[item.id][1:]
+            )
+            for item in fast_candidates
+        ]
+        stage_a = sorted(
+            (item for item in mined if item.story_mining_status == "candidate"),
+            key=lambda item: (-item.story_richness_score, -item.fallback_story_score, item.id),
+        )[: story_config["fast_filter"]["maximum_semantic_candidates"]]
+        candidates = [
+            candidate_from_item(item) for item in mined if item.story_mining_status == "candidate"
+        ]
+        cluster_items = [item for item in mined if item.story_mining_status == "candidate"]
+        _assign_clusters(cluster_items, candidates)
+    else:
+        discovered = discovery_candidates(items, discovery_config, editorial_config, now)
+        fast_candidates = stage_a = discovered
     judge = SemanticJudge(editorial_config, lenses, store, http)
     responses = judge.assess(stage_a)
     assessed = [
@@ -608,23 +638,42 @@ def screen(items, discovery_config, editorial_config, lenses, store, limit=10, n
             )
             for item in assessed
         ]
+        # Mining outages do not spend additional editorial/Human requests or pretend
+        # cached judgments from older evidence completed the missing mining pass.
+        for item in mined:
+            if item.story_mining_status == "needs_review":
+                pending = compose_assessment(item, None, editorial_config, lenses, "unavailable")
+                pending = compose_human(
+                    pending, None, human_config, "unavailable", "StoryMiningUnavailable"
+                )
+                if item.metadata.get("story_semantic", {}).get("mode") != "unavailable":
+                    pending.human_review_reason = (
+                        "Story Mining 已判断，但具体人的行为/结果证据仍有分歧；"
+                        "未调用 Human Trigger，需人工检查原始记录。"
+                    )
+                pending.claim_scope = "unassessed"
+                assessed.append(pending)
     stage_b, deep = select_screened(
         assessed, editorial_config, discovery_config.get("max_per_source", 5), limit
     )
     queue = human_review_queue(assessed, deep, human_config, limit) if human_config else []
+    by_id = {item.id: item for item in assessed}
+    for candidate in candidates:
+        assessment = by_id.get(candidate.source_item_ids[0])
+        if assessment:
+            candidate.human_trigger_score = assessment.human_trigger_score
+            candidate.viral_potential = assessment.viral_potential
     report = {
         "raw_story_items": len(items),
         "story_discovered": len(discovered),
         "story_fast_filter": len(fast_candidates),
-        "story_candidate_count": sum(
-            1 for item in discovered if item.story_mining_status == "candidate"
-        ),
+        "story_candidate_count": len(candidates),
+        "story_pending_count": sum(item.story_mining_status == "needs_review" for item in mined),
         "story_semantic_candidates": len(stage_a),
-        "story_candidates_data": [
-            candidate_by_item[item.id].model_dump(mode="json")
-            for item in discovered
-            if item.id in candidate_by_item
-        ],
+        "story_provider_live_requests": sum(v[1] == "live" for v in mining_responses.values()),
+        "story_provider_cache_hits": sum(v[1] == "cache" for v in mining_responses.values()),
+        "story_candidates_data": [candidate.model_dump(mode="json") for candidate in candidates],
+        "story_mining_items": [item.model_dump(mode="json") for item in mined],
         "stage_a": len(stage_a),
         "stage_b": len(stage_b),
         "deep_candidates": len(deep),

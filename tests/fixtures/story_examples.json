@@ -3,180 +3,403 @@
     "id": "strong-01",
     "expected": "strong",
     "title": "I used AI to build my store and made my first sale",
-    "raw_excerpt": "I tried an AI workflow, launched a store, and earned $800 in a week."
+    "raw_excerpt": "I tried an AI workflow, launched a store, and earned $800 in a week.",
+    "synthetic": true
   },
   {
     "id": "strong-02",
     "expected": "strong",
     "title": "A junior developer worries AI is erasing basic skills",
-    "raw_excerpt": "I used to write every function. Now my team asks me to accept generated code."
+    "raw_excerpt": "I used to write every function. Now my team asks me to accept generated code.",
+    "synthetic": true
   },
   {
     "id": "strong-03",
     "expected": "strong",
     "title": "My site traffic exploded but the visitors were bots",
-    "raw_excerpt": "I posted a launch and saw 20,000 visits. Logs showed automated clients."
+    "raw_excerpt": "I posted a launch and saw 20,000 visits. Logs showed automated clients.",
+    "synthetic": true
   },
   {
     "id": "strong-04",
     "expected": "strong",
     "title": "A designer switched to AI and changed her workflow",
-    "raw_excerpt": "I stopped drawing drafts by hand and now spend time checking client feedback."
+    "raw_excerpt": "I stopped drawing drafts by hand and now spend time checking client feedback.",
+    "synthetic": true
   },
   {
     "id": "strong-05",
     "expected": "strong",
     "title": "My company required an AI-first workflow",
-    "raw_excerpt": "We used to plan together. Now my boss requires every task to start with an AI draft."
+    "raw_excerpt": "We used to plan together. Now my boss requires every task to start with an AI draft.",
+    "synthetic": true
   },
   {
     "id": "strong-06",
     "expected": "strong",
     "title": "I lost a client after automating support replies",
-    "raw_excerpt": "I tried automatic replies, but a customer left after a bot misunderstood a refund."
+    "raw_excerpt": "I tried automatic replies, but a customer left after a bot misunderstood a refund.",
+    "synthetic": true
   },
   {
     "id": "strong-07",
     "expected": "strong",
     "title": "A student used AI for homework and stopped feeling she learned",
-    "raw_excerpt": "I finished faster, yet worried I could not explain the answers."
+    "raw_excerpt": "I finished faster, yet worried I could not explain the answers.",
+    "synthetic": true
   },
   {
     "id": "strong-08",
     "expected": "strong",
     "title": "An indie founder found revenue after a failed launch",
-    "raw_excerpt": "I expected a viral launch, but only three people paid, so I changed the product."
+    "raw_excerpt": "I expected a viral launch, but only three people paid, so I changed the product.",
+    "synthetic": true
   },
   {
     "id": "strong-09",
     "expected": "strong",
     "title": "A creator says AI changed her income",
-    "raw_excerpt": "I used to sell five illustrations a month. After switching, my prices changed."
+    "raw_excerpt": "I used to sell five illustrations a month. After switching, my prices changed.",
+    "synthetic": true
   },
   {
     "id": "strong-10",
     "expected": "strong",
     "title": "I was replaced on a small contract by an automated tool",
-    "raw_excerpt": "A client said software would handle the task. I lost the job."
+    "raw_excerpt": "A client said software would handle the task. I lost the job.",
+    "synthetic": true
   },
   {
     "id": "strong-11",
     "expected": "strong",
     "title": "A programmer found a hidden cost in an AI subscription",
-    "raw_excerpt": "I saved time but spent more on retries. My monthly bill reached $240."
+    "raw_excerpt": "I saved time but spent more on retries. My monthly bill reached $240.",
+    "synthetic": true
   },
   {
     "id": "strong-12",
     "expected": "strong",
     "title": "My first AI video brought attention and a copyright dispute",
-    "raw_excerpt": "I posted a film that gained 50,000 views, then an artist asked about the style."
+    "raw_excerpt": "I posted a film that gained 50,000 views, then an artist asked about the style.",
+    "synthetic": true
   },
   {
     "id": "strong-13",
     "expected": "strong",
     "title": "A job seeker used AI for interviews and failed the real test",
-    "raw_excerpt": "I passed screening with an assistant, but could not explain my choices live."
+    "raw_excerpt": "I passed screening with an assistant, but could not explain my choices live.",
+    "synthetic": true
   },
   {
     "id": "strong-14",
     "expected": "strong",
     "title": "I switched from a big model after a privacy scare",
-    "raw_excerpt": "I uploaded client notes, noticed the retention policy, and moved offline."
+    "raw_excerpt": "I uploaded client notes, noticed the retention policy, and moved offline.",
+    "synthetic": true
   },
   {
     "id": "strong-15",
     "expected": "strong",
     "title": "A parent tried an AI tutor and changed homework",
-    "raw_excerpt": "We expected less conflict, but my child stopped showing work."
+    "raw_excerpt": "We expected less conflict, but my child stopped showing work.",
+    "synthetic": true
   },
   {
     "id": "weak-01",
     "expected": "weak",
     "title": "New language model reaches 1 trillion parameters",
-    "raw_excerpt": "The company announced a larger model with improved benchmarks."
+    "raw_excerpt": "The company announced a larger model with improved benchmarks.",
+    "synthetic": true
   },
   {
     "id": "weak-02",
     "expected": "weak",
     "title": "Startup raises $40 million for AI infrastructure",
-    "raw_excerpt": "Investors participated in the funding round."
+    "raw_excerpt": "Investors participated in the funding round.",
+    "synthetic": true
   },
   {
     "id": "weak-03",
     "expected": "weak",
     "title": "Chipmaker launches an accelerator",
-    "raw_excerpt": "The hardware offers faster inference and better energy efficiency."
+    "raw_excerpt": "The hardware offers faster inference and better energy efficiency.",
+    "synthetic": true
   },
   {
     "id": "weak-04",
     "expected": "weak",
     "title": "API adds structured outputs",
-    "raw_excerpt": "Developers can now request JSON responses."
+    "raw_excerpt": "Developers can now request JSON responses.",
+    "synthetic": true
   },
   {
     "id": "weak-05",
     "expected": "weak",
     "title": "Company partners with cloud provider",
-    "raw_excerpt": "The agreement expands access to enterprise services."
+    "raw_excerpt": "The agreement expands access to enterprise services.",
+    "synthetic": true
   },
   {
     "id": "weak-06",
     "expected": "weak",
     "title": "Research paper introduces a new benchmark",
-    "raw_excerpt": "The authors report state of the art accuracy."
+    "raw_excerpt": "The authors report state of the art accuracy.",
+    "synthetic": true
   },
   {
     "id": "weak-07",
     "expected": "weak",
     "title": "Open source release improves tokenization",
-    "raw_excerpt": "Version 2.0 includes faster preprocessing."
+    "raw_excerpt": "Version 2.0 includes faster preprocessing.",
+    "synthetic": true
   },
   {
     "id": "weak-08",
     "expected": "weak",
     "title": "AI market forecast grows this decade",
-    "raw_excerpt": "Analysts expect spending to increase."
+    "raw_excerpt": "Analysts expect spending to increase.",
+    "synthetic": true
   },
   {
     "id": "weak-09",
     "expected": "weak",
     "title": "Platform adds an image editing feature",
-    "raw_excerpt": "Users can remove backgrounds in one click."
+    "raw_excerpt": "Users can remove backgrounds in one click.",
+    "synthetic": true
   },
   {
     "id": "weak-10",
     "expected": "weak",
     "title": "New safety framework published",
-    "raw_excerpt": "The framework outlines evaluation principles."
+    "raw_excerpt": "The framework outlines evaluation principles.",
+    "synthetic": true
   },
   {
     "id": "borderline-01",
     "expected": "borderline",
     "title": "Study says AI may change hiring",
-    "raw_excerpt": "Researchers estimate some occupations could see fewer openings, but no worker account is included."
+    "raw_excerpt": "Researchers estimate some occupations could see fewer openings, but no worker account is included.",
+    "synthetic": true
   },
   {
     "id": "borderline-02",
     "expected": "borderline",
     "title": "Hospital deploys an AI assistant",
-    "raw_excerpt": "The hospital says doctors may save time, with no patient experience."
+    "raw_excerpt": "The hospital says doctors may save time, with no patient experience.",
+    "synthetic": true
   },
   {
     "id": "borderline-03",
     "expected": "borderline",
     "title": "Creator tools promise more revenue",
-    "raw_excerpt": "The vendor says creators can earn more, but provides no case."
+    "raw_excerpt": "The vendor says creators can earn more, but provides no case.",
+    "synthetic": true
   },
   {
     "id": "borderline-04",
     "expected": "borderline",
     "title": "Students discuss an AI policy",
-    "raw_excerpt": "A school changed rules and students debate fairness, but no first-person reply is recorded."
+    "raw_excerpt": "A school changed rules and students debate fairness, but no first-person reply is recorded.",
+    "synthetic": true
   },
   {
     "id": "borderline-05",
     "expected": "borderline",
     "title": "A report describes automation pressure",
-    "raw_excerpt": "The report cites a trend but does not name a worker or result."
+    "raw_excerpt": "The report cites a trend but does not name a worker or result.",
+    "synthetic": true
+  },
+  {
+    "id": "real-1255e1e1d321c2f7bf50664f",
+    "expected": "borderline",
+    "synthetic": false,
+    "title": "Show HN: Pulse Local, a Mac budgeting app whose AI models run on your machine",
+    "raw_excerpt": "Hi HN, I'm Niz. Pulse Local is a budgeting app for Mac (Apple Silicon, beta) that answers questions about your spending with models that run on your machine. Local mode needs no account. The ledger and your questions stay on the machine, and the app sends no analytics or crash logs. I felt there are not enough consumer apps that run locally with no calls to the outside world that help us manage sensitive corners of our lives. This app in its local variant only downloads a couple of models and occasional updates, it does not send any analytics nor data. Features-wise, Pulse local is a complete",
+    "source_url": "https://pulseos.finance/",
+    "source_type": "hn_story_search",
+    "author": "niztk",
+    "published_at": "2026-10-13T23:13:23+00:00",
+    "discussion_comments": [
+      {
+        "id": "50080515",
+        "author": "terwint",
+        "parent": "50080275",
+        "url": "https://news.ycombinator.com/item?id=50080515",
+        "evidence": "Very nice project. I think this is is in the step of the right direction for agent-driven assistance. > How it works: you import a CSV from any bank, in any currency. I think this is where you're going to lose people. If you're having to pull in data from multiple different sources, each with their own flow for exporting, I think this might be a non-starter ",
+        "selection": "ranked_public_reply"
+      },
+      {
+        "id": "50080932",
+        "author": "niztk",
+        "parent": "50080515",
+        "url": "https://news.ycombinator.com/item?id=50080932",
+        "evidence": "Appreciate the feedback. There's also a connected mode leveraging Plaid where transactions pass through servers memory and never stored. Outside the US, CSV is the only path for now otherwise agree CSV export is a chore for multi-bank users.",
+        "selection": "ranked_public_reply"
+      },
+      {
+        "id": "50084443",
+        "author": "edarchis",
+        "parent": "50080275",
+        "url": "https://news.ycombinator.com/item?id=50084443",
+        "evidence": "> How it works: you import a CSV from any bank, in any currency. I dropped the CSV from my bank and only got 2 fields. I fixed the CSV and suddenly the IBAN BE12 3456 7890 123 became BE12 in Pulse First operation I did was switch it to Belgium. \"type to search\" Didn't work. Saving after manually setting it was a really long beach ball. Can't say I'm impresse",
+        "selection": "ranked_public_reply"
+      },
+      {
+        "id": "50084510",
+        "author": "niztk",
+        "parent": "50084443",
+        "url": "https://news.ycombinator.com/item?id=50084510",
+        "evidence": "Thanks for the feedback. Aware of the search field bug, already fixed in 0.4.1 which is shipping soon. Fixing European CSVs and cut IBAN now. Investigating the country-save hang. If you’re keen to retry, email me niz@pulseos.finance and will let you know.",
+        "selection": "ranked_public_reply"
+      },
+      {
+        "id": "50083997",
+        "author": "splittydev",
+        "parent": "50080275",
+        "url": "https://news.ycombinator.com/item?id=50083997",
+        "evidence": "I don't know if this is vibe-coded or something, but it works very badly. I tried to change the currency from USD to EUR. The filter dialogue didn't work, clicking it only focused the text field for a few milliseconds and I couldn't get a single character typed. Then I closed the settings, and the whole app froze until I had to force-quit it. Uninstalled alr",
+        "selection": "ranked_public_reply"
+      },
+      {
+        "id": "50084306",
+        "author": "niztk",
+        "parent": "50083997",
+        "url": "https://news.ycombinator.com/item?id=50084306",
+        "evidence": "Thanks again for the report. I did see that the app refreshed its window many times during the first model download and each refresh stole focus from the search field, that's why typing did not work. The fix is ready and shipping it soon (version 0.4.1) As for the freeze, I honestly couldn't reproduce it but I suspect it's due to the above symptoms and the f",
+        "selection": "ranked_public_reply"
+      },
+      {
+        "id": "50081963",
+        "author": "zyk_computer",
+        "parent": "50080275",
+        "url": "https://news.ycombinator.com/item?id=50081963",
+        "evidence": "I'm curious why you built a full budgeting app instead of adding a local AI chat to an existing open source app like Actual Budget.",
+        "selection": "ranked_public_reply"
+      },
+      {
+        "id": "50082010",
+        "author": "niztk",
+        "parent": "50081963",
+        "url": "https://news.ycombinator.com/item?id=50082010",
+        "evidence": "Thanks. Well, accuracy depends on the code that owns the ledger, which does all the math against the app data model. I also added checks that compare a couple of readings of the question through the same calculation layer. Since there are also many other moving parts coupled with the ledger (categories, rules, transfers, refunds), it just felt better to own ",
+        "selection": "ranked_public_reply"
+      },
+      {
+        "id": "50081052",
+        "author": "lathiat",
+        "parent": "50080275",
+        "url": "https://news.ycombinator.com/item?id=50081052",
+        "evidence": "I love the idea of local only apps woth no network comms. I do wish macOS had some way you could enforce that out of the box though. Rather than trust the claims of the developer. Another app I love that does the same. Queryable which lets you natural language search your photos on device on iOS and predates most of the current AI craze (2022) and also apple",
+        "selection": "ranked_public_reply"
+      },
+      {
+        "id": "50081125",
+        "author": "unsnap_biceps",
+        "parent": "50081052",
+        "url": "https://news.ycombinator.com/item?id=50081125",
+        "evidence": "Little snitch is the best solution for firewalling off applications from the network",
+        "selection": "ranked_public_reply"
+      },
+      {
+        "id": "50082106",
+        "author": "codebje",
+        "parent": "50080275",
+        "url": "https://news.ycombinator.com/item?id=50082106",
+        "evidence": "I gave it a go and imported a transaction CSV from my bank - National Australia Bank. 150 row CSV. The Description import column was assigned to the Merchant Name CSV column (the Merchant import column was also assigned to this CSV column) and as a result 25 rows were going to be ignored. Here's the CSV header row: Date,Amount,Account Number,,Transaction Typ",
+        "selection": "ranked_public_reply"
+      },
+      {
+        "id": "50082130",
+        "author": "niztk",
+        "parent": "50082106",
+        "url": "https://news.ycombinator.com/item?id=50082130",
+        "evidence": "Thanks for giving it a spin. Will fix the mapping.",
+        "selection": "ranked_public_reply"
+      }
+    ]
+  },
+  {
+    "id": "real-457a1ac27774d000c352270a",
+    "expected": "borderline",
+    "synthetic": false,
+    "title": "I posted to HN, and then my website was flooded with AI bot traffic",
+    "raw_excerpt": "",
+    "source_url": "https://www.sammystraus.com/",
+    "source_type": "hacker_news",
+    "author": "sammy0910",
+    "published_at": "2026-10-13T15:25:50+00:00",
+    "discussion_comments": []
+  },
+  {
+    "id": "real-77922721952f2d10019f7be9",
+    "expected": "borderline",
+    "synthetic": false,
+    "title": "Show HN: Proofsource. Find where AI leaves you out. And Fix it",
+    "raw_excerpt": "Hi HN. I am Lokesh. I built Proofsource as an internal tool to help my finance ERP product , Rivane, to gain visibility into AI engines like ChatGPT, Claude, Perplexity, Google AI mode and such. But when I talked about it to my friends, they also saw value in it and it became a product of itself. And now proofsource had 5 paying customers(paying $1500pm in total) in the first week itself and more than 60 brands used it to get their visibility since we launched out of beta last week. What proofsource does is that it queries ChatGPT, Perplexity, Claude and Google AI Overviews using the questions",
+    "source_url": "https://proofsource.co/",
+    "source_type": "hn_story_search",
+    "author": "lcbasu",
+    "published_at": "2026-10-13T06:51:04+00:00",
+    "discussion_comments": []
+  },
+  {
+    "id": "real-af336fab5353ef1c0e86ef9a",
+    "expected": "borderline",
+    "synthetic": false,
+    "title": "web-edit 0.1a0",
+    "raw_excerpt": "Release: web-edit 0.1a0 I was working on a project from my phone using Codex Remote when I found myself wanting to edit a credentials file without round-tripping those credentials through the LLM itself. So... I had Codex and GPT-6 Astra Extra High build this Python web app which provides a web UI for viewing and editing files in a folder. It's intended to be run over Tailscale, so I can have an agent start this running and then edit files via my Tailscale network directly from my phone. Here's the interface for browsing files in a folder: Editing uses CodeMirror 6 - I was going to use Monaco",
+    "source_url": "https://simonwillison.net/2026/Oct/12/web-edit/",
+    "source_type": "rss",
+    "author": null,
+    "published_at": "2026-10-12T15:54:36+00:00",
+    "discussion_comments": []
+  },
+  {
+    "id": "real-c63d80330c9fcf0f51bc1f14",
+    "expected": "borderline",
+    "synthetic": false,
+    "title": "llm-gemini 0.35",
+    "raw_excerpt": "Release: llm-gemini 0.35 I added support to llm-gemini for the new Gemini 4 Argon model, made available today via the Gemini API and for customers of their $100/month subscription plan. Here are the low, medium and high pelicans . As expected, they are all excellent: Gemini has a track record of producing great SVGs, and are the only lab where I know their staff have invested in SVG specifically (and who have boasted about their pelicans before.) Here's the \"high\" illustration, which cost me 17.166 cents: The pricing is interesting. At launch, Argon is $2/million input and $10/million output -",
+    "source_url": "https://simonwillison.net/2026/Oct/13/llm-gemini/",
+    "source_type": "rss",
+    "author": null,
+    "published_at": "2026-10-13T22:28:54+00:00",
+    "discussion_comments": []
+  },
+  {
+    "id": "real-d1c2c9c1c52abc759699e9de",
+    "expected": "borderline",
+    "synthetic": false,
+    "title": "Show HN: Tern – Native macOS SSH Client in Rust/GPUI (76 MB vs. Tabby's 580 MB)",
+    "raw_excerpt": "On my day to day work i mostly use termius and tabby as multi project ssh tool with vault, somehow most of the features i use are just vault and password manager, and they are bulky, takes about 500mb ram for such simple program, and termius wants paid plan just to sync the vault. There are free tools but their ux is not at that level. So i built my own simple ssh client with a little bit of my taste added, it has vault, password manager, repo sync, background gallery etc. I have been working with rust on my hobby projects about 2-3 years and really got headaches from it, because its really ha",
+    "source_url": "https://github.com/your-moon/tern",
+    "source_type": "hn_story_search",
+    "author": "moon11s",
+    "published_at": "2026-10-13T19:37:24+00:00",
+    "discussion_comments": []
+  },
+  {
+    "id": "real-f00d6e3d3a402cc36fc3e51a",
+    "expected": "borderline",
+    "synthetic": false,
+    "title": "ttok 1.0",
+    "raw_excerpt": "Release: ttok 1.0 I released ttok 0.4 , ran uv tool upgrade ttok , piped a file into the new version... and realized that it was defaulting to the GPT-4 tokenizer when it should very clearly default to GPT-5/GPT-6 instead! I figured switching the default was a reasonable excuse to finally ship a 1.0. OpenAI haven't actually confirmed that GPT-6 uses the same tokenizer as the GPT-5 family yet - there's an angry issue about it - but I found this commit by William Liu which reports on an experiment he ran confirming that the tokenizers are likely the same: All seven GPT models (5.5, 5.6 Sol/Terra",
+    "source_url": "https://simonwillison.net/2026/Oct/9/ttok/",
+    "source_type": "rss",
+    "author": null,
+    "published_at": "2026-10-09T00:34:43+00:00",
+    "discussion_comments": []
+  },
+  {
+    "id": "real-f929ede4713633f125b8b78a",
+    "expected": "borderline",
+    "synthetic": false,
+    "title": "Show HN: XY Music Notation",
+    "raw_excerpt": "I've been playing around with a new kind of isomorphic music keyboard that uses a base-12 notation, and wanted some sheet music to learn some new music for it. The idea is to represent each note in 12-TET as a number, so N ∈ (0,1,2,3,4,5,6,7,8,9,X,Y). I used codex to build a music score rendering backend based on MuseScore with custom note heads that display the pitch class of each note. I've found it pretty helpful for learning how to play my own instrument, so wanted to share in case anyone else was interested.",
+    "source_url": "https://music.xy.dev/",
+    "source_type": "hacker_news",
+    "author": "jmole",
+    "published_at": "2026-10-13T17:43:05+00:00",
+    "discussion_comments": []
   }
 ]

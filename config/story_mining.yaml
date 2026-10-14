@@ -5,6 +5,28 @@ fast_filter:
   limit: 50
   minimum_semantic_candidates: 10
   maximum_semantic_candidates: 20
+evidence_probability: 0.65
+structure_fields:
+  who: A specific person or narrow real team involved. Copy identifying evidence; company, hypothetical users and submission author alone are NONE.
+  identity: A stated human role of the actor, not a company name or hypothetical audience.
+  did_what: A specific action actually performed by that same actor. A feature promise, announcement or hypothetical action is NONE.
+  why: The actor's explicitly stated reason for that action; no inferred motives.
+  what_happened: A reported outcome or concrete consequence of that same actor's action. A fear is a reported feeling, not an actual loss. Hypothetical benefits are NONE.
+  unexpected_part: An explicit expectation contradicted by a reported outcome; no manufactured twist.
+  what_changed: A stated change to the actor's activity or situation.
+  what_it_cost: A stated personal expense or loss; funding numbers are NONE.
+  what_they_gained: A stated realized gain; marketing promises are NONE.
+  before_state: An explicitly stated prior condition, with a later condition in the same account.
+  after_state: An explicitly stated later condition, with a prior condition in the same account.
+  conflict: A genuine evidenced tradeoff or disagreement with the sides actually supplied. No generic 'but' or hypothetical opposition.
+  emotion: The actor's own explicitly reported feeling. Do not generate worry for them.
+cluster_themes:
+  ai_first_work: People report their employer requiring AI-first work.
+  skill_loss: People report changed learning or concerns about losing their own skills through AI use.
+  automated_traffic: Site owners report bot traffic after publishing.
+  creator_income: Creators report AI changing their own earned income.
+  ai_cost: People report actual AI operating costs or tradeoffs.
+  solo_building: Individuals report building a product using AI and a concrete outcome.
 weights:
   first_person: 15
   concrete_actor: 15
@@ -27,7 +49,7 @@ identity_terms:
   求职者: [job seeker, interview, hiring, 求职, 面试]
   消费者: [customer, user, privacy, scam, 用户, 隐私, 消费者]
 action_terms: [built, tried, stopped, switched, used, posted, noticed, lost, made, started, quit, hired, fired, wrote, launched, 试了, 停止, 转向, 使用, 发了, 发现, 失去, 做了, 开始, 离职, 招聘]
-consequence_terms: [result, outcome, earned, sale, paid, gained, failed, worried, fear, cost, revenue, salary, traffic, bill, price, broke, changed, lost, result, 结果, 后来, 担心, 成本, 收入, 工资, 流量, 爆了, 改变, 失去, 失败]
+consequence_terms: [result, outcome, saved, spent, helpful, found, got, became, earned, sale, paid, gained, failed, worried, fear, cost, revenue, salary, traffic, bill, price, broke, changed, lost, 结果, 后来, 担心, 成本, 收入, 工资, 流量, 爆了, 改变, 失去, 失败]
 before_after_terms: [before, now, used to, previously, today, after, before/after, 以前, 现在, 原来, 后来, 之后]
 conflict_terms: [but, however, versus, while, instead, worry, concern, replaced, privacy, cost, 但, 却, 然而, 担心, 替代, 隐私, 成本, 反而]
 first_person_terms: [i, i'm, ive, my, me, we, our, my team, my boss, my clients, i built, i tried, i stopped, i lost, i made, i got, i switched, i used, i posted, i noticed, 我, 我的, 我们, 我试了, 我开始, 我发现]

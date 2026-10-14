@@ -5,10 +5,12 @@ result, conflict, trend, or comment. The local score controls cost and review or
 """
 
 import hashlib
+import json
 import re
 from collections import defaultdict
 from datetime import UTC, datetime, timedelta
 
+from .editorial_screening import POLICY, SemanticJudge, evidence_spans
 from .models import ContentItem, StoryCandidate
 
 
@@ -24,7 +26,12 @@ def _terms(config: dict, key: str) -> list[str]:
 
 def _has(text: str, terms: list[str]) -> bool:
     lowered = text.casefold()
-    return any(term in lowered for term in terms)
+    return any(
+        bool(re.search(r"(?<!\w)" + re.escape(term) + r"(?!\w)", lowered))
+        if re.search(r"[a-z]", term)
+        else term in lowered
+        for term in terms
+    )
 
 
 def _spans(item: ContentItem) -> list[str]:
@@ -66,7 +73,7 @@ def _identity_groups(text: str, config: dict) -> list[str]:
     return [
         identity
         for identity, terms in config.get("identity_terms", {}).items()
-        if any(str(term).casefold() in lowered for term in terms)
+        if _has(lowered, [str(term).casefold() for term in terms])
     ]
 
 
@@ -123,6 +130,8 @@ def _number_signal(text: str) -> bool:
 
 
 def _source_tier(item: ContentItem, source_priority: dict | None) -> str:
+    if item.metadata.get("source_tier") in {"S", "A", "B", "C"}:
+        return item.metadata["source_tier"]
     if not source_priority:
         return "C"
     for tier, definition in source_priority.get("tiers", {}).items():
@@ -138,12 +147,20 @@ def fallback_story_score(
     now = now or datetime.now(UTC)
     text = _text(item)
     spans = _spans(item)
+    public_comments = item.metadata.get("discussion_comments", [])
+    comment_texts = [str(c.get("evidence", "")) for c in public_comments]
     discussion = _discussion(item)
     before, after = _before_after(spans, config)
-    first = _first_person(text, config)
-    identity = bool(_identity_groups(text, config))
-    action = bool(_action_span(spans, config))
-    consequence = bool(_consequence_span(spans, config))
+    first = any(_first_person(account, config) for account in [text, *comment_texts])
+    identity = any(_identity_groups(account, config) for account in [text, *comment_texts])
+    action_result = any(
+        _has(account, _terms(config, "action_terms"))
+        and _has(account, _terms(config, "consequence_terms"))
+        for account in [text, *comment_texts]
+    )
+    consequence = any(
+        _has(account, _terms(config, "consequence_terms")) for account in [text, *comment_texts]
+    )
     comments = any(v["is_first_person"] for v in discussion)
     raw_comments = []
     for key in ("comments", "replies"):
@@ -151,16 +168,20 @@ def fallback_story_score(
         if isinstance(values, list):
             raw_comments.extend(str(value) for value in values)
     comments = comments or any(_first_person(value, config) for value in raw_comments)
+    comments = comments or any(_first_person(value, config) for value in comment_texts)
     viewpoints = len({v["stance"] for v in discussion if v["stance"]}) >= 2
     evidence = len(spans) >= 2 or item.verification_state == "verified"
     fresh = bool(item.published_at and now - timedelta(days=7) <= item.published_at <= now)
     flags = {
         "first_person": float(first),
         "specific_identity": float(identity),
-        "action_result_structure": float(action and consequence),
+        "action_result_structure": float(action_result),
         "consequence_terms": float(consequence),
         "discussion_engagement": float(
-            bool(item.engagement_metrics) or bool(discussion) or bool(raw_comments)
+            item.engagement_metrics.get("comments", 0) > 0
+            or bool(discussion)
+            or bool(raw_comments)
+            or bool(comment_texts)
         ),
         "before_after_signal": float(bool(before and after)),
         "number_detail_density": float(_number_signal(text)),
@@ -218,7 +239,6 @@ def mine_story_candidate(
     consequence = _consequence_span(spans, config)
     conflict = _conflict_span(spans, config)
     identities = _identity_groups(text, config)
-    first = _first_person(text, config)
     fallback, _ = fallback_story_score(item, config, now)
     richness = story_richness_score(item, config, now)
     evidence = list(
@@ -226,11 +246,8 @@ def mine_story_candidate(
             [item.title, *[s for s in (action, consequence, before, after, conflict) if s]]
         )
     )
-    person = (
-        item.author if first and item.author else ("第一人称作者（需核实身份）" if first else "")
-    )
-    if not person and identities:
-        person = identities[0]
+    # A role match is a triage hint, not an observed actor; HN submitter != blog author.
+    person = next((span for span in spans if _first_person(span, config)), "")
     if not (person and action and consequence):
         story_type = "weak_news"
     elif before and after:
@@ -306,6 +323,7 @@ def enrich_story_items(
             if candidate.story_strength >= config["fast_filter"]["minimum_score"]
             else "weak"
         )
+        copy.first_person_signal = [span for span in _spans(item) if _first_person(span, config)]
         copy.metadata["story_mining"] = {
             "tier": _source_tier(copy, source_priority),
             "flags": fallback_story_score(copy, local_config, now)[1],
@@ -319,24 +337,38 @@ def enrich_story_items(
 
 def _assign_clusters(items: list[ContentItem], candidates: list[StoryCandidate]) -> None:
     buckets: dict[str, list[int]] = defaultdict(list)
-    for index, candidate in enumerate(candidates):
-        tokens = re.findall(r"[a-z]{4,}|[\u4e00-\u9fff]{2,}", candidate.context.casefold())
-        key = " ".join(sorted(set(tokens[:6])))
+    for index, _candidate in enumerate(candidates):
+        key = items[index].metadata.get("story_theme", "")
         if key:
             buckets[key].append(index)
     for key, indexes in buckets.items():
         if len(indexes) < 2:
             continue
+        # Duplicate links/reposts do not establish independent cases. Only explicit
+        # distinct actor evidence from completed mining can upgrade claim scope.
+        independent = []
+        seen = set()
+        for index in indexes:
+            actor = items[index].metadata.get("case_author")
+            url = items[index].metadata.get("case_url")
+            if actor and actor.casefold() not in seen and url not in seen:
+                independent.append(index)
+                seen.update((actor.casefold(), url))
         cluster_id = "cluster-" + hashlib.sha1(key.encode()).hexdigest()[:10]
-        cases = [candidates[index].id for index in indexes]
+        cases = [candidates[index].id for index in independent]
         for index in indexes:
             candidates[index].story_cluster_id = cluster_id
-            candidates[index].story_type = "multiple_cases"
+            if len(independent) >= 2:
+                candidates[index].claim_scope = "multiple_cases"
+                items[index].claim_scope = "multiple_cases"
             items[index].story_cluster_id = cluster_id
             items[index].story_cluster = {
+                "story_cluster_id": cluster_id,
                 "theme": key,
                 "independent_cases": cases,
-                "shared_pattern": "",
+                "shared_pattern": key,
+                "related_cases": [candidates[i].id for i in indexes],
+                # A concern is not evidence that two cases contradict each other.
                 "conflicting_cases": [],
             }
 
@@ -355,7 +387,8 @@ def fast_story_filter(
     target = min(limit, fast_config.get("target_minimum", 30))
     if len(eligible) < target:
         selected_ids = {item.id for item in eligible}
-        eligible.extend(item for item in ranked if item.id not in selected_ids)
+        reserve = [item for item in ranked if item.id not in selected_ids]
+        eligible.extend(reserve[: target - len(eligible)])
     eligible.sort(
         key=lambda item: (-item.fallback_story_score, -item.story_richness_score, item.id)
     )
@@ -377,3 +410,337 @@ def story_semantic_filter(items: list[ContentItem], config: dict) -> list[Conten
 def story_queries(config: dict) -> list[str]:
     """Return configured search combinations without embedding provider-specific queries."""
     return list(dict.fromkeys(config.get("story_queries", [])))
+
+
+def story_spans(item):
+    spans = evidence_spans(item)
+    for index, comment in enumerate(item.metadata.get("discussion_comments", [])):
+        if comment.get("evidence") and comment.get("url"):
+            spans[f"c{index}"] = comment["evidence"]
+    return spans
+
+
+def story_request(item, config, model):
+    spans = story_spans(item)
+    post = {key: text for key, text in spans.items() if key.startswith("s")}
+    accounts = [("post", post)] + [
+        (key, {key: text}) for key, text in spans.items() if key.startswith("c")
+    ]
+
+    def account_strength(account):
+        text = " ".join(account[1].values())
+        return (
+            20 * _first_person(text, config)
+            + 15 * _has(text, _terms(config, "action_terms"))
+            + 15 * _has(text, _terms(config, "consequence_terms"))
+            + 10 * bool(_identity_groups(text, config))
+            + min(len(text), 600) / 100
+        )
+
+    # Independent field questions cannot coordinate actor selection. Fix ONE
+    # evidence account first, then let every field select only within it.
+    primary_id, primary_spans = max(accounts, key=account_strength)
+    questions = {
+        field: {
+            "type": "choice",
+            "instructions": POLICY
+            + description
+            + " All story fields must describe ONE actual actor and action-result chain. "
+            "Do not combine a post author's action with a commenter's outcome.",
+            "criteria": {"NONE": "Not stated for this actor", **primary_spans},
+        }
+        for field, description in config["structure_fields"].items()
+    }
+    for key, instruction in {
+        "personal_event": (
+            "Does the evidence describe a real specific person's or small team's OWN lived "
+            "experience with an action and a reported result? Company announcements, funding, "
+            "future plans, generic users, feature promises, hypothetical benefits and pure "
+            "technology specs are NO. First-person corporate 'we' is NOT a personal account."
+        ),
+        "realized_result": (
+            "Does the same actual actor report what actually happened after their action? "
+            "An implemented personal tool can be a result, but a plan, goal, ability claim, "
+            "company deployment announcement or intended benefit alone is NO."
+        ),
+        "actual_conflict": (
+            "Is there a concrete reported disagreement or tradeoff involving the actor? "
+            "A routine action, word 'but', feature list or imagined conflict is NO."
+        ),
+        "actual_before_after": (
+            "Does the actor's account explicitly supply BOTH a prior state and a changed "
+            "later state? Generic 'now', launch dates or repeated sentences alone are NO."
+        ),
+    }.items():
+        questions[key] = {
+            "type": "noul",
+            "instructions": POLICY + "Evaluate ONLY `primary_account` and its `primary_spans`; "
+            "do not borrow another person's experience from discussion spans. " + instruction,
+        }
+    questions["theme"] = {
+        "type": "choice",
+        "instructions": POLICY + "Select the phenomenon evidenced by an actual personal account; "
+        "do not classify company promises.",
+        "criteria": {"NONE": "No supported phenomenon", **config.get("cluster_themes", {})},
+    }
+    # A stance is a label on a real bounded excerpt, never a made-up comment.
+    for key in spans:
+        if key.startswith("c"):
+            questions[f"view_{key}"] = {
+                "type": "choice",
+                "instructions": POLICY
+                + f"Classify the actually expressed viewpoint in span {key}. "
+                "Other comments may supply context, but do not invent support/opposition.",
+                "criteria": {
+                    "NONE": "No clear view",
+                    "benefit": "Reports benefit",
+                    "concern": "Reports concern or disadvantage",
+                    "mixed": "Explicit tradeoff",
+                    "question": "Asks a real question",
+                    "other": "Other stated viewpoint",
+                },
+            }
+    return {
+        "model": model,
+        "state": {
+            "item": {
+                "title": item.title,
+                "url": item.canonical_url,
+                "author_note": "submitter is not necessarily original author",
+                "verification": item.verification_state,
+            },
+            "spans": spans,
+            "primary_account": primary_id,
+            "primary_spans": primary_spans,
+            "reader_identity_pool": config.get("reader_identities", []),
+        },
+        "questions": questions,
+    }
+
+
+class StoryJudge(SemanticJudge):
+    def __init__(self, provider_config, story_config, store, http=None):
+        super().__init__(provider_config, {}, store, http)
+        self.story_config = story_config
+
+    def prepare(self, item):
+        request = story_request(item, self.story_config, self.config["provider"]["model"])
+        digest = hashlib.sha256(
+            json.dumps(request, sort_keys=True, ensure_ascii=False).encode()
+        ).hexdigest()
+        return request, f"story_judgment:{digest}"
+
+
+def compose_story(item, response, config, mode="live", error=None):
+    result = item.model_copy(deep=True)
+    result.metadata["story_semantic"] = {"mode": mode, "error": error}
+    result.claim_scope = "unassessed"
+    if response is None:
+        result.story_mining_status = "needs_review"
+        result.metadata["story_semantic"]["note"] = "Local structure is a triage hypothesis only."
+        return result
+    spans = story_spans(item)
+    minimum = config.get("evidence_probability", 0.65)
+    fields, selected_ids = {}, {}
+    for field in config["structure_fields"]:
+        answer = response.answers[field]
+        key = answer.choice
+        if (
+            key in spans
+            and 1 - answer.probabilities.get("NONE", 1) >= minimum
+            and answer.probabilities.get(key, 0) >= 0.35
+        ):
+            fields[field], selected_ids[field] = spans[key], key
+        else:
+            fields[field] = ""
+    # All three core fields must come from the same firsthand account.
+    origins = {
+        ("post" if selected_ids.get(k, "").startswith("s") else selected_ids.get(k))
+        for k in ("who", "did_what", "what_happened")
+        if fields[k]
+    }
+    complete = (
+        all(fields[k] for k in ("who", "did_what", "what_happened"))
+        and len(origins) == 1
+        and response.answers["personal_event"].noul >= minimum
+        and response.answers["realized_result"].noul >= minimum
+    )
+    borderline = (
+        len(origins) == 1
+        and response.answers["personal_event"].noul >= 0.5
+        and response.answers["realized_result"].noul >= 0.5
+        and all(fields[k] for k in ("who", "did_what", "what_happened"))
+    )
+    if not complete:
+        fields["what_happened"] = ""
+    if response.answers["actual_conflict"].noul < minimum:
+        fields["conflict"] = ""
+    if (
+        response.answers["actual_before_after"].noul < minimum
+        or fields["before_state"] == fields["after_state"]
+    ):
+        fields["before_state"] = fields["after_state"] = ""
+    core_origin = next(iter(origins), None) if len(origins) == 1 else None
+    for field, selected in selected_ids.items():
+        origin = "post" if selected.startswith("s") else selected
+        if field not in {"who", "did_what", "what_happened"} and origin != core_origin:
+            fields[field] = ""
+    result.story_structure = fields
+    result.story_conflict = fields["conflict"]
+    result.claim_scope = "single_case" if complete else "unassessed"
+    viewpoints = []
+    for index, comment in enumerate(item.metadata.get("discussion_comments", [])):
+        answer = response.answers.get(f"view_c{index}")
+        if answer and answer.choice != "NONE" and answer.probabilities.get(answer.choice, 0) >= 0.5:
+            viewpoints.append(
+                {
+                    **comment,
+                    "stance": answer.choice,
+                    "is_first_person": _first_person(comment["evidence"], config),
+                }
+            )
+    result.discussion_viewpoints = viewpoints
+    dimensions = {
+        "first_person": float(
+            any(_first_person(value, config) for value in fields.values() if value)
+        ),
+        "concrete_actor": float(bool(fields["who"])),
+        "specific_action": float(bool(fields["did_what"])),
+        "consequence": float(bool(fields["what_happened"])),
+        "before_after": float(
+            bool(
+                fields["before_state"]
+                and fields["after_state"]
+                and fields["before_state"] != fields["after_state"]
+            )
+        ),
+        "conflict": float(bool(fields["conflict"])),
+        "numbers": float(_number_signal(" ".join(fields.values()))),
+        "first_person_comments": float(any(v["is_first_person"] for v in viewpoints)),
+        "multiple_viewpoints": float(len({v["stance"] for v in viewpoints}) > 1),
+        "evidence_quality": float(len(set(v for v in fields.values() if v)) > 1),
+    }
+    result.story_richness_score = round(
+        sum(dimensions[k] * w for k, w in config["weights"].items()), 2
+    )
+    if not complete:
+        result.story_richness_score = min(result.story_richness_score, 39)
+    result.story_mining_status = (
+        "candidate"
+        if complete and result.story_richness_score >= 40
+        else "needs_review"
+        if borderline
+        else "weak"
+    )
+    theme = response.answers["theme"]
+    if complete and theme.choice != "NONE" and theme.probabilities.get(theme.choice, 0) >= 0.5:
+        result.metadata["story_theme"] = theme.choice
+    result.metadata["story_semantic"].update(
+        fields=selected_ids,
+        dimensions=dimensions,
+        gates={
+            key: response.answers[key].noul
+            for key in (
+                "personal_event",
+                "realized_result",
+                "actual_conflict",
+                "actual_before_after",
+            )
+        },
+    )
+    actor_id = selected_ids.get("who", "")
+    if actor_id.startswith("c"):
+        comment = item.metadata["discussion_comments"][int(actor_id[1:])]
+        result.metadata["case_author"] = comment.get("author")
+        result.metadata["case_url"] = comment.get("url")
+    elif (
+        item.source_type in {"manual", "personal_blog", "developer_blog", "creator_post"}
+        or item.metadata.get("evidence_role") == "personal_author_account"
+    ):
+        result.metadata["case_author"] = item.author
+        result.metadata["case_url"] = item.canonical_url
+    elif item.canonical_url == item.metadata.get("discussion_url"):
+        # A self-post has its own author; a submitted external link does not.
+        result.metadata["case_author"] = item.author
+        result.metadata["case_url"] = item.canonical_url
+    return result
+
+
+def candidate_from_item(item):
+    fields = item.story_structure
+    semantic = item.metadata.get("story_semantic", {})
+    return StoryCandidate(
+        id=f"story-{item.id}",
+        source_item_ids=[item.id],
+        primary_person=fields.get("who", ""),
+        action=fields.get("did_what", ""),
+        result=fields.get("what_happened", ""),
+        context=item.title,
+        identity_group=[fields["identity"]] if fields.get("identity") else [],
+        before_state=fields.get("before_state", ""),
+        after_state=fields.get("after_state", ""),
+        change_event=fields.get("what_changed", ""),
+        conflict=item.story_conflict,
+        surprise=fields.get("unexpected_part", ""),
+        money_signal=fields.get("what_it_cost", ""),
+        emotion_signal=fields.get("emotion", ""),
+        evidence_spans=list(dict.fromkeys([item.title, *[v for v in fields.values() if v]])),
+        discussion_evidence=item.discussion_viewpoints,
+        engagement=item.engagement_metrics,
+        claim_scope=item.claim_scope,
+        verification_state=item.verification_state,
+        story_strength=item.story_richness_score,
+        story_value=item.story_richness_score,
+        fallback_story_score=item.fallback_story_score,
+        source_tier=item.metadata.get("story_mining", {}).get("tier", "C"),
+        source_authority=item.source_reliability,
+        evidence_gaps=[
+            f"Missing: {key}"
+            for key in (
+                "who",
+                "did_what",
+                "what_happened",
+                "before_state",
+                "after_state",
+                "identity",
+            )
+            if not fields.get(key)
+        ]
+        + (
+            ["Firsthand account is not independently verified"]
+            if item.verification_state != "verified"
+            else []
+        ),
+        human_trigger_score=item.human_trigger_score,
+        viral_potential=item.viral_potential,
+        story_type=(
+            "needs_review"
+            if semantic.get("mode") == "unavailable"
+            else "before_after"
+            if fields.get("before_state") and fields.get("after_state")
+            else "single_case"
+        ),
+    )
+
+
+def discover_stories(items, discovery_config, config, priority, now):
+    # Exact URL deduplication preserves separately authored cases with similar titles.
+    by_url = {}
+    for item in items:
+        if item.published_at is None:
+            if item.source_type != "manual":
+                continue
+        elif not (
+            0
+            <= (now - item.published_at).total_seconds()
+            <= discovery_config["max_age_days"] * 86400
+        ):
+            continue
+        existing = by_url.get(item.canonical_url)
+        if existing is None or len(item.metadata.get("discussion_comments", [])) > len(
+            existing.metadata.get("discussion_comments", [])
+        ):
+            by_url[item.canonical_url] = item
+    enriched, _ = enrich_story_items(list(by_url.values()), config, priority, now)
+    # No source authority or discovery-score gate precedes story mining.
+    return enriched

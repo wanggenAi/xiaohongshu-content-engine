@@ -118,6 +118,99 @@ def collect_github_search(config, http):
     return items, {}
 
 
+def collect_hn_story_search(config, http):
+    """Public search discovery; bounded original evidence from the official API."""
+    base = "https://hacker-news.firebaseio.com/v0"
+    cutoff = int((datetime.now(UTC) - timedelta(days=config.get("max_age_days", 7))).timestamp())
+    hits, errors = {}, 0
+    for query in config.get("queries", []):
+        try:
+            data = json_get(
+                http,
+                "https://hn.algolia.com/api/v1/search",
+                params={
+                    "query": query.replace(" + ", " "),
+                    "tags": "story",
+                    "numericFilters": f"created_at_i>{cutoff}",
+                    "hitsPerPage": config.get("hits_per_query", 5),
+                },
+            )
+            for hit in data.get("hits", []):
+                hits.setdefault(hit["objectID"], []).append(query)
+        except Exception:
+            errors += 1
+    if errors and not hits:
+        raise RuntimeError("story search unavailable")
+    items = []
+    for index, (identifier, queries) in enumerate(list(hits.items())[: config.get("limit", 80)]):
+        try:
+            post = json_get(http, f"{base}/item/{identifier}.json")
+            if not post or post.get("dead") or post.get("deleted") or post.get("type") != "story":
+                continue
+            original = f"https://news.ycombinator.com/item?id={post['id']}"
+            item = raw_item(
+                config,
+                post.get("url") or original,
+                post["title"],
+                author=post.get("by"),
+                language="en",
+                published_at=datetime.fromtimestamp(post["time"], UTC),
+                raw_excerpt=clean_excerpt(post.get("text", "")),
+                engagement_metrics={
+                    "points": post.get("score", 0),
+                    "comments": post.get("descendants", 0),
+                },
+            )
+            comments = []
+            if index < config.get("comment_stories", 20):
+                for child_id in post.get("kids", [])[: config.get("comments_per_story", 6)]:
+                    try:
+                        child = json_get(http, f"{base}/item/{child_id}.json")
+                        if not child or child.get("deleted") or child.get("dead"):
+                            continue
+                        branch = [child]
+                        for reply_id in child.get("kids", [])[
+                            : config.get("replies_per_comment", 1)
+                        ]:
+                            reply = json_get(http, f"{base}/item/{reply_id}.json")
+                            if reply and not reply.get("deleted") and not reply.get("dead"):
+                                branch.append(reply)
+                        for comment in branch:
+                            excerpt = clean_excerpt(comment.get("text", ""), 360)
+                            if excerpt:
+                                comments.append(
+                                    {
+                                        "id": str(comment["id"]),
+                                        "author": comment.get("by"),
+                                        "parent": str(comment.get("parent", "")),
+                                        "url": f"https://news.ycombinator.com/item?id={comment['id']}",
+                                        "evidence": excerpt,
+                                        "selection": "ranked_public_reply",
+                                    }
+                                )
+                    except Exception:
+                        errors += 1
+            item["metadata"].update(
+                original_url=original,
+                original_platform="hacker_news",
+                discussion_url=original,
+                matched_story_queries=queries,
+                discussion_comments=comments,
+                evidence_scope=(
+                    "source post and bounded public ranked comments; external article not fetched"
+                ),
+                comment_sampling="ranked children plus one reply; no controversy metric available",
+            )
+            items.append(item)
+        except Exception:
+            errors += 1
+    return items, {
+        "item_errors": errors,
+        "search_queries": len(config.get("queries", [])),
+        "comment_excerpts": sum(len(i["metadata"]["discussion_comments"]) for i in items),
+    }
+
+
 def collect_github_releases(config, http):
     items, errors, last_error = [], 0, None
     for repo in config.get("repositories", []):
@@ -175,7 +268,12 @@ def collect_rss(config, http):
             language=feed.feed.get("language", "unknown"),
             tags=[tag.term for tag in entry.get("tags", []) if tag.get("term")][:10],
         )
-        item["metadata"].update(feed_url=config["url"], evidence_scope="publisher RSS excerpt")
+        item["metadata"].update(
+            feed_url=config["url"],
+            evidence_scope="publisher RSS excerpt",
+            source_tier=config.get("source_tier", "B"),
+            evidence_role=config.get("evidence_role", "fact_verification"),
+        )
         items.append(item)
     return items, {"item_errors": errors}
 
@@ -267,6 +365,7 @@ def telegram_batch(config, http, offset: int):
 
 ADAPTERS = {
     "hacker_news": collect_hn,
+    "hn_story_search": collect_hn_story_search,
     "github_search": collect_github_search,
     "github_releases": collect_github_releases,
     "rss": collect_rss,

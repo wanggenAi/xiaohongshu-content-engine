@@ -138,6 +138,8 @@ def human_request(item, config, model):
                 "excerpt": item.raw_excerpt,
                 "author": item.author,
                 "verification_state": item.verification_state,
+                "mined_story": item.story_structure,
+                "discussion_viewpoints": item.discussion_viewpoints,
             },
             "spans": spans,
             "rule": (
@@ -370,6 +372,8 @@ def compose_human(item, response, config, mode="live", error=None):
         result.claim_scope = "single_case"
     if result.claim_scope == "reported_trend" and len(evidence_spans(item)) == 1:
         result.claim_scope = "single_case"
+    if item.claim_scope == "multiple_cases" and item.story_cluster_id:
+        result.claim_scope = "multiple_cases"
     lens_key = result.editorial_value.get("lens")
     titles = config["title_lenses"].get(
         lens_key,
@@ -379,11 +383,10 @@ def compose_human(item, response, config, mode="live", error=None):
             "谁需要为这个变化承担成本或责任？",
         ],
     )
-    qualifier = SCOPE_TEXT[result.claim_scope]
     result.human_title_seeds = [
         {
             "angle": angle,
-            "text": qualifier + title,
+            "text": title,
             "claim_scope": result.claim_scope,
             "evidence_anchor": (
                 result.scene.get("action", "") or item.title

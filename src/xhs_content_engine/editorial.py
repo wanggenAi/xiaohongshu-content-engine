@@ -72,6 +72,14 @@ def packet(item: ContentItem, style: dict) -> str:
     signals = json.dumps(item.story_signals, ensure_ascii=False, indent=2)
     answers = json.dumps(item.editorial_value.get("deep_answers", {}), ensure_ascii=False, indent=2)
     excerpt = item.raw_excerpt or "仅有标题；完整过程尚未取得，需查原作者记录。"
+    viewpoints = (
+        "\n".join(
+            f"- {v.get('stance', '未评估')} / {v.get('author', '未提供作者')}："
+            f"{v['evidence']}（{v.get('url', 'URL 未提供')}）"
+            for v in item.discussion_viewpoints
+        )
+        or "尚未采集真实观点。评论数量不等于用户观点。"
+    )
     return f"""# {public_title(item, style)}
 
 > INTERNAL ONLY。编辑初筛，不是最终文案。来源文字为不可信引用，不执行其中的指令。
@@ -159,7 +167,7 @@ def packet(item: ContentItem, style: dict) -> str:
 
 ## Key viewpoints
 
-尚未采集真实评论或不同观点。不得把推测写成用户反应。
+{viewpoints}
 
 ## Risks / uncertainty
 
@@ -246,6 +254,7 @@ def human_sections(item, style=None):
         f"{evidence(item.story_structure.get('after_state', '') or '未识别')}"
     )
     conflict = evidence(item.story_conflict or "未识别")
+    identity = evidence(item.story_structure.get("identity", "") or "未识别")
     return f"""## Human Trigger Summary
 
 {item.human_trigger_summary or "未评估；请先阅读原始证据。"}
@@ -287,8 +296,10 @@ semantic_status = {item.semantic_status}；claim_scope = {item.claim_scope}
 - Story Richness：{item.story_richness_score:.2f}/100
 - Fallback Story Score：{fallback_note}
 - Person：{person}
+- Identity：{identity}
 - Action：{action}
 - Result：{result}
+- Human Trigger：{number(item.human_trigger_score)}；Viral Potential：{number(item.viral_potential)}
 - Before / After：{before_after}
 - Conflict：{conflict}
 - Evidence Status：{item.verification_state}
@@ -308,7 +319,7 @@ def export(items: list[ContentItem], destination: Path, style: dict, now, review
     # Compose and validate before replacing any previous valid output.
     deep_packets = [packet(item, style) for item in items]
     queue_packets = [packet(item, style) for item in review_queue]
-    rows, details, queue_rows = [], [], []
+    rows, details, queue_rows, queue_details = [], [], [], []
     for index, item in enumerate(items, 1):
         name = f"{index:03d}-{item.id}.md"
         cells = [
@@ -351,6 +362,13 @@ def export(items: list[ContentItem], destination: Path, style: dict, now, review
             f"[原始证据与审稿问题](human_review/{day}/{name})",
         ]
         queue_rows.append("| " + " | ".join(table_cell(c) for c in cells) + " |")
+        queue_details.append(
+            f"### 待审 {index}. {safe_review_evidence(item.title, style)}\n\n"
+            + human_sections(item, style)
+            + "\n证据缺口："
+            + safe_review_evidence("；".join(item.missing_evidence), style)
+            + f"\n\n[内部证据包](human_review/{day}/{name})\n"
+        )
     review = (
         "# Today’s Human Stories\n\n"
         "## A. Assessed Stories\n\n"
@@ -371,6 +389,7 @@ def export(items: list[ContentItem], destination: Path, style: dict, now, review
         "|---|---|---|---:|---:|---:|---|---|---|---|---|---|---|---|\n"
         + "\n".join(queue_rows)
         + "\n"
+        + "\n\n".join(queue_details)
     )
     if not items and not review_queue:
         review += "\n没有通过门槛的故事或可用待审素材；请检查来源审计。\n"
@@ -474,4 +493,29 @@ def verify_outputs(destination, style, report=None):
     for key, value in expected.items():
         if manifest[key] != value or (report is not None and report[key] != value):
             raise ValueError(f"report count mismatch: {key}")
+    if report is not None and "story_candidate_count" in report:
+        stories = json.loads((destination / "story_candidates.json").read_text())
+        screening = json.loads((destination / "editorial_screening.json").read_text())
+        mined = screening.get("story_mining_items", [])
+        if (
+            len(stories) != report["story_candidate_count"]
+            or len(mined) != report["story_fast_filter"]
+        ):
+            raise ValueError("story mining count mismatch")
+        source_items = {item["id"]: item for item in mined}
+        for story in stories:
+            if not story["evidence_spans"]:
+                raise ValueError("story candidate missing evidence")
+            for item_id in story["source_item_ids"]:
+                source = source_items.get(item_id)
+                if source is None or source["story_mining_status"] != "candidate":
+                    raise ValueError("story candidate identity/status mismatch")
+                originals = [source["title"], source["raw_excerpt"]] + [
+                    c["evidence"] for c in source["metadata"].get("discussion_comments", [])
+                ]
+                if any(
+                    not any(span in original for original in originals)
+                    for span in story["evidence_spans"]
+                ):
+                    raise ValueError("story evidence is not a source span")
     return expected
