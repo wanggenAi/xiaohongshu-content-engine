@@ -1,0 +1,1847 @@
+{
+  "generated_at": "2026-10-14T14:39:09.144564+00:00",
+  "candidate_count": 40,
+  "assessed_candidate_count": 39,
+  "provider_modes": {
+    "live": 39,
+    "unavailable": 1
+  },
+  "unique_pool_count": 365,
+  "current_24h_pool_count": 189,
+  "lane_counts": {
+    "GLOBAL_HOT_TOPIC": 23,
+    "BIG_PERSON": 3,
+    "VIRAL_DISCUSSION": 3,
+    "HUMAN_STORY": 0,
+    "UTILITY_OPPORTUNITY": 9,
+    "WOW_WEIRD_INTERNET": 2
+  },
+  "story_mining_count": 7,
+  "decision": "NO_PUBLISH_TODAY",
+  "posting_performed": false,
+  "policy": "No best-of-bad-batch. Story Mining is one lane. Never publish from research/deep ranking. User requested no publication this round.",
+  "top20": [
+    {
+      "id": "4bfbecf3d5e2506741d7c1f3",
+      "feedback_candidate_id": null,
+      "event_key": "apple-homeview",
+      "topic": "苹果家庭屏幕识别人，AI进入客厅",
+      "source_title": "Apple HomeView",
+      "lane": "GLOBAL_HOT_TOPIC",
+      "source_url": "https://www.apple.com/apple-homeview/",
+      "published_at": "2026-10-13T13:02:12+00:00",
+      "evidence_status": "primary_source_checked",
+      "engagement_metrics": {
+        "points": 740,
+        "comments": 870
+      },
+      "engagement_evidence": [],
+      "heat_scope": "observed_source_metrics",
+      "engagement_observed_at": null,
+      "stop_scroll_reason": "同一块家庭屏幕能识别最多6个人，各自看到自己的内容，谁会放心让它进客厅？",
+      "why_chinese_users_care": "家庭生活、共享屏幕和个人隐私；英语先行，11月13日开始供应，不暗示国内今天可用。",
+      "proposed_headline": "苹果这块屏幕，能认出一家6口",
+      "china_relevance": "家庭生活、共享屏幕和个人隐私；英语先行，11月13日开始供应，不暗示国内今天可用。",
+      "semantic_status": "live",
+      "semantic_error": null,
+      "mass_appeal_score": 77.61,
+      "human_trigger_score": 88.5,
+      "viral_potential": 75.0,
+      "social_heat": 100,
+      "recognizable_entity": 13.69,
+      "publishability_score": 78.05,
+      "score_confidence_pass": true,
+      "mass_appeal_dimensions": {
+        "recognizable_entity": 13.69,
+        "immediate_understandability": 14.59,
+        "personal_stakes": 11.03,
+        "emotional_charge": 10.24,
+        "china_information_gap": 2.5,
+        "visual_headline_power": 7.57,
+        "social_heat": 15.0,
+        "freshness": 3
+      },
+      "headline_options": [
+        "苹果这块屏幕，能认出一家6口",
+        "苹果的新屏幕，认人后才显示内容",
+        "同一块苹果屏幕，全家看到的不一样",
+        "苹果把AI助手，搬进了客厅",
+        "一块屏幕认6个人，苹果想干什么",
+        "苹果这次卖的屏幕，是给全家用的",
+        "苹果家庭屏幕：方便，还是不放心",
+        "一家人共用AI，隐私怎么分开",
+        "苹果新设备，先认出你再显示内容",
+        "AI进客厅，先过一家人的隐私关",
+        "苹果的AI屏幕，为什么要认出你",
+        "6个人共用一块屏幕，会串隐私吗",
+        "苹果把家庭AI，做成了7英寸屏幕",
+        "家里多一块AI屏幕，你会放心吗",
+        "苹果家庭屏幕，能认脸也能认声音",
+        "苹果想让全家共用AI，但内容分开",
+        "苹果客厅新屏幕，Siri先只说英语",
+        "家里的AI助手，苹果准备这样做",
+        "苹果新屏幕：一家6口，各看各的",
+        "让AI进家门，苹果先解决认人问题"
+      ],
+      "stop_scroll_test": "FAIL",
+      "non_tech_reader_test": "PASS",
+      "evidence_test": "FAIL",
+      "title_potential_test": "FAIL",
+      "contrarian_check": "PASS",
+      "news_class": "PURE_NEWS",
+      "verdict": "REVIEW_ONLY",
+      "gate_failures": [
+        "stop_scroll_failed_or_unknown",
+        "evidence_failed_or_unknown",
+        "title_potential_failed_or_unknown"
+      ],
+      "blind_click_status": "cache",
+      "blind_click_error": null,
+      "blind_click_winner": "同一块苹果屏幕，全家看到的不一样",
+      "blind_click_judgment": {
+        "type": "choice",
+        "score": null,
+        "confidence": 0.19,
+        "choice": "2",
+        "noul": null,
+        "probabilities": {
+          "0": 0.11,
+          "1": 0.04,
+          "2": 0.23,
+          "3": 0.01,
+          "4": 0.07,
+          "5": 0.0,
+          "6": 0.1,
+          "7": 0.16,
+          "8": 0.0,
+          "9": 0.02,
+          "10": 0.0,
+          "11": 0.13,
+          "12": 0.01,
+          "13": 0.01,
+          "14": 0.01,
+          "15": 0.01,
+          "16": 0.03,
+          "17": 0.0,
+          "18": 0.06,
+          "19": 0.0
+        }
+      }
+    },
+    {
+      "id": "f83ddb49efb54e6d08546f19",
+      "feedback_candidate_id": null,
+      "event_key": "character-bankruptcy",
+      "topic": "AI陪伴平台进入破产出售流程",
+      "source_title": "Character.ai has initiated voluntary Chapter 11 bankruptcy",
+      "lane": "GLOBAL_HOT_TOPIC",
+      "source_url": "https://blog.character.ai/an-update-on-character-ai/",
+      "published_at": "2026-10-13T07:28:34+00:00",
+      "evidence_status": "primary_source_checked",
+      "engagement_metrics": {
+        "points": 325,
+        "comments": 279
+      },
+      "engagement_evidence": [
+        {
+          "url": "https://t.me/aipost/8474",
+          "metrics": {
+            "views": 3240
+          },
+          "observed_at": "2026-10-14T22:33:38.163799+08:00"
+        }
+      ],
+      "heat_scope": "observed_source_metrics",
+      "engagement_observed_at": null,
+      "stop_scroll_reason": "用户仍能聊天，但这家AI陪伴公司找不到继续运营的买家就可能关停。",
+      "why_chinese_users_care": "关系、聊天记录和付费订阅的持续性；不要把商业产品承诺当永久陪伴。",
+      "proposed_headline": "AI朋友还在，公司却申请破产了",
+      "china_relevance": "关系、聊天记录和付费订阅的持续性；不要把商业产品承诺当永久陪伴。",
+      "semantic_status": "live",
+      "semantic_error": null,
+      "mass_appeal_score": 72.15,
+      "human_trigger_score": 81.5,
+      "viral_potential": 76.5,
+      "social_heat": 86.51,
+      "recognizable_entity": 8.77,
+      "publishability_score": 74.17,
+      "score_confidence_pass": false,
+      "mass_appeal_dimensions": {
+        "recognizable_entity": 8.77,
+        "immediate_understandability": 14.85,
+        "personal_stakes": 11.1,
+        "emotional_charge": 11.18,
+        "china_information_gap": 2.52,
+        "visual_headline_power": 7.75,
+        "social_heat": 12.98,
+        "freshness": 3
+      },
+      "headline_options": [
+        "AI朋友还在，公司却申请破产了",
+        "你的AI朋友，也可能突然下线",
+        "AI陪伴公司破产，用户怎么办",
+        "聊天还在继续，公司却在等买家",
+        "AI朋友的未来，取决于一个买家",
+        "每天陪你聊天的AI，也会倒闭？",
+        "AI陪伴平台破产：关系怎么办",
+        "AI不会累，背后的公司会破产",
+        "把AI当朋友前，先看看这件事",
+        "AI朋友背后，公司可能关停",
+        "一段AI关系，会被破产打断吗",
+        "AI陪伴平台申请破产，仍在运营",
+        "聊天记录能导出，陪伴能带走吗",
+        "AI朋友没变，背后的公司变了",
+        "服务还没停，AI陪伴公司先破产了",
+        "公司申请破产，AI朋友会去哪",
+        "对话还在，AI朋友的公司却破产了",
+        "AI陪伴的尽头，也可能是商业问题",
+        "你聊的是AI，依赖的却是一家公司",
+        "AI陪伴平台找买家，找不到会关停"
+      ],
+      "stop_scroll_test": "FAIL",
+      "non_tech_reader_test": "PASS",
+      "evidence_test": "FAIL",
+      "title_potential_test": "FAIL",
+      "contrarian_check": "WARN",
+      "news_class": "PURE_NEWS",
+      "verdict": "REVIEW_ONLY",
+      "gate_failures": [
+        "stop_scroll_failed_or_unknown",
+        "evidence_failed_or_unknown",
+        "title_potential_failed_or_unknown",
+        "programmer_bias_or_unknown",
+        "low_or_missing_score_confidence",
+        "publishability_below_75"
+      ]
+    },
+    {
+      "id": "ab219434ffce4237f1b2c5fb",
+      "feedback_candidate_id": null,
+      "event_key": "gemini-argon",
+      "topic": "机器人看人类视频后，完成连续投掷",
+      "source_title": "Gemini 4 Argon: Built to solve your hardest problems",
+      "lane": "WOW_WEIRD_INTERNET",
+      "source_url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/",
+      "published_at": "2026-10-13T16:00:00+00:00",
+      "evidence_status": "primary_source_checked",
+      "engagement_metrics": {
+        "points": 1371,
+        "comments": 977
+      },
+      "engagement_evidence": [
+        {
+          "url": "https://news.ycombinator.com/item?id=50074869",
+          "metrics": {
+            "points": 225,
+            "comments": 52
+          },
+          "observed_at": "2026-10-14T14:32:15.223856+00:00"
+        },
+        {
+          "url": "https://news.ycombinator.com/item?id=50074869",
+          "metrics": {
+            "points": 225,
+            "comments": 52
+          },
+          "observed_at": "2026-10-14T14:33:19.194493+00:00"
+        },
+        {
+          "url": "https://news.ycombinator.com/item?id=50073879",
+          "metrics": {
+            "points": 1371,
+            "comments": 977
+          },
+          "observed_at": "2026-10-14T14:32:15.219277+00:00"
+        },
+        {
+          "url": "https://news.ycombinator.com/item?id=50073879",
+          "metrics": {
+            "points": 1372,
+            "comments": 977
+          },
+          "observed_at": "2026-10-14T14:33:19.194493+00:00"
+        },
+        {
+          "url": "https://news.ycombinator.com/item?id=50076458",
+          "metrics": {
+            "points": 4,
+            "comments": 0
+          },
+          "observed_at": "2026-10-14T14:33:19.194493+00:00"
+        },
+        {
+          "url": "https://news.ycombinator.com/item?id=50076347",
+          "metrics": {
+            "points": 4,
+            "comments": 0
+          },
+          "observed_at": "2026-10-14T14:33:19.194493+00:00"
+        }
+      ],
+      "heat_scope": "same_event_public_discussion_not_specific_demo_clicks",
+      "engagement_observed_at": "2026-10-14T14:32:15.219277+00:00",
+      "stop_scroll_reason": "Google公开内部测试：机器人看完人类投掷视频，经仿真到实机，连续投中7次。",
+      "why_chinese_users_care": "普通人一眼能懂的学习动作与强视觉变化；不是看一遍就万能，也不是家用机器人已上市。",
+      "proposed_headline": "看完视频，机器人连投中了7次",
+      "china_relevance": "普通人一眼能懂的学习动作与强视觉变化；不是看一遍就万能，也不是家用机器人已上市。",
+      "semantic_status": "live",
+      "semantic_error": null,
+      "mass_appeal_score": 71.94,
+      "human_trigger_score": 73.25,
+      "viral_potential": 80.25,
+      "social_heat": 100,
+      "recognizable_entity": 11.74,
+      "publishability_score": 74.15,
+      "score_confidence_pass": true,
+      "mass_appeal_dimensions": {
+        "recognizable_entity": 11.74,
+        "immediate_understandability": 14.81,
+        "personal_stakes": 2.93,
+        "emotional_charge": 10.76,
+        "china_information_gap": 2.5,
+        "visual_headline_power": 9.2,
+        "social_heat": 15.0,
+        "freshness": 5
+      },
+      "headline_options": [],
+      "stop_scroll_test": "FAIL",
+      "non_tech_reader_test": "PASS",
+      "evidence_test": "FAIL",
+      "title_potential_test": "FAIL",
+      "contrarian_check": "WARN",
+      "news_class": "PURE_NEWS",
+      "verdict": "REVIEW_ONLY",
+      "gate_failures": [
+        "stop_scroll_failed_or_unknown",
+        "evidence_failed_or_unknown",
+        "title_potential_failed_or_unknown",
+        "programmer_bias_or_unknown",
+        "publishability_below_75"
+      ]
+    },
+    {
+      "id": "701eec96ceaacb29bbf44965",
+      "feedback_candidate_id": null,
+      "event_key": "openai-bugging",
+      "topic": "OpenAI会议室被指藏有录音设备",
+      "source_title": "OpenAI engineer arrested in bugging of executive conference room",
+      "lane": "GLOBAL_HOT_TOPIC",
+      "source_url": "https://sfstandard.com/2026/10/13/openai-engineer-arrested-alleged-bugging-executive-conference-room/",
+      "published_at": "2026-10-13T20:23:55+00:00",
+      "evidence_status": "readable_reporting_attributed",
+      "engagement_metrics": {
+        "points": 615,
+        "comments": 512
+      },
+      "engagement_evidence": [
+        {
+          "url": "https://news.ycombinator.com/item?id=50078141",
+          "metrics": {
+            "points": 615,
+            "comments": 512
+          },
+          "observed_at": "2026-10-14T14:32:15.222881+00:00"
+        }
+      ],
+      "heat_scope": "observed_source_metrics",
+      "engagement_observed_at": "2026-10-14T14:33:19.194493+00:00",
+      "stop_scroll_reason": "报道援引美国检方：OpenAI员工涉嫌在高管会议室藏录音设备，指控尚未等于定罪。",
+      "why_chinese_users_care": "知名AI公司内部安全与离谱反差；不推测窃密动机，不把嫌疑人国籍当流量钩子。",
+      "proposed_headline": "OpenAI会议室，竟被指藏了录音器",
+      "china_relevance": "知名AI公司内部安全与离谱反差；不推测窃密动机，不把嫌疑人国籍当流量钩子。",
+      "semantic_status": "live",
+      "semantic_error": null,
+      "mass_appeal_score": 69.35,
+      "human_trigger_score": 75.5,
+      "viral_potential": 79.0,
+      "social_heat": 95.94,
+      "recognizable_entity": 11.74,
+      "publishability_score": 72.38,
+      "score_confidence_pass": false,
+      "mass_appeal_dimensions": {
+        "recognizable_entity": 11.74,
+        "immediate_understandability": 13.46,
+        "personal_stakes": 3.71,
+        "emotional_charge": 10.95,
+        "china_information_gap": 2.5,
+        "visual_headline_power": 7.6,
+        "social_heat": 14.39,
+        "freshness": 5
+      },
+      "headline_options": [],
+      "stop_scroll_test": "FAIL",
+      "non_tech_reader_test": "FAIL",
+      "evidence_test": "FAIL",
+      "title_potential_test": "FAIL",
+      "contrarian_check": "PASS",
+      "news_class": "PURE_NEWS",
+      "verdict": "REVIEW_ONLY",
+      "gate_failures": [
+        "mass_appeal_below_70_or_unknown",
+        "stop_scroll_failed_or_unknown",
+        "non_tech_reader_failed_or_unknown",
+        "evidence_failed_or_unknown",
+        "title_potential_failed_or_unknown",
+        "low_or_missing_score_confidence",
+        "publishability_below_75"
+      ]
+    },
+    {
+      "id": "ddc05e8394b8d9f9fa3a67c3",
+      "feedback_candidate_id": null,
+      "event_key": "meta-wonder",
+      "topic": "Meta新模型开始处理租约与保险理赔",
+      "source_title": "Meta新模型开始处理租约与保险理赔",
+      "lane": "GLOBAL_HOT_TOPIC",
+      "source_url": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/",
+      "published_at": "2026-10-12T00:00:00+00:00",
+      "evidence_status": "primary_source_checked",
+      "engagement_metrics": {
+        "views": 3800
+      },
+      "engagement_evidence": [
+        {
+          "url": "https://t.me/aipost/8469",
+          "metrics": {
+            "views": 3800
+          },
+          "observed_at": "2026-10-14T22:33:38.163345+08:00"
+        },
+        {
+          "url": "https://t.me/aipost/8459",
+          "metrics": {
+            "views": 3740
+          },
+          "observed_at": "2026-10-14T22:33:38.162291+08:00"
+        }
+      ],
+      "heat_scope": "same_event_public_discussion_not_specific_demo_clicks",
+      "engagement_observed_at": "2026-10-14T22:33:38.163345+08:00",
+      "stop_scroll_reason": "Meta给新模型的具体任务不是聊天，而是看懂租约和推进保险理赔。",
+      "why_chinese_users_care": "住房、保险、个人资料与长期任务；目前开发者和订阅访问条件需明确，不替代法律或保险专业判断。",
+      "proposed_headline": "AI开始看租约、处理保险理赔",
+      "china_relevance": "住房、保险、个人资料与长期任务；目前开发者和订阅访问条件需明确，不替代法律或保险专业判断。",
+      "semantic_status": "live",
+      "semantic_error": null,
+      "mass_appeal_score": 63.34,
+      "human_trigger_score": 70.0,
+      "viral_potential": 59.25,
+      "social_heat": 59.66,
+      "recognizable_entity": 12.3,
+      "publishability_score": 62.98,
+      "score_confidence_pass": false,
+      "mass_appeal_dimensions": {
+        "recognizable_entity": 12.3,
+        "immediate_understandability": 12.67,
+        "personal_stakes": 9.75,
+        "emotional_charge": 7.61,
+        "china_information_gap": 2.52,
+        "visual_headline_power": 6.52,
+        "social_heat": 8.95,
+        "freshness": 3
+      },
+      "headline_options": [],
+      "stop_scroll_test": "FAIL",
+      "non_tech_reader_test": "FAIL",
+      "evidence_test": "FAIL",
+      "title_potential_test": "FAIL",
+      "contrarian_check": "WARN",
+      "news_class": "PURE_NEWS",
+      "verdict": "REVIEW_ONLY",
+      "gate_failures": [
+        "mass_appeal_below_70_or_unknown",
+        "viral_below_60_and_no_extreme_heat",
+        "stop_scroll_failed_or_unknown",
+        "non_tech_reader_failed_or_unknown",
+        "evidence_failed_or_unknown",
+        "title_potential_failed_or_unknown",
+        "programmer_bias_or_unknown",
+        "low_or_missing_score_confidence",
+        "publishability_below_75"
+      ]
+    },
+    {
+      "id": "02ecb7c280dfd016134d326d",
+      "feedback_candidate_id": null,
+      "event_key": "virtual-guitar",
+      "topic": "浏览器里用键盘弹吉他",
+      "source_title": "Show HN: Guitoro, a virtual guitar you strum with your keyboard",
+      "lane": "UTILITY_OPPORTUNITY",
+      "source_url": "https://guitoro.com/",
+      "published_at": "2026-10-13T19:11:48+00:00",
+      "evidence_status": "author_claim_access_unverified",
+      "engagement_metrics": {
+        "points": 505,
+        "comments": 136
+      },
+      "engagement_evidence": [
+        {
+          "url": "https://news.ycombinator.com/item?id=50077020",
+          "metrics": {
+            "points": 504,
+            "comments": 135
+          },
+          "observed_at": "2026-10-14T14:32:15.219037+00:00"
+        }
+      ],
+      "heat_scope": "observed_source_metrics",
+      "engagement_observed_at": "2026-10-14T14:33:19.194493+00:00",
+      "stop_scroll_reason": "作者发布免费浏览器吉他，用键盘、鼠标或触屏拨弦，并使用真实乐器录音。",
+      "why_chinese_users_care": "直接能理解的娱乐与低成本体验；作者的免费宣称还需实际访问核验。",
+      "proposed_headline": "没买吉他，也能用键盘弹一段",
+      "china_relevance": "直接能理解的娱乐与低成本体验；作者的免费宣称还需实际访问核验。",
+      "semantic_status": "live",
+      "semantic_error": null,
+      "mass_appeal_score": 56.66,
+      "human_trigger_score": 59.25,
+      "viral_potential": 65.5,
+      "social_heat": 85.73,
+      "recognizable_entity": 0.75,
+      "publishability_score": 59.13,
+      "score_confidence_pass": true,
+      "mass_appeal_dimensions": {
+        "recognizable_entity": 0.75,
+        "immediate_understandability": 14.32,
+        "personal_stakes": 6.98,
+        "emotional_charge": 6.45,
+        "china_information_gap": 2.5,
+        "visual_headline_power": 7.8,
+        "social_heat": 12.86,
+        "freshness": 5
+      },
+      "headline_options": [],
+      "stop_scroll_test": "FAIL",
+      "non_tech_reader_test": "PASS",
+      "evidence_test": "FAIL",
+      "title_potential_test": "FAIL",
+      "contrarian_check": "WARN",
+      "news_class": "PURE_NEWS",
+      "verdict": "NO_PUBLISH",
+      "gate_failures": [
+        "mass_appeal_below_70_or_unknown",
+        "stop_scroll_failed_or_unknown",
+        "evidence_failed_or_unknown",
+        "title_potential_failed_or_unknown",
+        "programmer_bias_or_unknown"
+      ]
+    },
+    {
+      "id": "5e24b48196293980d63d3443",
+      "feedback_candidate_id": null,
+      "event_key": "lead-5e24b48196293980d63d3443",
+      "topic": "公开帖子转述：AI数学进展让学生担忧专业",
+      "source_title": "❗️ Some students at Northwestern University are now asking whether they should stay in mathematics at all, after OpenAI posted hundreds of AI-generated papers on open problems in a",
+      "lane": "VIRAL_DISCUSSION",
+      "source_url": "https://t.me/aipost/8480",
+      "published_at": "2026-10-14T11:02:01+00:00",
+      "evidence_status": "public_post_unverified_claims",
+      "engagement_metrics": {
+        "views": 1940
+      },
+      "engagement_evidence": [],
+      "heat_scope": "observed_source_metrics",
+      "engagement_observed_at": "2026-10-14T22:16:07.037504+08:00",
+      "stop_scroll_reason": "一个公开帖子称数学学生因AI解题进展担心专业，但学生原始发言尚未核实。",
+      "why_chinese_users_care": "大学生的专业选择与职业焦虑；不能把频道转述当成学生群体的普遍事实。",
+      "proposed_headline": "AI解题，让学生开始怀疑专业？",
+      "china_relevance": "大学生的专业选择与职业焦虑；不能把频道转述当成学生群体的普遍事实。",
+      "semantic_status": "live",
+      "semantic_error": null,
+      "mass_appeal_score": 59.55,
+      "human_trigger_score": 65.25,
+      "viral_potential": 53.75,
+      "social_heat": 54.8,
+      "recognizable_entity": 9.56,
+      "publishability_score": 58.67,
+      "score_confidence_pass": false,
+      "mass_appeal_dimensions": {
+        "recognizable_entity": 9.56,
+        "immediate_understandability": 12.56,
+        "personal_stakes": 7.16,
+        "emotional_charge": 9.56,
+        "china_information_gap": 2.52,
+        "visual_headline_power": 4.95,
+        "social_heat": 8.22,
+        "freshness": 5
+      },
+      "headline_options": [],
+      "stop_scroll_test": "FAIL",
+      "non_tech_reader_test": "FAIL",
+      "evidence_test": "FAIL",
+      "title_potential_test": "FAIL",
+      "contrarian_check": "WARN",
+      "news_class": "PURE_NEWS",
+      "verdict": "NO_PUBLISH",
+      "gate_failures": [
+        "mass_appeal_below_70_or_unknown",
+        "viral_below_60_and_no_extreme_heat",
+        "stop_scroll_failed_or_unknown",
+        "non_tech_reader_failed_or_unknown",
+        "evidence_failed_or_unknown",
+        "title_potential_failed_or_unknown",
+        "programmer_bias_or_unknown",
+        "low_or_missing_score_confidence"
+      ]
+    },
+    {
+      "id": "d24842816a64c79278f9c08a",
+      "feedback_candidate_id": null,
+      "event_key": "rtx-spark",
+      "topic": "黄仁勋与微软把AI助手推进Windows电脑",
+      "source_title": "All Systems Go: Global PC App Ecosystem Ready for NVIDIA RTX Spark",
+      "lane": "GLOBAL_HOT_TOPIC",
+      "source_url": "https://blogs.nvidia.com/blog/local-ai-rtx-spark-laptops-software-updates/",
+      "published_at": "2026-10-13T12:00:49+00:00",
+      "evidence_status": "primary_source_checked",
+      "engagement_metrics": {},
+      "engagement_evidence": [],
+      "heat_scope": "observed_source_metrics",
+      "engagement_observed_at": null,
+      "stop_scroll_reason": "新电脑的AI助手将能在本地运行，私人文件是否还必须交给云端成为具体问题。",
+      "why_chinese_users_care": "电脑使用、隐私和新硬件消费；本地能力不代表完全无需联网或不花钱。",
+      "proposed_headline": "黄仁勋把AI助手，塞进你的电脑",
+      "china_relevance": "电脑使用、隐私和新硬件消费；本地能力不代表完全无需联网或不花钱。",
+      "semantic_status": "live",
+      "semantic_error": null,
+      "mass_appeal_score": 54.33,
+      "human_trigger_score": 77.75,
+      "viral_potential": 61.75,
+      "social_heat": null,
+      "recognizable_entity": 11.85,
+      "publishability_score": 58.53,
+      "score_confidence_pass": false,
+      "mass_appeal_dimensions": {
+        "recognizable_entity": 11.85,
+        "immediate_understandability": 11.18,
+        "personal_stakes": 10.91,
+        "emotional_charge": 8.06,
+        "china_information_gap": 2.52,
+        "visual_headline_power": 6.8,
+        "social_heat": 0.0,
+        "freshness": 3
+      },
+      "headline_options": [],
+      "stop_scroll_test": "FAIL",
+      "non_tech_reader_test": "FAIL",
+      "evidence_test": "FAIL",
+      "title_potential_test": "FAIL",
+      "contrarian_check": "WARN",
+      "news_class": "PURE_NEWS",
+      "verdict": "NO_PUBLISH",
+      "gate_failures": [
+        "mass_appeal_below_70_or_unknown",
+        "stop_scroll_failed_or_unknown",
+        "non_tech_reader_failed_or_unknown",
+        "evidence_failed_or_unknown",
+        "title_potential_failed_or_unknown",
+        "programmer_bias_or_unknown",
+        "low_or_missing_score_confidence"
+      ]
+    },
+    {
+      "id": "4a4beda8ac4127f127cf2afa",
+      "feedback_candidate_id": null,
+      "event_key": "google-scam",
+      "topic": "Google与新加坡推出手机端反诈骗模型",
+      "source_title": "Google DeepMind and Singapore Government collaborate to build fine-tuned AI model for scam detection",
+      "lane": "GLOBAL_HOT_TOPIC",
+      "source_url": "https://deepmind.google/blog/on-device-ai-scam-detection-mddi/",
+      "published_at": "2026-10-14T02:00:14+00:00",
+      "evidence_status": "primary_source_checked",
+      "engagement_metrics": {},
+      "engagement_evidence": [],
+      "heat_scope": "observed_source_metrics",
+      "engagement_observed_at": null,
+      "stop_scroll_reason": "骗局能看懂上下文，而这款反诈骗AI尝试让聊天留在手机上。",
+      "why_chinese_users_care": "诈骗损失与聊天隐私同时相关；合作模型不是已向中国用户开放的App。",
+      "proposed_headline": "AI识别诈骗，不用上传聊天？",
+      "china_relevance": "诈骗损失与聊天隐私同时相关；合作模型不是已向中国用户开放的App。",
+      "semantic_status": "live",
+      "semantic_error": null,
+      "mass_appeal_score": 56.67,
+      "human_trigger_score": 72.0,
+      "viral_potential": 54.5,
+      "social_heat": null,
+      "recognizable_entity": 10.61,
+      "publishability_score": 57.66,
+      "score_confidence_pass": false,
+      "mass_appeal_dimensions": {
+        "recognizable_entity": 10.61,
+        "immediate_understandability": 14.32,
+        "personal_stakes": 9.86,
+        "emotional_charge": 7.73,
+        "china_information_gap": 2.52,
+        "visual_headline_power": 6.62,
+        "social_heat": 0.0,
+        "freshness": 5
+      },
+      "headline_options": [],
+      "stop_scroll_test": "FAIL",
+      "non_tech_reader_test": "FAIL",
+      "evidence_test": "FAIL",
+      "title_potential_test": "FAIL",
+      "contrarian_check": "WARN",
+      "news_class": "PURE_NEWS",
+      "verdict": "NO_PUBLISH",
+      "gate_failures": [
+        "mass_appeal_below_70_or_unknown",
+        "viral_below_60_and_no_extreme_heat",
+        "stop_scroll_failed_or_unknown",
+        "non_tech_reader_failed_or_unknown",
+        "evidence_failed_or_unknown",
+        "title_potential_failed_or_unknown",
+        "programmer_bias_or_unknown",
+        "low_or_missing_score_confidence"
+      ]
+    },
+    {
+      "id": "cd7ddace10fae06a72424282",
+      "feedback_candidate_id": null,
+      "event_key": "oracle-workflows",
+      "topic": "Oracle把多天任务变成可重复AI工作流",
+      "source_title": "How Oracle turns days of work into minutes with ChatGPT and Codex",
+      "lane": "GLOBAL_HOT_TOPIC",
+      "source_url": "https://openai.com/index/oracle",
+      "published_at": "2026-10-08T16:00:00+00:00",
+      "evidence_status": "primary_source_checked",
+      "engagement_metrics": {},
+      "engagement_evidence": [],
+      "heat_scope": "observed_source_metrics",
+      "engagement_observed_at": null,
+      "stop_scroll_reason": "Oracle官方客户案例把数天工作压缩到分钟级，工作改变可能先发生在流程而非整份岗位。",
+      "why_chinese_users_care": "招聘、运营、技能学习与工作的任务拆分；客户案例效果不能外推所有公司。",
+      "proposed_headline": "公司说几天的工作，AI几分钟做完",
+      "china_relevance": "招聘、运营、技能学习与工作的任务拆分；客户案例效果不能外推所有公司。",
+      "semantic_status": "live",
+      "semantic_error": null,
+      "mass_appeal_score": 51.52,
+      "human_trigger_score": 69.5,
+      "viral_potential": 59.75,
+      "social_heat": null,
+      "recognizable_entity": 11.36,
+      "publishability_score": 55.38,
+      "score_confidence_pass": false,
+      "mass_appeal_dimensions": {
+        "recognizable_entity": 11.36,
+        "immediate_understandability": 12.26,
+        "personal_stakes": 8.14,
+        "emotional_charge": 8.81,
+        "china_information_gap": 2.52,
+        "visual_headline_power": 7.43,
+        "social_heat": 0.0,
+        "freshness": 1
+      },
+      "headline_options": [],
+      "stop_scroll_test": "FAIL",
+      "non_tech_reader_test": "FAIL",
+      "evidence_test": "FAIL",
+      "title_potential_test": "FAIL",
+      "contrarian_check": "WARN",
+      "news_class": "PURE_NEWS",
+      "verdict": "NO_PUBLISH",
+      "gate_failures": [
+        "mass_appeal_below_70_or_unknown",
+        "viral_below_60_and_no_extreme_heat",
+        "stop_scroll_failed_or_unknown",
+        "non_tech_reader_failed_or_unknown",
+        "evidence_failed_or_unknown",
+        "title_potential_failed_or_unknown",
+        "programmer_bias_or_unknown",
+        "low_or_missing_score_confidence"
+      ]
+    },
+    {
+      "id": "1255e1e1d321c2f7bf50664f",
+      "feedback_candidate_id": null,
+      "event_key": "pulse-budget",
+      "topic": "开发者把AI记账分析留在Mac本地",
+      "source_title": "Show HN: Pulse Local, a Mac budgeting app whose AI models run on your machine",
+      "lane": "UTILITY_OPPORTUNITY",
+      "source_url": "https://pulseos.finance/",
+      "published_at": "2026-10-13T23:13:23+00:00",
+      "evidence_status": "author_claim_access_unverified",
+      "engagement_metrics": {
+        "points": 109,
+        "comments": 69
+      },
+      "engagement_evidence": [
+        {
+          "url": "https://news.ycombinator.com/item?id=50080275",
+          "metrics": {
+            "points": 101,
+            "comments": 55
+          },
+          "observed_at": "2026-10-14T07:24:50.411286+00:00"
+        },
+        {
+          "url": "https://news.ycombinator.com/item?id=50080275",
+          "metrics": {
+            "points": 109,
+            "comments": 69
+          },
+          "observed_at": "2026-10-14T14:32:03.962157+00:00"
+        }
+      ],
+      "heat_scope": "observed_source_metrics",
+      "engagement_observed_at": null,
+      "stop_scroll_reason": "作者做了一款Mac预算应用，让AI模型在用户机器运行，切中账本隐私但普适性需要检查。",
+      "why_chinese_users_care": "收入支出和隐私；不编造用户省钱结果，工具访问条件待核验。",
+      "proposed_headline": "让AI看账本，又不想上传账本",
+      "china_relevance": "收入支出和隐私；不编造用户省钱结果，工具访问条件待核验。",
+      "semantic_status": "live",
+      "semantic_error": null,
+      "mass_appeal_score": 54.86,
+      "human_trigger_score": 64.25,
+      "viral_potential": 50.75,
+      "social_heat": 68.16,
+      "recognizable_entity": 1.5,
+      "publishability_score": 54.77,
+      "score_confidence_pass": true,
+      "mass_appeal_dimensions": {
+        "recognizable_entity": 1.5,
+        "immediate_understandability": 12.38,
+        "personal_stakes": 10.31,
+        "emotional_charge": 6.53,
+        "china_information_gap": 2.52,
+        "visual_headline_power": 6.4,
+        "social_heat": 10.22,
+        "freshness": 5
+      },
+      "headline_options": [],
+      "stop_scroll_test": "FAIL",
+      "non_tech_reader_test": "FAIL",
+      "evidence_test": "FAIL",
+      "title_potential_test": "FAIL",
+      "contrarian_check": "WARN",
+      "news_class": "PURE_NEWS",
+      "verdict": "NO_PUBLISH",
+      "gate_failures": [
+        "mass_appeal_below_70_or_unknown",
+        "viral_below_60_and_no_extreme_heat",
+        "stop_scroll_failed_or_unknown",
+        "non_tech_reader_failed_or_unknown",
+        "evidence_failed_or_unknown",
+        "title_potential_failed_or_unknown",
+        "programmer_bias_or_unknown"
+      ]
+    },
+    {
+      "id": "2a90b2a2b4c5974a4c424b89",
+      "feedback_candidate_id": null,
+      "event_key": "lead-2a90b2a2b4c5974a4c424b89",
+      "topic": "报道线索：Netflix动画业务裁员",
+      "source_title": "Netflix announces its biggest layoffs to date, to fire 6% employees. Read the full letter of co-CEOs to st - The Economic Times",
+      "lane": "GLOBAL_HOT_TOPIC",
+      "source_url": "https://news.google.com/rss/articles/CBMilwJBVV95cUxNcUZyZkE2X041Wk55V2JZdmw2OEZvM05oREdaRXpUN1BkNlRaamc0d0lyRlZfSWF5NVEwRW4wdUpSTVNGdnZHV0FGZlY2TGJJVFpWX2FxaTlZTVBHREJjcmhySHdKZVFHTUhxTGpmbGRCcWwwR2dDc2doc1o1REJnVXBxYU5QLXRMMWExZ2JEUVVZdHRudDQyZmltcXByOFlqbW5NNzR3NThaa0U1NkExM2ppV3JLdTh1QjdYM3ZBT3k0V1BjVmhqVjhtSFlfekxFUXo4bEdTd3FFS2xXOUdEbkhKWk9UOHhxQW5LRlg4SXR4SExBdGRGLWJpYi1xejdDbWJYaWd3SDJtY3VOTHRDWkxSM0VSa3PSAZwCQVVfeXFMTU5aQmhFR0cwQm4xU2ZaeVFDazNKVGd5c0FWVjZqdXNPWFYxVW1KRjBJVEttYjF2OEk0eFFNRTFWVHlGSW40VFUxRC1ZdVlnYWZYeUp0TXB2bmE5dklmR01TNXRNRk9FdXFuN196SzlDRTd1N0E2UmdOTDRqRlJMcDVmdXZXN1RwQjFMMnNBMXB6bEtUR29XNW9qTjJXSzFkam15VGt3UEVOQlFvQldNdFp6Ym9acEFNamJYTXVobFZLQ0FoRGdIVWZQSVZhbTFuR0RmUmNaS1hySy1vTUJ5dGFFWWlIdk9PMzFuNUlPR3RHQ2puQUZkVldkZkl3R0x3TFpQWWRqMHdmSlR4ZzFuNTNNT09HR2F4c1V4XzY?oc=5",
+      "published_at": "2026-10-14T14:05:22+00:00",
+      "evidence_status": "search_only",
+      "engagement_metrics": {},
+      "engagement_evidence": [],
+      "heat_scope": "observed_source_metrics",
+      "engagement_observed_at": null,
+      "stop_scroll_reason": "搜索结果出现动画业务大裁员报道，直接碰到创意职业，但规模与AI因果关系尚未核验。",
+      "why_chinese_users_care": "创作职业与就业；不能宣称AI造成裁员，不能虚构具体人数。",
+      "proposed_headline": "Netflix动画业务传出大裁员",
+      "china_relevance": "创作职业与就业；不能宣称AI造成裁员，不能虚构具体人数。",
+      "semantic_status": "live",
+      "semantic_error": null,
+      "mass_appeal_score": 54.82,
+      "human_trigger_score": 61.0,
+      "viral_potential": 51.25,
+      "social_heat": null,
+      "recognizable_entity": 13.61,
+      "publishability_score": 54.55,
+      "score_confidence_pass": false,
+      "mass_appeal_dimensions": {
+        "recognizable_entity": 13.61,
+        "immediate_understandability": 11.62,
+        "personal_stakes": 8.25,
+        "emotional_charge": 8.14,
+        "china_information_gap": 2.58,
+        "visual_headline_power": 5.62,
+        "social_heat": 0.0,
+        "freshness": 5
+      },
+      "headline_options": [],
+      "stop_scroll_test": "FAIL",
+      "non_tech_reader_test": "FAIL",
+      "evidence_test": "FAIL",
+      "title_potential_test": "FAIL",
+      "contrarian_check": "WARN",
+      "news_class": "PURE_NEWS",
+      "verdict": "NO_PUBLISH",
+      "gate_failures": [
+        "mass_appeal_below_70_or_unknown",
+        "viral_below_60_and_no_extreme_heat",
+        "stop_scroll_failed_or_unknown",
+        "non_tech_reader_failed_or_unknown",
+        "evidence_failed_or_unknown",
+        "title_potential_failed_or_unknown",
+        "programmer_bias_or_unknown",
+        "low_or_missing_score_confidence"
+      ]
+    },
+    {
+      "id": "32aa3e2f453c148cfde98726",
+      "feedback_candidate_id": null,
+      "event_key": "apple-idle-cloud",
+      "topic": "苹果研究用空闲设备组成分布式算力",
+      "source_title": "A Dynamic and Distributed Virtual GPU Cloud Built on Idle Apple Silicon Devices",
+      "lane": "GLOBAL_HOT_TOPIC",
+      "source_url": "https://machinelearning.apple.com/research/distributed-gpu-cloud",
+      "published_at": "2026-10-13T12:26:36+00:00",
+      "evidence_status": "discussion_headline",
+      "engagement_metrics": {
+        "points": 245,
+        "comments": 96
+      },
+      "engagement_evidence": [],
+      "heat_scope": "observed_source_metrics",
+      "engagement_observed_at": null,
+      "stop_scroll_reason": "苹果研究把闲置设备组成分布式算力，但它是否能改变普通人的费用仍缺少直接证据。",
+      "why_chinese_users_care": "闲置硬件与成本；技术研究不等于人人现在能赚钱或出租电脑。",
+      "proposed_headline": "闲着的苹果电脑，也能凑算力？",
+      "china_relevance": "闲置硬件与成本；技术研究不等于人人现在能赚钱或出租电脑。",
+      "semantic_status": "live",
+      "semantic_error": null,
+      "mass_appeal_score": 54.65,
+      "human_trigger_score": 47.75,
+      "viral_potential": 55.25,
+      "social_heat": 77.25,
+      "recognizable_entity": 10.61,
+      "publishability_score": 54.11,
+      "score_confidence_pass": true,
+      "mass_appeal_dimensions": {
+        "recognizable_entity": 10.61,
+        "immediate_understandability": 11.1,
+        "personal_stakes": 4.01,
+        "emotional_charge": 7.09,
+        "china_information_gap": 2.5,
+        "visual_headline_power": 4.75,
+        "social_heat": 11.59,
+        "freshness": 3
+      },
+      "headline_options": [],
+      "stop_scroll_test": "FAIL",
+      "non_tech_reader_test": "FAIL",
+      "evidence_test": "FAIL",
+      "title_potential_test": "FAIL",
+      "contrarian_check": "WARN",
+      "news_class": "PURE_NEWS",
+      "verdict": "NO_PUBLISH",
+      "gate_failures": [
+        "mass_appeal_below_70_or_unknown",
+        "viral_below_60_and_no_extreme_heat",
+        "stop_scroll_failed_or_unknown",
+        "non_tech_reader_failed_or_unknown",
+        "evidence_failed_or_unknown",
+        "title_potential_failed_or_unknown",
+        "programmer_bias_or_unknown"
+      ]
+    },
+    {
+      "id": "d75dbe0c80c9ed15d862b993",
+      "feedback_candidate_id": null,
+      "event_key": "ai-replication",
+      "topic": "Anthropic测试AI在小设备上自复制的可能性",
+      "source_title": "Anthropic测试AI在小设备上自复制的可能性",
+      "lane": "GLOBAL_HOT_TOPIC",
+      "source_url": "https://www.anthropic.com/research/self-replicating-ai",
+      "published_at": "2026-10-12T00:00:00+00:00",
+      "evidence_status": "primary_source_checked",
+      "engagement_metrics": {},
+      "engagement_evidence": [],
+      "heat_scope": "observed_source_metrics",
+      "engagement_observed_at": null,
+      "stop_scroll_reason": "研究者在电视盒子等小设备测试AI复制步骤，风险不一定只在大型机房里。",
+      "why_chinese_users_care": "家庭设备、网络安全与失控恐惧；明确是实验和能力预测，不是现实感染预警。",
+      "proposed_headline": "AI可能躲进电视盒子里自我复制？",
+      "china_relevance": "家庭设备、网络安全与失控恐惧；明确是实验和能力预测，不是现实感染预警。",
+      "semantic_status": "live",
+      "semantic_error": null,
+      "mass_appeal_score": 46.45,
+      "human_trigger_score": 78.5,
+      "viral_potential": 58.75,
+      "social_heat": null,
+      "recognizable_entity": 8.29,
+      "publishability_score": 52.73,
+      "score_confidence_pass": false,
+      "mass_appeal_dimensions": {
+        "recognizable_entity": 8.29,
+        "immediate_understandability": 11.81,
+        "personal_stakes": 4.5,
+        "emotional_charge": 10.05,
+        "china_information_gap": 2.52,
+        "visual_headline_power": 6.27,
+        "social_heat": 0.0,
+        "freshness": 3
+      },
+      "headline_options": [],
+      "stop_scroll_test": "FAIL",
+      "non_tech_reader_test": "FAIL",
+      "evidence_test": "FAIL",
+      "title_potential_test": "FAIL",
+      "contrarian_check": "WARN",
+      "news_class": "PURE_NEWS",
+      "verdict": "NO_PUBLISH",
+      "gate_failures": [
+        "mass_appeal_below_70_or_unknown",
+        "viral_below_60_and_no_extreme_heat",
+        "stop_scroll_failed_or_unknown",
+        "non_tech_reader_failed_or_unknown",
+        "evidence_failed_or_unknown",
+        "title_potential_failed_or_unknown",
+        "programmer_bias_or_unknown",
+        "low_or_missing_score_confidence"
+      ]
+    },
+    {
+      "id": "5023bd47f7a6d0ee5fee3f04",
+      "feedback_candidate_id": null,
+      "event_key": "higgsfield-video",
+      "topic": "AI视频从约1分钟走向10分钟以上",
+      "source_title": "Higgsfield takes AI video from 1 minute to over 10",
+      "lane": "GLOBAL_HOT_TOPIC",
+      "source_url": "https://openai.com/index/higgsfield-longer-videos-voice",
+      "published_at": "2026-10-13T12:00:00+00:00",
+      "evidence_status": "primary_source_checked",
+      "engagement_metrics": {},
+      "engagement_evidence": [],
+      "heat_scope": "observed_source_metrics",
+      "engagement_observed_at": null,
+      "stop_scroll_reason": "创作者自述已经用AI工作流做出10分钟以上教学视频，长视频一致性是关键变化。",
+      "why_chinese_users_care": "创作时间、小团队预算与能做多长的视频；官方客户案例，不当成独立性能测试。",
+      "proposed_headline": "AI视频从1分钟变成10分钟以上",
+      "china_relevance": "创作时间、小团队预算与能做多长的视频；官方客户案例，不当成独立性能测试。",
+      "semantic_status": "live",
+      "semantic_error": null,
+      "mass_appeal_score": 48.89,
+      "human_trigger_score": 63.25,
+      "viral_potential": 57.25,
+      "social_heat": null,
+      "recognizable_entity": 7.27,
+      "publishability_score": 52.42,
+      "score_confidence_pass": false,
+      "mass_appeal_dimensions": {
+        "recognizable_entity": 7.27,
+        "immediate_understandability": 12.82,
+        "personal_stakes": 7.69,
+        "emotional_charge": 7.8,
+        "china_information_gap": 2.52,
+        "visual_headline_power": 7.77,
+        "social_heat": 0.0,
+        "freshness": 3
+      },
+      "headline_options": [],
+      "stop_scroll_test": "FAIL",
+      "non_tech_reader_test": "FAIL",
+      "evidence_test": "FAIL",
+      "title_potential_test": "FAIL",
+      "contrarian_check": "WARN",
+      "news_class": "PURE_NEWS",
+      "verdict": "NO_PUBLISH",
+      "gate_failures": [
+        "mass_appeal_below_70_or_unknown",
+        "viral_below_60_and_no_extreme_heat",
+        "stop_scroll_failed_or_unknown",
+        "non_tech_reader_failed_or_unknown",
+        "evidence_failed_or_unknown",
+        "title_potential_failed_or_unknown",
+        "programmer_bias_or_unknown",
+        "low_or_missing_score_confidence"
+      ]
+    },
+    {
+      "id": "15611aa550c8fd39217a24f3",
+      "feedback_candidate_id": null,
+      "event_key": "lead-15611aa550c8fd39217a24f3",
+      "topic": "媒体追踪：马斯克的AI债务预测",
+      "source_title": "Musk said AI would fix U.S. debt in 3 years. Nearly a year later, debt has hit $40 trillion - TheStreet",
+      "lane": "BIG_PERSON",
+      "source_url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQcTFWSG54Tzc3blMxTE1WSGJIQzF0MkxPOHJwU2YteTVMR2dKTXVNYVZqekptay1seW9YU1A4MmpFdmgwTmFVaFFtVEl4Q2VYVFpnSXVYQlZKT25zTURsQllGTU91YXk0X1ducWtjRzJXWDMtaHgwTnlmSUV5UnZTRGtTc1l5WjJza2xnVTlPVklBeDY4cnZMWTFpVXMzRV90ekh4bnVpSWMxWG1jQzBTclE3YTFfTzVkblc1cnBOUzROV2NBVU5V?oc=5",
+      "published_at": "2026-10-14T12:30:00+00:00",
+      "evidence_status": "search_only",
+      "engagement_metrics": {},
+      "engagement_evidence": [],
+      "heat_scope": "observed_source_metrics",
+      "engagement_observed_at": null,
+      "stop_scroll_reason": "媒体把马斯克过去的AI债务预测与后续现实对照，但原话日期和统计口径还需核验。",
+      "why_chinese_users_care": "大人物预测与现实的反差；不提供金融判断，不以单篇标题断言成败。",
+      "proposed_headline": "马斯克的AI预测，兑现了吗？",
+      "china_relevance": "大人物预测与现实的反差；不提供金融判断，不以单篇标题断言成败。",
+      "semantic_status": "live",
+      "semantic_error": null,
+      "mass_appeal_score": 50.82,
+      "human_trigger_score": 60.75,
+      "viral_potential": 53.0,
+      "social_heat": null,
+      "recognizable_entity": 12.26,
+      "publishability_score": 52.36,
+      "score_confidence_pass": false,
+      "mass_appeal_dimensions": {
+        "recognizable_entity": 12.26,
+        "immediate_understandability": 12.34,
+        "personal_stakes": 4.12,
+        "emotional_charge": 8.7,
+        "china_information_gap": 2.5,
+        "visual_headline_power": 5.9,
+        "social_heat": 0.0,
+        "freshness": 5
+      },
+      "headline_options": [],
+      "stop_scroll_test": "FAIL",
+      "non_tech_reader_test": "FAIL",
+      "evidence_test": "FAIL",
+      "title_potential_test": "FAIL",
+      "contrarian_check": "WARN",
+      "news_class": "PURE_NEWS",
+      "verdict": "NO_PUBLISH",
+      "gate_failures": [
+        "mass_appeal_below_70_or_unknown",
+        "viral_below_60_and_no_extreme_heat",
+        "stop_scroll_failed_or_unknown",
+        "non_tech_reader_failed_or_unknown",
+        "evidence_failed_or_unknown",
+        "title_potential_failed_or_unknown",
+        "programmer_bias_or_unknown",
+        "low_or_missing_score_confidence"
+      ]
+    },
+    {
+      "id": "854f5bd286dc700c53bc8a20",
+      "feedback_candidate_id": null,
+      "event_key": "audiobook-tool",
+      "topic": "把现有AI订阅用于有声书工具的作者案例",
+      "source_title": "Show HN: Use your OpenAI subscription to create audiobooks",
+      "lane": "UTILITY_OPPORTUNITY",
+      "source_url": "https://pdftomp3.com/connect-ai/",
+      "published_at": "2026-10-13T10:08:34+00:00",
+      "evidence_status": "author_claim_access_unverified",
+      "engagement_metrics": {
+        "points": 166,
+        "comments": 88
+      },
+      "engagement_evidence": [],
+      "heat_scope": "observed_source_metrics",
+      "engagement_observed_at": null,
+      "stop_scroll_reason": "作者展示把AI订阅接入有声书制作工具，是否支持你的套餐和使用方式必须先核验。",
+      "why_chinese_users_care": "通勤、阅读与已有付费订阅的用途；没核实条款与收费，不能宣称免费即用。",
+      "proposed_headline": "已有AI订阅，能拿来做有声书？",
+      "china_relevance": "通勤、阅读与已有付费订阅的用途；没核实条款与收费，不能宣称免费即用。",
+      "semantic_status": "live",
+      "semantic_error": null,
+      "mass_appeal_score": 50.55,
+      "human_trigger_score": 50.25,
+      "viral_potential": 55.25,
+      "social_heat": 73.33,
+      "recognizable_entity": 3.45,
+      "publishability_score": 51.7,
+      "score_confidence_pass": false,
+      "mass_appeal_dimensions": {
+        "recognizable_entity": 3.45,
+        "immediate_understandability": 11.7,
+        "personal_stakes": 8.33,
+        "emotional_charge": 5.93,
+        "china_information_gap": 2.5,
+        "visual_headline_power": 4.65,
+        "social_heat": 11.0,
+        "freshness": 3
+      },
+      "headline_options": [],
+      "stop_scroll_test": "FAIL",
+      "non_tech_reader_test": "FAIL",
+      "evidence_test": "FAIL",
+      "title_potential_test": "FAIL",
+      "contrarian_check": "WARN",
+      "news_class": "PURE_NEWS",
+      "verdict": "NO_PUBLISH",
+      "gate_failures": [
+        "mass_appeal_below_70_or_unknown",
+        "viral_below_60_and_no_extreme_heat",
+        "stop_scroll_failed_or_unknown",
+        "non_tech_reader_failed_or_unknown",
+        "evidence_failed_or_unknown",
+        "title_potential_failed_or_unknown",
+        "programmer_bias_or_unknown",
+        "low_or_missing_score_confidence"
+      ]
+    },
+    {
+      "id": "e04c4d51f8712ba67fbfaaee",
+      "feedback_candidate_id": null,
+      "event_key": "lead-e04c4d51f8712ba67fbfaaee",
+      "topic": "报道线索：免费办公软件替代品",
+      "source_title": "Adobe software dupe maker takes on Microsoft Office, releasing free versions of Word, Powerpoint, and Excel - Mashable",
+      "lane": "UTILITY_OPPORTUNITY",
+      "source_url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQaVlzQ2o2VFRhOUpEM25YNzRiTUF4VkNjOGNxWDJKVnYzeXZ6bVZGV3Y4LS1qWkk4TDdLQXlGQUpUOXVzRVlrY1pVOUhoQ1RyM05OejZkWmhKRzlsMmN6TzAwQ1YyY05xWDg2ZjJTM0dfM0VhRUU5Wm5iRzc4WnVQeE9qdm5IRGdhM1R0Zl9kNHFXdw?oc=5",
+      "published_at": "2026-10-14T12:29:19+00:00",
+      "evidence_status": "search_only",
+      "engagement_metrics": {},
+      "engagement_evidence": [],
+      "heat_scope": "observed_source_metrics",
+      "engagement_observed_at": null,
+      "stop_scroll_reason": "搜索结果出现免费文档、表格与幻灯片工具报道，但官方价格和使用资格尚未核实。",
+      "why_chinese_users_care": "学生与打工人的软件费用；未核实前不能承诺国内用户可用或免费。",
+      "proposed_headline": "免费办公软件，又有新替代品？",
+      "china_relevance": "学生与打工人的软件费用；未核实前不能承诺国内用户可用或免费。",
+      "semantic_status": "live",
+      "semantic_error": null,
+      "mass_appeal_score": 49.86,
+      "human_trigger_score": 64.0,
+      "viral_potential": 50.5,
+      "social_heat": null,
+      "recognizable_entity": 6.71,
+      "publishability_score": 51.43,
+      "score_confidence_pass": false,
+      "mass_appeal_dimensions": {
+        "recognizable_entity": 6.71,
+        "immediate_understandability": 13.39,
+        "personal_stakes": 9.53,
+        "emotional_charge": 7.69,
+        "china_information_gap": 2.55,
+        "visual_headline_power": 5.0,
+        "social_heat": 0.0,
+        "freshness": 5
+      },
+      "headline_options": [],
+      "stop_scroll_test": "FAIL",
+      "non_tech_reader_test": "FAIL",
+      "evidence_test": "FAIL",
+      "title_potential_test": "FAIL",
+      "contrarian_check": "WARN",
+      "news_class": "PURE_NEWS",
+      "verdict": "NO_PUBLISH",
+      "gate_failures": [
+        "mass_appeal_below_70_or_unknown",
+        "viral_below_60_and_no_extreme_heat",
+        "stop_scroll_failed_or_unknown",
+        "non_tech_reader_failed_or_unknown",
+        "evidence_failed_or_unknown",
+        "title_potential_failed_or_unknown",
+        "programmer_bias_or_unknown",
+        "low_or_missing_score_confidence"
+      ]
+    },
+    {
+      "id": "89b12f3cfb213d363778c932",
+      "feedback_candidate_id": null,
+      "event_key": "lead-89b12f3cfb213d363778c932",
+      "topic": "报道线索：海外科技公司裁员汇总",
+      "source_title": "Tech layoffs tracker 2026: All the job losses across Netflix, Amazon, Apple, Oracle, TikTok, Meta and others - Yahoo Tech",
+      "lane": "GLOBAL_HOT_TOPIC",
+      "source_url": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxPUi04VG53NGg5eV9GWTg4NmxvNzNROU9UenhvLU1sRzhWVGJkSExqZGh4S3lYU2hGUGQ0VUgyLUpTYm1fWmxtY21OZDNkeU90cFFhLXZ6MU1xalFPTDVsX2otemVDT1g2WkwyNF91d0lNU05wbDhuUVgxdVNsOUpfQWF1RjFFY1VObDU1RjhKcktHckpSdlNJak9tMEF4Ung4dFB5THlpY2Q5cGMzalZMQ1R0Yk9HZThXNHpuaEZUdHV5alNzSnNrMHIyYkU5M2hJNDROa0IwVzhGRDdQUGVOVWRwNzhUSnphWHBiSV9Qd0VzOHpiVlZGSldnY1Fyakk?oc=5",
+      "published_at": "2026-10-14T13:35:00+00:00",
+      "evidence_status": "search_only",
+      "engagement_metrics": {},
+      "engagement_evidence": [],
+      "heat_scope": "observed_source_metrics",
+      "engagement_observed_at": null,
+      "stop_scroll_reason": "多家科技公司裁员汇总引出就业问题，但每项人数、日期与因果关系都要分别核验。",
+      "why_chinese_users_care": "职业机会与风险；裁员不自动等于AI替代，不以汇总标题推断中国就业。",
+      "proposed_headline": "科技公司裁员清单，又更新了",
+      "china_relevance": "职业机会与风险；裁员不自动等于AI替代，不以汇总标题推断中国就业。",
+      "semantic_status": "live",
+      "semantic_error": null,
+      "mass_appeal_score": 50.49,
+      "human_trigger_score": 59.0,
+      "viral_potential": 49.75,
+      "social_heat": null,
+      "recognizable_entity": 12.97,
+      "publishability_score": 51.16,
+      "score_confidence_pass": false,
+      "mass_appeal_dimensions": {
+        "recognizable_entity": 12.97,
+        "immediate_understandability": 11.36,
+        "personal_stakes": 7.91,
+        "emotional_charge": 5.96,
+        "china_information_gap": 2.5,
+        "visual_headline_power": 4.77,
+        "social_heat": 0.0,
+        "freshness": 5
+      },
+      "headline_options": [],
+      "stop_scroll_test": "FAIL",
+      "non_tech_reader_test": "FAIL",
+      "evidence_test": "FAIL",
+      "title_potential_test": "FAIL",
+      "contrarian_check": "WARN",
+      "news_class": "PURE_NEWS",
+      "verdict": "NO_PUBLISH",
+      "gate_failures": [
+        "mass_appeal_below_70_or_unknown",
+        "viral_below_60_and_no_extreme_heat",
+        "stop_scroll_failed_or_unknown",
+        "non_tech_reader_failed_or_unknown",
+        "evidence_failed_or_unknown",
+        "title_potential_failed_or_unknown",
+        "programmer_bias_or_unknown",
+        "low_or_missing_score_confidence"
+      ]
+    },
+    {
+      "id": "5d9d0aeaf025d80adb2a83c8",
+      "feedback_candidate_id": null,
+      "event_key": "random-human",
+      "topic": "一个测试人类随机性的公开实验",
+      "source_title": "Show HN: How random are you?",
+      "lane": "WOW_WEIRD_INTERNET",
+      "source_url": "https://lab.specr.net/rigged-draw/",
+      "published_at": "2026-10-13T16:57:57+00:00",
+      "evidence_status": "discussion_headline",
+      "engagement_metrics": {
+        "points": 180,
+        "comments": 94
+      },
+      "engagement_evidence": [],
+      "heat_scope": "observed_source_metrics",
+      "engagement_observed_at": null,
+      "stop_scroll_reason": "公开实验邀请用户测试自己是否真的随机选择，标题入口有趣但结果与玩法尚待核验。",
+      "why_chinese_users_care": "好奇、自我认识和可参与体验；不能把未经检查的实验结果包装成科学结论。",
+      "proposed_headline": "你以为随手选，其实有规律？",
+      "china_relevance": "好奇、自我认识和可参与体验；不能把未经检查的实验结果包装成科学结论。",
+      "semantic_status": "live",
+      "semantic_error": null,
+      "mass_appeal_score": 45.34,
+      "human_trigger_score": 54.25,
+      "viral_potential": 62.25,
+      "social_heat": 74.45,
+      "recognizable_entity": 0.9,
+      "publishability_score": 50.46,
+      "score_confidence_pass": false,
+      "mass_appeal_dimensions": {
+        "recognizable_entity": 0.9,
+        "immediate_understandability": 12.75,
+        "personal_stakes": 0.3,
+        "emotional_charge": 7.35,
+        "china_information_gap": 2.5,
+        "visual_headline_power": 5.38,
+        "social_heat": 11.17,
+        "freshness": 5
+      },
+      "headline_options": [],
+      "stop_scroll_test": "FAIL",
+      "non_tech_reader_test": "FAIL",
+      "evidence_test": "FAIL",
+      "title_potential_test": "FAIL",
+      "contrarian_check": "WARN",
+      "news_class": "PURE_NEWS",
+      "verdict": "NO_PUBLISH",
+      "gate_failures": [
+        "mass_appeal_below_70_or_unknown",
+        "stop_scroll_failed_or_unknown",
+        "non_tech_reader_failed_or_unknown",
+        "evidence_failed_or_unknown",
+        "title_potential_failed_or_unknown",
+        "programmer_bias_or_unknown",
+        "low_or_missing_score_confidence"
+      ]
+    }
+  ],
+  "scan": {
+    "scanned_at": "2026-10-14T14:33:19.194493+00:00",
+    "windows_hours": [
+      24,
+      72,
+      168
+    ],
+    "queries": [
+      {
+        "query": "OpenAI Anthropic Google AI",
+        "channel": "hot_topic",
+        "status": "ok",
+        "windows": [
+          {
+            "window_hours": 24,
+            "hits": 8
+          }
+        ]
+      },
+      {
+        "query": "NVIDIA Microsoft Meta artificial intelligence",
+        "channel": "hot_topic",
+        "status": "ok",
+        "windows": [
+          {
+            "window_hours": 24,
+            "hits": 8
+          }
+        ]
+      },
+      {
+        "query": "AI jobs layoffs hiring",
+        "channel": "hot_topic",
+        "status": "ok",
+        "windows": [
+          {
+            "window_hours": 24,
+            "hits": 8
+          }
+        ]
+      },
+      {
+        "query": "AI free tools new release",
+        "channel": "hot_topic",
+        "status": "ok",
+        "windows": [
+          {
+            "window_hours": 24,
+            "hits": 8
+          }
+        ]
+      },
+      {
+        "query": "AI robot viral experiment",
+        "channel": "hot_topic",
+        "status": "ok",
+        "windows": [
+          {
+            "window_hours": 24,
+            "hits": 0
+          },
+          {
+            "window_hours": 72,
+            "hits": 2
+          }
+        ]
+      },
+      {
+        "query": "AI privacy scam consumers",
+        "channel": "hot_topic",
+        "status": "ok",
+        "windows": [
+          {
+            "window_hours": 24,
+            "hits": 5
+          }
+        ]
+      },
+      {
+        "query": "Apple Tesla xAI product",
+        "channel": "hot_topic",
+        "status": "empty",
+        "windows": [
+          {
+            "window_hours": 24,
+            "hits": 0
+          },
+          {
+            "window_hours": 72,
+            "hits": 0
+          },
+          {
+            "window_hours": 168,
+            "hits": 0
+          }
+        ]
+      },
+      {
+        "query": "AI internet controversy",
+        "channel": "hot_topic",
+        "status": "ok",
+        "windows": [
+          {
+            "window_hours": 24,
+            "hits": 6
+          }
+        ]
+      },
+      {
+        "query": "Elon Musk AI interview announcement",
+        "channel": "celebrity_watch",
+        "status": "ok",
+        "windows": [
+          {
+            "window_hours": 24,
+            "hits": 6
+          }
+        ]
+      },
+      {
+        "query": "Jensen Huang AI interview announcement",
+        "channel": "celebrity_watch",
+        "status": "ok",
+        "windows": [
+          {
+            "window_hours": 24,
+            "hits": 8
+          }
+        ]
+      },
+      {
+        "query": "Sam Altman AI interview announcement",
+        "channel": "celebrity_watch",
+        "status": "ok",
+        "windows": [
+          {
+            "window_hours": 24,
+            "hits": 3
+          }
+        ]
+      },
+      {
+        "query": "Dario Amodei AI interview announcement",
+        "channel": "celebrity_watch",
+        "status": "ok",
+        "windows": [
+          {
+            "window_hours": 24,
+            "hits": 1
+          }
+        ]
+      },
+      {
+        "query": "Demis Hassabis AI interview announcement",
+        "channel": "celebrity_watch",
+        "status": "empty",
+        "windows": [
+          {
+            "window_hours": 24,
+            "hits": 0
+          },
+          {
+            "window_hours": 72,
+            "hits": 0
+          },
+          {
+            "window_hours": 168,
+            "hits": 0
+          }
+        ]
+      },
+      {
+        "query": "Mark Zuckerberg AI interview announcement",
+        "channel": "celebrity_watch",
+        "status": "ok",
+        "windows": [
+          {
+            "window_hours": 24,
+            "hits": 4
+          }
+        ]
+      },
+      {
+        "query": "Satya Nadella AI interview announcement",
+        "channel": "celebrity_watch",
+        "status": "ok",
+        "windows": [
+          {
+            "window_hours": 24,
+            "hits": 1
+          }
+        ]
+      },
+      {
+        "query": "Tim Cook AI interview announcement",
+        "channel": "celebrity_watch",
+        "status": "ok",
+        "windows": [
+          {
+            "window_hours": 24,
+            "hits": 0
+          },
+          {
+            "window_hours": 72,
+            "hits": 1
+          }
+        ]
+      },
+      {
+        "query": "AI",
+        "channel": "viral_discussion",
+        "status": "ok",
+        "hits": 8
+      },
+      {
+        "query": "OpenAI",
+        "channel": "viral_discussion",
+        "status": "ok",
+        "hits": 8
+      },
+      {
+        "query": "Gemini",
+        "channel": "viral_discussion",
+        "status": "ok",
+        "hits": 8
+      },
+      {
+        "query": "robot",
+        "channel": "viral_discussion",
+        "status": "ok",
+        "hits": 8
+      },
+      {
+        "query": "free",
+        "channel": "viral_discussion",
+        "status": "ok",
+        "hits": 8
+      },
+      {
+        "query": "jobs",
+        "channel": "viral_discussion",
+        "status": "ok",
+        "hits": 8
+      },
+      {
+        "query": "Anthropic",
+        "channel": "viral_discussion",
+        "status": "ok",
+        "hits": 8
+      },
+      {
+        "query": "Show HN",
+        "channel": "viral_discussion",
+        "status": "ok",
+        "hits": 8
+      },
+      {
+        "channel": "official_rss",
+        "source": "openai_blog",
+        "status": "ok"
+      },
+      {
+        "query": {
+          "name": "deepmind_blog",
+          "type": "rss",
+          "url": "https://deepmind.google/blog/rss.xml",
+          "reliability": 0.9
+        },
+        "status": "error",
+        "reason": "ConnectError"
+      },
+      {
+        "channel": "official_rss",
+        "source": "google_ai_blog",
+        "status": "ok"
+      },
+      {
+        "channel": "official_rss",
+        "source": "microsoft_ai_blog",
+        "status": "ok"
+      },
+      {
+        "channel": "official_rss",
+        "source": "nvidia_blog",
+        "status": "ok"
+      },
+      {
+        "channel": "official_rss",
+        "source": "huggingface_blog",
+        "status": "ok"
+      },
+      {
+        "channel": "telegram_public",
+        "url": "https://t.me/s/aipost",
+        "status": "ok",
+        "posts": 15
+      }
+    ],
+    "telegram": [
+      {
+        "url": "https://t.me/s/aipost",
+        "status": "ok",
+        "posts": 15
+      }
+    ],
+    "raw_items": 236,
+    "people_monitored": [
+      "Elon Musk",
+      "Jensen Huang",
+      "Sam Altman",
+      "Dario Amodei",
+      "Demis Hassabis",
+      "Mark Zuckerberg",
+      "Satya Nadella",
+      "Tim Cook"
+    ],
+    "normalization_errors": 0
+  },
+  "collection": {
+    "run_at": "2026-10-14T14:29:17.670070+00:00",
+    "raw_items_this_run": 326,
+    "unique_items_this_run": 319,
+    "stored_items": 545,
+    "sources": [
+      {
+        "source": "simon_willison",
+        "status": "ok",
+        "raw_items": 20,
+        "saved_items": 20,
+        "item_errors": 0,
+        "normalization_errors": 0
+      },
+      {
+        "source": "armin_ronacher",
+        "status": "ok",
+        "raw_items": 10,
+        "saved_items": 10,
+        "item_errors": 0,
+        "normalization_errors": 0
+      },
+      {
+        "source": "ethan_mollick",
+        "status": "ok",
+        "raw_items": 10,
+        "saved_items": 10,
+        "item_errors": 0,
+        "normalization_errors": 0
+      },
+      {
+        "source": "human_story_search",
+        "status": "ok",
+        "raw_items": 66,
+        "saved_items": 66,
+        "item_errors": 0,
+        "search_queries": 19,
+        "comment_excerpts": 93,
+        "normalization_errors": 0
+      },
+      {
+        "source": "reddit_experiences",
+        "status": "skip",
+        "raw_items": 0,
+        "saved_items": 0,
+        "reason": "No authorized API configured; add public experience URLs and necessary excerpts through Manual Inbox."
+      },
+      {
+        "source": "creator_communities",
+        "status": "skip",
+        "raw_items": 0,
+        "saved_items": 0,
+        "reason": "Login-gated communities are not collected; use Manual Inbox with supplied evidence."
+      },
+      {
+        "source": "hacker_news",
+        "status": "ok",
+        "raw_items": 60,
+        "saved_items": 60,
+        "item_errors": 0,
+        "normalization_errors": 0
+      },
+      {
+        "source": "github_search",
+        "status": "ok",
+        "raw_items": 15,
+        "saved_items": 15,
+        "normalization_errors": 0
+      },
+      {
+        "source": "github_releases",
+        "status": "error",
+        "raw_items": 0,
+        "saved_items": 0,
+        "reason": "HTTPStatusError",
+        "http_status": 403
+      },
+      {
+        "source": "openai_blog",
+        "status": "ok",
+        "raw_items": 20,
+        "saved_items": 20,
+        "item_errors": 0,
+        "normalization_errors": 0
+      },
+      {
+        "source": "deepmind_blog",
+        "status": "ok",
+        "raw_items": 20,
+        "saved_items": 20,
+        "item_errors": 0,
+        "normalization_errors": 0
+      },
+      {
+        "source": "google_ai_blog",
+        "status": "ok",
+        "raw_items": 20,
+        "saved_items": 20,
+        "item_errors": 0,
+        "normalization_errors": 0
+      },
+      {
+        "source": "microsoft_ai_blog",
+        "status": "ok",
+        "raw_items": 10,
+        "saved_items": 10,
+        "item_errors": 0,
+        "normalization_errors": 0
+      },
+      {
+        "source": "meta_ai_blog",
+        "status": "skip",
+        "raw_items": 0,
+        "saved_items": 0,
+        "reason": "Publisher RSS returned 404; use manual URLs until a stable official feed/API is verified."
+      },
+      {
+        "source": "nvidia_blog",
+        "status": "error",
+        "raw_items": 0,
+        "saved_items": 0,
+        "reason": "ConnectError",
+        "http_status": null
+      },
+      {
+        "source": "huggingface_blog",
+        "status": "ok",
+        "raw_items": 20,
+        "saved_items": 20,
+        "item_errors": 0,
+        "normalization_errors": 0
+      },
+      {
+        "source": "techcrunch",
+        "status": "ok",
+        "raw_items": 20,
+        "saved_items": 20,
+        "item_errors": 0,
+        "normalization_errors": 0
+      },
+      {
+        "source": "ars_technica",
+        "status": "ok",
+        "raw_items": 20,
+        "saved_items": 20,
+        "item_errors": 0,
+        "normalization_errors": 0
+      },
+      {
+        "source": "anthropic_blog",
+        "status": "skip",
+        "raw_items": 0,
+        "saved_items": 0,
+        "reason": "No configured stable publisher RSS/API; use manual URLs until one is verified."
+      },
+      {
+        "source": "telegram",
+        "status": "skip",
+        "raw_items": 0,
+        "saved_items": 0,
+        "reason": "disabled by config"
+      },
+      {
+        "source": "telegram_public",
+        "status": "ok",
+        "raw_items": 15,
+        "saved_items": 15,
+        "normalization_errors": 0,
+        "public_pages": [
+          {
+            "url": "https://t.me/s/aipost",
+            "status": "ok",
+            "posts": 15
+          }
+        ]
+      },
+      {
+        "source": "manual_inbox",
+        "status": "empty",
+        "raw_items": 0,
+        "saved_items": 0,
+        "normalization_errors": 0
+      }
+    ],
+    "raw_story_items": 545,
+    "story_fast_filter": 50,
+    "story_candidate_count": 7
+  },
+  "snapshot_role": "本地真实采集与TypeSafe评分的可复核快照；不是以后云端运行的实时评分。"
+}

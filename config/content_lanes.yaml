@@ -1,0 +1,25 @@
+version: multi-lane-v2
+mission: 每天帮中国用户从海外 AI、科技、互联网世界找到最值得点开的东西
+lanes:
+  GLOBAL_HOT_TOPIC: 全球重大 AI、科技、互联网能力跃迁、就业、监管或商业动作；事情本身足够大，不要求第一人称
+  BIG_PERSON: 知名人物的真实动作或判断；必须解释普通中国用户为什么关心，不收无意义语录
+  VIRAL_DISCUSSION: 有真实互动或增长证据的公开爆帖、讨论；寻找人们产生反应的原因
+  HUMAN_STORY: 第一人称经历、职业、创业、赚钱、失败或反转；Story Mining 只是一个通道
+  UTILITY_OPPORTUNITY: 可核验的免费资源、工具、开放能力、学习或效率机会；记录地域、价格、资格限制
+  WOW_WEIRD_INTERNET: 真实惊讶、强视觉案例、有趣实验、机器人或荒诞互联网事件
+competition:
+  minimum_candidates: 20
+  screening_limit: 40
+  per_lane_reserve: 4
+  source_priority_scope: human_story_mining_only
+  best_of_bad_batch: forbidden
+viral_reference_patterns:
+  - 利益：省钱、赚钱、节省时间
+  - 身份：学生、打工人、创作者、程序员的变化
+  - 恐惧：稳定事物变得不稳定
+  - 反转：以为 A，结果 B
+  - 大人物：知名人物有实质性动作
+  - 新奇：以前做不到、现在突然做到
+  - 实用：现在就能用，访问条件已核实
+  - 公平：谁获得利益，谁承担代价
+  - 性、钱、工作、健康：正常识别人性入口，坚持真实和安全边界

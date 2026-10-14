@@ -70,7 +70,22 @@ class Pipeline:
                         raise SkipSource("disabled by config")
                     if config["type"] == "restricted_adapter":
                         raise SkipSource(config["reason"])
-                    if config["type"] == "telegram_bot":
+                    if config["type"] == "telegram_public":
+                        from .telegram_public import collect_public
+
+                        raw, details = collect_public(
+                            self.load("telegram_channels.yaml"), http, self.store.inbox()
+                        )
+                        items, errors = self.save_raw(raw)
+                        self.store.save_batch(items)
+                        collected.extend(items)
+                        row.update(
+                            raw_items=len(raw),
+                            saved_items=len(items),
+                            normalization_errors=errors,
+                            public_pages=details,
+                        )
+                    elif config["type"] == "telegram_bot":
                         rejected = 0
                         for _ in range(config.get("max_batches", 5)):
                             offset = self.store.get_state("telegram_offset", 0)
@@ -201,6 +216,44 @@ class Pipeline:
         (destination / "story_candidates.md").write_text("\n".join(lines), encoding="utf-8")
         return deep, report
 
+    def publish_candidates(self, scan_live=True, http=None):
+        from .hot_scan import scan
+        from .publish_selection import select
+
+        destination = self.root / "outputs"
+        destination.mkdir(exist_ok=True)
+        audit_path = destination / "live_hot_scan.json"
+        if scan_live:
+            config = self.load("hot_sources.yaml")
+            config["official_sources"] = [
+                s
+                for s in self.sources["sources"]
+                if s["type"] == "rss" and s.get("reliability", 0) >= 0.8
+            ]
+            raw, audit = scan(
+                config,
+                self.load("watch_people.yaml"),
+                self.load("telegram_channels.yaml"),
+                self.store.inbox(),
+                http,
+            )
+            items, errors = self.save_raw(raw)
+            self.store.save_batch(items)
+            audit["normalization_errors"] = errors
+            audit_path.write_text(json.dumps(audit, ensure_ascii=False, indent=2))
+        else:
+            audit = json.loads(audit_path.read_text()) if audit_path.exists() else {}
+        return select(
+            self.root,
+            self.store,
+            self.editorial_scoring["provider"],
+            self.load("mass_appeal.yaml"),
+            self.load("content_lanes.yaml"),
+            self.load("watch_people.yaml"),
+            audit,
+            http=http,
+        )
+
     def rank(self, limit=10):
         return self.screen(limit)[0]
 
@@ -251,4 +304,12 @@ class Pipeline:
             json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8"
         )
         verify_outputs(self.root / "outputs", self.style, report)
+        selection = self.publish_candidates()
+        report["publication_selection"] = {
+            k: selection[k]
+            for k in ("decision", "candidate_count", "current_24h_pool_count", "lane_counts")
+        }
+        (self.root / "outputs" / "run_report.json").write_text(
+            json.dumps(report, ensure_ascii=False, indent=2)
+        )
         return report

@@ -1,0 +1,13 @@
+version: 1
+window_hours: [24, 72, 168]
+people:
+  - {name: Elon Musk, chinese_name: 马斯克}
+  - {name: Jensen Huang, chinese_name: 黄仁勋}
+  - {name: Sam Altman, chinese_name: 山姆·奥特曼}
+  - {name: Dario Amodei, chinese_name: 达里奥·阿莫代伊}
+  - {name: Demis Hassabis, chinese_name: 德米斯·哈萨比斯}
+  - {name: Mark Zuckerberg, chinese_name: 扎克伯格}
+  - {name: Satya Nadella, chinese_name: 萨提亚·纳德拉}
+  - {name: Tim Cook, chinese_name: 蒂姆·库克}
+checks: [讲话, 采访, 公开帖子, 产品发布, 投资, 重大预测, 争议]
+require_mass_appeal: true

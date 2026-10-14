@@ -6,4 +6,5 @@ __pycache__/
 .env*
 data/*
 !data/published_posts.jsonl
+!data/editorial_feedback.jsonl
 outputs/

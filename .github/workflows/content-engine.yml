@@ -52,9 +52,11 @@ jobs:
           TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
         run: uv run python -m xhs_content_engine run
       - name: Validate artifact counts and public wording
-        run: uv run python -m xhs_content_engine verify-outputs
+        run: |
+          uv run python -m xhs_content_engine verify-outputs
+          uv run python -m xhs_content_engine verify-publish-candidates
       - name: Job summary
-        run: cat outputs/top_candidates.md >> "$GITHUB_STEP_SUMMARY"
+        run: cat outputs/publish_candidates.md >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/cache/save@v4
         with:
           path: data/content.sqlite3
@@ -62,5 +64,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: content-candidates-${{ github.run_id }}
-          path: outputs/
+          path: |
+            outputs/
+            docs/selection_runs/
           retention-days: 14

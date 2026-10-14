@@ -237,6 +237,8 @@ class StoryCandidate(BaseModel):
 class EditorialFeedback(BaseModel):
     candidate_id: str = Field(min_length=1)
     decision: str
+    user_quote: str = ""
+    title: str = ""
     reasons: list[str] = Field(min_length=1)
     reviewed_at: datetime = Field(default_factory=lambda: datetime.now(UTC))
 

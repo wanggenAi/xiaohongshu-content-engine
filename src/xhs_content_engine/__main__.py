@@ -49,6 +49,41 @@ def run(root: Root = Path("."), limit: Limit = 10):
     typer.echo(json.dumps(Pipeline(root).run(limit), ensure_ascii=False, indent=2))
 
 
+@app.command("publish-candidates")
+def publish_candidates(root: Root = Path("."), reuse_scan: bool = False):
+    """Run live multi-lane competition; produces internal reports, never posts."""
+    result = Pipeline(root).publish_candidates(scan_live=not reuse_scan)
+    typer.echo(
+        json.dumps(
+            {
+                k: result[k]
+                for k in ("decision", "candidate_count", "current_24h_pool_count", "lane_counts")
+            },
+            ensure_ascii=False,
+            indent=2,
+        )
+    )
+
+
+@app.command("check-publish-gate")
+def check_publish_gate(candidate_id: str, root: Root = Path(".")):
+    """Required before drafting/posting; research ranking is not authorization."""
+    from .publish_selection import check_publish_gate as check
+
+    try:
+        check(root, candidate_id)
+    except ValueError as exc:
+        raise typer.BadParameter(str(exc)) from None
+    typer.echo("AUTO_PUBLISH_ELIGIBLE; this command did not publish")
+
+
+@app.command("verify-publish-candidates")
+def verify_publish_candidates(root: Root = Path(".")):
+    from .publish_selection import verify_selection
+
+    typer.echo(json.dumps(verify_selection(root), ensure_ascii=False))
+
+
 @inbox.command("add")
 def inbox_add(
     url: str,
@@ -90,8 +125,15 @@ def review_add(file: Path, root: Root = Path(".")):
     # Validate the whole batch before persisting any feedback.
     feedback = [EditorialFeedback.model_validate(row) for row in records]
     store = Pipeline(root).store
-    for record in feedback:
-        store.save_editorial_feedback(record)
+    ledger = root / "data" / "editorial_feedback.jsonl"
+    ledger.parent.mkdir(exist_ok=True)
+    known = {r.model_dump_json() for r in store.editorial_feedback()}
+    with ledger.open("a", encoding="utf-8") as stream:
+        for record in feedback:
+            if record.model_dump_json() not in known:
+                store.save_editorial_feedback(record)
+                stream.write(record.model_dump_json() + "\n")
+                known.add(record.model_dump_json())
     typer.echo(f"saved {len(feedback)} editorial reviews")
 
 

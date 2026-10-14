@@ -1,5 +1,12 @@
 # xiaohongshu-content-engine
 
+> 当前选题目标：每天帮中国用户找到海外 AI、科技、互联网世界最值得点开的东西。Story Mining 只是六条赛道之一。
+>
+> **禁止 Best-of-Bad-Batch。** Deep Candidate 不代表允许发布。先跑 `uv run python -m xhs_content_engine publish-candidates`，查看 `outputs/publish_candidates.md`，再用 `check-publish-gate CANDIDATE_ID` 检查全部绝对门槛。没有合格题就 `NO_PUBLISH_TODAY`。本次纠正没有发布新帖，也没有删除原帖。
+>
+> 多赛道、热点主动搜索、公开 Telegram、人物监控、真实 DISLIKE 与闸门说明见 [CONTENT_SELECTION_V2.md](docs/CONTENT_SELECTION_V2.md)。
+
+
 持续发现海外 AI、科技、人物观点、工作变化和互联网讨论，生成供 ChatGPT 与用户判断的高质量候选素材。工程初筛不替代最终编辑判断，不自动发布小红书。
 
 `SOURCE → COLLECT → NORMALIZE → DEDUPE → DISCOVERY → STORY MINING → EVIDENCE → HUMAN TRIGGER → EDITORIAL PACKET`

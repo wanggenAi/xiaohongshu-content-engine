@@ -1,3 +1,6 @@
+scope: human_story_mining_only
+hot_sources: [hot_search, hot_discussion, public_primary, telegram_public]
+major_global_news: compete_in_global_hot_topic_without_first_person_requirement
 version: story-sources-v1
 tiers:
   S:

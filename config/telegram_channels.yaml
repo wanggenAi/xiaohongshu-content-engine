@@ -1,0 +1,10 @@
+version: 1
+channels:
+  - username: aipost
+    public_url: https://t.me/s/aipost
+    provenance: 本次公开搜索发现，已核实无需登录可读；不是用户提供的频道，不视为官方事实源
+    evidence_role: discovery_and_public_engagement
+post_urls: []
+manual_url_inbox: true
+max_posts_per_channel: 20
+allowed_access: public_web_without_login

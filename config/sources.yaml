@@ -67,9 +67,15 @@ sources:
     reason: No configured stable publisher RSS/API; use manual URLs until one is verified.
   - name: telegram
     type: telegram_bot
-    enabled: true
+    enabled: false
     token_env: TELEGRAM_BOT_TOKEN
-    # Add public channel usernames where YOUR dedicated bot is an authorized member.
+    # Optional dedicated-bot mode. Public collection below needs no bot token.
     channels: []
     max_batches: 5
     reliability: 0.45
+
+  - name: telegram_public
+    type: telegram_public
+    enabled: true
+    reliability: 0.4
+    config_file: telegram_channels.yaml

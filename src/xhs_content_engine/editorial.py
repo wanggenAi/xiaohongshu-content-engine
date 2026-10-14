@@ -382,6 +382,8 @@ def export(items: list[ContentItem], destination: Path, style: dict, now, review
         )
     review = (
         "# Today’s Human Stories\n\n"
+        "仅为故事研究通道，Deep 不代表允许发布。必须通过独立的多赛道绝对发布闸门。\n\n"
+        "仅为故事研究通道，Deep 不代表允许发布。发布前必须通过独立的多赛道绝对闸门。\n\n"
         "## A. Assessed Stories\n\n"
         f"Deep Candidates：{len(items)}；Human Review Queue：{len(review_queue)}。\n\n"
         "Viral Potential 是内部排序信号，不是爆款承诺；证据与可能性仍需人工核实。\n\n"

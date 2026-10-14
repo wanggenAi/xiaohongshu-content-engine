@@ -1,0 +1,17 @@
+version: 1
+windows_hours: [24, 72, 168]
+queries:
+  - OpenAI Anthropic Google AI
+  - NVIDIA Microsoft Meta artificial intelligence
+  - AI jobs layoffs hiring
+  - AI free tools new release
+  - AI robot viral experiment
+  - AI privacy scam consumers
+  - Apple Tesla xAI product
+  - AI internet controversy
+news_search_url: https://news.google.com/rss/search
+public_discussion_api: https://hn.algolia.com/api/v1/search
+classification:
+  HOT_NEWS: 重大实质动作且通过大众吸引力判断；不得因缺少小人物故事而降级
+  PURE_NEWS: 普通公告、参数更新、无明确用户入口的公司新闻
+discussion_queries: [AI, OpenAI, Gemini, robot, free, jobs, Anthropic, Show HN]
