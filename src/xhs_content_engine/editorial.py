@@ -199,6 +199,16 @@ def safe_review_evidence(text, style):
         validate_public(text, style)
         return text
     except ValueError:
+        # Keep an actual readable source clause when the full quote includes a
+        # platform name. Mark the excerpt explicitly; never rewrite the source.
+        clauses = re.split(r",?\s+and then\s+|,?\s+but\s+|[;；]|，但|，却|\n+", text, flags=re.I)
+        for clause in sorted(clauses, key=len, reverse=True):
+            if len(clause.strip()) >= 20:
+                try:
+                    validate_public(clause, style)
+                    return "原文片段（完整见证据包）：" + clause.strip()
+                except ValueError:
+                    continue
         return "原文含来源专名，完整证据见内部素材包。"
 
 
