@@ -1,6 +1,7 @@
 from datetime import UTC, datetime
 from enum import StrEnum
-from typing import Any
+from typing import Any, Literal
+from urllib.parse import urlparse
 
 from pydantic import BaseModel, Field, computed_field, field_validator
 
@@ -123,12 +124,17 @@ class ContentPerformance(BaseModel):
     title: str
     internal_source: str
     public_source_label: str
-    views: int = Field(default=0, ge=0)
-    likes: int = Field(default=0, ge=0)
-    saves: int = Field(default=0, ge=0)
-    comments: int = Field(default=0, ge=0)
-    shares: int = Field(default=0, ge=0)
-    follows: int = Field(default=0, ge=0)
+    # Missing measurements are unknown, never fabricated zeroes.
+    views: int | None = Field(default=None, ge=0)
+    impressions: int | None = Field(default=None, ge=0)
+    likes: int | None = Field(default=None, ge=0)
+    saves: int | None = Field(default=None, ge=0)
+    comments: int | None = Field(default=None, ge=0)
+    shares: int | None = Field(default=None, ge=0)
+    follows: int | None = Field(default=None, ge=0)
+    observed_at: datetime | None = None
+    measurement_source: str | None = None
+    snapshot_observed_at: dict[str, datetime] = Field(default_factory=dict)
     metrics_2h: dict[str, int] = Field(default_factory=dict)
     metrics_24h: dict[str, int] = Field(default_factory=dict)
     metrics_72h: dict[str, int] = Field(default_factory=dict)
@@ -136,9 +142,55 @@ class ContentPerformance(BaseModel):
     @field_validator("metrics_2h", "metrics_24h", "metrics_72h")
     @classmethod
     def validate_snapshots(cls, value: dict[str, int]) -> dict[str, int]:
-        allowed = {"views", "likes", "saves", "comments", "shares", "follows"}
+        allowed = {"impressions", "views", "likes", "saves", "comments", "shares", "follows"}
         if set(value) - allowed or any(v < 0 for v in value.values()):
             raise ValueError("invalid performance metrics")
+        return value
+
+
+class PublishedPost(BaseModel):
+    """Only confirmed submissions belong in the publication ledger."""
+
+    candidate_id: str = Field(min_length=1)
+    published_at: datetime
+    platform: str = "xiaohongshu"
+    published_time_precision: Literal["minute", "second"] = "second"
+    post_url: str
+    title: str = Field(min_length=1)
+    content_type: ContentType
+    story_richness_score: float | None = Field(default=None, ge=0, le=100)
+    human_trigger_score: float | None = Field(default=None, ge=0, le=100)
+    viral_potential: float | None = Field(default=None, ge=0, le=100)
+    initial_status: str = "published"
+    platform_status: str = Field(min_length=1)
+    publication_evidence: str = Field(min_length=1)
+
+    @field_validator("published_at")
+    @classmethod
+    def publication_timezone(cls, value: datetime) -> datetime:
+        if value.tzinfo is None:
+            raise ValueError("published_at must include a timezone")
+        return value
+
+    @field_validator("post_url")
+    @classmethod
+    def public_post_url(cls, value: str) -> str:
+        parsed = urlparse(value)
+        if (
+            parsed.scheme != "https"
+            or parsed.hostname
+            not in {"www.xiaohongshu.com", "xiaohongshu.com", "xhslink.com", "www.xhslink.com"}
+            or parsed.path in {"", "/"}
+        ):
+            raise ValueError("a real Xiaohongshu post URL is required")
+        return value
+
+    @field_validator("platform", "initial_status")
+    @classmethod
+    def confirmed_publication(cls, value: str, info) -> str:
+        expected = "xiaohongshu" if info.field_name == "platform" else "published"
+        if value != expected:
+            raise ValueError(f"{info.field_name} must be {expected}")
         return value
 
 

@@ -6,16 +6,19 @@ from typing import Annotated
 import typer
 
 from .editorial import validate_public, verify_outputs
-from .models import ContentPerformance, EditorialFeedback
+from .models import ContentPerformance, EditorialFeedback, PublishedPost
 from .pipeline import Pipeline
+from .publication import record_publication
 
 app = typer.Typer(no_args_is_help=True, pretty_exceptions_show_locals=False)
 inbox = typer.Typer()
 performance = typer.Typer()
 review = typer.Typer()
+publication = typer.Typer()
 app.add_typer(inbox, name="inbox")
 app.add_typer(performance, name="performance")
 app.add_typer(review, name="review")
+app.add_typer(publication, name="publication")
 Root = Annotated[Path, typer.Option(help="Directory containing config/ and data/")]
 Limit = Annotated[int, typer.Option(min=1, max=30)]
 
@@ -71,6 +74,13 @@ def performance_add(file: Path, root: Root = Path(".")):
     record = ContentPerformance.model_validate_json(file.read_text(encoding="utf-8"))
     Pipeline(root).store.save_performance(record)
     typer.echo(record.id)
+
+
+@publication.command("add")
+def publication_add(file: Path, root: Root = Path(".")):
+    record = PublishedPost.model_validate_json(file.read_text(encoding="utf-8"))
+    added = record_publication(root / "data" / "published_posts.jsonl", record)
+    typer.echo("recorded" if added else "already recorded")
 
 
 @review.command("add")
