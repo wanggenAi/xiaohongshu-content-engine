@@ -11,9 +11,9 @@ stages:
   deep_limit: 10
   discovery_source_cap: 8
 thresholds:
-  screening_score: 48
+  screening_score: 45
   deep_score: 60
-  strong_score: 75
+  strong_score: 70
   minimum_human_relevance: 0.4
   minimum_china_relevance: 0.5
   reject_probability: 0.85
@@ -104,6 +104,21 @@ rubrics:
       claim.
     - Multiple independent sources plus original records support a well-bounded claim with documented
       limitations.
+  decision_risk:
+    question: What risk would readers face if this item were turned into a confident public claim before
+      missing evidence is checked? Consider medical outcomes, allegations, minors, privacy, safety, promised
+      performance, accessibility, legal claims and whether a single case could be mistaken for a general
+      result. This risk axis is reported separately and subtracts from editorial_value; do not treat legitimate
+      social stakes as a reason to reject.
+    levels:
+    - 'Low risk: bounded ordinary information; unlikely to mislead, expose or harm a person if summarized
+      carefully.'
+    - 'Manageable risk: attribution or scope needs care, but clear caveats and basic checks protect readers.'
+    - 'Material risk: medical, legal, privacy, employment, child safety, access or performance claim could
+      mislead without primary evidence and context.'
+    - 'High risk: specific person, vulnerable group or serious allegation may be harmed by error, or readers
+      may act on an unsupported health, safety or legal claim; expert/primary verification is required
+      before publication.'
 rejects:
   TOO_TECHNICAL: Only specialized implementation or enterprise infrastructure details; no concrete reader-life
     or work consequence. Technical content with an actual human consequence does not qualify.

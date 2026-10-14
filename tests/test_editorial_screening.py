@@ -108,7 +108,9 @@ def test_editorial_score_separate_and_explained(config, lenses):
     result = assessment(candidate(), config, lenses)
     assert result.discovery_score == result.score == 40
     assert result.editorial_score == round(
-        sum(result.editorial_score_breakdown["weighted"].values()), 2
+        sum(result.editorial_score_breakdown["weighted"].values())
+        + result.editorial_score_breakdown["decision_risk_adjustment"],
+        2,
     )
     assert result.editorial_score > 70
     assert result.editorial_verdict == "STRONG"
@@ -197,7 +199,7 @@ def test_multiple_valid_spans_do_not_drop_a_supported_signal(config, lenses):
     request = judgment_request(source, config, lenses)
     data = response_for(request)
     data["answers"]["signal_person"].update(
-        choice="s0", confidence=0.2, probabilities={"s0": 0.46, "s1": 0.44, "NONE": 0.1}
+        choice="s0", confidence=0.2, probabilities={"s0": 0.75, "s1": 0.15, "NONE": 0.1}
     )
     result = compose_assessment(source, validate_response(data, request), config, lenses)
     assert result.story_signals["person"] == [source.title]

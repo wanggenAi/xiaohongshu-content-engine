@@ -204,7 +204,7 @@ def extract_story_signals(item, answers, config):
     signals = {key: [] for key in config["signal_definitions"]}
     for key in signals:
         answer = answers[f"signal_{key}"]
-        probability = 1 - answer.probabilities.get("NONE", 1)
+        probability = answer.probabilities.get(answer.choice, 0)
         if answer.choice in spans and probability >= config["thresholds"]["signal_probability"]:
             signals[key] = [spans[answer.choice]]
     signals["numbers"] = list(
@@ -336,6 +336,9 @@ def compose_assessment(item, response, config, lenses, mode="live", error=None):
         key: answers[f"dimension_{key}"].score / (len(config["rubrics"][key]["levels"]) - 1)
         for key in config["weights"]
     }
+    decision_risk = answers["dimension_decision_risk"].score / (
+        len(config["rubrics"]["decision_risk"]["levels"]) - 1
+    )
     caps = {}
     if not item.metadata.get("chinese_coverage"):
         dimensions["novelty"] = min(
@@ -390,7 +393,8 @@ def compose_assessment(item, response, config, lenses, mode="live", error=None):
     if "china_saturated" in flags and item.metadata.get("chinese_coverage"):
         reasons.append("SATURATED")
     weighted = {key: round(value * config["weights"][key], 3) for key, value in dimensions.items()}
-    total = round(sum(weighted.values()), 2)
+    risk_adjustment = round(decision_risk * 15, 3)
+    total = round(max(0, min(100, sum(weighted.values()) - risk_adjustment)), 2)
     lens_answer = answers["lens"]
     lens_key = lens_answer.choice
     if lens_answer.probabilities.get(lens_key, 0) < thresholds["lens_probability"]:
@@ -414,11 +418,15 @@ def compose_assessment(item, response, config, lenses, mode="live", error=None):
     result.story_signals = signals
     result.editorial_score = total
     result.editorial_score_breakdown = {
-        "dimensions": dimensions,
+        "dimensions": {**dimensions, "decision_risk": decision_risk},
         "weighted": weighted,
+        "decision_risk": decision_risk,
+        "decision_risk_adjustment": -risk_adjustment,
         "evidence_caps": caps,
         "reject_probabilities": rejection,
-        "confidence": {key: answers[f"dimension_{key}"].confidence for key in dimensions},
+        "confidence": {
+            key: answers[f"dimension_{key}"].confidence for key in [*dimensions, "decision_risk"]
+        },
         "raw_answers": response.model_dump(mode="json"),
     }
     result.editorial_value.update(
@@ -442,7 +450,7 @@ def compose_assessment(item, response, config, lenses, mode="live", error=None):
         )
     elif total >= thresholds["strong_score"] and dimensions["evidence_quality"] >= 0.5:
         result.editorial_verdict = "STRONG"
-    elif total >= thresholds["screening_score"]:
+    elif total >= thresholds["deep_score"]:
         result.editorial_verdict = "POSSIBLE"
     else:
         result.editorial_verdict = "WEAK"

@@ -9,7 +9,7 @@
 - Stage B Editorial Screening：**17**。
 - Deep Candidates：**8**；没有为了凑数补入内容。
 - Editorial Packets / public briefs：**8 / 8**。
-- TypeSafe 请求：live **1**、cache **36**；token 使用记录在 `run_report.json`，凭证未写入日志或输出。
+- TypeSafe 请求（含独立 decision-risk 轴）：live **1**、cache **36**；token 使用记录在 `run_report.json`，凭证未写入日志或输出。
 - `pytest`：59 passed；`ruff check` 与 `ruff format --check` 通过。
 - 公开简报全部通过平台名检查，未发现 `Show 海外`、`Ask 海外`、`海外 post` 等机械替换。
 
@@ -44,7 +44,7 @@
 5. **62.07 / POSSIBLE** — Disney：陪伴型聊天产品进入商业合作时，谁来承担关系与安全的责任？
 6. **60.30 / POSSIBLE** — Science Corporation：辅助技术走到了具体患者身上：它究竟能恢复哪些日常能力？
 
-这些都是 `POSSIBLE`，没有候选达到 `STRONG` 门槛。它们是调查候选，不是已核实事实或最终文案；编辑页逐条保留作者、时间、摘录、原始 URL、证据缺口和不确定性。
+这些都是 `POSSIBLE`，没有候选达到 `STRONG` 门槛；`decision-risk` 独立扣分，未把医疗、隐私、未成年人或指控类风险混入人的相关性。它们是调查候选，不是已核实事实或最终文案；编辑页逐条保留作者、时间、摘录、原始 URL、证据缺口和不确定性。
 
 ## 冻结的 V1 Top 20 回测
 
