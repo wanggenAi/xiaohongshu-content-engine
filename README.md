@@ -1,3 +1,5 @@
+> V1.6：最终裁判改为普通中国用户的点击欲望。普通人吸引力32% + 只看标题封面的停留欲望22%；人性触发15%、生活关联12%、人物冲突7%、真实视觉6%、中国信息差3%、海外热度3%。Evidence只做硬闸门。先看 `outputs/consumer_candidates.md`，完整Top 20和审计仍在 `outputs/publish_candidates.md/json`。去术语不成立或3秒SCROLL不能进合格Top 5；不足5条明确报告，不凑数。分数和盲测是模型模拟，不是实测点击率。本轮不发布。
+
 # xiaohongshu-content-engine
 
 > 当前选题目标：每天帮中国用户找到海外 AI、科技、互联网世界最值得点开的东西。Story Mining 只是六条赛道之一。

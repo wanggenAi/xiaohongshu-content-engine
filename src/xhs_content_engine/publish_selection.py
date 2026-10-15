@@ -15,6 +15,7 @@ from pathlib import Path
 from .editorial_calibration import (
     calibrate,
     editorial_rank,
+    rank_rows,
     run_tournament_and_blind,
     write_blind_report,
 )
@@ -347,9 +348,23 @@ def absolute_gate(row, gate, pool_count, scan_at, now, disliked=False):
         reasons.append("live_hot_scan_missing_or_expired")
     if not row.get("calibration_complete"):
         reasons.append("calibration_incomplete")
+    if "ordinary_person_appeal" in gate:
+        if hard.get("card_claim") != "PASS":
+            reasons.append("card_claim_failed_or_unknown")
+        if row.get("non_tech_strip_test") != "PASS":
+            reasons.append("non_tech_strip_failed_or_unknown")
+        if row.get("three_second_test") != gate["three_second_required"]:
+            reasons.append("three_second_not_STOP")
+        if not row.get("click_reason_pass"):
+            reasons.append("ordinary_click_reason_missing")
     for field, threshold in (
-        ("mass_appeal_score", gate["mass_appeal"]),
-        ("stop_scroll_score", gate["stop_scroll"]),
+        ("ordinary_person_appeal", gate["ordinary_person_appeal"])
+        if "ordinary_person_appeal" in gate
+        else ("mass_appeal_score", gate["mass_appeal"]),
+        (
+            "card_stop_score" if "ordinary_person_appeal" in gate else "stop_scroll_score",
+            gate["stop_scroll"],
+        ),
         ("title_potential_score", gate["title_potential"]),
     ):
         if row.get(field) is None or row[field] < threshold:
@@ -361,7 +376,7 @@ def absolute_gate(row, gate, pool_count, scan_at, now, disliked=False):
         reasons.append("programmer_bias_warning")
     if row.get("soft_evaluator_disagreements"):
         reasons.append("soft_evaluator_disagreement")
-    if row.get("score_distribution_conflict"):
+    if "ordinary_person_appeal" not in gate and row.get("score_distribution_conflict"):
         reasons.append("mass_assessment_bimodal")
     if row.get("requires_title_tournament") and not row.get("blind_click_winner"):
         reasons.append("twenty_headline_tournament_incomplete")
@@ -382,7 +397,14 @@ def absolute_gate(row, gate, pool_count, scan_at, now, disliked=False):
     if row.get("lane") == "BIG_PERSON" and (row.get("substantive_action") or 0) < 60:
         reasons.append("celebrity_without_substantive_action")
     score = row.get("final_editorial_priority")
-    if disliked or "FAIL" in hard.values() or score is None or score < gate["no_publish_below"]:
+    if (
+        disliked
+        or "FAIL" in hard.values()
+        or score is None
+        or score < gate["no_publish_below"]
+        or ("ordinary_person_appeal" in gate and row.get("non_tech_strip_test") == "FAIL")
+        or row.get("three_second_test") == "SCROLL"
+    ):
         return "NO_PUBLISH", reasons
     if score < gate["publishability"]:
         reasons.append("final_priority_below_75")
@@ -507,14 +529,16 @@ def compose(item, response, mode, error, config, pool_count, scan_at, now, disli
 
 
 def write_report(root, rows, audit, pool, now):
-    rows.sort(key=editorial_rank, reverse=True)
+    from .consumer_appeal import top_five_ready
+
+    rows[:] = rank_rows(rows)
     count24 = sum(
         bool(i.published_at and timedelta(0) <= now - i.published_at <= timedelta(hours=24))
         for i in pool
     )
     result = {
         "generated_at": now.isoformat(),
-        "selection_version": "V1.5",
+        "selection_version": "V1.6",
         "scan": audit,
         "candidate_count": len(rows),
         "assessed_candidate_count": sum(r["mass_appeal_score"] is not None for r in rows),
@@ -537,6 +561,8 @@ def write_report(root, rows, audit, pool, now):
         ).get("story_candidate_count", 0)
         if (root / "outputs" / "editorial_screening.json").exists()
         else 0,
+        "top5": [r for r in rows if top_five_ready(r)][:5],
+        "top5_complete": sum(top_five_ready(r) for r in rows) >= 5,
         "top20": rows[:20],
         "top10": rows[:10],
         "top1": rows[0] if rows else None,
@@ -553,6 +579,7 @@ def write_report(root, rows, audit, pool, now):
     out = root / "outputs"
     out.mkdir(exist_ok=True)
     (out / "publish_candidates.json").write_text(json.dumps(result, ensure_ascii=False, indent=2))
+    write_consumer_report(root, result)
 
     def value(v):
         return "UNKNOWN" if v is None else str(v)
@@ -563,7 +590,8 @@ def write_report(root, rows, audit, pool, now):
         f"生成：{result['generated_at']}；本轮不发布。决策：**{result['decision']}**。",
         "",
         (
-            f"7天内去重池 {len(pool)}；24h池 {count24}；实评 {len(rows)}；"
+            f"7天内去重池 {len(pool)}；24h池 {count24}；候选 {len(rows)}；"
+            f"完成普通人评估 {sum(r.get('ordinary_person_appeal') is not None for r in rows)}；"
             f"Lane：{result['lane_counts']}。"
         ),
         "",
@@ -577,10 +605,13 @@ def write_report(root, rows, audit, pool, now):
             "判断分数是编辑估计，不是实测点击率。"
         ),
         "",
+        "普通人首页卡片、点击理由与3秒测试见 [consumer_candidates.md](consumer_candidates.md)。",
+        "",
         "## Top 20",
         "",
-        "|排名|Topic|Mass|Stop|Title|Similarity|Heat|Visual|Evidence|Final Priority|Gate|",
-        "|---|---|---:|---:|---:|---:|---:|---:|---|---:|---|",
+        "|排名|Topic|Ordinary Appeal|3秒|去术语|Mass背景|Stop卡片|Title|"
+        "Similarity背景|Heat背景|Visual|Evidence gate|Final Priority|Gate|",
+        "|---|---|---:|---|---|---:|---:|---:|---:|---:|---:|---|---:|---|",
     ]
     for i, r in enumerate(rows[:20], 1):
         lines.append(
@@ -589,9 +620,10 @@ def write_report(root, rows, audit, pool, now):
             "|"
             f"{r['topic'].replace('|', '/')}"
             "|"
-            f"{value(r['mass_appeal_score'])}"
+            f"{value(r.get('ordinary_person_appeal'))}|{r.get('three_second_test', 'UNKNOWN')}|"
+            f"{r.get('non_tech_strip_test', 'UNKNOWN')}|{value(r['mass_appeal_score'])}"
             "|"
-            f"{value(r.get('stop_scroll_score'))}|{value(r.get('title_potential_score'))}|{value(r.get('viral_pattern_similarity'))}|"
+            f"{value(r.get('card_stop_score'))}|{value(r.get('title_potential_score'))}|{value(r.get('viral_pattern_similarity'))}|"
             f"{value(r['social_heat'])}"
             "|"
             f"{value(r.get('visual_asset_strength'))}|{r.get('evidence_level', 'UNKNOWN')}|"
@@ -606,6 +638,11 @@ def write_report(root, rows, audit, pool, now):
             f"### {i}. {r['topic']}",
             "",
             f"- 标题：{r['proposed_headline'] or '待核验后拟定'}",
+            f"- 封面：{r.get('cover_line', '')}。",
+            f"- 普通人点击理由：{r.get('why_a_normal_chinese_user_clicks', 'UNKNOWN')}。",
+            f"- Ordinary Person Appeal：{r.get('ordinary_person_appeal')}；"
+            f"Human Trigger：{r.get('core_human_trigger')}；3秒：{r.get('three_second_test')}；"
+            f"去科技词：{r.get('non_tech_strip_test')}。",
             f"- Stop Scroll Score：{r.get('stop_scroll_score')}；"
             f"Title Potential：{r.get('title_potential_score')}；"
             f"Viral Similarity：{r.get('viral_pattern_similarity')}；"
@@ -808,7 +845,33 @@ def select(root, store, provider, config, lanes, people, audit, now=None, http=N
                 )
     library = build_library(root, pool, provider, config, store, feedback, now, http)
     calibrate(rows, selected, provider, config, store, library, http)
+    from .consumer_appeal import score_consumers
+
+    score_consumers(rows, selected, provider, config, store, http)
     blind = run_tournament_and_blind(rows, provider, store, http)
+    # The tournament winner is a new card, so score that card again before using it.
+    # Cache makes unchanged fact/card requests free of repeated inference.
+    for _ in range(3):
+        changed = [
+            r
+            for r in rows
+            if r.get("three_second_assessment", {}).get("card")
+            != {"title": r.get("best_headline", ""), "cover_line": r.get("cover_line", "")}
+        ]
+        if not changed:
+            break
+        chosen = [next(i for i in selected if i.id == r["id"]) for r in changed]
+        score_consumers(changed, chosen, provider, config, store, http)
+        blind = run_tournament_and_blind(rows, provider, store, http)
+    unsettled = [
+        r
+        for r in rows
+        if r.get("three_second_assessment", {}).get("card")
+        != {"title": r.get("best_headline", ""), "cover_line": r.get("cover_line", "")}
+    ]
+    for row in unsettled:
+        row["three_second_test"] = "UNKNOWN"
+        row["final_editorial_priority"] = None
     top = max(rows, key=editorial_rank) if rows else {}
     top["requires_title_tournament"] = True
     for row in rows:
@@ -950,6 +1013,23 @@ def verify_selection(root):
         raise ValueError("candidate counts or identities disagree")
     if result["top20"] != rows[:20] or result["top10"] != rows[:10]:
         raise ValueError("ranked report disagrees with full candidate comparison")
+    from .consumer_appeal import ordinary_score, top_five_ready
+
+    if any(not top_five_ready(r) for r in result.get("top5", [])):
+        raise ValueError("Top 5 contains SCROLL, weak consumer appeal or unsupported facts")
+    expected_top5 = [r for r in rows if top_five_ready(r)][:5]
+    if result.get("top5") != expected_top5:
+        raise ValueError("Top 5 disagrees with qualified consumer cards")
+    for row in rows:
+        dims = row.get("consumer_dimensions")
+        if dims and abs(ordinary_score(dims) - row["ordinary_person_appeal"]) > 0.02:
+            raise ValueError("ordinary appeal total disagrees with human dimensions")
+        card = row.get("three_second_assessment", {}).get("card")
+        if row.get("three_second_test") != "UNKNOWN" and card != {
+            "title": row.get("best_headline", ""),
+            "cover_line": row.get("cover_line", ""),
+        }:
+            raise ValueError("three-second result belongs to a different headline/card")
     assessed = sum(r["mass_appeal_score"] is not None for r in rows)
     if assessed != result["assessed_candidate_count"]:
         raise ValueError("assessed candidate count disagrees")
@@ -997,3 +1077,60 @@ def verify_selection(root):
         "assessed_candidate_count": assessed,
         "decision": expected,
     }
+
+
+def write_consumer_report(root, result):
+    """Homepage cards first; scoring details remain in publish_candidates.json."""
+    labels = {
+        "money": "钱/消费",
+        "work": "工作/生存",
+        "relationship": "关系/陪伴",
+        "privacy": "隐私/恐惧",
+        "surprise": "WTF/惊讶",
+    }
+    lines = [
+        "# 普通人首页候选",
+        "",
+        f"生成：{result['generated_at']}；本轮未发布。",
+        "模型模拟判断，不是实测点击率。证据只做硬闸门；海外热度占最终分3%。",
+        "",
+        f"Top 5 合格卡片数：{len(result['top5'])}；不足5条不拿SCROLL补位。",
+        "",
+        "|排名|标题|封面一句话|普通人点击理由|Human Trigger|3秒|去科技词|Appeal|Final|等级|",
+        "|---|---|---|---|---|---|---|---:|---:|---|",
+    ]
+    for index, row in enumerate(result["top10"], 1):
+        vals = [
+            index,
+            row.get("best_headline") or row["topic"],
+            row.get("cover_line", ""),
+            row.get("why_a_normal_chinese_user_clicks", ""),
+            labels.get(row.get("core_human_trigger"), "UNKNOWN"),
+            row.get("three_second_test"),
+            row.get("non_tech_strip_test"),
+            row.get("ordinary_person_appeal"),
+            row.get("final_editorial_priority"),
+            row["verdict"],
+        ]
+        lines.append(
+            "|" + "|".join(str(v).replace("|", "/").replace("\n", " ") for v in vals) + "|"
+        )
+    lines += [
+        "",
+        "## Top 5 多样性",
+        "",
+        str(dict(Counter(r["core_human_trigger"] for r in result["top5"]))),
+        "只在通过事实、去术语和3秒测试的卡片中选；允许惊讶、关系、隐私等多入口。",
+        "",
+        "## 降级审计",
+        "",
+    ]
+    for r in result["all_candidates"]:
+        if r.get("three_second_test") == "SCROLL" or r.get("non_tech_strip_test") == "FAIL":
+            lines.append(
+                f"- {r['topic']}：3秒={r.get('three_second_test')}；"
+                f"去术语={r.get('non_tech_strip_test')}；"
+                f"Appeal={r.get('ordinary_person_appeal')}；"
+                f"{r.get('why_a_normal_chinese_user_clicks')}；来源 {r['source_url']}"
+            )
+    (root / "outputs/consumer_candidates.md").write_text("\n".join(lines) + "\n")

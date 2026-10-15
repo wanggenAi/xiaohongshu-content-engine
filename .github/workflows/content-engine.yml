@@ -45,8 +45,9 @@ jobs:
           path: |
             data/content.sqlite3
             data/viral_references.jsonl
-          key: content-state-v15.1-${{ github.run_id }}-${{ github.run_attempt }}
+          key: content-state-v16-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
+            content-state-v16-
             content-state-v15.1-
             content-state-v1-
       - name: Discover and package candidates
@@ -66,7 +67,7 @@ jobs:
           path: |
             data/content.sqlite3
             data/viral_references.jsonl
-          key: content-state-v15.1-${{ github.run_id }}-${{ github.run_attempt }}
+          key: content-state-v16-${{ github.run_id }}-${{ github.run_attempt }}
       - uses: actions/upload-artifact@v4
         with:
           name: content-candidates-${{ github.run_id }}

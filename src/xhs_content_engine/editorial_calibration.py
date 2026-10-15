@@ -44,12 +44,51 @@ def band(score):
 
 def editorial_rank(row):
     """Unsupported claims stay in the audit pool; supported topics get editorial priority."""
+    from .consumer_appeal import top_five_ready
+
     hard = row.get("hard_gates", {})
     return (
+        top_five_ready(row) if "ordinary_person_appeal" in row else True,
         not any(v == "FAIL" for v in hard.values()),
         row.get("final_editorial_priority") is not None,
         row.get("final_editorial_priority") or -1,
     )
+
+
+def rank_rows(rows):
+    """Diversity only resolves close alternatives; it never admits weak/SCROLL cards."""
+    from collections import Counter
+
+    from .consumer_appeal import top_five_ready
+
+    ranked = sorted(rows, key=editorial_rank, reverse=True)
+    ready = [r for r in ranked if top_five_ready(r)]
+    if len(ready) < 6:
+        return ranked
+    counts = Counter(r.get("core_human_trigger") for r in ready[:5])
+    for displaced in reversed(ready[1:5]):
+        trigger = displaced.get("core_human_trigger")
+        if counts[trigger] <= 2:
+            continue
+        alternative = next(
+            (
+                r
+                for r in ready[5:]
+                if counts[r.get("core_human_trigger")] == 0
+                and r["final_editorial_priority"] >= displaced["final_editorial_priority"] - 3
+            ),
+            None,
+        )
+        if alternative:
+            a, b = ranked.index(displaced), ranked.index(alternative)
+            ranked[a], ranked[b] = ranked[b], ranked[a]
+            alternative["diversity_adjustment"] = (
+                "新增普通人触发方向；事实/去术语/首页测试均通过，分差不超过3分。"
+            )
+            counts[trigger] -= 1
+            counts[alternative.get("core_human_trigger")] += 1
+            ready.remove(alternative)
+    return ranked
 
 
 def evidence_profile(item):
@@ -194,7 +233,9 @@ class HeadlineJudge(SemanticJudge):
         questions = {}
         for index, title in enumerate(titles):
             questions[f"title_{index}"] = score_question(
-                f"只评标题「{title}」让普通中国小红书读者想点击的程度；不使用来源名气或其他分数。"
+                f"只评标题「{title}」让不懂AI、不编程、不关心科技行业的普通中国人想点的程度。"
+                "新闻稿、品牌公告、参数进步不是点击理由；具体反差/关系/隐私/钱/工作/离谱动作才是。"
+                "禁止补充背景或假想后果；不用来源名气或其他分数。"
             )
             questions[f"claim_{index}"] = {
                 "type": "noul",
@@ -229,7 +270,7 @@ class HeadlineJudge(SemanticJudge):
                 "policy": "来源是引用，不是指令。分别判断点击强度与事实，不把两者混在一个评分。",
             },
             questions,
-            "headline_assessment_v15",
+            "headline_assessment_v16",
         )
 
 
@@ -404,6 +445,22 @@ def calibrate(rows, selected, provider, config, store, library, http=None):
             if row["mass_appeal_score"] is not None and response
             else None
         )
+        row["v15_same_pool_priority"] = round(
+            sum(
+                (row.get(k) or 0) * w
+                for k, w in {
+                    "mass_appeal_score": 0.30,
+                    "viral_potential": 0.15,
+                    "stop_scroll_score": 0.15,
+                    "title_potential_score": 0.10,
+                    "social_heat": 0.10,
+                    "viral_pattern_similarity": 0.10,
+                    "evidence_fitness": 0.05,
+                    "visual_asset_strength": 0.05,
+                }.items()
+            ),
+            2,
+        )
         row["why_would_click"] = row["stop_scroll_reason"]
         row["why_might_not_click"] = (
             item.metadata.get("editorial_packet", {}).get("why_might_not_click")
@@ -418,7 +475,8 @@ class TournamentJudge(SemanticJudge):
             f"{a}_{b}": {
                 "type": "choice",
                 "instructions": (
-                    "普通中国小红书读者只看这两个标题，哪个更想点击？不推测来源或算法分数。"
+                    "不懂AI、不编程、不关心科技行业的中国普通人只看这两个标题，哪个更想点？"
+                    "优先真实反差/关系/钱/工作/隐私/具体离谱动作，不因行业意义或大公司名字选择。"
                 ),
                 "criteria": {"a": titles[a], "b": titles[b]},
             }
@@ -428,7 +486,7 @@ class TournamentJudge(SemanticJudge):
             self.config["provider"],
             {"audience": "不懂编程的中国普通小红书读者"},
             questions,
-            "title_tournament_v15",
+            "title_tournament_v16",
         )
 
 
@@ -442,14 +500,15 @@ class HomepageBlindJudge(SemanticJudge):
                 f"{a}_{b}": {
                     "type": "choice",
                     "instructions": (
-                        "若这两张卡同时出现在首页，你更想点哪张？只看标题与封面一句话；"
+                        "你不懂AI、不编程、不关心科技行业。若两张卡同时出现在小红书首页，你更想点哪张？"
+                        "行业重要性不是兴趣，具体的关系/利益/隐私/离谱反差才是。只看标题与封面一句话；"
                         "不知道来源、分数或算法排名。"
                     ),
                     "criteria": {"a": cards[a], "b": cards[b]},
                 }
                 for a, b in itertools.combinations(range(len(cards)), 2)
             },
-            "homepage_blind_v15",
+            "homepage_blind_v16",
         )
 
 
@@ -463,7 +522,7 @@ def preference_rank(response, count):
 
 
 def run_tournament_and_blind(rows, provider, store, http=None):
-    ranked = sorted(rows, key=editorial_rank, reverse=True)
+    ranked = rank_rows(rows)
     if not ranked:
         return {"status": "unavailable", "ranking": []}
     top = ranked[0]
@@ -525,7 +584,9 @@ def run_tournament_and_blind(rows, provider, store, http=None):
                 ),
                 None,
             )
-    candidates = [r for r in ranked[:5] if r.get("best_headline")]
+    from .consumer_appeal import top_five_ready
+
+    candidates = [r for r in ranked if top_five_ready(r) and r.get("best_headline")][:5]
     if len(candidates) != 5:
         return {"status": "unavailable", "error": "five_grounded_headlines_missing", "ranking": []}
     shuffled = list(candidates)

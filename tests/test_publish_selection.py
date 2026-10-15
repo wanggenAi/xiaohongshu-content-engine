@@ -15,6 +15,11 @@ CONFIG = yaml.safe_load((ROOT / "config/mass_appeal.yaml").read_text())
 
 def passing():
     return {
+        "ordinary_person_appeal": 80,
+        "card_stop_score": 80,
+        "three_second_test": "STOP",
+        "non_tech_strip_test": "PASS",
+        "click_reason_pass": True,
         "mass_appeal_score": 80,
         "viral_potential": 70,
         "social_heat": None,
@@ -33,7 +38,9 @@ def passing():
         "final_editorial_priority": 78,
         "non_tech_reader_score": 80,
         "programmer_bias_score": 20,
-        "hard_gates": {k: "PASS" for k in ("evidence", "scope", "safety", "fabrication")},
+        "hard_gates": {
+            k: "PASS" for k in ("evidence", "scope", "safety", "fabrication", "card_claim")
+        },
     }
 
 
@@ -51,11 +58,13 @@ def test_absolute_thresholds_no_best_of_bad_batch():
 @pytest.mark.parametrize(
     "field",
     [
-        "mass_appeal_score",
+        "ordinary_person_appeal",
+        "three_second_test",
+        "non_tech_strip_test",
         "viral_potential",
         "final_editorial_priority",
         "hard_gates",
-        "stop_scroll_score",
+        "card_stop_score",
         "non_tech_reader_score",
         "programmer_bias_score",
         "calibration_complete",

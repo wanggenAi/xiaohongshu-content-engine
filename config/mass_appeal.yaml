@@ -1,4 +1,4 @@
-version: mass-appeal-v1.5
+version: consumer-appeal-v1.6
 weights:
   recognizable_entity: 15
   immediate_understandability: 15
@@ -8,9 +8,26 @@ weights:
   china_information_gap: 10
   visual_headline_power: 10
   freshness: 5
-publishability_weights: {mass_appeal: 0.65, viral_potential: 0.25, human_trigger: 0.10}
-final_priority_weights: {mass_appeal_score: 0.30, viral_potential: 0.15, stop_scroll_score: 0.15, title_potential_score: 0.10, social_heat: 0.10, viral_pattern_similarity: 0.10, evidence_fitness: 0.05, visual_asset_strength: 0.05}
-stop_scroll_weights: {immediate_curiosity: 25, concrete_hook: 20, stakes: 20, novelty: 15, clarity: 10, emotional_tension: 10}
+publishability_weights:
+  mass_appeal: 0.65
+  viral_potential: 0.25
+  human_trigger: 0.1
+final_priority_weights:
+  ordinary_person_appeal: 0.32
+  card_stop_score: 0.22
+  consumer_human_trigger: 0.15
+  personal_relevance_score: 0.12
+  story_conflict_score: 0.07
+  visual_asset_strength: 0.06
+  china_information_gap_score: 0.03
+  source_heat: 0.03
+stop_scroll_weights:
+  immediate_curiosity: 25
+  concrete_hook: 20
+  stakes: 20
+  novelty: 15
+  clarity: 10
+  emotional_tension: 10
 viral_reference:
   minimum_points: 200
   minimum_comments: 150
@@ -29,10 +46,16 @@ gate:
   minimum_candidates: 20
   max_scan_age_hours: 6
   boolean_probability: 0.85
-  minimum_score_confidence: 0.60
+  minimum_score_confidence: 0.6
+  ordinary_person_appeal: 70
+  non_tech_strip: 60
+  three_second_required: STOP
 social_heat:
-  hn: {points_extreme: 1000, comments_extreme: 500}
-  telegram: {views_extreme: 1000000}
+  hn:
+    points_extreme: 1000
+    comments_extreme: 500
+  telegram:
+    views_extreme: 1000000
   unknown: null
 rubrics:
   recognizable_entity: 中国普通用户对人物、公司、产品的认知；知名但只有琐碎动作不能满分
@@ -56,54 +79,53 @@ feedback_reasons:
   best_of_bad_batch: 从一批弱题中选第一而绕过绝对门槛
 levels:
   recognizable_entity:
-    - 陌生个人或产品，中国普通用户没有认知入口
-    - 极小圈层有认知，事情本身也小
-    - 技术或专业圈有认知，普通用户需要解释
-    - 中国科技兴趣用户广泛认识的人物、公司或产品，且这次动作有意义
-    - 大众家喻户晓的实体且发生实质性变化，名字与事件共同构成强认知入口
+  - 陌生个人或产品，中国普通用户没有认知入口
+  - 极小圈层有认知，事情本身也小
+  - 技术或专业圈有认知，普通用户需要解释
+  - 中国科技兴趣用户广泛认识的人物、公司或产品，且这次动作有意义
+  - 大众家喻户晓的实体且发生实质性变化，名字与事件共同构成强认知入口
   immediate_understandability:
-    - 必须理解API、模型架构或开发基础才能理解
-    - 需要多段技术解释才能看出意义
-    - 看过一段背景能明白，有概念门槛
-    - 一个普通中文句子能说清楚事件和意义，不需要技术背景
-    - 三秒看到具体生活场景或反差就能理解，例如聊天服务可能关停、机器人投中、手机防诈骗
+  - 必须理解API、模型架构或开发基础才能理解
+  - 需要多段技术解释才能看出意义
+  - 看过一段背景能明白，有概念门槛
+  - 一个普通中文句子能说清楚事件和意义，不需要技术背景
+  - 三秒看到具体生活场景或反差就能理解，例如聊天服务可能关停、机器人投中、手机防诈骗
   personal_stakes:
-    - 与普通用户的钱、工作、关系、隐私、时间或生活没有明确联系
-    - 只有泛泛未来影响或公司内部技术指标
-    - 一类明确人群有真实利益关系，影响范围有限
-    - 很多普通人遇到的工作、费用、关系或隐私问题有具体入口
-    - 大范围直接重大利益或风险已经有真实事实支持，不能靠假想后果
+  - 与普通用户的钱、工作、关系、隐私、时间或生活没有明确联系
+  - 只有泛泛未来影响或公司内部技术指标
+  - 一类明确人群有真实利益关系，影响范围有限
+  - 很多普通人遇到的工作、费用、关系或隐私问题有具体入口
+  - 大范围直接重大利益或风险已经有真实事实支持，不能靠假想后果
   emotional_charge:
-    - 无情绪，仅常规参数公告
-    - 只有专业圈兴趣或轻微新鲜感
-    - 有明确好奇、期待或争议，但反差一般
-    - 普通人能感受到强惊讶、担忧、希望、关系张力或反转，事实支持
-    - 极强真实反差和人性冲击，无夸大、造假或情绪煽动
+  - 无情绪，仅常规参数公告
+  - 只有专业圈兴趣或轻微新鲜感
+  - 有明确好奇、期待或争议，但反差一般
+  - 普通人能感受到强惊讶、担忧、希望、关系张力或反转，事实支持
+  - 极强真实反差和人性冲击，无夸大、造假或情绪煽动
   china_information_gap:
-    - 国内已经广泛刷屏，或内容无法与中国用户建立关系
-    - 中国传播范围未知，没有检索证据；最多35%的维度信用
-    - 有部分国内检索证据，能说明某些信息未被充分讲清
-    - 系统检索显示相关细节在国内覆盖较少，且中国用户明显关心
-    - 有充分国内传播对照证据，信息差大且直接相关
+  - 国内已经广泛刷屏，或内容无法与中国用户建立关系
+  - 中国传播范围未知，没有检索证据；最多35%的维度信用
+  - 有部分国内检索证据，能说明某些信息未被充分讲清
+  - 系统检索显示相关细节在国内覆盖较少，且中国用户明显关心
+  - 有充分国内传播对照证据，信息差大且直接相关
   visual_headline_power:
-    - 很难形成具体一句话入口，只有术语或参数
-    - 标题需要过度概括或虚构反差才吸引人
-    - 能形成清楚标题但画面感、冲突或收藏点一般
-    - 事实天然支持一个强中文标题、视觉动作或前后对比
-    - 标题与可核验的强视觉、巨大反差或立即可用收益共同让人停下，不能夸张
+  - 很难形成具体一句话入口，只有术语或参数
+  - 标题需要过度概括或虚构反差才吸引人
+  - 能形成清楚标题但画面感、冲突或收藏点一般
+  - 事实天然支持一个强中文标题、视觉动作或前后对比
+  - 标题与可核验的强视觉、巨大反差或立即可用收益共同让人停下，不能夸张
   human_trigger:
-    - 没有利益、身份、恐惧、反转、新奇、实用、公平或关系张力
-    - 小圈层动机，真实但普通人难代入
-    - 一种清楚的人性触发，范围或强度中等
-    - 强利益、身份、情绪或反差，一般读者能投射自己；不要求第一人称
-    - 多种强人性触发与事实结合，直接触及大众生活或非常强的真实惊讶
+  - 没有利益、身份、恐惧、反转、新奇、实用、公平或关系张力
+  - 小圈层动机，真实但普通人难代入
+  - 一种清楚的人性触发，范围或强度中等
+  - 强利益、身份、情绪或反差，一般读者能投射自己；不要求第一人称
+  - 多种强人性触发与事实结合，直接触及大众生活或非常强的真实惊讶
   viral_potential:
-    - 大众基本不会点击、收藏、评论或分享
-    - 只有专业圈小众阅读动机，没有大众入口
-    - 有理解和点击入口，但传播动力一般或事实尚弱
-    - 具体大众兴趣加真实强反差、实用价值或热度，具有传播动力
-    - 极强大众入口且有足够事实与真实传播或收藏价值支持，不能只看名气或结构完整
-# Links the negative example to the original source; other future posts by this author are not banned.
+  - 大众基本不会点击、收藏、评论或分享
+  - 只有专业圈小众阅读动机，没有大众入口
+  - 有理解和点击入口，但传播动力一般或事实尚弱
+  - 具体大众兴趣加真实强反差、实用价值或热度，具有传播动力
+  - 极强大众入口且有足够事实与真实传播或收藏价值支持，不能只看名气或结构完整
 negative_example_source:
   candidate_id: story-457a1ac27774d000c352270a
   title: I posted to HN, and then my website was flooded with AI bot traffic

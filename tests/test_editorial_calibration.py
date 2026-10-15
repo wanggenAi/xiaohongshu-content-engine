@@ -21,6 +21,11 @@ NOW = datetime(2026, 10, 15, tzinfo=UTC)
 
 def strong():
     return {
+        "ordinary_person_appeal": 80,
+        "card_stop_score": 80,
+        "three_second_test": "STOP",
+        "non_tech_strip_test": "PASS",
+        "click_reason_pass": True,
         "mass_appeal_score": 80,
         "viral_potential": 72,
         "social_heat": 85,
@@ -33,7 +38,9 @@ def strong():
         "headline_claim_status": "PASS",
         "headline_strength": 80,
         "score_confidence_pass": True,
-        "hard_gates": {k: "PASS" for k in ("evidence", "scope", "safety", "fabrication")},
+        "hard_gates": {
+            k: "PASS" for k in ("evidence", "scope", "safety", "fabrication", "card_claim")
+        },
         # These are deliberately conflicting obsolete booleans.
         "stop_scroll_test": "FAIL",
         "title_potential_test": "FAIL",

@@ -87,7 +87,10 @@ class Store:
                 OR key LIKE 'headline_assessment_v15:%'
                 OR key LIKE 'title_tournament_v15:%'
                 OR key LIKE 'homepage_blind_v15:%'
-                OR key LIKE 'viral_pattern_v15:%')
+                OR key LIKE 'viral_pattern_v15:%'
+                OR key LIKE 'consumer_appeal_v16:%' OR key LIKE 'three_second_v16:%'
+                OR key LIKE 'headline_assessment_v16:%' OR key LIKE 'title_tournament_v16:%'
+                OR key LIKE 'homepage_blind_v16:%')
                 AND (json_extract(value, '$.evaluated_at') < ?
                 OR json_extract(value, '$.evaluated_at') IS NULL)""",
                 (cutoff,),

@@ -1,0 +1,1334 @@
+{
+  "base_main": "2e23f53d38301042bf7375723de0067320a9abb1",
+  "latest_initial_action": 38809253689,
+  "latest_initial_artifact": 12006944080,
+  "initial_cloud_assessed": 0,
+  "initial_cloud_decision": "NO_PUBLISH_TODAY",
+  "initial_valid_scored_snapshot": "2026-10-15T02:58:01.903841+00:00",
+  "initial_top1": {
+    "topic": "苹果家庭屏幕识别人，AI进入客厅",
+    "best_headline": "苹果新屏幕：一家6口，各看各的",
+    "final_editorial_priority": 78.56,
+    "verdict": "AUTO_PUBLISH_ELIGIBLE"
+  },
+  "generated_at": "2026-10-15T23:22:56.157767+00:00",
+  "real_full_pipeline_run_at": "2026-10-15T23:18:45.310594+00:00",
+  "counts": {
+    "candidate_count": 40,
+    "assessed_candidate_count": 40,
+    "unique_pool_count": 575,
+    "current_24h_pool_count": 197,
+    "current_72h_pool_count": 558,
+    "story_mining_count": 10,
+    "viral_reference_count": 40,
+    "real_high_engagement_reference_count": 39,
+    "decision": "NO_PUBLISH_TODAY",
+    "posting_performed": false
+  },
+  "scan": {
+    "scanned_at": "2026-10-15T23:20:11.785378+00:00",
+    "raw_items": 539,
+    "telegram": [
+      {
+        "url": "https://t.me/s/aipost",
+        "status": "ok",
+        "posts": 15
+      }
+    ],
+    "people_monitored": [
+      "Elon Musk",
+      "Jensen Huang",
+      "Sam Altman",
+      "Dario Amodei",
+      "Demis Hassabis",
+      "Mark Zuckerberg",
+      "Satya Nadella",
+      "Tim Cook"
+    ]
+  },
+  "top20": [
+    {
+      "id": "4bfbecf3d5e2506741d7c1f3",
+      "topic": "苹果家庭屏幕识别人，AI进入客厅",
+      "best_headline": "一家人共用AI，隐私怎么分开",
+      "cover_line": "同一块客厅屏幕，先认出你，再显示你的内容。",
+      "why_a_normal_chinese_user_clicks": "同一块家庭屏幕能识别最多6个人，各自看到自己的内容，谁会放心让它进客厅？",
+      "core_human_trigger": "relationship",
+      "consumer_dimensions": {
+        "money": 13.75,
+        "work": 9.25,
+        "relationship": 76.0,
+        "privacy": 66.5,
+        "surprise": 68.75,
+        "personal_relevance": 71.5,
+        "human_story_conflict": 66.75,
+        "concrete_incident": 78.5,
+        "strip_interest": 78.75
+      },
+      "ordinary_person_appeal": 73.86,
+      "source_heat": 100,
+      "card_stop_score": 79.5,
+      "three_second_test": "STOP",
+      "stripped_card": "一家人共用，隐私怎么分开 同一块客厅屏幕，先认出你，再显示你的内容。",
+      "non_tech_strip_test": "PASS",
+      "v15_same_pool_priority": 78.79,
+      "final_editorial_priority": 74.33,
+      "verdict": "EDITOR_REVIEW_REQUIRED",
+      "gate_failures": [
+        "final_priority_below_75"
+      ],
+      "hard_gates": {
+        "evidence": "PASS",
+        "scope": "PASS",
+        "fabrication": "PASS",
+        "safety": "PASS",
+        "headline_claim": "PASS",
+        "card_claim": "PASS"
+      },
+      "source_url": "https://www.apple.com/apple-homeview/"
+    },
+    {
+      "id": "701eec96ceaacb29bbf44965",
+      "topic": "卫生纸遮住录音器，会议室窃听指控牵出员工",
+      "best_headline": "卫生纸遮录音器，检方起诉了员工",
+      "cover_line": "据检方材料，设备藏在高管会议室电视后；员工被起诉，尚未定罪。",
+      "why_a_normal_chinese_user_clicks": "每天进会议室上班的人会想知道：电视后怎么藏着录音器，为什么还用卫生纸遮着？",
+      "core_human_trigger": "privacy",
+      "consumer_dimensions": {
+        "money": 10.25,
+        "work": 62.5,
+        "relationship": 62.5,
+        "privacy": 83.0,
+        "surprise": 81.75,
+        "personal_relevance": 61.0,
+        "human_story_conflict": 77.0,
+        "concrete_incident": 83.25,
+        "strip_interest": 83.5
+      },
+      "ordinary_person_appeal": 76.64,
+      "source_heat": 96.78,
+      "card_stop_score": 77.0,
+      "three_second_test": "STOP",
+      "stripped_card": "卫生纸遮录音器，检方起诉了员工 据检方材料，设备藏在高管会议室电视后；员工被起诉，尚未定罪。",
+      "non_tech_strip_test": "PASS",
+      "v15_same_pool_priority": 75.94,
+      "final_editorial_priority": 71.48,
+      "verdict": "EDITOR_REVIEW_REQUIRED",
+      "gate_failures": [
+        "final_priority_below_75"
+      ],
+      "hard_gates": {
+        "evidence": "PASS",
+        "scope": "PASS",
+        "fabrication": "PASS",
+        "safety": "PASS",
+        "headline_claim": "PASS",
+        "card_claim": "PASS"
+      },
+      "source_url": "https://sfstandard.com/2026/10/13/openai-engineer-arrested-alleged-bugging-executive-conference-room/"
+    },
+    {
+      "id": "02ecb7c280dfd016134d326d",
+      "topic": "不用买吉他，键盘也能拨弦",
+      "best_headline": "这次敲键盘，居然是在弹吉他",
+      "cover_line": "不用下载、不用注册，键盘按和弦，手指也能划琴弦。",
+      "why_a_normal_chinese_user_clicks": "想弹首歌又没吉他的人，会想知道键盘到底能弹成什么样。",
+      "core_human_trigger": "money",
+      "consumer_dimensions": {
+        "money": 80.5,
+        "work": 16.25,
+        "relationship": 15.25,
+        "privacy": 1.75,
+        "surprise": 78.5,
+        "personal_relevance": 73.25,
+        "human_story_conflict": 70.5,
+        "concrete_incident": 77.5,
+        "strip_interest": 79.75
+      },
+      "ordinary_person_appeal": 76.74,
+      "source_heat": 87.8,
+      "card_stop_score": 69.5,
+      "three_second_test": "STOP",
+      "stripped_card": "这次敲键盘，居然是在弹吉他 不用下载、不用注册，键盘按和弦，手指也能划琴弦。",
+      "non_tech_strip_test": "PASS",
+      "v15_same_pool_priority": 70.47,
+      "final_editorial_priority": 70.23,
+      "verdict": "EDITOR_REVIEW_REQUIRED",
+      "gate_failures": [
+        "card_stop_score_below_70_or_unknown",
+        "final_priority_below_75"
+      ],
+      "hard_gates": {
+        "evidence": "PASS",
+        "scope": "PASS",
+        "fabrication": "PASS",
+        "safety": "PASS",
+        "headline_claim": "PASS",
+        "card_claim": "PASS"
+      },
+      "source_url": "https://guitoro.com/"
+    },
+    {
+      "id": "f83ddb49efb54e6d08546f19",
+      "topic": "AI陪伴平台进入破产出售流程",
+      "best_headline": "AI朋友还在，公司却申请破产了",
+      "cover_line": "服务仍正常；公司申请破产出售，找不到买家就可能关停。",
+      "why_a_normal_chinese_user_clicks": "把陪伴寄托在聊天软件上的人，会关心公司倒下后关系还能不能继续；目前没有停服。",
+      "core_human_trigger": "relationship",
+      "consumer_dimensions": {
+        "money": 59.75,
+        "work": 6.5,
+        "relationship": 78.25,
+        "privacy": 60.25,
+        "surprise": 68.25,
+        "personal_relevance": 74.25,
+        "human_story_conflict": 61.25,
+        "concrete_incident": 81.0,
+        "strip_interest": 80.0
+      },
+      "ordinary_person_appeal": 75.11,
+      "source_heat": 86.51,
+      "card_stop_score": 68.0,
+      "three_second_test": "STOP",
+      "stripped_card": "朋友还在，公司却申请破产了 服务仍正常；公司申请破产出售，找不到买家就可能关停。",
+      "non_tech_strip_test": "PASS",
+      "v15_same_pool_priority": 69.61,
+      "final_editorial_priority": 68.48,
+      "verdict": "REVIEW_ONLY",
+      "gate_failures": [
+        "card_stop_score_below_70_or_unknown",
+        "final_priority_below_75"
+      ],
+      "hard_gates": {
+        "evidence": "PASS",
+        "scope": "PASS",
+        "fabrication": "PASS",
+        "safety": "PASS",
+        "headline_claim": "PASS",
+        "card_claim": "PASS"
+      },
+      "source_url": "https://blog.character.ai/an-update-on-character-ai/"
+    },
+    {
+      "id": "caefd4aa9aff2449f6718435",
+      "topic": "机器人看人类视频后，完成连续投掷",
+      "best_headline": "机器人7连中，先看人类视频",
+      "cover_line": "谷歌称：看人类视频、仿真训练后，机器人实机连续投中7次。",
+      "why_a_normal_chinese_user_clicks": "普通人一眼能懂的学习动作与强视觉变化；不是看一遍就万能，也不是家用机器人已上市。",
+      "core_human_trigger": "surprise",
+      "consumer_dimensions": {
+        "money": 7.5,
+        "work": 6.0,
+        "relationship": 7.25,
+        "privacy": 1.0,
+        "surprise": 74.5,
+        "personal_relevance": 47.25,
+        "human_story_conflict": 65.25,
+        "concrete_incident": 80.0,
+        "strip_interest": 76.25
+      },
+      "ordinary_person_appeal": 67.12,
+      "source_heat": 100,
+      "card_stop_score": 72.75,
+      "three_second_test": "STOP",
+      "stripped_card": "机器人7连中，先看人类视频 谷歌称：看人类视频、仿真训练后，机器人实机连续投中7次。",
+      "non_tech_strip_test": "PASS",
+      "v15_same_pool_priority": 74.57,
+      "final_editorial_priority": 67.45,
+      "verdict": "REVIEW_ONLY",
+      "gate_failures": [
+        "ordinary_person_appeal_below_70_or_unknown",
+        "final_priority_below_75"
+      ],
+      "hard_gates": {
+        "evidence": "PASS",
+        "scope": "PASS",
+        "fabrication": "PASS",
+        "safety": "PASS",
+        "headline_claim": "PASS",
+        "card_claim": "PASS"
+      },
+      "source_url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/"
+    },
+    {
+      "id": "04863702043402e3b01d3e12",
+      "topic": "换工作未必摆脱AI职业风险",
+      "best_headline": "怕被AI替代，换工作就安全了吗",
+      "cover_line": "UCLA 10月13日访谈：研究发现衰退职业劳动者可能陷入流动陷阱，换职业仍进入衰退领域，未改善经济位置。",
+      "why_a_normal_chinese_user_clicks": "研究者发现有些人换了职业，仍进入另一个需求下降的领域，收入处境没有改善。",
+      "core_human_trigger": "work",
+      "consumer_dimensions": {
+        "money": 54.5,
+        "work": 78.0,
+        "relationship": 18.75,
+        "privacy": 21.0,
+        "surprise": 58.25,
+        "personal_relevance": 74.0,
+        "human_story_conflict": 73.5,
+        "concrete_incident": 73.5,
+        "strip_interest": 80.0
+      },
+      "ordinary_person_appeal": 75.65,
+      "source_heat": null,
+      "card_stop_score": 71.0,
+      "three_second_test": "STOP",
+      "stripped_card": "怕被替代，换工作就安全了吗 UCLA 10月13日访谈：研究发现衰退职业劳动者可能陷入流动陷阱，换职业仍进入衰退领域，未改善经济位置。",
+      "non_tech_strip_test": "PASS",
+      "v15_same_pool_priority": 50.17,
+      "final_editorial_priority": 67.51,
+      "verdict": "REVIEW_ONLY",
+      "gate_failures": [
+        "chosen_headline_claim_failed_or_unknown",
+        "card_claim_failed_or_unknown",
+        "insufficient_viral_heat_or_grounded_reference_match",
+        "final_priority_below_75"
+      ],
+      "hard_gates": {
+        "evidence": "PASS",
+        "scope": "PASS",
+        "fabrication": "PASS",
+        "safety": "PASS",
+        "headline_claim": "UNKNOWN",
+        "card_claim": "UNKNOWN"
+      },
+      "source_url": "https://newsroom.ucla.edu/stories/job-loss-ai-exposed-jobs-q-a-sociology-professor-jennie-brand"
+    },
+    {
+      "id": "ee556a82ec685d1008620484",
+      "topic": "写完文档，文档本身就是链接",
+      "best_headline": "写完的文档，居然就是一条链接",
+      "cover_line": "不用账号，小型办公工具把文档放进链接里。",
+      "why_a_normal_chinese_user_clicks": "日常写文档、传文件的习惯有一个反常识的替代入口；不宣称适合机密资料。",
+      "core_human_trigger": "surprise",
+      "consumer_dimensions": {
+        "money": 48.0,
+        "work": 59.0,
+        "relationship": 13.5,
+        "privacy": 29.25,
+        "surprise": 76.75,
+        "personal_relevance": 69.0,
+        "human_story_conflict": 65.5,
+        "concrete_incident": 70.5,
+        "strip_interest": 77.25
+      },
+      "ordinary_person_appeal": 72.19,
+      "source_heat": 90.01,
+      "card_stop_score": 64.25,
+      "three_second_test": "STOP",
+      "stripped_card": "写完的文档，居然就是一条链接 不用账号，小型办公工具把文档放进链接里。",
+      "non_tech_strip_test": "PASS",
+      "v15_same_pool_priority": 66.36,
+      "final_editorial_priority": 66.26,
+      "verdict": "REVIEW_ONLY",
+      "gate_failures": [
+        "card_claim_failed_or_unknown",
+        "card_stop_score_below_70_or_unknown",
+        "final_priority_below_75"
+      ],
+      "hard_gates": {
+        "evidence": "PASS",
+        "scope": "PASS",
+        "fabrication": "PASS",
+        "safety": "PASS",
+        "headline_claim": "PASS",
+        "card_claim": "UNKNOWN"
+      },
+      "source_url": "https://tinylittleoffice.com/"
+    },
+    {
+      "id": "c84082cf101fbdcd9d9ed5bb",
+      "topic": "Google与新加坡推出手机端反诈骗模型",
+      "best_headline": "AI识别诈骗，不用上传聊天",
+      "cover_line": "AI判断诈骗，聊天内容先留在手机上。",
+      "why_a_normal_chinese_user_clicks": "骗局能看懂上下文，而这款反诈骗AI尝试让聊天留在手机上。",
+      "core_human_trigger": "privacy",
+      "consumer_dimensions": {
+        "money": 54.75,
+        "work": 13.0,
+        "relationship": 37.5,
+        "privacy": 76.5,
+        "surprise": 58.75,
+        "personal_relevance": 64.0,
+        "human_story_conflict": 51.25,
+        "concrete_incident": 72.75,
+        "strip_interest": 77.0
+      },
+      "ordinary_person_appeal": 69.03,
+      "source_heat": 16.5,
+      "card_stop_score": 80.0,
+      "three_second_test": "STOP",
+      "stripped_card": "识别诈骗，不用上传聊天 判断诈骗，聊天内容先留在手机上。",
+      "non_tech_strip_test": "PASS",
+      "v15_same_pool_priority": 58.55,
+      "final_editorial_priority": 64.88,
+      "verdict": "REVIEW_ONLY",
+      "gate_failures": [
+        "chosen_headline_claim_failed_or_unknown",
+        "ordinary_person_appeal_below_70_or_unknown",
+        "insufficient_viral_heat_or_grounded_reference_match",
+        "final_priority_below_75"
+      ],
+      "hard_gates": {
+        "evidence": "PASS",
+        "scope": "PASS",
+        "fabrication": "PASS",
+        "safety": "PASS",
+        "headline_claim": "UNKNOWN",
+        "card_claim": "PASS"
+      },
+      "source_url": "https://deepmind.google/blog/on-device-ai-scam-detection-mddi/"
+    },
+    {
+      "id": "tv4-deletion-correction-20261014",
+      "topic": "一季节目被删，电视台否认是AI干的",
+      "best_headline": "原片还在，百天剪辑却得重来",
+      "cover_line": "成片没了，原始素材还在；电视台否认“AI删片”。",
+      "why_a_normal_chinese_user_clicks": "成片没了、节目延期，但电视台否认是AI删片：爆点故事先遇到了事实反转。",
+      "core_human_trigger": "surprise",
+      "consumer_dimensions": {
+        "money": 25.5,
+        "work": 62.0,
+        "relationship": 30.25,
+        "privacy": 10.0,
+        "surprise": 70.25,
+        "personal_relevance": 58.5,
+        "human_story_conflict": 67.0,
+        "concrete_incident": 73.5,
+        "strip_interest": 75.25
+      },
+      "ordinary_person_appeal": 67.31,
+      "source_heat": 57.8,
+      "card_stop_score": 71.5,
+      "three_second_test": "STOP",
+      "stripped_card": "原片还在，百天剪辑却得重来 成片没了，原始素材还在；电视台否认“删片”。",
+      "non_tech_strip_test": "PASS",
+      "v15_same_pool_priority": 59.45,
+      "final_editorial_priority": 63.21,
+      "verdict": "REVIEW_ONLY",
+      "gate_failures": [
+        "hard_fabrication_unknown",
+        "card_claim_failed_or_unknown",
+        "ordinary_person_appeal_below_70_or_unknown",
+        "final_priority_below_75"
+      ],
+      "hard_gates": {
+        "evidence": "PASS",
+        "scope": "PASS",
+        "fabrication": "UNKNOWN",
+        "safety": "PASS",
+        "headline_claim": "PASS",
+        "card_claim": "UNKNOWN"
+      },
+      "source_url": "https://www.tv4.se/artikel/2iwfK5MNpFID98pxQbsC7t/hel-saesong-av-tv4-programmet-raderat-av-ai"
+    },
+    {
+      "id": "5023bd47f7a6d0ee5fee3f04",
+      "topic": "AI视频从约1分钟走向10分钟以上",
+      "best_headline": "AI视频从1分钟变成10分钟以上",
+      "cover_line": "OpenAI 10月13日客户案例：Higgsfield联合创始人Alex Mashrabov称，以前视频约1分钟封顶，现在其工作流可生成10分钟以上视频。",
+      "why_a_normal_chinese_user_clicks": "看到这个具体反差，想知道事情为什么会变成这样。",
+      "core_human_trigger": "surprise",
+      "consumer_dimensions": {
+        "money": 17.75,
+        "work": 27.25,
+        "relationship": 7.25,
+        "privacy": 1.0,
+        "surprise": 74.75,
+        "personal_relevance": 47.25,
+        "human_story_conflict": 61.0,
+        "concrete_incident": 75.75,
+        "strip_interest": 73.75
+      },
+      "ordinary_person_appeal": 65.96,
+      "source_heat": null,
+      "card_stop_score": 64.5,
+      "three_second_test": "SCROLL",
+      "stripped_card": "视频从1分钟变成10分钟以上 OpenAI 10月13日客户案例：Higgsfield联合创始人Alex Mashrabov称，以前视频约1分钟封顶，现在其工作流可生成10分钟以上视频。",
+      "non_tech_strip_test": "PASS",
+      "v15_same_pool_priority": 50.79,
+      "final_editorial_priority": 58.41,
+      "verdict": "NO_PUBLISH",
+      "gate_failures": [
+        "chosen_headline_claim_failed_or_unknown",
+        "chosen_headline_needs_improvement",
+        "three_second_not_STOP",
+        "ordinary_person_appeal_below_70_or_unknown",
+        "card_stop_score_below_70_or_unknown",
+        "title_potential_score_below_70_or_unknown",
+        "insufficient_viral_heat_or_grounded_reference_match"
+      ],
+      "hard_gates": {
+        "evidence": "PASS",
+        "scope": "PASS",
+        "fabrication": "PASS",
+        "safety": "PASS",
+        "headline_claim": "UNKNOWN",
+        "card_claim": "PASS"
+      },
+      "source_url": "https://openai.com/index/higgsfield-longer-videos-voice"
+    },
+    {
+      "id": "d24842816a64c79278f9c08a",
+      "topic": "黄仁勋与微软把AI助手推进Windows电脑",
+      "best_headline": "黄仁勋把AI助手，塞进你的电脑",
+      "cover_line": "NVIDIA 10月13日软件生态公告：RTX Spark笔记本预定10月16日上市，多款本地AI助手优化配置；PAIR免费开源软件可联接兼容局域网电脑分配AI任务。",
+      "why_a_normal_chinese_user_clicks": "电脑使用、隐私和新硬件消费；本地能力不代表完全无需联网或不花钱。",
+      "core_human_trigger": "money",
+      "consumer_dimensions": {
+        "money": 57.75,
+        "work": 9.75,
+        "relationship": 9.25,
+        "privacy": 15.0,
+        "surprise": 49.75,
+        "personal_relevance": 49.0,
+        "human_story_conflict": 25.5,
+        "concrete_incident": 68.75,
+        "strip_interest": 63.0
+      },
+      "ordinary_person_appeal": 52.38,
+      "source_heat": null,
+      "card_stop_score": 61.5,
+      "three_second_test": "SCROLL",
+      "stripped_card": "黄仁勋把助手，塞进你的电脑 NVIDIA 10月13日软件生态公告：RTX Spark笔记本预定10月16日上市，多款本地助手优化配置；PAIR免费软件可联接兼容局域网电脑分配任务。",
+      "non_tech_strip_test": "PASS",
+      "v15_same_pool_priority": 53.97,
+      "final_editorial_priority": 48.58,
+      "verdict": "NO_PUBLISH",
+      "gate_failures": [
+        "chosen_headline_claim_failed_or_unknown",
+        "chosen_headline_needs_improvement",
+        "card_claim_failed_or_unknown",
+        "three_second_not_STOP",
+        "ordinary_person_appeal_below_70_or_unknown",
+        "card_stop_score_below_70_or_unknown",
+        "title_potential_score_below_70_or_unknown"
+      ],
+      "hard_gates": {
+        "evidence": "PASS",
+        "scope": "PASS",
+        "fabrication": "PASS",
+        "safety": "PASS",
+        "headline_claim": "UNKNOWN",
+        "card_claim": "UNKNOWN"
+      },
+      "source_url": "https://blogs.nvidia.com/blog/local-ai-rtx-spark-laptops-software-updates/"
+    },
+    {
+      "id": "8539d474a1d5801b243c0ebc",
+      "topic": "欧洲城市让AI参与城市运行决策",
+      "best_headline": "修哪条路，也开始让AI帮忙判断",
+      "cover_line": "Keeping a city running means making decisions that affect residents every day — from when to repair a road to how to use energy more efficiently. Across the EMEA region, cities and local software, infrastructure and integration partners are using NVIDIA accelerated computing to build physical AI agents and digital twins that help teams make […]",
+      "why_a_normal_chinese_user_clicks": "城市运行团队正把AI代理和数字孪生用于道路维修与能源决策辅助。",
+      "core_human_trigger": "surprise",
+      "consumer_dimensions": {
+        "money": 9.0,
+        "work": 14.5,
+        "relationship": 7.5,
+        "privacy": 1.25,
+        "surprise": 35.5,
+        "personal_relevance": 47.25,
+        "human_story_conflict": 40.75,
+        "concrete_incident": 65.0,
+        "strip_interest": 65.25
+      },
+      "ordinary_person_appeal": 43.65,
+      "source_heat": null,
+      "card_stop_score": 50.0,
+      "three_second_test": "SCROLL",
+      "stripped_card": "修哪条路，也开始让帮忙判断 Keeping a city running means making decisions that affect residents every day — from when to repair a road to how to use energy more efficiently. Across the EMEA region, cities and local software, infrastructure and integration partners are using NVIDIA accelerated computing to build physical and digital twins that help teams make […]",
+      "non_tech_strip_test": "PASS",
+      "v15_same_pool_priority": 42.76,
+      "final_editorial_priority": 40.77,
+      "verdict": "NO_PUBLISH",
+      "gate_failures": [
+        "hard_scope_unknown",
+        "hard_fabrication_unknown",
+        "chosen_headline_claim_failed_or_unknown",
+        "chosen_headline_needs_improvement",
+        "card_claim_failed_or_unknown",
+        "three_second_not_STOP",
+        "ordinary_person_appeal_below_70_or_unknown",
+        "card_stop_score_below_70_or_unknown",
+        "title_potential_score_below_70_or_unknown",
+        "insufficient_viral_heat_or_grounded_reference_match"
+      ],
+      "hard_gates": {
+        "evidence": "PASS",
+        "scope": "UNKNOWN",
+        "fabrication": "UNKNOWN",
+        "safety": "PASS",
+        "headline_claim": "UNKNOWN",
+        "card_claim": "UNKNOWN"
+      },
+      "source_url": "https://blogs.nvidia.com/blog/european-cities-agents-urban-operations/"
+    },
+    {
+      "id": "1255e1e1d321c2f7bf50664f",
+      "topic": "开发者把AI记账分析留在Mac本地",
+      "best_headline": "让AI看账本，又不想上传账本",
+      "cover_line": "未取得足够来源，不能形成可发布事实。",
+      "why_a_normal_chinese_user_clicks": "收入支出和隐私；不编造用户省钱结果，工具访问条件待核验。",
+      "core_human_trigger": "privacy",
+      "consumer_dimensions": {
+        "money": 50.75,
+        "work": 22.75,
+        "relationship": 30.5,
+        "privacy": 62.0,
+        "surprise": 48.0,
+        "personal_relevance": 63.0,
+        "human_story_conflict": 49.5,
+        "concrete_incident": 56.25,
+        "strip_interest": 56.25
+      },
+      "ordinary_person_appeal": 59.51,
+      "source_heat": 69.1,
+      "card_stop_score": 44.0,
+      "three_second_test": "STOP",
+      "stripped_card": "让看账本，又不想上传账本 未取得足够来源，不能形成可发布事实。",
+      "non_tech_strip_test": "FAIL",
+      "v15_same_pool_priority": 62.48,
+      "final_editorial_priority": 53.08,
+      "verdict": "NO_PUBLISH",
+      "gate_failures": [
+        "hard_evidence_fail",
+        "hard_fabrication_unknown",
+        "chosen_headline_claim_failed_or_unknown",
+        "card_claim_failed_or_unknown",
+        "non_tech_strip_failed_or_unknown",
+        "ordinary_person_appeal_below_70_or_unknown",
+        "card_stop_score_below_70_or_unknown",
+        "insufficient_viral_heat_or_grounded_reference_match"
+      ],
+      "hard_gates": {
+        "evidence": "FAIL",
+        "scope": "PASS",
+        "fabrication": "UNKNOWN",
+        "safety": "PASS",
+        "headline_claim": "UNKNOWN",
+        "card_claim": "UNKNOWN"
+      },
+      "source_url": "https://pulseos.finance/"
+    },
+    {
+      "id": "5e24b48196293980d63d3443",
+      "topic": "公开帖子转述：AI数学进展让学生担忧专业",
+      "best_headline": "AI解题，让学生开始怀疑专业？",
+      "cover_line": "未取得足够来源，不能形成可发布事实。",
+      "why_a_normal_chinese_user_clicks": "看到这个具体反差，想知道事情为什么会变成这样。",
+      "core_human_trigger": "surprise",
+      "consumer_dimensions": {
+        "money": 9.75,
+        "work": 33.75,
+        "relationship": 23.75,
+        "privacy": 11.25,
+        "surprise": 44.75,
+        "personal_relevance": 32.0,
+        "human_story_conflict": 48.25,
+        "concrete_incident": 59.0,
+        "strip_interest": 44.25
+      },
+      "ordinary_person_appeal": 44.23,
+      "source_heat": 61.14,
+      "card_stop_score": 42.0,
+      "three_second_test": "MAYBE",
+      "stripped_card": "解题，让学生开始怀疑专业？ 未取得足够来源，不能形成可发布事实。",
+      "non_tech_strip_test": "FAIL",
+      "v15_same_pool_priority": 51.54,
+      "final_editorial_priority": 41.11,
+      "verdict": "NO_PUBLISH",
+      "gate_failures": [
+        "hard_evidence_fail",
+        "hard_fabrication_unknown",
+        "chosen_headline_claim_failed_or_unknown",
+        "chosen_headline_needs_improvement",
+        "card_claim_failed_or_unknown",
+        "non_tech_strip_failed_or_unknown",
+        "three_second_not_STOP",
+        "ordinary_person_appeal_below_70_or_unknown",
+        "card_stop_score_below_70_or_unknown",
+        "title_potential_score_below_70_or_unknown",
+        "insufficient_viral_heat_or_grounded_reference_match"
+      ],
+      "hard_gates": {
+        "evidence": "FAIL",
+        "scope": "PASS",
+        "fabrication": "UNKNOWN",
+        "safety": "PASS",
+        "headline_claim": "UNKNOWN",
+        "card_claim": "UNKNOWN"
+      },
+      "source_url": "https://t.me/aipost/8480"
+    },
+    {
+      "id": "15611aa550c8fd39217a24f3",
+      "topic": "媒体追踪：马斯克的AI债务预测",
+      "best_headline": "马斯克的AI预测，兑现了吗？",
+      "cover_line": "未取得足够来源，不能形成可发布事实。",
+      "why_a_normal_chinese_user_clicks": "大人物预测与现实的反差；不提供金融判断，不以单篇标题断言成败。",
+      "core_human_trigger": "surprise",
+      "consumer_dimensions": {
+        "money": 31.0,
+        "work": 12.75,
+        "relationship": 7.0,
+        "privacy": 2.75,
+        "surprise": 52.5,
+        "personal_relevance": 20.0,
+        "human_story_conflict": 40.0,
+        "concrete_incident": 51.0,
+        "strip_interest": 43.75
+      },
+      "ordinary_person_appeal": 42.27,
+      "source_heat": null,
+      "card_stop_score": 47.0,
+      "three_second_test": "SCROLL",
+      "stripped_card": "马斯克的预测，兑现了吗？ 未取得足够来源，不能形成可发布事实。",
+      "non_tech_strip_test": "FAIL",
+      "v15_same_pool_priority": 42.36,
+      "final_editorial_priority": 38.89,
+      "verdict": "NO_PUBLISH",
+      "gate_failures": [
+        "hard_evidence_fail",
+        "hard_fabrication_unknown",
+        "chosen_headline_claim_failed_or_unknown",
+        "chosen_headline_needs_improvement",
+        "card_claim_failed_or_unknown",
+        "non_tech_strip_failed_or_unknown",
+        "three_second_not_STOP",
+        "ordinary_person_appeal_below_70_or_unknown",
+        "card_stop_score_below_70_or_unknown",
+        "title_potential_score_below_70_or_unknown",
+        "insufficient_viral_heat_or_grounded_reference_match",
+        "celebrity_without_substantive_action"
+      ],
+      "hard_gates": {
+        "evidence": "FAIL",
+        "scope": "PASS",
+        "fabrication": "UNKNOWN",
+        "safety": "PASS",
+        "headline_claim": "FAIL",
+        "card_claim": "UNKNOWN"
+      },
+      "source_url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQcTFWSG54Tzc3blMxTE1WSGJIQzF0MkxPOHJwU2YteTVMR2dKTXVNYVZqekptay1seW9YU1A4MmpFdmgwTmFVaFFtVEl4Q2VYVFpnSXVYQlZKT25zTURsQllGTU91YXk0X1ducWtjRzJXWDMtaHgwTnlmSUV5UnZTRGtTc1l5WjJza2xnVTlPVklBeDY4cnZMWTFpVXMzRV90ekh4bnVpSWMxWG1jQzBTclE3YTFfTzVkblc1cnBOUzROV2NBVU5V?oc=5"
+    },
+    {
+      "id": "e04c4d51f8712ba67fbfaaee",
+      "topic": "报道线索：免费办公软件替代品",
+      "best_headline": "免费办公软件，又有新替代品？",
+      "cover_line": "未取得足够来源，不能形成可发布事实。",
+      "why_a_normal_chinese_user_clicks": "学生与打工人的软件费用；未核实前不能承诺国内用户可用或免费。",
+      "core_human_trigger": "money",
+      "consumer_dimensions": {
+        "money": 41.0,
+        "work": 35.75,
+        "relationship": 8.0,
+        "privacy": 1.75,
+        "surprise": 34.0,
+        "personal_relevance": 45.25,
+        "human_story_conflict": 20.25,
+        "concrete_incident": 53.75,
+        "strip_interest": 36.75
+      },
+      "ordinary_person_appeal": 40.86,
+      "source_heat": null,
+      "card_stop_score": 26.25,
+      "three_second_test": "SCROLL",
+      "stripped_card": "免费办公软件，又有新替代品？ 未取得足够来源，不能形成可发布事实。",
+      "non_tech_strip_test": "FAIL",
+      "v15_same_pool_priority": 49.85,
+      "final_editorial_priority": 33.8,
+      "verdict": "NO_PUBLISH",
+      "gate_failures": [
+        "hard_evidence_fail",
+        "hard_fabrication_unknown",
+        "chosen_headline_claim_failed_or_unknown",
+        "chosen_headline_needs_improvement",
+        "card_claim_failed_or_unknown",
+        "non_tech_strip_failed_or_unknown",
+        "three_second_not_STOP",
+        "ordinary_person_appeal_below_70_or_unknown",
+        "card_stop_score_below_70_or_unknown",
+        "title_potential_score_below_70_or_unknown",
+        "insufficient_viral_heat_or_grounded_reference_match"
+      ],
+      "hard_gates": {
+        "evidence": "FAIL",
+        "scope": "PASS",
+        "fabrication": "UNKNOWN",
+        "safety": "PASS",
+        "headline_claim": "UNKNOWN",
+        "card_claim": "UNKNOWN"
+      },
+      "source_url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQaVlzQ2o2VFRhOUpEM25YNzRiTUF4VkNjOGNxWDJKVnYzeXZ6bVZGV3Y4LS1qWkk4TDdLQXlGQUpUOXVzRVlrY1pVOUhoQ1RyM05OejZkWmhKRzlsMmN6TzAwQ1YyY05xWDg2ZjJTM0dfM0VhRUU5Wm5iRzc4WnVQeE9qdm5IRGdhM1R0Zl9kNHFXdw?oc=5"
+    },
+    {
+      "id": "0e8a772cb3bb6edf8137d3eb",
+      "topic": "把现有AI订阅用于有声书工具的作者案例",
+      "best_headline": "已有AI订阅，能拿来做有声书？",
+      "cover_line": "未取得可读来源，不能形成可发布事实。",
+      "why_a_normal_chinese_user_clicks": "通勤、阅读与已有付费订阅的用途；没核实条款与收费，不能宣称免费即用。",
+      "core_human_trigger": "money",
+      "consumer_dimensions": {
+        "money": 29.5,
+        "work": 7.5,
+        "relationship": 5.5,
+        "privacy": 4.0,
+        "surprise": 20.5,
+        "personal_relevance": 41.5,
+        "human_story_conflict": 22.25,
+        "concrete_incident": 26.0,
+        "strip_interest": 34.25
+      },
+      "ordinary_person_appeal": 30.89,
+      "source_heat": 73.78,
+      "card_stop_score": 29.75,
+      "three_second_test": "MAYBE",
+      "stripped_card": "已有订阅，能拿来做有声书？ 未取得可读来源，不能形成可发布事实。",
+      "non_tech_strip_test": "FAIL",
+      "v15_same_pool_priority": 50.11,
+      "final_editorial_priority": 31.56,
+      "verdict": "NO_PUBLISH",
+      "gate_failures": [
+        "hard_evidence_fail",
+        "hard_fabrication_unknown",
+        "chosen_headline_claim_failed_or_unknown",
+        "chosen_headline_needs_improvement",
+        "card_claim_failed_or_unknown",
+        "non_tech_strip_failed_or_unknown",
+        "three_second_not_STOP",
+        "ordinary_person_appeal_below_70_or_unknown",
+        "card_stop_score_below_70_or_unknown",
+        "title_potential_score_below_70_or_unknown",
+        "non_tech_reader_entrance_weak_or_unknown",
+        "insufficient_viral_heat_or_grounded_reference_match"
+      ],
+      "hard_gates": {
+        "evidence": "FAIL",
+        "scope": "PASS",
+        "fabrication": "UNKNOWN",
+        "safety": "PASS",
+        "headline_claim": "FAIL",
+        "card_claim": "UNKNOWN"
+      },
+      "source_url": "https://pdftomp3.com/connect-ai/"
+    },
+    {
+      "id": "2a90b2a2b4c5974a4c424b89",
+      "topic": "报道线索：Netflix动画业务裁员",
+      "best_headline": "Netflix动画业务传出大裁员",
+      "cover_line": "未取得足够来源，不能形成可发布事实。",
+      "why_a_normal_chinese_user_clicks": "没有有说服力且有事实支持的普通人点击理由。",
+      "core_human_trigger": "work",
+      "consumer_dimensions": {
+        "money": 12.5,
+        "work": 43.75,
+        "relationship": 16.25,
+        "privacy": 6.75,
+        "surprise": 31.75,
+        "personal_relevance": 24.5,
+        "human_story_conflict": 12.5,
+        "concrete_incident": 52.25,
+        "strip_interest": 27.75
+      },
+      "ordinary_person_appeal": 35.52,
+      "source_heat": null,
+      "card_stop_score": 35.25,
+      "three_second_test": "SCROLL",
+      "stripped_card": "Netflix动画业务传出大裁员 未取得足够来源，不能形成可发布事实。",
+      "non_tech_strip_test": "FAIL",
+      "v15_same_pool_priority": 44.96,
+      "final_editorial_priority": 31.46,
+      "verdict": "NO_PUBLISH",
+      "gate_failures": [
+        "hard_evidence_fail",
+        "hard_fabrication_unknown",
+        "chosen_headline_claim_failed_or_unknown",
+        "chosen_headline_needs_improvement",
+        "card_claim_failed_or_unknown",
+        "non_tech_strip_failed_or_unknown",
+        "three_second_not_STOP",
+        "ordinary_click_reason_missing",
+        "ordinary_person_appeal_below_70_or_unknown",
+        "card_stop_score_below_70_or_unknown",
+        "title_potential_score_below_70_or_unknown",
+        "insufficient_viral_heat_or_grounded_reference_match"
+      ],
+      "hard_gates": {
+        "evidence": "FAIL",
+        "scope": "PASS",
+        "fabrication": "UNKNOWN",
+        "safety": "PASS",
+        "headline_claim": "FAIL",
+        "card_claim": "UNKNOWN"
+      },
+      "source_url": "https://news.google.com/rss/articles/CBMilwJBVV95cUxNcUZyZkE2X041Wk55V2JZdmw2OEZvM05oREdaRXpUN1BkNlRaamc0d0lyRlZfSWF5NVEwRW4wdUpSTVNGdnZHV0FGZlY2TGJJVFpWX2FxaTlZTVBHREJjcmhySHdKZVFHTUhxTGpmbGRCcWwwR2dDc2doc1o1REJnVXBxYU5QLXRMMWExZ2JEUVVZdHRudDQyZmltcXByOFlqbW5NNzR3NThaa0U1NkExM2ppV3JLdTh1QjdYM3ZBT3k0V1BjVmhqVjhtSFlfekxFUXo4bEdTd3FFS2xXOUdEbkhKWk9UOHhxQW5LRlg4SXR4SExBdGRGLWJpYi1xejdDbWJYaWd3SDJtY3VOTHRDWkxSM0VSa3PSAZwCQVVfeXFMTU5aQmhFR0cwQm4xU2ZaeVFDazNKVGd5c0FWVjZqdXNPWFYxVW1KRjBJVEttYjF2OEk0eFFNRTFWVHlGSW40VFUxRC1ZdVlnYWZYeUp0TXB2bmE5dklmR01TNXRNRk9FdXFuN196SzlDRTd1N0E2UmdOTDRqRlJMcDVmdXZXN1RwQjFMMnNBMXB6bEtUR29XNW9qTjJXSzFkam15VGt3UEVOQlFvQldNdFp6Ym9acEFNamJYTXVobFZLQ0FoRGdIVWZQSVZhbTFuR0RmUmNaS1hySy1vTUJ5dGFFWWlIdk9PMzFuNUlPR3RHQ2puQUZkVldkZkl3R0x3TFpQWWRqMHdmSlR4ZzFuNTNNT09HR2F4c1V4XzY?oc=5"
+    },
+    {
+      "id": "68ceb9c6e39c0ba6ad2cdfac",
+      "topic": "Anthropic重做开发版本管理流程",
+      "best_headline": "AI写代码太快，旧流程跟不上了",
+      "cover_line": "未取得足够来源，不能形成可发布事实。",
+      "why_a_normal_chinese_user_clicks": "看到这个具体反差，想知道事情为什么会变成这样。",
+      "core_human_trigger": "surprise",
+      "consumer_dimensions": {
+        "money": 6.25,
+        "work": 12.5,
+        "relationship": 4.25,
+        "privacy": 2.25,
+        "surprise": 41.0,
+        "personal_relevance": 15.5,
+        "human_story_conflict": 17.5,
+        "concrete_incident": 41.5,
+        "strip_interest": 37.25
+      },
+      "ordinary_person_appeal": 31.17,
+      "source_heat": null,
+      "card_stop_score": 29.75,
+      "three_second_test": "SCROLL",
+      "stripped_card": "写代码太快，旧流程跟不上了 未取得足够来源，不能形成可发布事实。",
+      "non_tech_strip_test": "FAIL",
+      "v15_same_pool_priority": 29.52,
+      "final_editorial_priority": 27.7,
+      "verdict": "NO_PUBLISH",
+      "gate_failures": [
+        "hard_evidence_fail",
+        "hard_fabrication_unknown",
+        "chosen_headline_claim_failed_or_unknown",
+        "chosen_headline_needs_improvement",
+        "card_claim_failed_or_unknown",
+        "non_tech_strip_failed_or_unknown",
+        "three_second_not_STOP",
+        "ordinary_person_appeal_below_70_or_unknown",
+        "card_stop_score_below_70_or_unknown",
+        "title_potential_score_below_70_or_unknown",
+        "non_tech_reader_entrance_weak_or_unknown",
+        "programmer_bias_warning",
+        "insufficient_viral_heat_or_grounded_reference_match"
+      ],
+      "hard_gates": {
+        "evidence": "FAIL",
+        "scope": "PASS",
+        "fabrication": "UNKNOWN",
+        "safety": "PASS",
+        "headline_claim": "UNKNOWN",
+        "card_claim": "UNKNOWN"
+      },
+      "source_url": "https://simonwillison.net/2026/Oct/13/redesigning-source-control-at-anthropic/"
+    },
+    {
+      "id": "89b12f3cfb213d363778c932",
+      "topic": "报道线索：海外科技公司裁员汇总",
+      "best_headline": "科技公司裁员清单，又更新了",
+      "cover_line": "未取得足够来源，不能形成可发布事实。",
+      "why_a_normal_chinese_user_clicks": "没有有说服力且有事实支持的普通人点击理由。",
+      "core_human_trigger": "work",
+      "consumer_dimensions": {
+        "money": 7.75,
+        "work": 38.5,
+        "relationship": 10.0,
+        "privacy": 3.0,
+        "surprise": 12.0,
+        "personal_relevance": 18.25,
+        "human_story_conflict": 8.5,
+        "concrete_incident": 44.5,
+        "strip_interest": 17.25
+      },
+      "ordinary_person_appeal": 29.84,
+      "source_heat": null,
+      "card_stop_score": 32.75,
+      "three_second_test": "SCROLL",
+      "stripped_card": "科技公司裁员清单，又更新了 未取得足够来源，不能形成可发布事实。",
+      "non_tech_strip_test": "FAIL",
+      "v15_same_pool_priority": 41.88,
+      "final_editorial_priority": 27.26,
+      "verdict": "NO_PUBLISH",
+      "gate_failures": [
+        "hard_evidence_fail",
+        "hard_fabrication_unknown",
+        "chosen_headline_claim_failed_or_unknown",
+        "chosen_headline_needs_improvement",
+        "card_claim_failed_or_unknown",
+        "non_tech_strip_failed_or_unknown",
+        "three_second_not_STOP",
+        "ordinary_click_reason_missing",
+        "ordinary_person_appeal_below_70_or_unknown",
+        "card_stop_score_below_70_or_unknown",
+        "title_potential_score_below_70_or_unknown",
+        "non_tech_reader_entrance_weak_or_unknown",
+        "insufficient_viral_heat_or_grounded_reference_match"
+      ],
+      "hard_gates": {
+        "evidence": "FAIL",
+        "scope": "PASS",
+        "fabrication": "UNKNOWN",
+        "safety": "PASS",
+        "headline_claim": "UNKNOWN",
+        "card_claim": "UNKNOWN"
+      },
+      "source_url": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxPUi04VG53NGg5eV9GWTg4NmxvNzNROU9UenhvLU1sRzhWVGJkSExqZGh4S3lYU2hGUGQ0VUgyLUpTYm1fWmxtY21OZDNkeU90cFFhLXZ6MU1xalFPTDVsX2otemVDT1g2WkwyNF91d0lNU05wbDhuUVgxdVNsOUpfQWF1RjFFY1VObDU1RjhKcktHckpSdlNJak9tMEF4Ung4dFB5THlpY2Q5cGMzalZMQ1R0Yk9HZThXNHpuaEZUdHV5alNzSnNrMHIyYkU5M2hJNDROa0IwVzhGRDdQUGVOVWRwNzhUSnphWHBiSV9Qd0VzOHpiVlZGSldnY1Fyakk?oc=5"
+    }
+  ],
+  "blind_top5": {
+    "status": "live",
+    "error": null,
+    "input_cards": [
+      {
+        "title": "一家人共用AI，隐私怎么分开",
+        "cover_line": "同一块客厅屏幕，先认出你，再显示你的内容。"
+      },
+      {
+        "title": "卫生纸遮录音器，检方起诉了员工",
+        "cover_line": "据检方材料，设备藏在高管会议室电视后；员工被起诉，尚未定罪。"
+      },
+      {
+        "title": "AI朋友还在，公司却申请破产了",
+        "cover_line": "服务仍正常；公司申请破产出售，找不到买家就可能关停。"
+      },
+      {
+        "title": "机器人7连中，先看人类视频",
+        "cover_line": "谷歌称：看人类视频、仿真训练后，机器人实机连续投中7次。"
+      },
+      {
+        "title": "这次敲键盘，居然是在弹吉他",
+        "cover_line": "不用下载、不用注册，键盘按和弦，手指也能划琴弦。"
+      }
+    ],
+    "ranking": [
+      {
+        "id": "02ecb7c280dfd016134d326d",
+        "rank": 1,
+        "title": "这次敲键盘，居然是在弹吉他",
+        "cover_line": "不用下载、不用注册，键盘按和弦，手指也能划琴弦。",
+        "pairwise_wins": 3.2,
+        "algorithm_rank": 3
+      },
+      {
+        "id": "701eec96ceaacb29bbf44965",
+        "rank": 2,
+        "title": "卫生纸遮录音器，检方起诉了员工",
+        "cover_line": "据检方材料，设备藏在高管会议室电视后；员工被起诉，尚未定罪。",
+        "pairwise_wins": 3.03,
+        "algorithm_rank": 2
+      },
+      {
+        "id": "4bfbecf3d5e2506741d7c1f3",
+        "rank": 3,
+        "title": "一家人共用AI，隐私怎么分开",
+        "cover_line": "同一块客厅屏幕，先认出你，再显示你的内容。",
+        "pairwise_wins": 2.43,
+        "algorithm_rank": 1
+      },
+      {
+        "id": "f83ddb49efb54e6d08546f19",
+        "rank": 4,
+        "title": "AI朋友还在，公司却申请破产了",
+        "cover_line": "服务仍正常；公司申请破产出售，找不到买家就可能关停。",
+        "pairwise_wins": 0.84,
+        "algorithm_rank": 4
+      },
+      {
+        "id": "caefd4aa9aff2449f6718435",
+        "rank": 5,
+        "title": "机器人7连中，先看人类视频",
+        "cover_line": "谷歌称：看人类视频、仿真训练后，机器人实机连续投中7次。",
+        "pairwise_wins": 0.5,
+        "algorithm_rank": 5
+      }
+    ],
+    "method": "独立请求，仅标题+封面；同一评估模型，不是真实用户实验或独立模型交叉验证。",
+    "judgment": {
+      "model": "jev-1.13.0",
+      "answers": {
+        "0_1": {
+          "type": "choice",
+          "score": null,
+          "confidence": 0.4,
+          "choice": "b",
+          "noul": null,
+          "probabilities": {
+            "a": 0.3,
+            "b": 0.7
+          }
+        },
+        "0_2": {
+          "type": "choice",
+          "score": null,
+          "confidence": 0.82,
+          "choice": "a",
+          "noul": null,
+          "probabilities": {
+            "a": 0.91,
+            "b": 0.09
+          }
+        },
+        "0_3": {
+          "type": "choice",
+          "score": null,
+          "confidence": 0.86,
+          "choice": "a",
+          "noul": null,
+          "probabilities": {
+            "a": 0.93,
+            "b": 0.07
+          }
+        },
+        "0_4": {
+          "type": "choice",
+          "score": null,
+          "confidence": 0.42,
+          "choice": "b",
+          "noul": null,
+          "probabilities": {
+            "a": 0.29,
+            "b": 0.71
+          }
+        },
+        "1_2": {
+          "type": "choice",
+          "score": null,
+          "confidence": 0.9,
+          "choice": "a",
+          "noul": null,
+          "probabilities": {
+            "a": 0.95,
+            "b": 0.05
+          }
+        },
+        "1_3": {
+          "type": "choice",
+          "score": null,
+          "confidence": 0.9,
+          "choice": "a",
+          "noul": null,
+          "probabilities": {
+            "a": 0.95,
+            "b": 0.05
+          }
+        },
+        "1_4": {
+          "type": "choice",
+          "score": null,
+          "confidence": 0.14,
+          "choice": "b",
+          "noul": null,
+          "probabilities": {
+            "a": 0.43,
+            "b": 0.57
+          }
+        },
+        "2_3": {
+          "type": "choice",
+          "score": null,
+          "confidence": 0.28,
+          "choice": "a",
+          "noul": null,
+          "probabilities": {
+            "a": 0.64,
+            "b": 0.36
+          }
+        },
+        "2_4": {
+          "type": "choice",
+          "score": null,
+          "confidence": 0.88,
+          "choice": "b",
+          "noul": null,
+          "probabilities": {
+            "a": 0.06,
+            "b": 0.94
+          }
+        },
+        "3_4": {
+          "type": "choice",
+          "score": null,
+          "confidence": 0.96,
+          "choice": "b",
+          "noul": null,
+          "probabilities": {
+            "a": 0.02,
+            "b": 0.98
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 2962,
+        "output_tokens": 303
+      }
+    },
+    "ranking_conflict": false
+  },
+  "title_tournament": {
+    "status": "cache",
+    "error": null,
+    "comparisons": 190,
+    "ranking": [
+      {
+        "headline": "6个人共用一块屏幕，会串隐私吗",
+        "pairwise_wins": 16.53,
+        "claim_supported": false,
+        "structure": "risk"
+      },
+      {
+        "headline": "一家人共用AI，隐私怎么分开",
+        "pairwise_wins": 15.34,
+        "claim_supported": true,
+        "structure": "risk"
+      },
+      {
+        "headline": "同一块苹果屏幕，全家看到的不一样",
+        "pairwise_wins": 14.36,
+        "claim_supported": true,
+        "structure": "curiosity"
+      },
+      {
+        "headline": "一块屏幕认6个人，苹果想干什么",
+        "pairwise_wins": 13.69,
+        "claim_supported": true,
+        "structure": "curiosity"
+      },
+      {
+        "headline": "苹果新屏幕：一家6口，各看各的",
+        "pairwise_wins": 13.68,
+        "claim_supported": true,
+        "structure": "number"
+      },
+      {
+        "headline": "AI进客厅，先过一家人的隐私关",
+        "pairwise_wins": 13.59,
+        "claim_supported": false,
+        "structure": "risk"
+      },
+      {
+        "headline": "苹果这块屏幕，能认出一家6口",
+        "pairwise_wins": 13.58,
+        "claim_supported": true,
+        "structure": "number"
+      },
+      {
+        "headline": "苹果的新屏幕，认人后才显示内容",
+        "pairwise_wins": 10.58,
+        "claim_supported": true,
+        "structure": "big_person"
+      },
+      {
+        "headline": "家里多一块AI屏幕，你会放心吗",
+        "pairwise_wins": 9.61,
+        "claim_supported": false,
+        "structure": "risk"
+      },
+      {
+        "headline": "苹果新设备，先认出你再显示内容",
+        "pairwise_wins": 9.13,
+        "claim_supported": true,
+        "structure": "big_person"
+      },
+      {
+        "headline": "苹果家庭屏幕，能认脸也能认声音",
+        "pairwise_wins": 8.73,
+        "claim_supported": false,
+        "structure": "big_person"
+      },
+      {
+        "headline": "苹果的AI屏幕，为什么要认出你",
+        "pairwise_wins": 8.09,
+        "claim_supported": true,
+        "structure": "curiosity"
+      },
+      {
+        "headline": "让AI进家门，苹果先解决认人问题",
+        "pairwise_wins": 8.07,
+        "claim_supported": true,
+        "structure": "scene"
+      },
+      {
+        "headline": "苹果想让全家共用AI，但内容分开",
+        "pairwise_wins": 7.76,
+        "claim_supported": true,
+        "structure": "big_person"
+      },
+      {
+        "headline": "苹果家庭屏幕：方便，还是不放心",
+        "pairwise_wins": 7.36,
+        "claim_supported": false,
+        "structure": "curiosity"
+      },
+      {
+        "headline": "家里的AI助手，苹果准备这样做",
+        "pairwise_wins": 5.33,
+        "claim_supported": false,
+        "structure": "curiosity"
+      },
+      {
+        "headline": "苹果这次卖的屏幕，是给全家用的",
+        "pairwise_wins": 4.07,
+        "claim_supported": true,
+        "structure": "identity"
+      },
+      {
+        "headline": "苹果客厅新屏幕，Siri先只说英语",
+        "pairwise_wins": 4.0,
+        "claim_supported": true,
+        "structure": "scene"
+      },
+      {
+        "headline": "苹果把家庭AI，做成了7英寸屏幕",
+        "pairwise_wins": 3.75,
+        "claim_supported": false,
+        "structure": "big_person"
+      },
+      {
+        "headline": "苹果把AI助手，搬进了客厅",
+        "pairwise_wins": 2.75,
+        "claim_supported": true,
+        "structure": "big_person"
+      }
+    ],
+    "top5": [
+      {
+        "headline": "6个人共用一块屏幕，会串隐私吗",
+        "pairwise_wins": 16.53,
+        "claim_supported": false,
+        "structure": "risk"
+      },
+      {
+        "headline": "一家人共用AI，隐私怎么分开",
+        "pairwise_wins": 15.34,
+        "claim_supported": true,
+        "structure": "risk"
+      },
+      {
+        "headline": "同一块苹果屏幕，全家看到的不一样",
+        "pairwise_wins": 14.36,
+        "claim_supported": true,
+        "structure": "curiosity"
+      },
+      {
+        "headline": "一块屏幕认6个人，苹果想干什么",
+        "pairwise_wins": 13.69,
+        "claim_supported": true,
+        "structure": "curiosity"
+      },
+      {
+        "headline": "苹果新屏幕：一家6口，各看各的",
+        "pairwise_wins": 13.68,
+        "claim_supported": true,
+        "structure": "number"
+      }
+    ]
+  },
+  "validation": {
+    "pytest_full": "172 passed",
+    "affected_after_last_behavior_change": "52 passed",
+    "ruff_check": "PASS",
+    "ruff_format": "PASS",
+    "verify_outputs": "PASS",
+    "verify_publish_candidates": "PASS"
+  },
+  "limitations": [
+    "模型模拟普通人偏好，不是用户CTR实验",
+    "补核原文、标题与新数据也会影响排名，不能把所有名次变化归因权重",
+    "部分Top 6-10标题/封面仍待核验，不允许发出",
+    "未向云端上传本机凭证，云端可能继续没有语义评分"
+  ],
+  "feedback_ledger_sha256": "ba53632d19725bf5278a4b9180d83ccc2c84608dff90761bcea19ff44fe425c2",
+  "published_ledger_sha256": "0ede87ae1b13b66a7b9cb9ed6cc2c20c2550e7ff475763016d5bb77aa900fa2c"
+}
