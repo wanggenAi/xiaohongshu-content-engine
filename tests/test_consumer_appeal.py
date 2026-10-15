@@ -141,7 +141,11 @@ def test_consumer_judgment_has_no_heat_input_and_requests_all_human_dimensions()
 def test_one_strong_relationship_trigger_does_not_need_money_or_tech_importance():
     dims = {k: 0 for k in ("money", "work", "relationship", "privacy", "surprise")}
     dims.update(
-        relationship=95, personal_relevance=80, human_story_conflict=90, concrete_incident=90
+        relationship=95,
+        personal_relevance=80,
+        human_story_conflict=90,
+        concrete_incident=90,
+        strip_interest=80,
     )
     assert ordinary_score(dims) > 85
     assert "API" not in strip_tech("某模型发布新API和GPU推理框架")
@@ -208,3 +212,21 @@ def test_editor_written_click_reasons_cannot_change_consumer_scores_or_fact_gate
     item.metadata["consumer_evaluation"]["click_options"] = {"0": "完全不同的解释"}
     assert judge.prepare(item) == before
     assert "click_reason" not in before[0]["questions"]
+
+
+def test_pure_wow_can_qualify_without_personal_stakes_or_a_first_person_story():
+    dims = {
+        k: 0
+        for k in (
+            "money",
+            "work",
+            "relationship",
+            "privacy",
+            "personal_relevance",
+            "human_story_conflict",
+        )
+    }
+    dims.update(surprise=95, concrete_incident=90, strip_interest=90)
+    assert ordinary_score(dims) >= 90
+    dims.update(surprise=10, strip_interest=20)
+    assert ordinary_score(dims) < 40  # A concrete, dull company announcement is still dull.

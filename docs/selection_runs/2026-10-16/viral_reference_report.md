@@ -39,7 +39,7 @@
 
 ## Apple's new 'Switch to Safari' campaign details why you should ditch Chrome
 
-- 来源：[hacker_news](https://news.ycombinator.com/item?id=50072286)；发布 2026-10-13T14:26:08+00:00；观测 2026-10-15T23:29:12.141963+00:00。
+- 来源：[hacker_news](https://news.ycombinator.com/item?id=50072286)；发布 2026-10-13T14:26:08+00:00；观测 2026-10-15T23:36:32.163092+00:00。
 - 热度：{'points': 280, 'comments': 506}；views=None；likes=None；shares=None；增长窗口=null。
 - 内容类型：['big_person_action']
 - Human Trigger：['social proof']
@@ -61,7 +61,7 @@
 
 ## Worlds more habitable than Earth?
 
-- 来源：[hacker_news](https://news.ycombinator.com/item?id=50070554)；发布 2026-10-13T12:23:34+00:00；观测 2026-10-15T23:29:12.141963+00:00。
+- 来源：[hacker_news](https://news.ycombinator.com/item?id=50070554)；发布 2026-10-13T12:23:34+00:00；观测 2026-10-15T23:36:32.163092+00:00。
 - 热度：{'points': 89, 'comments': 206}；views=None；likes=None；shares=None；增长窗口=null。
 - 内容类型：[]
 - Human Trigger：[]
@@ -270,7 +270,7 @@
 
 ## Muse Spark Open
 
-- 来源：[hacker_news](https://news.ycombinator.com/item?id=50107379)；发布 2026-10-15T17:47:39+00:00；观测 2026-10-15T23:29:12.141963+00:00。
+- 来源：[hacker_news](https://news.ycombinator.com/item?id=50107379)；发布 2026-10-15T17:47:39+00:00；观测 2026-10-15T23:36:32.163092+00:00。
 - 热度：{'points': 554, 'comments': 311}；views=None；likes=None；shares=None；增长窗口=null。
 - 内容类型：['big_person_action']
 - Human Trigger：['social proof']
@@ -281,7 +281,7 @@
 
 ## More on Anthropic's Scion ripping off Mononoke
 
-- 来源：[hacker_news](https://news.ycombinator.com/item?id=50106738)；发布 2026-10-15T17:05:19+00:00；观测 2026-10-15T23:29:12.141963+00:00。
+- 来源：[hacker_news](https://news.ycombinator.com/item?id=50106738)；发布 2026-10-15T17:05:19+00:00；观测 2026-10-15T23:36:32.163092+00:00。
 - 热度：{'points': 214, 'comments': 67}；views=None；likes=None；shares=None；增长窗口=null。
 - 内容类型：['big_person_action', 'niche_operator']
 - Human Trigger：['social proof', 'specialist identity']
@@ -292,7 +292,7 @@
 
 ## Neural networks are clean
 
-- 来源：[hacker_news](https://news.ycombinator.com/item?id=50105647)；发布 2026-10-15T16:04:01+00:00；观测 2026-10-15T23:29:12.141963+00:00。
+- 来源：[hacker_news](https://news.ycombinator.com/item?id=50105647)；发布 2026-10-15T16:04:01+00:00；观测 2026-10-15T23:36:32.163092+00:00。
 - 热度：{'points': 450, 'comments': 167}；views=None；likes=None；shares=None；增长窗口=null。
 - 内容类型：[]
 - Human Trigger：[]
@@ -303,7 +303,7 @@
 
 ## AdFection: Targeted ads turned into a pipeline for zero-click mercenary spyware
 
-- 来源：[hacker_news](https://news.ycombinator.com/item?id=50101813)；发布 2026-10-15T10:43:36+00:00；观测 2026-10-15T23:29:12.141963+00:00。
+- 来源：[hacker_news](https://news.ycombinator.com/item?id=50101813)；发布 2026-10-15T10:43:36+00:00；观测 2026-10-15T23:36:32.163092+00:00。
 - 热度：{'points': 355, 'comments': 520}；views=None；likes=None；shares=None；增长窗口=null。
 - 内容类型：['privacy_fairness']
 - Human Trigger：['fairness sensitivity', 'fear']
@@ -325,7 +325,7 @@
 
 ## Wanted to download an ISO, ended up writing a kernel exploit
 
-- 来源：[hacker_news](https://news.ycombinator.com/item?id=50070625)；发布 2026-10-13T12:30:08+00:00；观测 2026-10-15T23:29:12.141963+00:00。
+- 来源：[hacker_news](https://news.ycombinator.com/item?id=50070625)；发布 2026-10-13T12:30:08+00:00；观测 2026-10-15T23:36:32.163092+00:00。
 - 热度：{'points': 340, 'comments': 167}；views=None；likes=None；shares=None；增长窗口=null。
 - 内容类型：['niche_operator', 'privacy_fairness', 'reversal']
 - Human Trigger：['curiosity gap', 'fairness sensitivity', 'fear', 'specialist identity', 'surprise']
@@ -336,7 +336,7 @@
 
 ## Jev meets the Trolley Problem
 
-- 来源：[hacker_news](https://news.ycombinator.com/item?id=50106023)；发布 2026-10-15T16:24:52+00:00；观测 2026-10-15T23:29:12.141963+00:00。
+- 来源：[hacker_news](https://news.ycombinator.com/item?id=50106023)；发布 2026-10-15T16:24:52+00:00；观测 2026-10-15T23:36:32.163092+00:00。
 - 热度：{'points': 243, 'comments': 110}；views=None；likes=None；shares=None；增长窗口=null。
 - 内容类型：[]
 - Human Trigger：[]
@@ -347,7 +347,7 @@
 
 ## Krea 3 – An image model built for editing at scale
 
-- 来源：[hacker_news](https://news.ycombinator.com/item?id=50105648)；发布 2026-10-15T16:04:05+00:00；观测 2026-10-15T23:29:12.141963+00:00。
+- 来源：[hacker_news](https://news.ycombinator.com/item?id=50105648)；发布 2026-10-15T16:04:05+00:00；观测 2026-10-15T23:36:32.163092+00:00。
 - 热度：{'points': 227, 'comments': 75}；views=None；likes=None；shares=None；增长窗口=null。
 - 内容类型：[]
 - Human Trigger：[]
@@ -358,7 +358,7 @@
 
 ## Steam Client is now faster than Epic's new vibe coded launcher
 
-- 来源：[hacker_news](https://news.ycombinator.com/item?id=50105635)；发布 2026-10-15T16:03:19+00:00；观测 2026-10-15T23:29:12.141963+00:00。
+- 来源：[hacker_news](https://news.ycombinator.com/item?id=50105635)；发布 2026-10-15T16:03:19+00:00；观测 2026-10-15T23:36:32.163092+00:00。
 - 热度：{'points': 255, 'comments': 265}；views=None；likes=None；shares=None；增长窗口=null。
 - 内容类型：[]
 - Human Trigger：[]
@@ -369,7 +369,7 @@
 
 ## Simons Foundation launches $15M effort to help mathematicians navigate AI era
 
-- 来源：[hacker_news](https://news.ycombinator.com/item?id=50104654)；发布 2026-10-15T14:58:48+00:00；观测 2026-10-15T23:29:12.141963+00:00。
+- 来源：[hacker_news](https://news.ycombinator.com/item?id=50104654)；发布 2026-10-15T14:58:48+00:00；观测 2026-10-15T23:36:32.163092+00:00。
 - 热度：{'points': 217, 'comments': 176}；views=None；likes=None；shares=None；增长窗口=null。
 - 内容类型：['big_person_action', 'money']
 - Human Trigger：['loss aversion', 'opportunity seeking', 'social proof']
@@ -380,7 +380,7 @@
 
 ## I know why the mathematicians weep
 
-- 来源：[hacker_news](https://news.ycombinator.com/item?id=50103630)；发布 2026-10-15T13:44:32+00:00；观测 2026-10-15T23:29:12.141963+00:00。
+- 来源：[hacker_news](https://news.ycombinator.com/item?id=50103630)；发布 2026-10-15T13:44:32+00:00；观测 2026-10-15T23:36:32.163092+00:00。
 - 热度：{'points': 328, 'comments': 530}；views=None；likes=None；shares=None；增长窗口=null。
 - 内容类型：[]
 - Human Trigger：[]
@@ -391,7 +391,7 @@
 
 ## Wayland desktop for Linux with skeuomorphic design
 
-- 来源：[hacker_news](https://news.ycombinator.com/item?id=50103338)；发布 2026-10-15T13:23:44+00:00；观测 2026-10-15T23:29:12.141963+00:00。
+- 来源：[hacker_news](https://news.ycombinator.com/item?id=50103338)；发布 2026-10-15T13:23:44+00:00；观测 2026-10-15T23:36:32.163092+00:00。
 - 热度：{'points': 466, 'comments': 184}；views=None；likes=None；shares=None；增长窗口=null。
 - 内容类型：[]
 - Human Trigger：[]
@@ -402,7 +402,7 @@
 
 ## Libreboot 26.10 "Ominous Olive" released with UEFI, Chromebook support
 
-- 来源：[hacker_news](https://news.ycombinator.com/item?id=50102923)；发布 2026-10-15T12:52:16+00:00；观测 2026-10-15T23:29:12.141963+00:00。
+- 来源：[hacker_news](https://news.ycombinator.com/item?id=50102923)；发布 2026-10-15T12:52:16+00:00；观测 2026-10-15T23:36:32.163092+00:00。
 - 热度：{'points': 245, 'comments': 141}；views=None；likes=None；shares=None；增长窗口=null。
 - 内容类型：['niche_operator']
 - Human Trigger：['specialist identity']
@@ -424,7 +424,7 @@
 
 ## Tiny Little Office
 
-- 来源：[hacker_news](https://news.ycombinator.com/item?id=50096142)；发布 2026-10-14T22:10:08+00:00；观测 2026-10-15T23:29:12.141963+00:00。
+- 来源：[hacker_news](https://news.ycombinator.com/item?id=50096142)；发布 2026-10-14T22:10:08+00:00；观测 2026-10-15T23:36:32.163092+00:00。
 - 热度：{'points': 654, 'comments': 187}；views=None；likes=None；shares=None；增长窗口=null。
 - 内容类型：['utility_opportunity']
 - Human Trigger：['opportunity seeking']

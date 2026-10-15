@@ -34,13 +34,19 @@ def strip_tech(text):
 
 def ordinary_score(dimensions):
     """One strong human trigger suffices; an event need not trigger all five needs."""
-    return round(
+    personal_entry = (
         max(dimensions[k] for k in TRIGGERS) * 0.45
         + dimensions["personal_relevance"] * 0.25
         + dimensions["human_story_conflict"] * 0.15
-        + dimensions["concrete_incident"] * 0.15,
-        2,
+        + dimensions["concrete_incident"] * 0.15
     )
+    # Spectacle/curiosity is a legitimate ordinary-person entrance without money or a protagonist.
+    curiosity_entry = (
+        dimensions["surprise"] * 0.70
+        + dimensions["concrete_incident"] * 0.20
+        + dimensions["strip_interest"] * 0.10
+    )
+    return round(max(personal_entry, curiosity_entry), 2)
 
 
 def click_options(row):

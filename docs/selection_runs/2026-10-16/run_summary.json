@@ -11,14 +11,14 @@
     "final_editorial_priority": 78.56,
     "verdict": "AUTO_PUBLISH_ELIGIBLE"
   },
-  "generated_at": "2026-10-15T23:29:12.141963+00:00",
+  "generated_at": "2026-10-15T23:36:32.163092+00:00",
   "real_full_pipeline_run_at": "2026-10-15T23:18:45.310594+00:00",
   "counts": {
     "candidate_count": 40,
     "assessed_candidate_count": 40,
-    "unique_pool_count": 574,
-    "current_24h_pool_count": 197,
-    "current_72h_pool_count": 557,
+    "unique_pool_count": 572,
+    "current_24h_pool_count": 195,
+    "current_72h_pool_count": 556,
     "story_mining_count": 10,
     "viral_reference_count": 40,
     "real_high_engagement_reference_count": 39,
@@ -105,15 +105,15 @@
         "concrete_incident": 82.0,
         "strip_interest": 78.75
       },
-      "ordinary_person_appeal": 72.58,
+      "ordinary_person_appeal": 78.0,
       "source_heat": 96.78,
       "card_stop_score": 77.0,
       "three_second_test": "STOP",
       "stripped_card": "卫生纸遮录音器，检方起诉了员工 据检方材料，设备藏在高管会议室电视后；员工被起诉，尚未定罪。",
       "non_tech_strip_test": "PASS",
       "v15_same_pool_priority": 75.94,
-      "final_editorial_priority": 68.49,
-      "verdict": "REVIEW_ONLY",
+      "final_editorial_priority": 70.23,
+      "verdict": "EDITOR_REVIEW_REQUIRED",
       "gate_failures": [
         "final_priority_below_75"
       ],
@@ -126,47 +126,6 @@
         "card_claim": "PASS"
       },
       "source_url": "https://sfstandard.com/2026/10/13/openai-engineer-arrested-alleged-bugging-executive-conference-room/"
-    },
-    {
-      "id": "02ecb7c280dfd016134d326d",
-      "topic": "不用买吉他，键盘也能拨弦",
-      "best_headline": "这次敲键盘，居然是在弹吉他",
-      "cover_line": "不用下载、不用注册，键盘按和弦，手指也能划琴弦。",
-      "why_a_normal_chinese_user_clicks": "想弹首歌又没吉他的人会想试：平时打字的键盘，真能弹出一首歌吗？",
-      "core_human_trigger": "money",
-      "consumer_dimensions": {
-        "money": 76.0,
-        "work": 10.5,
-        "relationship": 16.75,
-        "privacy": 0.75,
-        "surprise": 75.75,
-        "personal_relevance": 70.0,
-        "human_story_conflict": 60.5,
-        "concrete_incident": 74.75,
-        "strip_interest": 80.5
-      },
-      "ordinary_person_appeal": 71.99,
-      "source_heat": 87.8,
-      "card_stop_score": 69.5,
-      "three_second_test": "STOP",
-      "stripped_card": "这次敲键盘，居然是在弹吉他 不用下载、不用注册，键盘按和弦，手指也能划琴弦。",
-      "non_tech_strip_test": "PASS",
-      "v15_same_pool_priority": 70.47,
-      "final_editorial_priority": 66.95,
-      "verdict": "REVIEW_ONLY",
-      "gate_failures": [
-        "card_stop_score_below_70_or_unknown",
-        "final_priority_below_75"
-      ],
-      "hard_gates": {
-        "evidence": "PASS",
-        "scope": "PASS",
-        "fabrication": "PASS",
-        "safety": "PASS",
-        "headline_claim": "PASS",
-        "card_claim": "PASS"
-      },
-      "source_url": "https://guitoro.com/"
     },
     {
       "id": "caefd4aa9aff2449f6718435",
@@ -186,17 +145,16 @@
         "concrete_incident": 79.0,
         "strip_interest": 77.0
       },
-      "ordinary_person_appeal": 65.28,
+      "ordinary_person_appeal": 76.17,
       "source_heat": 100,
       "card_stop_score": 72.75,
       "three_second_test": "STOP",
       "stripped_card": "机器人7连中，先看人类视频 谷歌称：看人类视频、仿真训练后，机器人实机连续投中7次。",
       "non_tech_strip_test": "PASS",
       "v15_same_pool_priority": 74.57,
-      "final_editorial_priority": 66.0,
+      "final_editorial_priority": 69.48,
       "verdict": "REVIEW_ONLY",
       "gate_failures": [
-        "ordinary_person_appeal_below_70_or_unknown",
         "final_priority_below_75"
       ],
       "hard_gates": {
@@ -208,6 +166,47 @@
         "card_claim": "PASS"
       },
       "source_url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/"
+    },
+    {
+      "id": "02ecb7c280dfd016134d326d",
+      "topic": "不用买吉他，键盘也能拨弦",
+      "best_headline": "这次敲键盘，居然是在弹吉他",
+      "cover_line": "不用下载、不用注册，键盘按和弦，手指也能划琴弦。",
+      "why_a_normal_chinese_user_clicks": "想弹首歌又没吉他的人会想试：平时打字的键盘，真能弹出一首歌吗？",
+      "core_human_trigger": "money",
+      "consumer_dimensions": {
+        "money": 76.0,
+        "work": 10.5,
+        "relationship": 16.75,
+        "privacy": 0.75,
+        "surprise": 75.75,
+        "personal_relevance": 70.0,
+        "human_story_conflict": 60.5,
+        "concrete_incident": 74.75,
+        "strip_interest": 80.5
+      },
+      "ordinary_person_appeal": 76.02,
+      "source_heat": 87.8,
+      "card_stop_score": 69.5,
+      "three_second_test": "STOP",
+      "stripped_card": "这次敲键盘，居然是在弹吉他 不用下载、不用注册，键盘按和弦，手指也能划琴弦。",
+      "non_tech_strip_test": "PASS",
+      "v15_same_pool_priority": 70.47,
+      "final_editorial_priority": 68.24,
+      "verdict": "REVIEW_ONLY",
+      "gate_failures": [
+        "card_stop_score_below_70_or_unknown",
+        "final_priority_below_75"
+      ],
+      "hard_gates": {
+        "evidence": "PASS",
+        "scope": "PASS",
+        "fabrication": "PASS",
+        "safety": "PASS",
+        "headline_claim": "PASS",
+        "card_claim": "PASS"
+      },
+      "source_url": "https://guitoro.com/"
     },
     {
       "id": "ee556a82ec685d1008620484",
@@ -227,14 +226,14 @@
         "concrete_incident": 70.75,
         "strip_interest": 78.0
       },
-      "ordinary_person_appeal": 70.16,
+      "ordinary_person_appeal": 73.92,
       "source_heat": 90.01,
       "card_stop_score": 64.25,
       "three_second_test": "STOP",
       "stripped_card": "写完的文档，居然就是一条链接 不用账号，小型办公工具把文档放进链接里。",
       "non_tech_strip_test": "PASS",
       "v15_same_pool_priority": 66.36,
-      "final_editorial_priority": 64.8,
+      "final_editorial_priority": 66.0,
       "verdict": "REVIEW_ONLY",
       "gate_failures": [
         "card_stop_score_below_70_or_unknown",
@@ -268,14 +267,14 @@
         "concrete_incident": 77.75,
         "strip_interest": 75.0
       },
-      "ordinary_person_appeal": 64.06,
+      "ordinary_person_appeal": 69.08,
       "source_heat": 86.51,
       "card_stop_score": 68.0,
       "three_second_test": "STOP",
       "stripped_card": "朋友还在，公司却申请破产了 服务仍正常；公司申请破产出售，找不到买家就可能关停。",
       "non_tech_strip_test": "PASS",
       "v15_same_pool_priority": 69.61,
-      "final_editorial_priority": 60.62,
+      "final_editorial_priority": 62.22,
       "verdict": "REVIEW_ONLY",
       "gate_failures": [
         "ordinary_person_appeal_below_70_or_unknown",
@@ -396,19 +395,20 @@
         "concrete_incident": 71.0,
         "strip_interest": 72.5
       },
-      "ordinary_person_appeal": 60.74,
+      "ordinary_person_appeal": 69.92,
       "source_heat": 57.8,
       "card_stop_score": 71.5,
       "three_second_test": "STOP",
       "stripped_card": "原片还在，百天剪辑却得重来 成片没了，原始素材还在；电视台否认“删片”。",
       "non_tech_strip_test": "PASS",
       "v15_same_pool_priority": 59.45,
-      "final_editorial_priority": 58.21,
-      "verdict": "NO_PUBLISH",
+      "final_editorial_priority": 61.15,
+      "verdict": "REVIEW_ONLY",
       "gate_failures": [
         "hard_fabrication_unknown",
         "card_claim_failed_or_unknown",
-        "ordinary_person_appeal_below_70_or_unknown"
+        "ordinary_person_appeal_below_70_or_unknown",
+        "final_priority_below_75"
       ],
       "hard_gates": {
         "evidence": "PASS",
@@ -438,20 +438,19 @@
         "concrete_incident": 75.75,
         "strip_interest": 74.0
       },
-      "ordinary_person_appeal": 62.5,
+      "ordinary_person_appeal": 73.3,
       "source_heat": null,
       "card_stop_score": 64.5,
       "three_second_test": "SCROLL",
       "stripped_card": "视频从1分钟变成10分钟以上 OpenAI 10月13日客户案例：Higgsfield联合创始人Alex Mashrabov称，以前视频约1分钟封顶，现在其工作流可生成10分钟以上视频。",
       "non_tech_strip_test": "PASS",
       "v15_same_pool_priority": 50.79,
-      "final_editorial_priority": 55.8,
+      "final_editorial_priority": 59.25,
       "verdict": "NO_PUBLISH",
       "gate_failures": [
         "chosen_headline_claim_failed_or_unknown",
         "chosen_headline_needs_improvement",
         "three_second_not_STOP",
-        "ordinary_person_appeal_below_70_or_unknown",
         "card_stop_score_below_70_or_unknown",
         "title_potential_score_below_70_or_unknown",
         "insufficient_viral_heat_or_grounded_reference_match"
@@ -484,14 +483,14 @@
         "concrete_incident": 64.75,
         "strip_interest": 60.25
       },
-      "ordinary_person_appeal": 47.2,
+      "ordinary_person_appeal": 51.0,
       "source_heat": null,
       "card_stop_score": 61.5,
       "three_second_test": "SCROLL",
       "stripped_card": "黄仁勋把助手，塞进你的电脑 NVIDIA 10月13日软件生态公告：RTX Spark笔记本预定10月16日上市，多款本地助手优化配置；PAIR免费软件可联接兼容局域网电脑分配任务。",
       "non_tech_strip_test": "PASS",
       "v15_same_pool_priority": 53.97,
-      "final_editorial_priority": 45.0,
+      "final_editorial_priority": 46.21,
       "verdict": "NO_PUBLISH",
       "gate_failures": [
         "chosen_headline_claim_failed_or_unknown",
@@ -530,14 +529,14 @@
         "concrete_incident": 56.5,
         "strip_interest": 63.75
       },
-      "ordinary_person_appeal": 38.9,
+      "ordinary_person_appeal": 40.6,
       "source_heat": null,
       "card_stop_score": 50.0,
       "three_second_test": "SCROLL",
       "stripped_card": "修哪条路，也开始让帮忙判断 Keeping a city running means making decisions that affect residents every day — from when to repair a road to how to use energy more efficiently. Across the EMEA region, cities and local software, infrastructure and integration partners are using NVIDIA accelerated computing to build physical and digital twins that help teams make […]",
       "non_tech_strip_test": "PASS",
       "v15_same_pool_priority": 42.76,
-      "final_editorial_priority": 37.78,
+      "final_editorial_priority": 38.32,
       "verdict": "NO_PUBLISH",
       "gate_failures": [
         "hard_scope_unknown",
@@ -627,14 +626,14 @@
         "concrete_incident": 63.5,
         "strip_interest": 45.25
       },
-      "ordinary_person_appeal": 47.19,
+      "ordinary_person_appeal": 51.35,
       "source_heat": 61.14,
       "card_stop_score": 42.0,
       "three_second_test": "MAYBE",
       "stripped_card": "解题，让学生开始怀疑专业？ 未取得足够来源，不能形成可发布事实。",
       "non_tech_strip_test": "FAIL",
       "v15_same_pool_priority": 51.54,
-      "final_editorial_priority": 42.89,
+      "final_editorial_priority": 44.22,
       "verdict": "NO_PUBLISH",
       "gate_failures": [
         "hard_evidence_fail",
@@ -678,14 +677,14 @@
         "concrete_incident": 43.75,
         "strip_interest": 31.75
       },
-      "ordinary_person_appeal": 35.45,
+      "ordinary_person_appeal": 44.12,
       "source_heat": null,
       "card_stop_score": 47.0,
       "three_second_test": "SCROLL",
       "stripped_card": "马斯克的预测，兑现了吗？ 未取得足够来源，不能形成可发布事实。",
       "non_tech_strip_test": "FAIL",
       "v15_same_pool_priority": 42.36,
-      "final_editorial_priority": 34.41,
+      "final_editorial_priority": 37.19,
       "verdict": "NO_PUBLISH",
       "gate_failures": [
         "hard_evidence_fail",
@@ -710,6 +709,57 @@
         "card_claim": "UNKNOWN"
       },
       "source_url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQcTFWSG54Tzc3blMxTE1WSGJIQzF0MkxPOHJwU2YteTVMR2dKTXVNYVZqekptay1seW9YU1A4MmpFdmgwTmFVaFFtVEl4Q2VYVFpnSXVYQlZKT25zTURsQllGTU91YXk0X1ducWtjRzJXWDMtaHgwTnlmSUV5UnZTRGtTc1l5WjJza2xnVTlPVklBeDY4cnZMWTFpVXMzRV90ekh4bnVpSWMxWG1jQzBTclE3YTFfTzVkblc1cnBOUzROV2NBVU5V?oc=5"
+    },
+    {
+      "id": "2a90b2a2b4c5974a4c424b89",
+      "topic": "报道线索：Netflix动画业务裁员",
+      "best_headline": "Netflix动画业务传出大裁员",
+      "cover_line": "未取得足够来源，不能形成可发布事实。",
+      "why_a_normal_chinese_user_clicks": "没有有说服力且有事实支持的普通人点击理由。",
+      "core_human_trigger": "work",
+      "consumer_dimensions": {
+        "money": 9.25,
+        "work": 45.0,
+        "relationship": 15.25,
+        "privacy": 9.75,
+        "surprise": 35.0,
+        "personal_relevance": 20.5,
+        "human_story_conflict": 8.0,
+        "concrete_incident": 53.5,
+        "strip_interest": 31.0
+      },
+      "ordinary_person_appeal": 38.3,
+      "source_heat": null,
+      "card_stop_score": 35.25,
+      "three_second_test": "SCROLL",
+      "stripped_card": "Netflix动画业务传出大裁员 未取得足够来源，不能形成可发布事实。",
+      "non_tech_strip_test": "FAIL",
+      "v15_same_pool_priority": 44.96,
+      "final_editorial_priority": 31.75,
+      "verdict": "NO_PUBLISH",
+      "gate_failures": [
+        "hard_evidence_fail",
+        "hard_fabrication_unknown",
+        "chosen_headline_claim_failed_or_unknown",
+        "chosen_headline_needs_improvement",
+        "card_claim_failed_or_unknown",
+        "non_tech_strip_failed_or_unknown",
+        "three_second_not_STOP",
+        "ordinary_click_reason_missing",
+        "ordinary_person_appeal_below_70_or_unknown",
+        "card_stop_score_below_70_or_unknown",
+        "title_potential_score_below_70_or_unknown",
+        "insufficient_viral_heat_or_grounded_reference_match"
+      ],
+      "hard_gates": {
+        "evidence": "FAIL",
+        "scope": "PASS",
+        "fabrication": "UNKNOWN",
+        "safety": "PASS",
+        "headline_claim": "FAIL",
+        "card_claim": "UNKNOWN"
+      },
+      "source_url": "https://news.google.com/rss/articles/CBMilwJBVV95cUxNcUZyZkE2X041Wk55V2JZdmw2OEZvM05oREdaRXpUN1BkNlRaamc0d0lyRlZfSWF5NVEwRW4wdUpSTVNGdnZHV0FGZlY2TGJJVFpWX2FxaTlZTVBHREJjcmhySHdKZVFHTUhxTGpmbGRCcWwwR2dDc2doc1o1REJnVXBxYU5QLXRMMWExZ2JEUVVZdHRudDQyZmltcXByOFlqbW5NNzR3NThaa0U1NkExM2ppV3JLdTh1QjdYM3ZBT3k0V1BjVmhqVjhtSFlfekxFUXo4bEdTd3FFS2xXOUdEbkhKWk9UOHhxQW5LRlg4SXR4SExBdGRGLWJpYi1xejdDbWJYaWd3SDJtY3VOTHRDWkxSM0VSa3PSAZwCQVVfeXFMTU5aQmhFR0cwQm4xU2ZaeVFDazNKVGd5c0FWVjZqdXNPWFYxVW1KRjBJVEttYjF2OEk0eFFNRTFWVHlGSW40VFUxRC1ZdVlnYWZYeUp0TXB2bmE5dklmR01TNXRNRk9FdXFuN196SzlDRTd1N0E2UmdOTDRqRlJMcDVmdXZXN1RwQjFMMnNBMXB6bEtUR29XNW9qTjJXSzFkam15VGt3UEVOQlFvQldNdFp6Ym9acEFNamJYTXVobFZLQ0FoRGdIVWZQSVZhbTFuR0RmUmNaS1hySy1vTUJ5dGFFWWlIdk9PMzFuNUlPR3RHQ2puQUZkVldkZkl3R0x3TFpQWWRqMHdmSlR4ZzFuNTNNT09HR2F4c1V4XzY?oc=5"
     },
     {
       "id": "89b12f3cfb213d363778c932",
@@ -764,31 +814,31 @@
       "source_url": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxPUi04VG53NGg5eV9GWTg4NmxvNzNROU9UenhvLU1sRzhWVGJkSExqZGh4S3lYU2hGUGQ0VUgyLUpTYm1fWmxtY21OZDNkeU90cFFhLXZ6MU1xalFPTDVsX2otemVDT1g2WkwyNF91d0lNU05wbDhuUVgxdVNsOUpfQWF1RjFFY1VObDU1RjhKcktHckpSdlNJak9tMEF4Ung4dFB5THlpY2Q5cGMzalZMQ1R0Yk9HZThXNHpuaEZUdHV5alNzSnNrMHIyYkU5M2hJNDROa0IwVzhGRDdQUGVOVWRwNzhUSnphWHBiSV9Qd0VzOHpiVlZGSldnY1Fyakk?oc=5"
     },
     {
-      "id": "2a90b2a2b4c5974a4c424b89",
-      "topic": "报道线索：Netflix动画业务裁员",
-      "best_headline": "Netflix动画业务传出大裁员",
+      "id": "68ceb9c6e39c0ba6ad2cdfac",
+      "topic": "Anthropic重做开发版本管理流程",
+      "best_headline": "AI写代码太快，旧流程跟不上了",
       "cover_line": "未取得足够来源，不能形成可发布事实。",
       "why_a_normal_chinese_user_clicks": "没有有说服力且有事实支持的普通人点击理由。",
-      "core_human_trigger": "work",
+      "core_human_trigger": "surprise",
       "consumer_dimensions": {
-        "money": 9.25,
-        "work": 45.0,
-        "relationship": 15.25,
-        "privacy": 9.75,
-        "surprise": 35.0,
-        "personal_relevance": 20.5,
-        "human_story_conflict": 8.0,
-        "concrete_incident": 53.5,
-        "strip_interest": 31.0
+        "money": 4.25,
+        "work": 16.0,
+        "relationship": 2.75,
+        "privacy": 1.75,
+        "surprise": 38.25,
+        "personal_relevance": 9.75,
+        "human_story_conflict": 12.25,
+        "concrete_incident": 44.0,
+        "strip_interest": 32.5
       },
-      "ordinary_person_appeal": 34.6,
+      "ordinary_person_appeal": 38.83,
       "source_heat": null,
-      "card_stop_score": 35.25,
+      "card_stop_score": 29.75,
       "three_second_test": "SCROLL",
-      "stripped_card": "Netflix动画业务传出大裁员 未取得足够来源，不能形成可发布事实。",
+      "stripped_card": "写代码太快，旧流程跟不上了 未取得足够来源，不能形成可发布事实。",
       "non_tech_strip_test": "FAIL",
-      "v15_same_pool_priority": 44.96,
-      "final_editorial_priority": 30.56,
+      "v15_same_pool_priority": 29.52,
+      "final_editorial_priority": 28.69,
       "verdict": "NO_PUBLISH",
       "gate_failures": [
         "hard_evidence_fail",
@@ -802,6 +852,8 @@
         "ordinary_person_appeal_below_70_or_unknown",
         "card_stop_score_below_70_or_unknown",
         "title_potential_score_below_70_or_unknown",
+        "non_tech_reader_entrance_weak_or_unknown",
+        "programmer_bias_warning",
         "insufficient_viral_heat_or_grounded_reference_match"
       ],
       "hard_gates": {
@@ -809,10 +861,10 @@
         "scope": "PASS",
         "fabrication": "UNKNOWN",
         "safety": "PASS",
-        "headline_claim": "FAIL",
+        "headline_claim": "UNKNOWN",
         "card_claim": "UNKNOWN"
       },
-      "source_url": "https://news.google.com/rss/articles/CBMilwJBVV95cUxNcUZyZkE2X041Wk55V2JZdmw2OEZvM05oREdaRXpUN1BkNlRaamc0d0lyRlZfSWF5NVEwRW4wdUpSTVNGdnZHV0FGZlY2TGJJVFpWX2FxaTlZTVBHREJjcmhySHdKZVFHTUhxTGpmbGRCcWwwR2dDc2doc1o1REJnVXBxYU5QLXRMMWExZ2JEUVVZdHRudDQyZmltcXByOFlqbW5NNzR3NThaa0U1NkExM2ppV3JLdTh1QjdYM3ZBT3k0V1BjVmhqVjhtSFlfekxFUXo4bEdTd3FFS2xXOUdEbkhKWk9UOHhxQW5LRlg4SXR4SExBdGRGLWJpYi1xejdDbWJYaWd3SDJtY3VOTHRDWkxSM0VSa3PSAZwCQVVfeXFMTU5aQmhFR0cwQm4xU2ZaeVFDazNKVGd5c0FWVjZqdXNPWFYxVW1KRjBJVEttYjF2OEk0eFFNRTFWVHlGSW40VFUxRC1ZdVlnYWZYeUp0TXB2bmE5dklmR01TNXRNRk9FdXFuN196SzlDRTd1N0E2UmdOTDRqRlJMcDVmdXZXN1RwQjFMMnNBMXB6bEtUR29XNW9qTjJXSzFkam15VGt3UEVOQlFvQldNdFp6Ym9acEFNamJYTXVobFZLQ0FoRGdIVWZQSVZhbTFuR0RmUmNaS1hySy1vTUJ5dGFFWWlIdk9PMzFuNUlPR3RHQ2puQUZkVldkZkl3R0x3TFpQWWRqMHdmSlR4ZzFuNTNNT09HR2F4c1V4XzY?oc=5"
+      "source_url": "https://simonwillison.net/2026/Oct/13/redesigning-source-control-at-anthropic/"
     },
     {
       "id": "e04c4d51f8712ba67fbfaaee",
@@ -865,31 +917,31 @@
       "source_url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQaVlzQ2o2VFRhOUpEM25YNzRiTUF4VkNjOGNxWDJKVnYzeXZ6bVZGV3Y4LS1qWkk4TDdLQXlGQUpUOXVzRVlrY1pVOUhoQ1RyM05OejZkWmhKRzlsMmN6TzAwQ1YyY05xWDg2ZjJTM0dfM0VhRUU5Wm5iRzc4WnVQeE9qdm5IRGdhM1R0Zl9kNHFXdw?oc=5"
     },
     {
-      "id": "68ceb9c6e39c0ba6ad2cdfac",
-      "topic": "Anthropic重做开发版本管理流程",
-      "best_headline": "AI写代码太快，旧流程跟不上了",
+      "id": "eb2672efe532b7f95d68ee90",
+      "topic": "Mark Zuckerberg attempting to drink Guinness goes predictably viral - Mashable",
+      "best_headline": "",
       "cover_line": "未取得足够来源，不能形成可发布事实。",
       "why_a_normal_chinese_user_clicks": "没有有说服力且有事实支持的普通人点击理由。",
       "core_human_trigger": "surprise",
       "consumer_dimensions": {
-        "money": 4.25,
-        "work": 16.0,
-        "relationship": 2.75,
-        "privacy": 1.75,
-        "surprise": 38.25,
-        "personal_relevance": 9.75,
-        "human_story_conflict": 12.25,
-        "concrete_incident": 44.0,
-        "strip_interest": 32.5
+        "money": 6.0,
+        "work": 6.5,
+        "relationship": 5.5,
+        "privacy": 2.0,
+        "surprise": 36.75,
+        "personal_relevance": 17.75,
+        "human_story_conflict": 35.25,
+        "concrete_incident": 53.5,
+        "strip_interest": 17.5
       },
-      "ordinary_person_appeal": 28.09,
+      "ordinary_person_appeal": 38.17,
       "source_heat": null,
-      "card_stop_score": 29.75,
+      "card_stop_score": 4.25,
       "three_second_test": "SCROLL",
-      "stripped_card": "写代码太快，旧流程跟不上了 未取得足够来源，不能形成可发布事实。",
+      "stripped_card": "未取得足够来源，不能形成可发布事实。",
       "non_tech_strip_test": "FAIL",
-      "v15_same_pool_priority": 29.52,
-      "final_editorial_priority": 25.25,
+      "v15_same_pool_priority": 29.83,
+      "final_editorial_priority": 24.0,
       "verdict": "NO_PUBLISH",
       "gate_failures": [
         "hard_evidence_fail",
@@ -903,8 +955,6 @@
         "ordinary_person_appeal_below_70_or_unknown",
         "card_stop_score_below_70_or_unknown",
         "title_potential_score_below_70_or_unknown",
-        "non_tech_reader_entrance_weak_or_unknown",
-        "programmer_bias_warning",
         "insufficient_viral_heat_or_grounded_reference_match"
       ],
       "hard_gates": {
@@ -915,58 +965,7 @@
         "headline_claim": "UNKNOWN",
         "card_claim": "UNKNOWN"
       },
-      "source_url": "https://simonwillison.net/2026/Oct/13/redesigning-source-control-at-anthropic/"
-    },
-    {
-      "id": "06e8fe6fdbb0a51e3767bd14",
-      "topic": "Ask HN: Demonstrating Skills When Everything Is a Prompt",
-      "best_headline": "",
-      "cover_line": "未取得足够来源，不能形成可发布事实。",
-      "why_a_normal_chinese_user_clicks": "未形成经核验的一句话停留理由。",
-      "core_human_trigger": "relationship",
-      "consumer_dimensions": {
-        "money": 2.25,
-        "work": 15.75,
-        "relationship": 35.25,
-        "privacy": 1.75,
-        "surprise": 14.5,
-        "personal_relevance": 25.25,
-        "human_story_conflict": 38.5,
-        "concrete_incident": 13.75,
-        "strip_interest": 19.75
-      },
-      "ordinary_person_appeal": 30.01,
-      "source_heat": 20.02,
-      "card_stop_score": 4.25,
-      "three_second_test": "SCROLL",
-      "stripped_card": "未取得足够来源，不能形成可发布事实。",
-      "non_tech_strip_test": "FAIL",
-      "v15_same_pool_priority": 25.46,
-      "final_editorial_priority": 22.9,
-      "verdict": "NO_PUBLISH",
-      "gate_failures": [
-        "hard_evidence_fail",
-        "hard_fabrication_unknown",
-        "chosen_headline_claim_failed_or_unknown",
-        "chosen_headline_needs_improvement",
-        "card_claim_failed_or_unknown",
-        "non_tech_strip_failed_or_unknown",
-        "three_second_not_STOP",
-        "ordinary_person_appeal_below_70_or_unknown",
-        "card_stop_score_below_70_or_unknown",
-        "title_potential_score_below_70_or_unknown",
-        "non_tech_reader_entrance_weak_or_unknown",
-        "insufficient_viral_heat_or_grounded_reference_match"
-      ],
-      "hard_gates": {
-        "evidence": "FAIL",
-        "scope": "PASS",
-        "fabrication": "UNKNOWN",
-        "safety": "PASS",
-        "headline_claim": "UNKNOWN",
-        "card_claim": "UNKNOWN"
-      },
-      "source_url": "https://news.ycombinator.com/item?id=50097092"
+      "source_url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5Ba1FCZWFkNU5kSVFFMXYydTdVUDV5eHEwbEQ2ZzZpdFR1LUF5VTB2eG9GZ0pGc29CUkpfTGFHam55QkNaVzhPQndzUUY4ZGtQN1VmRXJjd0wwVXZFX2hJ?oc=5"
     }
   ],
   "blind_top5": {
@@ -982,16 +981,16 @@
         "cover_line": "据检方材料，设备藏在高管会议室电视后；员工被起诉，尚未定罪。"
       },
       {
-        "title": "机器人7连中，先看人类视频",
-        "cover_line": "谷歌称：看人类视频、仿真训练后，机器人实机连续投中7次。"
+        "title": "这次敲键盘，居然是在弹吉他",
+        "cover_line": "不用下载、不用注册，键盘按和弦，手指也能划琴弦。"
       },
       {
         "title": "写完的文档，居然就是一条链接",
         "cover_line": "不用账号，小型办公工具把文档放进链接里。"
       },
       {
-        "title": "这次敲键盘，居然是在弹吉他",
-        "cover_line": "不用下载、不用注册，键盘按和弦，手指也能划琴弦。"
+        "title": "机器人7连中，先看人类视频",
+        "cover_line": "谷歌称：看人类视频、仿真训练后，机器人实机连续投中7次。"
       }
     ],
     "ranking": [
@@ -1000,7 +999,7 @@
         "rank": 1,
         "title": "卫生纸遮录音器，检方起诉了员工",
         "cover_line": "据检方材料，设备藏在高管会议室电视后；员工被起诉，尚未定罪。",
-        "pairwise_wins": 3.12,
+        "pairwise_wins": 3.1,
         "algorithm_rank": 2
       },
       {
@@ -1008,32 +1007,32 @@
         "rank": 2,
         "title": "这次敲键盘，居然是在弹吉他",
         "cover_line": "不用下载、不用注册，键盘按和弦，手指也能划琴弦。",
-        "pairwise_wins": 3.09,
-        "algorithm_rank": 3
+        "pairwise_wins": 2.89,
+        "algorithm_rank": 4
       },
       {
         "id": "4bfbecf3d5e2506741d7c1f3",
         "rank": 3,
         "title": "一家人共用AI，隐私怎么分开",
         "cover_line": "同一块客厅屏幕，先认出你，再显示你的内容。",
-        "pairwise_wins": 2.28,
+        "pairwise_wins": 2.36,
         "algorithm_rank": 1
       },
       {
-        "id": "ee556a82ec685d1008620484",
-        "rank": 4,
-        "title": "写完的文档，居然就是一条链接",
-        "cover_line": "不用账号，小型办公工具把文档放进链接里。",
-        "pairwise_wins": 1.15,
-        "algorithm_rank": 5
-      },
-      {
         "id": "caefd4aa9aff2449f6718435",
-        "rank": 5,
+        "rank": 4,
         "title": "机器人7连中，先看人类视频",
         "cover_line": "谷歌称：看人类视频、仿真训练后，机器人实机连续投中7次。",
-        "pairwise_wins": 0.36,
-        "algorithm_rank": 4
+        "pairwise_wins": 0.91,
+        "algorithm_rank": 3
+      },
+      {
+        "id": "ee556a82ec685d1008620484",
+        "rank": 5,
+        "title": "写完的文档，居然就是一条链接",
+        "cover_line": "不用账号，小型办公工具把文档放进链接里。",
+        "pairwise_wins": 0.74,
+        "algorithm_rank": 5
       }
     ],
     "method": "独立请求，仅标题+封面；同一评估模型，不是真实用户实验或独立模型交叉验证。",
@@ -1043,111 +1042,111 @@
         "0_1": {
           "type": "choice",
           "score": null,
-          "confidence": 0.56,
+          "confidence": 0.5,
           "choice": "b",
           "noul": null,
           "probabilities": {
-            "a": 0.22,
-            "b": 0.78
+            "a": 0.25,
+            "b": 0.75
           }
         },
         "0_2": {
           "type": "choice",
           "score": null,
-          "confidence": 0.82,
-          "choice": "a",
+          "confidence": 0.3,
+          "choice": "b",
           "noul": null,
           "probabilities": {
-            "a": 0.91,
-            "b": 0.09
+            "a": 0.35,
+            "b": 0.65
           }
         },
         "0_3": {
           "type": "choice",
           "score": null,
-          "confidence": 0.68,
+          "confidence": 0.74,
           "choice": "a",
           "noul": null,
           "probabilities": {
-            "a": 0.84,
-            "b": 0.16
+            "a": 0.87,
+            "b": 0.13
           }
         },
         "0_4": {
           "type": "choice",
           "score": null,
-          "confidence": 0.38,
-          "choice": "b",
+          "confidence": 0.78,
+          "choice": "a",
           "noul": null,
           "probabilities": {
-            "a": 0.31,
-            "b": 0.69
+            "a": 0.89,
+            "b": 0.11
           }
         },
         "1_2": {
           "type": "choice",
           "score": null,
-          "confidence": 0.9,
+          "confidence": 0.04,
           "choice": "a",
           "noul": null,
           "probabilities": {
-            "a": 0.95,
-            "b": 0.05
+            "a": 0.52,
+            "b": 0.48
           }
         },
         "1_3": {
           "type": "choice",
           "score": null,
-          "confidence": 0.76,
+          "confidence": 0.8,
           "choice": "a",
           "noul": null,
           "probabilities": {
-            "a": 0.88,
-            "b": 0.12
+            "a": 0.9,
+            "b": 0.1
           }
         },
         "1_4": {
           "type": "choice",
           "score": null,
-          "confidence": 0.02,
+          "confidence": 0.86,
           "choice": "a",
           "noul": null,
           "probabilities": {
-            "a": 0.51,
-            "b": 0.49
+            "a": 0.93,
+            "b": 0.07
           }
         },
         "2_3": {
           "type": "choice",
           "score": null,
-          "confidence": 0.6,
-          "choice": "b",
+          "confidence": 0.72,
+          "choice": "a",
           "noul": null,
           "probabilities": {
-            "a": 0.2,
-            "b": 0.8
+            "a": 0.86,
+            "b": 0.14
           }
         },
         "2_4": {
           "type": "choice",
           "score": null,
-          "confidence": 0.96,
-          "choice": "b",
+          "confidence": 0.8,
+          "choice": "a",
           "noul": null,
           "probabilities": {
-            "a": 0.02,
-            "b": 0.98
+            "a": 0.9,
+            "b": 0.1
           }
         },
         "3_4": {
           "type": "choice",
           "score": null,
-          "confidence": 0.86,
+          "confidence": 0.26,
           "choice": "b",
           "noul": null,
           "probabilities": {
-            "a": 0.07,
-            "b": 0.93
+            "a": 0.37,
+            "b": 0.63
           }
         }
       },
@@ -1318,7 +1317,7 @@
     ]
   },
   "validation": {
-    "pytest_full": "174 passed",
+    "pytest_full": "175 passed",
     "ruff_check": "PASS",
     "ruff_format": "PASS",
     "verify_outputs": "PASS",
