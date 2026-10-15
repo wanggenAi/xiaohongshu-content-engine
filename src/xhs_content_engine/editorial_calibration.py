@@ -125,7 +125,11 @@ class CalibrationJudge(SemanticJudge):
             "source": {"title": item.title, "text": item.raw_excerpt, "url": item.canonical_url},
             "evidence_level": tier,
             "max_publishable_claim": claim,
-            "editorial_packet": {k: v for k, v in packet.items() if k != "headline_options"},
+            "editorial_packet": {
+                k: v
+                for k, v in packet.items()
+                if k not in {"headline_options", "ordinary_click_reason"}
+            },
             "visual_assets": item.metadata.get("visual_assets", []),
             "audience": "中国普通小红书读者；不懂代码、API，但关心钱、工作、关系、隐私、新奇。",
             "policy": (

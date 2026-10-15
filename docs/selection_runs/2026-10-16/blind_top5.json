@@ -11,12 +11,12 @@
       "cover_line": "据检方材料，设备藏在高管会议室电视后；员工被起诉，尚未定罪。"
     },
     {
-      "title": "AI朋友还在，公司却申请破产了",
-      "cover_line": "服务仍正常；公司申请破产出售，找不到买家就可能关停。"
-    },
-    {
       "title": "机器人7连中，先看人类视频",
       "cover_line": "谷歌称：看人类视频、仿真训练后，机器人实机连续投中7次。"
+    },
+    {
+      "title": "写完的文档，居然就是一条链接",
+      "cover_line": "不用账号，小型办公工具把文档放进链接里。"
     },
     {
       "title": "这次敲键盘，居然是在弹吉他",
@@ -25,44 +25,44 @@
   ],
   "ranking": [
     {
-      "id": "02ecb7c280dfd016134d326d",
-      "rank": 1,
-      "title": "这次敲键盘，居然是在弹吉他",
-      "cover_line": "不用下载、不用注册，键盘按和弦，手指也能划琴弦。",
-      "pairwise_wins": 3.2,
-      "algorithm_rank": 3
-    },
-    {
       "id": "701eec96ceaacb29bbf44965",
-      "rank": 2,
+      "rank": 1,
       "title": "卫生纸遮录音器，检方起诉了员工",
       "cover_line": "据检方材料，设备藏在高管会议室电视后；员工被起诉，尚未定罪。",
-      "pairwise_wins": 3.03,
+      "pairwise_wins": 3.12,
       "algorithm_rank": 2
+    },
+    {
+      "id": "02ecb7c280dfd016134d326d",
+      "rank": 2,
+      "title": "这次敲键盘，居然是在弹吉他",
+      "cover_line": "不用下载、不用注册，键盘按和弦，手指也能划琴弦。",
+      "pairwise_wins": 3.09,
+      "algorithm_rank": 3
     },
     {
       "id": "4bfbecf3d5e2506741d7c1f3",
       "rank": 3,
       "title": "一家人共用AI，隐私怎么分开",
       "cover_line": "同一块客厅屏幕，先认出你，再显示你的内容。",
-      "pairwise_wins": 2.43,
+      "pairwise_wins": 2.28,
       "algorithm_rank": 1
     },
     {
-      "id": "f83ddb49efb54e6d08546f19",
+      "id": "ee556a82ec685d1008620484",
       "rank": 4,
-      "title": "AI朋友还在，公司却申请破产了",
-      "cover_line": "服务仍正常；公司申请破产出售，找不到买家就可能关停。",
-      "pairwise_wins": 0.84,
-      "algorithm_rank": 4
+      "title": "写完的文档，居然就是一条链接",
+      "cover_line": "不用账号，小型办公工具把文档放进链接里。",
+      "pairwise_wins": 1.15,
+      "algorithm_rank": 5
     },
     {
       "id": "caefd4aa9aff2449f6718435",
       "rank": 5,
       "title": "机器人7连中，先看人类视频",
       "cover_line": "谷歌称：看人类视频、仿真训练后，机器人实机连续投中7次。",
-      "pairwise_wins": 0.5,
-      "algorithm_rank": 5
+      "pairwise_wins": 0.36,
+      "algorithm_rank": 4
     }
   ],
   "method": "独立请求，仅标题+封面；同一评估模型，不是真实用户实验或独立模型交叉验证。",
@@ -72,12 +72,12 @@
       "0_1": {
         "type": "choice",
         "score": null,
-        "confidence": 0.4,
+        "confidence": 0.56,
         "choice": "b",
         "noul": null,
         "probabilities": {
-          "a": 0.3,
-          "b": 0.7
+          "a": 0.22,
+          "b": 0.78
         }
       },
       "0_2": {
@@ -94,23 +94,23 @@
       "0_3": {
         "type": "choice",
         "score": null,
-        "confidence": 0.86,
+        "confidence": 0.68,
         "choice": "a",
         "noul": null,
         "probabilities": {
-          "a": 0.93,
-          "b": 0.07
+          "a": 0.84,
+          "b": 0.16
         }
       },
       "0_4": {
         "type": "choice",
         "score": null,
-        "confidence": 0.42,
+        "confidence": 0.38,
         "choice": "b",
         "noul": null,
         "probabilities": {
-          "a": 0.29,
-          "b": 0.71
+          "a": 0.31,
+          "b": 0.69
         }
       },
       "1_2": {
@@ -127,48 +127,37 @@
       "1_3": {
         "type": "choice",
         "score": null,
-        "confidence": 0.9,
+        "confidence": 0.76,
         "choice": "a",
         "noul": null,
         "probabilities": {
-          "a": 0.95,
-          "b": 0.05
+          "a": 0.88,
+          "b": 0.12
         }
       },
       "1_4": {
         "type": "choice",
         "score": null,
-        "confidence": 0.14,
-        "choice": "b",
+        "confidence": 0.02,
+        "choice": "a",
         "noul": null,
         "probabilities": {
-          "a": 0.43,
-          "b": 0.57
+          "a": 0.51,
+          "b": 0.49
         }
       },
       "2_3": {
         "type": "choice",
         "score": null,
-        "confidence": 0.28,
-        "choice": "a",
-        "noul": null,
-        "probabilities": {
-          "a": 0.64,
-          "b": 0.36
-        }
-      },
-      "2_4": {
-        "type": "choice",
-        "score": null,
-        "confidence": 0.88,
+        "confidence": 0.6,
         "choice": "b",
         "noul": null,
         "probabilities": {
-          "a": 0.06,
-          "b": 0.94
+          "a": 0.2,
+          "b": 0.8
         }
       },
-      "3_4": {
+      "2_4": {
         "type": "choice",
         "score": null,
         "confidence": 0.96,
@@ -178,10 +167,21 @@
           "a": 0.02,
           "b": 0.98
         }
+      },
+      "3_4": {
+        "type": "choice",
+        "score": null,
+        "confidence": 0.86,
+        "choice": "b",
+        "noul": null,
+        "probabilities": {
+          "a": 0.07,
+          "b": 0.93
+        }
       }
     },
     "usage": {
-      "input_tokens": 2962,
+      "input_tokens": 2932,
       "output_tokens": 303
     }
   },

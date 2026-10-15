@@ -194,7 +194,11 @@ class MassJudge(SemanticJudge):
                 "china_dissemination_evidence": item.metadata.get("china_dissemination_evidence"),
             },
             "social_heat": social_heat(item, self.mass),
-            "editorial_packet": {k: v for k, v in packet.items() if k != "headline_options"},
+            "editorial_packet": {
+                k: v
+                for k, v in packet.items()
+                if k not in {"headline_options", "ordinary_click_reason"}
+            },
             "lanes": self.lanes["lanes"],
             "negative_examples": [
                 r.model_dump(mode="json") for r in self.feedback if r.decision == "DISLIKE"

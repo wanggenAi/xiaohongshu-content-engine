@@ -124,7 +124,7 @@ def test_consumer_judgment_has_no_heat_input_and_requests_all_human_dimensions()
         metadata={"consumer_evaluation": {"facts": "合成事实", "click_options": {}}},
     )
     request, _ = ConsumerJudge({"provider": {"model": "test"}}, {}, None).prepare(item)
-    assert request["state"] == {"facts": "合成事实", "click_options": {}}
+    assert request["state"] == {"facts": "合成事实"}
     assert {
         "money",
         "work",
@@ -181,3 +181,30 @@ def test_diversity_only_resolves_close_qualified_cards():
     assert ordered[0]["id"] == "0"
     assert any(r["core_human_trigger"] == "relationship" for r in ordered[:5])
     assert not any(r["core_human_trigger"] == "money" for r in ordered[:5])
+
+
+def test_missing_click_reason_cannot_fall_back_to_generic_curiosity():
+    from xhs_content_engine.consumer_appeal import click_options
+
+    assert click_options({}) == []
+
+
+def test_editor_written_click_reasons_cannot_change_consumer_scores_or_fact_gates():
+    item = ContentItem(
+        id="synthetic",
+        source="test",
+        source_type="manual",
+        canonical_url="https://example.org",
+        title="test",
+        metadata={
+            "consumer_evaluation": {
+                "facts": "固定合成事实",
+                "click_options": {"0": "编辑写得极煽动的一段点击理由"},
+            }
+        },
+    )
+    judge = ConsumerJudge({"provider": {"model": "test"}}, {}, None)
+    before = judge.prepare(item)
+    item.metadata["consumer_evaluation"]["click_options"] = {"0": "完全不同的解释"}
+    assert judge.prepare(item) == before
+    assert "click_reason" not in before[0]["questions"]

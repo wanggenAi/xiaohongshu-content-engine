@@ -63,7 +63,8 @@
           ],
           "max_publishable_claim": "Character.ai宣布启动Chapter 11破产出售程序，服务和订阅目前正常；如果找不到可维持运营的买家，平台将逐步关闭。",
           "cover_line": "服务仍正常；公司申请破产出售，找不到买家就可能关停。",
-          "why_might_not_click": "不使用AI陪伴的读者可能代入较弱；目前没有停服，也不能断言对话数据丢失。"
+          "why_might_not_click": "不使用AI陪伴的读者可能代入较弱；目前没有停服，也不能断言对话数据丢失。",
+          "ordinary_click_reason": "每天找虚拟朋友聊天的人会想知道：如果公司关停，我的聊天对象和聊天记录怎么办？"
         },
         "engagement_observed_at": "2026-10-15T23:15:03.445249+00:00",
         "original_platform": "hacker_news"
@@ -111,7 +112,8 @@
           "why_might_not_click": "不是中国用户现在可下载的App；实际识别效果需独立测试。",
           "headline_hooks": [
             "AI识别诈骗，不用上传聊天"
-          ]
+          ],
+          "ordinary_click_reason": "怕聊天被骗、又不想上传聊天记录的人，会想知道这两件事能不能同时顾上。"
         }
       },
       "discovery_score": 0.0,
@@ -178,7 +180,8 @@
           ],
           "max_publishable_claim": "Google称内部试验中，Argon分析人类投掷视频、生成仿真代码，再迁移到Apollo机器人，实机连续投中7次；不是看一遍就万能。",
           "cover_line": "谷歌称：看人类视频、仿真训练后，机器人实机连续投中7次。",
-          "why_might_not_click": "7连中是官方内部试验；尚未取得这7次实机投掷的独立原始视频，不能拿仿真片冒充实机。"
+          "why_might_not_click": "7连中是官方内部试验；尚未取得这7次实机投掷的独立原始视频，不能拿仿真片冒充实机。",
+          "ordinary_click_reason": "没玩过机器人也会想看：它到底怎么连投7次全中，动作是什么样？"
         },
         "corroboration_urls": [
           "https://developers.googleblog.com/gemini-4-argon-for-robotics/",
@@ -239,7 +242,8 @@
           "headline_options": [],
           "headline_hooks": [
             "AI视频从1分钟变成10分钟以上"
-          ]
+          ],
+          "ordinary_click_reason": "想拍视频的人会想看看：客户所说的10分钟以上视频，到底能拿来讲什么故事？"
         }
       },
       "discovery_score": 0.0,
@@ -381,7 +385,8 @@
           ],
           "max_publishable_claim": "苹果宣布HomeView家庭屏幕可识别最多6个人并提供各自内容；11月13日上市，Siri AI初期只支持英语。不能写成中国家庭已普遍使用。",
           "cover_line": "同一块客厅屏幕，先认出你，再显示你的内容。",
-          "why_might_not_click": "还未上市、Siri初期只支持英语；对不使用苹果生态的人，直接使用价值有限。"
+          "why_might_not_click": "还未上市、Siri初期只支持英语；对不使用苹果生态的人，直接使用价值有限。",
+          "ordinary_click_reason": "全家共用一块屏幕的人会想知道：它怎么认出我，还不把我的东西给别人看？"
         },
         "visual_assets": [
           {
@@ -458,7 +463,8 @@
           ],
           "max_publishable_claim": "据The San Francisco Standard引述联邦检方和起诉材料，OpenAI高管会议室电视后发现用卫生纸遮掩的录音设备；一名员工涉嫌放置设备被捕并被起诉，尚未定罪。",
           "cover_line": "据检方材料，设备藏在高管会议室电视后；员工被起诉，尚未定罪。",
-          "why_might_not_click": "指控尚未经定罪；不能把设备发现推演成所有办公室都被监听。"
+          "why_might_not_click": "指控尚未经定罪；不能把设备发现推演成所有办公室都被监听。",
+          "ordinary_click_reason": "上班开会的人会好奇：电视后怎么藏着录音器，为什么还用卫生纸遮住？"
         },
         "engagement_observed_at": "2026-10-15T23:15:03.445249+00:00",
         "original_platform": "hacker_news"
@@ -496,7 +502,8 @@
           "headline_options": [],
           "headline_hooks": [
             "怕被AI替代，换工作就安全了吗"
-          ]
+          ],
+          "ordinary_click_reason": "担心换工作的人会想知道：换到另一个行业，为什么收入处境还是没变好？"
         }
       },
       "discovery_score": 0.0,
@@ -1108,7 +1115,8 @@
           ],
           "cover_line": "不用下载、不用注册，键盘按和弦，手指也能划琴弦。",
           "max_publishable_claim": "Guitoro官方页面称可免费在浏览器里用键盘或触屏弹虚拟吉他，无需下载或注册，提供51首可跟弹的歌曲；音质和中国网络可用性未独立测试。",
-          "why_might_not_click": "不喜欢音乐的用户兴趣有限；不能暗示零基础立即学会真吉他。"
+          "why_might_not_click": "不喜欢音乐的用户兴趣有限；不能暗示零基础立即学会真吉他。",
+          "ordinary_click_reason": "想弹首歌又没吉他的人会想试：平时打字的键盘，真能弹出一首歌吗？"
         },
         "engagement_observed_at": "2026-10-15T23:15:03.445249+00:00",
         "original_platform": "hacker_news"
@@ -1492,7 +1500,8 @@
             "几个月剪辑归零，原片仍在",
             "节目丢了，AI删片却未被证实",
             "把锅甩给AI之前，先看看备份"
-          ]
+          ],
+          "ordinary_click_reason": "看节目的人会想知道：原片还在，为什么剪好的成片没了，还耽误播出？"
         }
       }
     },
@@ -1558,7 +1567,8 @@
             "这个办公网页，连账号都不要",
             "一份文档，能有多像一条链接",
             "写好的文档，就在这条链接里"
-          ]
+          ],
+          "ordinary_click_reason": "经常传文件的人会想试：不发附件，一条链接怎么装下一份文档？"
         }
       },
       "editorial_score": 0.0,
