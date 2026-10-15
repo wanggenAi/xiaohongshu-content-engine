@@ -42,9 +42,13 @@ jobs:
       - run: uv sync --frozen --python 3.12
       - uses: actions/cache/restore@v4
         with:
-          path: data/content.sqlite3
-          key: content-state-v1-${{ github.run_id }}-${{ github.run_attempt }}
-          restore-keys: content-state-v1-
+          path: |
+            data/content.sqlite3
+            data/viral_references.jsonl
+          key: content-state-v15-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            content-state-v15-
+            content-state-v1-
       - name: Discover and package candidates
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -59,8 +63,10 @@ jobs:
         run: cat outputs/publish_candidates.md >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/cache/save@v4
         with:
-          path: data/content.sqlite3
-          key: content-state-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            data/content.sqlite3
+            data/viral_references.jsonl
+          key: content-state-v15-${{ github.run_id }}-${{ github.run_attempt }}
       - uses: actions/upload-artifact@v4
         with:
           name: content-candidates-${{ github.run_id }}

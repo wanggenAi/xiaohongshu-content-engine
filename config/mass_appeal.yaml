@@ -1,4 +1,4 @@
-version: mass-appeal-v2
+version: mass-appeal-v1.5
 weights:
   recognizable_entity: 15
   immediate_understandability: 15
@@ -9,10 +9,21 @@ weights:
   visual_headline_power: 10
   freshness: 5
 publishability_weights: {mass_appeal: 0.65, viral_potential: 0.25, human_trigger: 0.10}
+final_priority_weights: {mass_appeal_score: 0.30, viral_potential: 0.15, stop_scroll_score: 0.15, title_potential_score: 0.10, social_heat: 0.10, viral_pattern_similarity: 0.10, evidence_fitness: 0.05, visual_asset_strength: 0.05}
+stop_scroll_weights: {immediate_curiosity: 25, concrete_hook: 20, stakes: 20, novelty: 15, clarity: 10, emotional_tension: 10}
+viral_reference:
+  minimum_points: 200
+  minimum_comments: 150
+  minimum_views: 50000
+  max_examples: 24
+  minimum_pattern_examples: 3
 gate:
   mass_appeal: 70
   viral_potential: 60
-  extreme_social_heat: 85
+  extreme_social_heat: 80
+  stop_scroll: 70
+  title_potential: 70
+  soft_disagreement: 25
   publishability: 75
   no_publish_below: 60
   minimum_candidates: 20

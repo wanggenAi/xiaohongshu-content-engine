@@ -1,0 +1,1476 @@
+{
+  "observed_at": "2026-10-15T02:56:50.686452+00:00",
+  "method": "2026-10-15 public reread + actual HN API metrics; source dates preserved; no posting",
+  "items": [
+    {
+      "id": "f83ddb49efb54e6d08546f19",
+      "source": "hacker_news",
+      "source_type": "hacker_news",
+      "canonical_url": "https://blog.character.ai/an-update-on-character-ai/",
+      "title": "Character.ai has initiated voluntary Chapter 11 bankruptcy",
+      "author": "nryoo",
+      "published_at": "2026-10-13T07:28:34Z",
+      "fetched_at": "2026-10-14T11:52:20.651874Z",
+      "language": "en",
+      "raw_excerpt": "Character.ai 10月12日公告：已启动自愿Chapter 11破产程序，以推进法院监督的出售。服务目前正常运行，付费订阅仍有效；若没有能支持继续运营的报价，平台将逐步关闭。用户目前可以导出数据。不能写成已经停服，也不能断言聊天数据已丢失。",
+      "summary": "Character.ai 10月12日公告：已启动自愿Chapter 11破产程序，以推进法院监督的出售。服务目前正常运行，付费订阅仍有效；若没有能支持继续运营的报价，平台将逐步关闭。用户目前可以导出数据。不能写成已经停服，也不能断言聊天数据已丢失。",
+      "engagement_metrics": {
+        "points": 331,
+        "comments": 289
+      },
+      "content_type": "TECH_SHIFT",
+      "source_reliability": 0.65,
+      "public_source_label": "海外开发者社区",
+      "metadata": {
+        "original_url": "https://news.ycombinator.com/item?id=50068036",
+        "discussion_url": "https://news.ycombinator.com/item?id=50068036",
+        "evidence_scope": "公开原文核验；保留事实限定；摘要为编辑转述",
+        "event_key": "character-bankruptcy",
+        "lane": "GLOBAL_HOT_TOPIC",
+        "event_aliases": [
+          "character.ai",
+          "character ai"
+        ],
+        "evidence_status": "primary_source_checked",
+        "evidence_verified_at": "2026-10-15T02:56:50.686452+00:00",
+        "editorial_packet": {
+          "topic": "AI陪伴平台进入破产出售流程",
+          "proposed_headline": "AI朋友还在，公司却申请破产了",
+          "stop_scroll_reason": "用户仍能聊天，但这家AI陪伴公司找不到继续运营的买家就可能关停。",
+          "interest_reason": "关系、聊天记录和付费订阅的持续性；不要把商业产品承诺当永久陪伴。",
+          "china_relevance": "关系、聊天记录和付费订阅的持续性；不要把商业产品承诺当永久陪伴。",
+          "headline_options": [
+            "AI朋友还在，公司却申请破产了",
+            "你的AI朋友，也可能突然下线",
+            "AI陪伴公司破产，用户怎么办",
+            "聊天还在继续，公司却在等买家",
+            "AI朋友的未来，取决于一个买家",
+            "每天陪你聊天的AI，也会倒闭？",
+            "AI陪伴平台破产：关系怎么办",
+            "AI不会累，背后的公司会破产",
+            "把AI当朋友前，先看看这件事",
+            "AI朋友背后，公司可能关停",
+            "一段AI关系，会被破产打断吗",
+            "AI陪伴平台申请破产，仍在运营",
+            "聊天记录能导出，陪伴能带走吗",
+            "AI朋友没变，背后的公司变了",
+            "服务还没停，AI陪伴公司先破产了",
+            "公司申请破产，AI朋友会去哪",
+            "对话还在，AI朋友的公司却破产了",
+            "AI陪伴的尽头，也可能是商业问题",
+            "你聊的是AI，依赖的却是一家公司",
+            "AI陪伴平台找买家，找不到会关停"
+          ],
+          "max_publishable_claim": "Character.ai宣布启动Chapter 11破产出售程序，服务和订阅目前正常；如果找不到可维持运营的买家，平台将逐步关闭。",
+          "cover_line": "聊天还在继续，陪你的公司却在等买家。",
+          "why_might_not_click": "不使用AI陪伴的读者可能代入较弱；目前没有停服，也不能断言对话数据丢失。"
+        },
+        "engagement_observed_at": "2026-10-15T02:56:50.686452+00:00",
+        "original_platform": "hacker_news"
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "4a4beda8ac4127f127cf2afa",
+      "source": "deepmind_blog",
+      "source_type": "rss",
+      "canonical_url": "https://deepmind.google/blog/on-device-ai-scam-detection-mddi/",
+      "title": "Google DeepMind and Singapore Government collaborate to build fine-tuned AI model for scam detection",
+      "published_at": "2026-10-14T02:00:14Z",
+      "fetched_at": "2026-10-14T12:21:26.744627Z",
+      "language": "en",
+      "raw_excerpt": "Google DeepMind 10月14日介绍与新加坡GovTech合作的端侧反诈骗模型。Gemma针对当地诈骗对话微调，采用两阶段分析；对话在设备上处理，目标是不牺牲隐私。文章未给出面向普通公众的上线日期，不能宣称现在就能下载使用。",
+      "summary": "Google DeepMind 10月14日介绍与新加坡GovTech合作的端侧反诈骗模型。Gemma针对当地诈骗对话微调，采用两阶段分析；对话在设备上处理，目标是不牺牲隐私。文章未给出面向普通公众的上线日期，不能宣称现在就能下载使用。",
+      "content_type": "AI_PRODUCT",
+      "source_reliability": 0.9,
+      "public_source_label": "海外科技圈",
+      "metadata": {
+        "original_url": "https://deepmind.google/blog/on-device-ai-scam-detection-mddi/",
+        "feed_url": "https://deepmind.google/blog/rss.xml",
+        "evidence_scope": "公开原文核验；保留事实限定；摘要为编辑转述",
+        "source_tier": "B",
+        "evidence_role": "fact_verification",
+        "event_key": "google-scam",
+        "lane": "GLOBAL_HOT_TOPIC",
+        "event_aliases": [
+          "scam detection",
+          "on-device scam"
+        ],
+        "evidence_status": "primary_source_checked",
+        "evidence_verified_at": "2026-10-15T02:56:50.686452+00:00",
+        "editorial_packet": {
+          "topic": "Google与新加坡推出手机端反诈骗模型",
+          "proposed_headline": "AI识别诈骗，不用上传聊天？",
+          "stop_scroll_reason": "骗局能看懂上下文，而这款反诈骗AI尝试让聊天留在手机上。",
+          "interest_reason": "诈骗损失与聊天隐私同时相关；合作模型不是已向中国用户开放的App。",
+          "china_relevance": "诈骗损失与聊天隐私同时相关；合作模型不是已向中国用户开放的App。",
+          "headline_options": [],
+          "max_publishable_claim": "Google DeepMind介绍与新加坡GovTech合作的端侧反诈骗模型，目标是把对话分析留在设备上；未公布面向公众的上线日期。",
+          "cover_line": "AI判断诈骗，聊天内容先留在手机上。",
+          "why_might_not_click": "不是中国用户现在可下载的App；实际识别效果需独立测试。",
+          "headline_hooks": [
+            "AI识别诈骗，不用上传聊天"
+          ]
+        }
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "0dea73e54f9a5bbc5e8dca58",
+      "source": "hacker_news",
+      "source_type": "hacker_news",
+      "canonical_url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/",
+      "title": "Gemini 4 Argon for Robotics",
+      "author": "xnx",
+      "published_at": "2026-10-13T16:55:47Z",
+      "fetched_at": "2026-10-14T12:21:15.132798Z",
+      "language": "en",
+      "raw_excerpt": "Google 10月13日官方发布介绍：在内部测试中，Argon分析人类玩cornhole的原始视频，计算空间坐标和关节动作，生成仿真代码后迁移到Apptronik Apollo，实机连续投中7次。该能力经仿真环节实现，不是直接模仿一次视频就能掌握所有任务。机器人专文还展示机械臂整理杯子和机器人丢易拉罐。",
+      "summary": "Google 10月13日官方发布介绍：在内部测试中，Argon分析人类玩cornhole的原始视频，计算空间坐标和关节动作，生成仿真代码后迁移到Apptronik Apollo，实机连续投中7次。该能力经仿真环节实现，不是直接模仿一次视频就能掌握所有任务。机器人专文还展示机械臂整理杯子和机器人丢易拉罐。",
+      "engagement_metrics": {
+        "points": 1438,
+        "comments": 1027
+      },
+      "content_type": "TECH_SHIFT",
+      "source_reliability": 0.65,
+      "public_source_label": "海外开发者社区",
+      "metadata": {
+        "original_url": "https://news.ycombinator.com/item?id=50074869",
+        "discussion_url": "https://news.ycombinator.com/item?id=50073879",
+        "evidence_scope": "公开原文核验；保留事实限定；摘要为编辑转述",
+        "event_key": "gemini-argon",
+        "lane": "WOW_WEIRD_INTERNET",
+        "event_aliases": [
+          "gemini 4 argon",
+          "gemini-4-argon"
+        ],
+        "evidence_status": "primary_source_checked",
+        "evidence_verified_at": "2026-10-15T02:56:50.686452+00:00",
+        "editorial_packet": {
+          "topic": "机器人看人类视频后，完成连续投掷",
+          "proposed_headline": "看完视频，机器人连投中了7次",
+          "stop_scroll_reason": "Google公开内部测试：机器人看完人类投掷视频，经仿真到实机，连续投中7次。",
+          "interest_reason": "普通人一眼能懂的学习动作与强视觉变化；不是看一遍就万能，也不是家用机器人已上市。",
+          "china_relevance": "普通人一眼能懂的学习动作与强视觉变化；不是看一遍就万能，也不是家用机器人已上市。",
+          "headline_options": [
+            "谷歌称机器人投掷7连中",
+            "机器人7连中，先学的是人类视频",
+            "人类教投掷，机器人连中7次",
+            "机器人学投掷，也开始看视频",
+            "从看视频到7连中，机器人怎么学",
+            "7连中之前，机器人先练仿真",
+            "谷歌机器人，投掷连中了7次",
+            "看人类投掷，再让机器人练习",
+            "7次全中：机器人的投掷实验",
+            "机器人投掷7连中，怎么做到的",
+            "这次学投掷的，是机器人",
+            "人类动作视频，成了机器人教材",
+            "谷歌给机器人上了一堂投掷课",
+            "机器人投掷课，交出7连中",
+            "一段人类视频，如何教会机器人",
+            "机器人不是照抄，先在仿真里练",
+            "投掷7连中，机器人又学会一招",
+            "机器人学动作，开始先看人类",
+            "谷歌实测：机器人连续投中7次",
+            "机器人7连中，不是魔法是训练"
+          ],
+          "max_publishable_claim": "Google称内部试验中，Argon分析人类投掷视频、生成仿真代码，再迁移到Apollo机器人，实机连续投中7次；不是看一遍就万能。",
+          "cover_line": "人类视频 → 仿真训练 → 机器人实机7连中。",
+          "why_might_not_click": "7连中是官方内部试验；尚未取得这7次实机投掷的独立原始视频，不能拿仿真片冒充实机。"
+        },
+        "corroboration_urls": [
+          "https://developers.googleblog.com/gemini-4-argon-for-robotics/",
+          "https://blog.google/innovation-and-ai/products/gemini-app/gemini-4-argon-availability/"
+        ],
+        "engagement_observed_at": "2026-10-15T02:56:50.686452+00:00",
+        "visual_assets": [
+          {
+            "kind": "official_demo",
+            "url": "https://developers.googleblog.com/gemini-4-argon-for-robotics/",
+            "description": "官方机器人/仿真视频页面；与7连中实机测试不同，未验证7次投掷原片。",
+            "verified_action": false,
+            "verified_at": "2026-10-15T02:56:50.686452+00:00"
+          }
+        ],
+        "original_platform": "hacker_news"
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "5023bd47f7a6d0ee5fee3f04",
+      "source": "openai_blog",
+      "source_type": "rss",
+      "canonical_url": "https://openai.com/index/higgsfield-longer-videos-voice",
+      "title": "Higgsfield takes AI video from 1 minute to over 10",
+      "published_at": "2026-10-13T12:00:00Z",
+      "fetched_at": "2026-10-14T12:21:25.638238Z",
+      "language": "en-US",
+      "raw_excerpt": "OpenAI 10月13日客户案例：Higgsfield联合创始人Alex Mashrabov称，以前视频约1分钟封顶，现在其工作流可生成10分钟以上视频。案例讨论镜头一致性、调用外部工具和小团队创作。须标明企业及客户自述，不能声称所有用户一键生成10分钟电影，也不能把未来语音制片计划写成已上线。",
+      "summary": "OpenAI 10月13日客户案例：Higgsfield联合创始人Alex Mashrabov称，以前视频约1分钟封顶，现在其工作流可生成10分钟以上视频。案例讨论镜头一致性、调用外部工具和小团队创作。须标明企业及客户自述，不能声称所有用户一键生成10分钟电影，也不能把未来语音制片计划写成已上线。",
+      "tags": [
+        "Startup"
+      ],
+      "content_type": "TECH_SHIFT",
+      "source_reliability": 0.9,
+      "public_source_label": "海外科技圈",
+      "metadata": {
+        "original_url": "https://openai.com/index/higgsfield-longer-videos-voice",
+        "feed_url": "https://openai.com/news/rss.xml",
+        "evidence_scope": "公开原文核验；保留事实限定；摘要为编辑转述",
+        "source_tier": "B",
+        "evidence_role": "fact_verification",
+        "event_key": "higgsfield-video",
+        "lane": "WOW_WEIRD_INTERNET",
+        "event_aliases": [
+          "higgsfield",
+          "longer videos"
+        ],
+        "evidence_status": "primary_source_checked",
+        "evidence_verified_at": "2026-10-14T14:11:15.352175+00:00",
+        "editorial_packet": {
+          "topic": "AI视频从约1分钟走向10分钟以上",
+          "proposed_headline": "AI视频从1分钟变成10分钟以上",
+          "stop_scroll_reason": "创作者自述已经用AI工作流做出10分钟以上教学视频，长视频一致性是关键变化。",
+          "interest_reason": "创作时间、小团队预算与能做多长的视频；官方客户案例，不当成独立性能测试。",
+          "china_relevance": "创作时间、小团队预算与能做多长的视频；官方客户案例，不当成独立性能测试。",
+          "headline_options": [],
+          "headline_hooks": [
+            "AI视频从1分钟变成10分钟以上"
+          ]
+        }
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "d75dbe0c80c9ed15d862b993",
+      "source": "live_primary",
+      "source_type": "public_primary",
+      "canonical_url": "https://www.anthropic.com/research/self-replicating-ai",
+      "title": "Anthropic测试AI在小设备上自复制的可能性",
+      "published_at": "2026-10-12T00:00:00Z",
+      "fetched_at": "2026-10-14T14:11:15.353436Z",
+      "raw_excerpt": "Anthropic 10月12日研究：9B模型在9类硬件中的8类成功运行推理，小模型已能完成若干复制步骤，但端到端组合仍犯错。在简化评测中GLM-5.2及更强模型可端到端复制；作者根据历史趋势推测小模型可能年底达到该能力。不能写成家电已经被AI感染。",
+      "summary": "Anthropic 10月12日研究：9B模型在9类硬件中的8类成功运行推理，小模型已能完成若干复制步骤，但端到端组合仍犯错。在简化评测中GLM-5.2及更强模型可端到端复制；作者根据历史趋势推测小模型可能年底达到该能力。不能写成家电已经被AI感染。",
+      "source_reliability": 0.9,
+      "metadata": {
+        "event_key": "ai-replication",
+        "lane": "GLOBAL_HOT_TOPIC",
+        "event_aliases": [
+          "self-replicat",
+          "ai worm"
+        ],
+        "evidence_status": "primary_source_checked",
+        "evidence_scope": "公开原文核验；保留事实限定；摘要为编辑转述",
+        "evidence_verified_at": "2026-10-14T14:11:15.352175+00:00",
+        "editorial_packet": {
+          "topic": "Anthropic测试AI在小设备上自复制的可能性",
+          "proposed_headline": "AI可能躲进电视盒子里自我复制？",
+          "stop_scroll_reason": "研究者在电视盒子等小设备测试AI复制步骤，风险不一定只在大型机房里。",
+          "interest_reason": "家庭设备、网络安全与失控恐惧；明确是实验和能力预测，不是现实感染预警。",
+          "china_relevance": "家庭设备、网络安全与失控恐惧；明确是实验和能力预测，不是现实感染预警。",
+          "headline_options": [],
+          "headline_hooks": [
+            "AI可能躲进电视盒子里自我复制"
+          ]
+        }
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "ddc05e8394b8d9f9fa3a67c3",
+      "source": "live_primary",
+      "source_type": "public_primary",
+      "canonical_url": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/",
+      "title": "Meta新模型开始处理租约与保险理赔",
+      "published_at": "2026-10-12T00:00:00Z",
+      "fetched_at": "2026-10-14T14:11:15.353544Z",
+      "raw_excerpt": "Meta 10月12日官方公告Muse Wonder与Full，列举保险理赔、理解租约、财务信息和构建应用等任务。强调Active Memory与Active Focus。现通过Meta Model API和Muse Code开放；Muse消费者体验将先向订阅者逐步推出。不能把官方能力宣称当已独立验证的成功率。",
+      "summary": "Meta 10月12日官方公告Muse Wonder与Full，列举保险理赔、理解租约、财务信息和构建应用等任务。强调Active Memory与Active Focus。现通过Meta Model API和Muse Code开放；Muse消费者体验将先向订阅者逐步推出。不能把官方能力宣称当已独立验证的成功率。",
+      "source_reliability": 0.9,
+      "metadata": {
+        "event_key": "meta-wonder",
+        "lane": "GLOBAL_HOT_TOPIC",
+        "event_aliases": [
+          "muse wonder",
+          "wonder ai",
+          "zuckerberg tells"
+        ],
+        "evidence_status": "primary_source_checked",
+        "evidence_scope": "公开原文核验；保留事实限定；摘要为编辑转述",
+        "evidence_verified_at": "2026-10-15T02:56:50.686452+00:00",
+        "editorial_packet": {
+          "topic": "Meta新模型开始处理租约与保险理赔",
+          "proposed_headline": "AI开始看租约、处理保险理赔",
+          "stop_scroll_reason": "Meta给新模型的具体任务不是聊天，而是看懂租约和推进保险理赔。",
+          "interest_reason": "住房、保险、个人资料与长期任务；目前开发者和订阅访问条件需明确，不替代法律或保险专业判断。",
+          "china_relevance": "住房、保险、个人资料与长期任务；目前开发者和订阅访问条件需明确，不替代法律或保险专业判断。",
+          "headline_options": [],
+          "max_publishable_claim": "Meta宣布Muse Wonder模型，并展示租约分析、推进保险理赔等任务；公司演示不代表所有用户已验证或能替代专业判断。",
+          "cover_line": "AI不只陪聊，也被用来读租约、推进保险理赔。",
+          "why_might_not_click": "公司能力演示，普通人访问条件与可靠性仍有门槛。",
+          "headline_hooks": [
+            "AI开始看租约、处理保险理赔"
+          ]
+        }
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "4bfbecf3d5e2506741d7c1f3",
+      "source": "hacker_news",
+      "source_type": "hacker_news",
+      "canonical_url": "https://www.apple.com/apple-homeview/",
+      "title": "Apple HomeView",
+      "author": "etothet",
+      "published_at": "2026-10-13T13:02:12Z",
+      "fetched_at": "2026-10-14T12:21:15.131285Z",
+      "language": "en",
+      "raw_excerpt": "Apple HomeView官方页面：可识别最多6位用户并提供个人化体验，内置Siri AI、摄像头与语音功能。个人内容需配对设备在同一Wi-Fi、最近已解锁，并识别人脸。页面写明11月13日供应，Siri AI初期仅英文，可能有使用限额。不要写成全家人的私信默认公开。",
+      "summary": "Apple HomeView官方页面：可识别最多6位用户并提供个人化体验，内置Siri AI、摄像头与语音功能。个人内容需配对设备在同一Wi-Fi、最近已解锁，并识别人脸。页面写明11月13日供应，Siri AI初期仅英文，可能有使用限额。不要写成全家人的私信默认公开。",
+      "engagement_metrics": {
+        "points": 752,
+        "comments": 900
+      },
+      "source_reliability": 0.65,
+      "public_source_label": "海外开发者社区",
+      "metadata": {
+        "original_url": "https://news.ycombinator.com/item?id=50071017",
+        "discussion_url": "https://news.ycombinator.com/item?id=50071017",
+        "evidence_scope": "公开原文核验；保留事实限定；摘要为编辑转述",
+        "event_key": "apple-homeview",
+        "lane": "GLOBAL_HOT_TOPIC",
+        "event_aliases": [
+          "homeview",
+          "smart display"
+        ],
+        "evidence_status": "primary_source_checked",
+        "evidence_verified_at": "2026-10-15T02:56:50.686452+00:00",
+        "editorial_packet": {
+          "topic": "苹果家庭屏幕识别人，AI进入客厅",
+          "proposed_headline": "苹果这块屏幕，能认出一家6口",
+          "stop_scroll_reason": "同一块家庭屏幕能识别最多6个人，各自看到自己的内容，谁会放心让它进客厅？",
+          "interest_reason": "家庭生活、共享屏幕和个人隐私；英语先行，11月13日开始供应，不暗示国内今天可用。",
+          "china_relevance": "家庭生活、共享屏幕和个人隐私；英语先行，11月13日开始供应，不暗示国内今天可用。",
+          "headline_options": [
+            "苹果这块屏幕，能认出一家6口",
+            "苹果的新屏幕，认人后才显示内容",
+            "同一块苹果屏幕，全家看到的不一样",
+            "苹果把AI助手，搬进了客厅",
+            "一块屏幕认6个人，苹果想干什么",
+            "苹果这次卖的屏幕，是给全家用的",
+            "苹果家庭屏幕：方便，还是不放心",
+            "一家人共用AI，隐私怎么分开",
+            "苹果新设备，先认出你再显示内容",
+            "AI进客厅，先过一家人的隐私关",
+            "苹果的AI屏幕，为什么要认出你",
+            "6个人共用一块屏幕，会串隐私吗",
+            "苹果把家庭AI，做成了7英寸屏幕",
+            "家里多一块AI屏幕，你会放心吗",
+            "苹果家庭屏幕，能认脸也能认声音",
+            "苹果想让全家共用AI，但内容分开",
+            "苹果客厅新屏幕，Siri先只说英语",
+            "家里的AI助手，苹果准备这样做",
+            "苹果新屏幕：一家6口，各看各的",
+            "让AI进家门，苹果先解决认人问题"
+          ],
+          "max_publishable_claim": "苹果宣布HomeView家庭屏幕可识别最多6个人并提供各自内容；11月13日上市，Siri AI初期只支持英语。不能写成中国家庭已普遍使用。",
+          "cover_line": "同一块客厅屏幕，先认出你，再显示你的内容。",
+          "why_might_not_click": "还未上市、Siri初期只支持英语；对不使用苹果生态的人，直接使用价值有限。"
+        },
+        "visual_assets": [
+          {
+            "kind": "official_image",
+            "url": "https://www.apple.com/apple-homeview/",
+            "description": "官方产品图及家庭多人使用界面；不是中国用户实测。",
+            "verified_at": "2026-10-15T02:56:50.686452+00:00"
+          }
+        ],
+        "engagement_observed_at": "2026-10-15T02:56:50.686452+00:00",
+        "original_platform": "hacker_news"
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "a5d35684708ccf79c07bd9c1",
+      "source": "hacker_news",
+      "source_type": "hacker_news",
+      "canonical_url": "https://sfstandard.com/2026/10/13/openai-engineer-arrested-alleged-bugging-executive-conference-room/",
+      "title": "OpenAI engineer arrested in bugging of executive conference room",
+      "author": "forthwall",
+      "published_at": "2026-10-13T20:23:55Z",
+      "fetched_at": "2026-10-14T12:21:15.132189Z",
+      "language": "en",
+      "raw_excerpt": "The San Francisco Standard 10月13日报道援引联邦检方：一名OpenAI工程师因涉嫌在高管会议室藏录音设备被捕，被控使用或企图使用设备截取口头通信。检方称9月30日发现设备。报道不是法院定罪，不能断言其已窃取或出售AI秘密。",
+      "summary": "The San Francisco Standard 10月13日报道援引联邦检方：一名OpenAI工程师因涉嫌在高管会议室藏录音设备被捕，被控使用或企图使用设备截取口头通信。检方称9月30日发现设备。报道不是法院定罪，不能断言其已窃取或出售AI秘密。",
+      "engagement_metrics": {
+        "points": 643,
+        "comments": 529
+      },
+      "content_type": "TECH_SHIFT",
+      "source_reliability": 0.65,
+      "public_source_label": "海外开发者社区",
+      "metadata": {
+        "original_url": "https://news.ycombinator.com/item?id=50078141",
+        "discussion_url": "https://news.ycombinator.com/item?id=50078141",
+        "evidence_scope": "公开原文核验；保留事实限定；摘要为编辑转述",
+        "event_key": "openai-bugging",
+        "lane": "WOW_WEIRD_INTERNET",
+        "event_aliases": [
+          "openai engineer arrested",
+          "bugging"
+        ],
+        "evidence_status": "readable_reporting_attributed",
+        "evidence_verified_at": "2026-10-15T02:56:50.686452+00:00",
+        "editorial_packet": {
+          "topic": "OpenAI会议室被指藏有录音设备",
+          "proposed_headline": "OpenAI会议室，竟被指藏了录音器",
+          "stop_scroll_reason": "报道援引美国检方：OpenAI员工涉嫌在高管会议室藏录音设备，指控尚未等于定罪。",
+          "interest_reason": "知名AI公司内部安全与离谱反差；不推测窃密动机，不把嫌疑人国籍当流量钩子。",
+          "china_relevance": "知名AI公司内部安全与离谱反差；不推测窃密动机，不把嫌疑人国籍当流量钩子。",
+          "headline_options": [
+            "OpenAI会议室被指藏录音器",
+            "OpenAI员工涉嫌给会议室装录音器",
+            "检方：OpenAI员工涉嫌藏录音器",
+            "OpenAI会议室录音器，从哪来",
+            "OpenAI员工因涉嫌窃听被捕",
+            "OpenAI会议室里的录音器疑云",
+            "AI公司的会议室，被指装了录音器",
+            "OpenAI会议室录音案，尚未定罪",
+            "OpenAI员工被捕，涉及会议室录音",
+            "最懂AI的公司，也要查录音器",
+            "OpenAI高管开会，竟遇录音器疑案",
+            "一枚录音器，牵出OpenAI员工",
+            "OpenAI会议室录音案：谁放的",
+            "OpenAI员工涉嫌窃听高管开会",
+            "检方指控：录音器藏进AI会议室",
+            "OpenAI查出录音设备，员工被捕",
+            "大模型公司，出了录音器疑案",
+            "OpenAI会议室被指遭秘密录音",
+            "OpenAI员工被控，涉嫌会议室录音",
+            "会议室录音疑案，发生在OpenAI"
+          ],
+          "max_publishable_claim": "据美国联邦检方指控，OpenAI一名员工涉嫌在高管会议室藏录音设备并已被捕；指控尚未等于定罪，没有证据证明客户数据被窃。",
+          "cover_line": "高管会议室里被发现录音设备；员工被控，尚未定罪。",
+          "why_might_not_click": "公司内幕不等于普通人的直接利益；不得推测动机、国籍原因或客户数据已泄漏。"
+        },
+        "engagement_observed_at": "2026-10-15T02:56:50.686452+00:00",
+        "original_platform": "hacker_news"
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "04863702043402e3b01d3e12",
+      "source": "live_primary",
+      "source_type": "public_primary",
+      "canonical_url": "https://newsroom.ucla.edu/stories/job-loss-ai-exposed-jobs-q-a-sociology-professor-jennie-brand",
+      "title": "换工作未必摆脱AI职业风险",
+      "published_at": "2026-10-13T00:00:00Z",
+      "fetched_at": "2026-10-14T14:11:15.353774Z",
+      "raw_excerpt": "UCLA 10月13日访谈：研究发现衰退职业劳动者可能陷入流动陷阱，换职业仍进入衰退领域，未改善经济位置。AI暴露本身不足以识别最脆弱群体，需结合需求下降和缺乏替代岗位。举例工资核算、保险处理、记账、录入和翻译等信息任务；不等于这些职业必然消失。",
+      "summary": "UCLA 10月13日访谈：研究发现衰退职业劳动者可能陷入流动陷阱，换职业仍进入衰退领域，未改善经济位置。AI暴露本身不足以识别最脆弱群体，需结合需求下降和缺乏替代岗位。举例工资核算、保险处理、记账、录入和翻译等信息任务；不等于这些职业必然消失。",
+      "source_reliability": 0.9,
+      "metadata": {
+        "event_key": "ucla-job-mobility",
+        "lane": "GLOBAL_HOT_TOPIC",
+        "event_aliases": [
+          "jennie brand",
+          "ai-exposed jobs"
+        ],
+        "evidence_status": "primary_source_checked",
+        "evidence_scope": "公开原文核验；保留事实限定；摘要为编辑转述",
+        "evidence_verified_at": "2026-10-14T14:11:15.352175+00:00",
+        "editorial_packet": {
+          "topic": "换工作未必摆脱AI职业风险",
+          "proposed_headline": "怕被AI替代，换工作就安全了吗",
+          "stop_scroll_reason": "研究者发现有些人换了职业，仍进入另一个需求下降的领域，收入处境没有改善。",
+          "interest_reason": "打工人职业选择和收入；美国研究不能直接预测中国个体是否失业。",
+          "china_relevance": "打工人职业选择和收入；美国研究不能直接预测中国个体是否失业。",
+          "headline_options": [],
+          "headline_hooks": [
+            "怕被AI替代，换工作就安全了吗"
+          ]
+        }
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "d24842816a64c79278f9c08a",
+      "source": "nvidia_blog",
+      "source_type": "rss",
+      "canonical_url": "https://blogs.nvidia.com/blog/local-ai-rtx-spark-laptops-software-updates/",
+      "title": "All Systems Go: Global PC App Ecosystem Ready for NVIDIA RTX Spark",
+      "author": "Gerardo Delgado",
+      "published_at": "2026-10-13T12:00:49Z",
+      "fetched_at": "2026-10-14T12:21:32.645935Z",
+      "language": "en-US",
+      "raw_excerpt": "NVIDIA 10月13日软件生态公告：RTX Spark笔记本预定10月16日上市，多款本地AI助手优化配置；PAIR免费开源软件可联接兼容局域网电脑分配AI任务。官方10月7日联合活动由黄仁勋和纳德拉介绍Windows本地Agent路线。不能说所有旧电脑都能免费得到同等能力。",
+      "summary": "NVIDIA 10月13日软件生态公告：RTX Spark笔记本预定10月16日上市，多款本地AI助手优化配置；PAIR免费开源软件可联接兼容局域网电脑分配AI任务。官方10月7日联合活动由黄仁勋和纳德拉介绍Windows本地Agent路线。不能说所有旧电脑都能免费得到同等能力。",
+      "tags": [
+        "AI",
+        "Agentic AI",
+        "Artificial Intelligence",
+        "Local AI",
+        "NVIDIA RTX",
+        "Open Source",
+        "RTX Spark"
+      ],
+      "source_reliability": 0.9,
+      "public_source_label": "海外科技圈",
+      "metadata": {
+        "original_url": "https://blogs.nvidia.com/blog/local-ai-rtx-spark-laptops-software-updates/",
+        "feed_url": "https://blogs.nvidia.com/feed/",
+        "evidence_scope": "公开原文核验；保留事实限定；摘要为编辑转述",
+        "source_tier": "B",
+        "evidence_role": "fact_verification",
+        "event_key": "rtx-spark",
+        "lane": "BIG_PERSON",
+        "event_aliases": [
+          "rtx spark",
+          "rtx-spark"
+        ],
+        "evidence_status": "primary_source_checked",
+        "evidence_verified_at": "2026-10-14T14:11:15.352175+00:00",
+        "editorial_packet": {
+          "topic": "黄仁勋与微软把AI助手推进Windows电脑",
+          "proposed_headline": "黄仁勋把AI助手，塞进你的电脑",
+          "stop_scroll_reason": "新电脑的AI助手将能在本地运行，私人文件是否还必须交给云端成为具体问题。",
+          "interest_reason": "电脑使用、隐私和新硬件消费；本地能力不代表完全无需联网或不花钱。",
+          "china_relevance": "电脑使用、隐私和新硬件消费；本地能力不代表完全无需联网或不花钱。",
+          "headline_options": [],
+          "headline_hooks": [
+            "黄仁勋把AI助手，塞进你的电脑"
+          ]
+        }
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "8539d474a1d5801b243c0ebc",
+      "source": "nvidia_blog",
+      "source_type": "rss",
+      "canonical_url": "https://blogs.nvidia.com/blog/european-cities-agents-urban-operations/",
+      "title": "European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operations",
+      "author": "Charbel Aoun",
+      "published_at": "2026-10-14T06:00:28Z",
+      "fetched_at": "2026-10-14T12:21:32.645899Z",
+      "language": "en-US",
+      "raw_excerpt": "Keeping a city running means making decisions that affect residents every day — from when to repair a road to how to use energy more efficiently. Across the EMEA region, cities and local software, infrastructure and integration partners are using NVIDIA accelerated computing to build physical AI agents and digital twins that help teams make […]",
+      "summary": "Keeping a city running means making decisions that affect residents every day — from when to repair a road to how to use energy more efficiently. Across the EMEA region, cities and local software, infrastructure and integration partners are using NVIDIA accelerated computing to build physical AI agents and digital twins that help teams make […]",
+      "tags": [
+        "AI",
+        "Agentic AI",
+        "Artificial Intelligence",
+        "Cosmos",
+        "Customer Stories",
+        "Digital Twin",
+        "Events",
+        "Metropolis",
+        "NVIDIA in Europe",
+        "Omniverse"
+      ],
+      "content_type": "AI_PRODUCT",
+      "source_reliability": 0.9,
+      "public_source_label": "海外科技圈",
+      "metadata": {
+        "original_url": "https://blogs.nvidia.com/blog/european-cities-agents-urban-operations/",
+        "feed_url": "https://blogs.nvidia.com/feed/",
+        "evidence_scope": "公开原文核验；保留事实限定；摘要为编辑转述",
+        "source_tier": "B",
+        "evidence_role": "fact_verification",
+        "event_key": "urban-agents",
+        "lane": "GLOBAL_HOT_TOPIC",
+        "event_aliases": [],
+        "evidence_status": "primary_source_checked",
+        "evidence_verified_at": "2026-10-14T14:11:15.352175+00:00",
+        "editorial_packet": {
+          "topic": "欧洲城市让AI参与城市运行决策",
+          "proposed_headline": "修哪条路，也开始让AI帮忙判断",
+          "stop_scroll_reason": "城市运行团队正把AI代理和数字孪生用于道路维修与能源决策辅助。",
+          "interest_reason": "通勤、公共资源和生活成本；不宣称AI已独立掌管城市，也不把公司案例当公共效果评估。",
+          "china_relevance": "通勤、公共资源和生活成本；不宣称AI已独立掌管城市，也不把公司案例当公共效果评估。",
+          "headline_options": [],
+          "headline_hooks": [
+            "修哪条路，也开始让AI帮忙判断"
+          ]
+        }
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "cd7ddace10fae06a72424282",
+      "source": "openai_blog",
+      "source_type": "rss",
+      "canonical_url": "https://openai.com/index/oracle",
+      "title": "How Oracle turns days of work into minutes with ChatGPT and Codex",
+      "published_at": "2026-10-08T16:00:00Z",
+      "fetched_at": "2026-10-14T12:21:25.638321Z",
+      "language": "en-US",
+      "raw_excerpt": "Across recruiting, engineering, and operations, Oracle turns specialist knowledge into fast, repeatable workflows with ChatGPT Work and Codex.",
+      "summary": "Across recruiting, engineering, and operations, Oracle turns specialist knowledge into fast, repeatable workflows with ChatGPT Work and Codex.",
+      "content_type": "AI_PRODUCT",
+      "source_reliability": 0.9,
+      "public_source_label": "海外科技圈",
+      "metadata": {
+        "original_url": "https://openai.com/index/oracle",
+        "feed_url": "https://openai.com/news/rss.xml",
+        "evidence_scope": "公开原文核验；保留事实限定；摘要为编辑转述",
+        "source_tier": "B",
+        "evidence_role": "fact_verification",
+        "event_key": "oracle-workflows",
+        "lane": "GLOBAL_HOT_TOPIC",
+        "event_aliases": [],
+        "evidence_status": "primary_source_checked",
+        "evidence_verified_at": "2026-10-14T14:11:15.352175+00:00",
+        "editorial_packet": {
+          "topic": "Oracle把多天任务变成可重复AI工作流",
+          "proposed_headline": "公司说几天的工作，AI几分钟做完",
+          "stop_scroll_reason": "Oracle官方客户案例把数天工作压缩到分钟级，工作改变可能先发生在流程而非整份岗位。",
+          "interest_reason": "招聘、运营、技能学习与工作的任务拆分；客户案例效果不能外推所有公司。",
+          "china_relevance": "招聘、运营、技能学习与工作的任务拆分；客户案例效果不能外推所有公司。",
+          "headline_options": [],
+          "headline_hooks": [
+            "公司说几天的工作，AI几分钟做完"
+          ]
+        }
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "9b2098eac968c27240f0e58d",
+      "source": "openai_blog",
+      "source_type": "rss",
+      "canonical_url": "https://openai.com/index/sophos",
+      "title": "Sophos cuts threat investigation time by 96% with OpenAI Daybreak",
+      "published_at": "2026-10-09T07:00:00Z",
+      "fetched_at": "2026-10-14T12:21:25.638268Z",
+      "language": "en-US",
+      "raw_excerpt": "Discover how Sophos uses OpenAI’s Daybreak to cut cyber-threat investigation time by 96% and automate 52% of MDR cases while preserving human oversight.",
+      "summary": "Discover how Sophos uses OpenAI’s Daybreak to cut cyber-threat investigation time by 96% and automate 52% of MDR cases while preserving human oversight.",
+      "content_type": "TECH_SHIFT",
+      "source_reliability": 0.9,
+      "public_source_label": "海外科技圈",
+      "metadata": {
+        "original_url": "https://openai.com/index/sophos",
+        "feed_url": "https://openai.com/news/rss.xml",
+        "evidence_scope": "公开原文核验；保留事实限定；摘要为编辑转述",
+        "source_tier": "B",
+        "evidence_role": "fact_verification",
+        "event_key": "sophos-investigation",
+        "lane": "GLOBAL_HOT_TOPIC",
+        "event_aliases": [],
+        "evidence_status": "primary_source_checked",
+        "evidence_verified_at": "2026-10-14T14:11:15.352175+00:00",
+        "editorial_packet": {
+          "topic": "安全公司声称AI缩短调查时间96%",
+          "proposed_headline": "一家公司称AI让调查时间少了96%",
+          "stop_scroll_reason": "官方客户案例声称网络威胁调查时间减少96%，同时保留人工监督。",
+          "interest_reason": "自动化到底替代什么工作；明确公司自述和网络安全场景，不能外推个人职业。",
+          "china_relevance": "自动化到底替代什么工作；明确公司自述和网络安全场景，不能外推个人职业。",
+          "headline_options": [],
+          "headline_hooks": [
+            "一家公司称AI让调查时间少了96%"
+          ]
+        }
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "491ab0f202aa263eab2e9956",
+      "source": "openai_blog",
+      "source_type": "rss",
+      "canonical_url": "https://openai.com/index/asana-browser-agent",
+      "title": "Asana cuts model costs 76x in browser tests with GPT-6.1 Sol",
+      "published_at": "2026-10-09T07:00:00Z",
+      "fetched_at": "2026-10-14T12:21:25.638296Z",
+      "language": "en-US",
+      "raw_excerpt": "Using GPT-6 Astra in Codex, Asana made its browser agent 76x cheaper and 5x faster in tests to offer customers more capable models.",
+      "summary": "Using GPT-6 Astra in Codex, Asana made its browser agent 76x cheaper and 5x faster in tests to offer customers more capable models.",
+      "content_type": "AI_PRODUCT",
+      "source_reliability": 0.9,
+      "public_source_label": "海外科技圈",
+      "metadata": {
+        "original_url": "https://openai.com/index/asana-browser-agent",
+        "feed_url": "https://openai.com/news/rss.xml",
+        "evidence_scope": "公开原文核验；保留事实限定；摘要为编辑转述",
+        "source_tier": "B",
+        "evidence_role": "fact_verification",
+        "event_key": "asana-cost",
+        "lane": "UTILITY_OPPORTUNITY",
+        "event_aliases": [],
+        "evidence_status": "primary_source_checked",
+        "evidence_verified_at": "2026-10-14T14:11:15.352175+00:00",
+        "editorial_packet": {
+          "topic": "Asana浏览器代理测试费用下降76倍",
+          "proposed_headline": "同样用AI，测试费用差了76倍？",
+          "stop_scroll_reason": "Asana报告浏览器代理测试模型成本大幅降低，关键是任务与模型匹配而非只用最贵的模型。",
+          "interest_reason": "付费工具与AI使用预算；这是企业测试结果，不承诺普通用户账单也降76倍。",
+          "china_relevance": "付费工具与AI使用预算；这是企业测试结果，不承诺普通用户账单也降76倍。",
+          "headline_options": [],
+          "headline_hooks": [
+            "同样用AI，测试费用差了76倍"
+          ]
+        }
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "a15a00e12fcb9961c39d959e",
+      "source": "openai_blog",
+      "source_type": "rss",
+      "canonical_url": "https://openai.com/index/pollo-ai",
+      "title": "Pollo AI turns creative ideas into campaigns with OpenAI",
+      "published_at": "2026-10-08T12:00:00Z",
+      "fetched_at": "2026-10-14T12:21:25.638347Z",
+      "language": "en-US",
+      "raw_excerpt": "With GPT-5.6, GPT-6 Astra, and GPT‑Image‑2.5, Pollo AI helps creators turn bold ideas into detailed images and cinematic video ads.",
+      "summary": "With GPT-5.6, GPT-6 Astra, and GPT‑Image‑2.5, Pollo AI helps creators turn bold ideas into detailed images and cinematic video ads.",
+      "tags": [
+        "Startup"
+      ],
+      "content_type": "TECH_SHIFT",
+      "source_reliability": 0.9,
+      "public_source_label": "海外科技圈",
+      "metadata": {
+        "original_url": "https://openai.com/index/pollo-ai",
+        "feed_url": "https://openai.com/news/rss.xml",
+        "evidence_scope": "公开原文核验；保留事实限定；摘要为编辑转述",
+        "source_tier": "B",
+        "evidence_role": "fact_verification",
+        "event_key": "pollo-creative",
+        "lane": "UTILITY_OPPORTUNITY",
+        "event_aliases": [],
+        "evidence_status": "primary_source_checked",
+        "evidence_verified_at": "2026-10-14T14:11:15.352175+00:00",
+        "editorial_packet": {
+          "topic": "创意团队用AI制作广告图与视频",
+          "proposed_headline": "一句创意，AI团队把它做成广告",
+          "stop_scroll_reason": "官方客户案例展示将创作想法变成图像和视频广告，吸引点是小团队能完成怎样的作品。",
+          "interest_reason": "创作者、小商家营销效率；没有实测免费资格，不标记免费福利。",
+          "china_relevance": "创作者、小商家营销效率；没有实测免费资格，不标记免费福利。",
+          "headline_options": [],
+          "headline_hooks": [
+            "一句创意，AI团队把它做成广告"
+          ]
+        }
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "770ace68b586c77dfe0962a6",
+      "source": "openai_blog",
+      "source_type": "rss",
+      "canonical_url": "https://openai.com/index/legalon-halves-codex-costs",
+      "title": "LegalOn halves Codex costs while maintaining development speed",
+      "published_at": "2026-10-08T12:00:00Z",
+      "fetched_at": "2026-10-14T12:21:25.638372Z",
+      "language": "en-US",
+      "raw_excerpt": "LegalOn cut estimated daily Codex costs by 65% while maintaining development speed. It matched Astra, Sol, and Luna to tasks and managed budgets strategically.",
+      "summary": "LegalOn cut estimated daily Codex costs by 65% while maintaining development speed. It matched Astra, Sol, and Luna to tasks and managed budgets strategically.",
+      "content_type": "TECH_SHIFT",
+      "source_reliability": 0.9,
+      "public_source_label": "海外科技圈",
+      "metadata": {
+        "original_url": "https://openai.com/index/legalon-halves-codex-costs",
+        "feed_url": "https://openai.com/news/rss.xml",
+        "evidence_scope": "公开原文核验；保留事实限定；摘要为编辑转述",
+        "source_tier": "B",
+        "evidence_role": "fact_verification",
+        "event_key": "legalon-cost",
+        "lane": "HUMAN_STORY",
+        "event_aliases": [],
+        "evidence_status": "primary_source_checked",
+        "evidence_verified_at": "2026-10-14T14:11:15.352175+00:00",
+        "editorial_packet": {
+          "topic": "LegalOn团队调整模型与预算降低成本",
+          "proposed_headline": "AI越贵越好？这团队换了用法",
+          "stop_scroll_reason": "LegalOn按任务分配模型并管理预算，自述降低成本而维持开发速度。",
+          "interest_reason": "钱与工具选择的反差；主要面向使用AI的专业团队，大众入口弱就降级。",
+          "china_relevance": "钱与工具选择的反差；主要面向使用AI的专业团队，大众入口弱就降级。",
+          "headline_options": [],
+          "headline_hooks": [
+            "AI越贵越好？这团队换了用法"
+          ]
+        }
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "f5e1b73974674617e5210e24",
+      "source": "microsoft_ai_blog",
+      "source_type": "rss",
+      "canonical_url": "https://blogs.microsoft.com/blog/2026/10/12/microsoft-to-expand-azure-maia-system-to-multi-gigawatt-deployments/",
+      "title": "Microsoft to expand Azure Maia system to multi-gigawatt deployments",
+      "author": "Scott Guthrie",
+      "published_at": "2026-10-12T13:01:29Z",
+      "fetched_at": "2026-10-14T12:21:30.237241Z",
+      "language": "en-US",
+      "raw_excerpt": "微软10月12日宣布2027年开始多吉瓦Maia部署，目标为微软产品服务的主要推理系统。Maia 200已服务生产负载；Maia 300的能效和吞吐数字是公司预期，不等于已经让用户订阅降价。",
+      "summary": "微软10月12日宣布2027年开始多吉瓦Maia部署，目标为微软产品服务的主要推理系统。Maia 200已服务生产负载；Maia 300的能效和吞吐数字是公司预期，不等于已经让用户订阅降价。",
+      "tags": [
+        "Featured",
+        "The Official Microsoft Blog"
+      ],
+      "content_type": "TECH_SHIFT",
+      "source_reliability": 0.9,
+      "public_source_label": "海外科技圈",
+      "metadata": {
+        "original_url": "https://blogs.microsoft.com/blog/2026/10/12/microsoft-to-expand-azure-maia-system-to-multi-gigawatt-deployments/",
+        "feed_url": "https://blogs.microsoft.com/feed/",
+        "evidence_scope": "公开原文核验；保留事实限定；摘要为编辑转述",
+        "source_tier": "B",
+        "evidence_role": "fact_verification",
+        "event_key": "maia-300",
+        "lane": "GLOBAL_HOT_TOPIC",
+        "event_aliases": [
+          "maia",
+          "nadella says"
+        ],
+        "evidence_status": "primary_source_checked",
+        "evidence_verified_at": "2026-10-14T14:11:15.352175+00:00",
+        "editorial_packet": {
+          "topic": "微软准备让自研芯片成为主要推理系统",
+          "proposed_headline": "微软AI算力，准备更多靠自己",
+          "stop_scroll_reason": "微软计划2027年扩张自研AI芯片部署，消费者关心的是服务成本和依赖关系，不能虚构降价承诺。",
+          "interest_reason": "AI服务基础设施变化；缺少直接日常利益时应低于大众热点。",
+          "china_relevance": "AI服务基础设施变化；缺少直接日常利益时应低于大众热点。",
+          "headline_options": [],
+          "headline_hooks": [
+            "微软AI算力，准备更多靠自己"
+          ]
+        }
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "1255e1e1d321c2f7bf50664f",
+      "source": "human_story_search",
+      "source_type": "hn_story_search",
+      "canonical_url": "https://pulseos.finance/",
+      "title": "Show HN: Pulse Local, a Mac budgeting app whose AI models run on your machine",
+      "author": "niztk",
+      "published_at": "2026-10-13T23:13:23Z",
+      "fetched_at": "2026-10-14T12:21:10.293192Z",
+      "language": "en",
+      "raw_excerpt": "Hi HN, I'm Niz. Pulse Local is a budgeting app for Mac (Apple Silicon, beta) that answers questions about your spending with models that run on your machine. Local mode needs no account. The ledger and your questions stay on the machine, and the app sends no analytics or crash logs. I felt there are not enough consumer apps that run locally with no calls to the outside world that help us manage sensitive corners of our lives. This app in its local variant only downloads a couple of models and occasional updates, it does not send any analytics nor data. Features-wise, Pulse local is a complete",
+      "summary": "Hi HN, I'm Niz. Pulse Local is a budgeting app for Mac (Apple Silicon, beta) that answers questions about your spending with models that run on your machine. Local mode needs no account. The ledger and your questions stay on the machine, and the app sends no analytics or crash logs. I felt there are not enough consumer apps that run locally with no calls to the outside world that help us manage sensitive corners of our lives. This app in its local variant only downloads a couple of models and occasional updates, it does not send any analytics nor data. Features-wise, Pulse local is a complete",
+      "engagement_metrics": {
+        "points": 115,
+        "comments": 70
+      },
+      "content_type": "AI_PRODUCT",
+      "source_reliability": 0.55,
+      "metadata": {
+        "original_url": "https://news.ycombinator.com/item?id=50080275",
+        "original_platform": "hacker_news",
+        "discussion_url": "https://news.ycombinator.com/item?id=50080275",
+        "matched_story_queries": [
+          "AI + I stopped"
+        ],
+        "discussion_comments": [
+          {
+            "id": "50080515",
+            "author": "terwint",
+            "parent": "50080275",
+            "url": "https://news.ycombinator.com/item?id=50080515",
+            "evidence": "Very nice project. I think this is is in the step of the right direction for agent-driven assistance. > How it works: you import a CSV from any bank, in any currency. I think this is where you're going to lose people. If you're having to pull in data from multiple different sources, each with their own flow for exporting, I think this might be a non-starter ",
+            "selection": "ranked_public_reply"
+          },
+          {
+            "id": "50080932",
+            "author": "niztk",
+            "parent": "50080515",
+            "url": "https://news.ycombinator.com/item?id=50080932",
+            "evidence": "Appreciate the feedback. There's also a connected mode leveraging Plaid where transactions pass through servers memory and never stored. Outside the US, CSV is the only path for now otherwise agree CSV export is a chore for multi-bank users.",
+            "selection": "ranked_public_reply"
+          },
+          {
+            "id": "50084443",
+            "author": "edarchis",
+            "parent": "50080275",
+            "url": "https://news.ycombinator.com/item?id=50084443",
+            "evidence": "> How it works: you import a CSV from any bank, in any currency. I dropped the CSV from my bank and only got 2 fields. I fixed the CSV and suddenly the IBAN BE12 3456 7890 123 became BE12 in Pulse First operation I did was switch it to Belgium. \"type to search\" Didn't work. Saving after manually setting it was a really long beach ball. Can't say I'm impresse",
+            "selection": "ranked_public_reply"
+          },
+          {
+            "id": "50084510",
+            "author": "niztk",
+            "parent": "50084443",
+            "url": "https://news.ycombinator.com/item?id=50084510",
+            "evidence": "Thanks for the feedback. Aware of the search field bug, already fixed in 0.4.1 which is shipping soon. Fixing European CSVs and cut IBAN now. Investigating the country-save hang. If you’re keen to retry, email me niz@pulseos.finance and will let you know.",
+            "selection": "ranked_public_reply"
+          },
+          {
+            "id": "50083997",
+            "author": "splittydev",
+            "parent": "50080275",
+            "url": "https://news.ycombinator.com/item?id=50083997",
+            "evidence": "I don't know if this is vibe-coded or something, but it works very badly. I tried to change the currency from USD to EUR. The filter dialogue didn't work, clicking it only focused the text field for a few milliseconds and I couldn't get a single character typed. Then I closed the settings, and the whole app froze until I had to force-quit it. Uninstalled alr",
+            "selection": "ranked_public_reply"
+          },
+          {
+            "id": "50084306",
+            "author": "niztk",
+            "parent": "50083997",
+            "url": "https://news.ycombinator.com/item?id=50084306",
+            "evidence": "Thanks again for the report. I did see that the app refreshed its window many times during the first model download and each refresh stole focus from the search field, that's why typing did not work. The fix is ready and shipping it soon (version 0.4.1) As for the freeze, I honestly couldn't reproduce it but I suspect it's due to the above symptoms and the f",
+            "selection": "ranked_public_reply"
+          },
+          {
+            "id": "50081963",
+            "author": "zyk_computer",
+            "parent": "50080275",
+            "url": "https://news.ycombinator.com/item?id=50081963",
+            "evidence": "I'm curious why you built a full budgeting app instead of adding a local AI chat to an existing open source app like Actual Budget.",
+            "selection": "ranked_public_reply"
+          },
+          {
+            "id": "50082010",
+            "author": "niztk",
+            "parent": "50081963",
+            "url": "https://news.ycombinator.com/item?id=50082010",
+            "evidence": "Thanks. Well, accuracy depends on the code that owns the ledger, which does all the math against the app data model. I also added checks that compare a couple of readings of the question through the same calculation layer. Since there are also many other moving parts coupled with the ledger (categories, rules, transfers, refunds), it just felt better to own ",
+            "selection": "ranked_public_reply"
+          },
+          {
+            "id": "50081052",
+            "author": "lathiat",
+            "parent": "50080275",
+            "url": "https://news.ycombinator.com/item?id=50081052",
+            "evidence": "I love the idea of local only apps woth no network comms. I do wish macOS had some way you could enforce that out of the box though. Rather than trust the claims of the developer. Another app I love that does the same. Queryable which lets you natural language search your photos on device on iOS and predates most of the current AI craze (2022) and also apple",
+            "selection": "ranked_public_reply"
+          },
+          {
+            "id": "50081125",
+            "author": "unsnap_biceps",
+            "parent": "50081052",
+            "url": "https://news.ycombinator.com/item?id=50081125",
+            "evidence": "Little snitch is the best solution for firewalling off applications from the network",
+            "selection": "ranked_public_reply"
+          },
+          {
+            "id": "50082106",
+            "author": "codebje",
+            "parent": "50080275",
+            "url": "https://news.ycombinator.com/item?id=50082106",
+            "evidence": "I gave it a go and imported a transaction CSV from my bank - National Australia Bank. 150 row CSV. The Description import column was assigned to the Merchant Name CSV column (the Merchant import column was also assigned to this CSV column) and as a result 25 rows were going to be ignored. Here's the CSV header row: Date,Amount,Account Number,,Transaction Typ",
+            "selection": "ranked_public_reply"
+          },
+          {
+            "id": "50082130",
+            "author": "niztk",
+            "parent": "50082106",
+            "url": "https://news.ycombinator.com/item?id=50082130",
+            "evidence": "Thanks for giving it a spin. Will fix the mapping.",
+            "selection": "ranked_public_reply"
+          }
+        ],
+        "evidence_scope": "公开原文核验；保留事实限定；摘要为编辑转述",
+        "comment_sampling": "ranked children plus one reply; no controversy metric available",
+        "event_key": "pulse-budget",
+        "lane": "HUMAN_STORY",
+        "event_aliases": [],
+        "evidence_status": "author_claim_access_unverified",
+        "evidence_verified_at": "2026-10-14T14:11:15.352175+00:00",
+        "editorial_packet": {
+          "topic": "开发者把AI记账分析留在Mac本地",
+          "proposed_headline": "让AI看账本，又不想上传账本",
+          "stop_scroll_reason": "作者做了一款Mac预算应用，让AI模型在用户机器运行，切中账本隐私但普适性需要检查。",
+          "interest_reason": "收入支出和隐私；不编造用户省钱结果，工具访问条件待核验。",
+          "china_relevance": "收入支出和隐私；不编造用户省钱结果，工具访问条件待核验。",
+          "headline_options": [],
+          "headline_hooks": [
+            "让AI看账本，又不想上传账本"
+          ]
+        },
+        "engagement_observed_at": "2026-10-15T02:56:50.686452+00:00"
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "854f5bd286dc700c53bc8a20",
+      "source": "hacker_news",
+      "source_type": "hacker_news",
+      "canonical_url": "https://pdftomp3.com/connect-ai/",
+      "title": "Show HN: Use your OpenAI subscription to create audiobooks",
+      "author": "janpmz",
+      "published_at": "2026-10-13T10:08:34Z",
+      "fetched_at": "2026-10-14T12:21:15.133650Z",
+      "language": "en",
+      "summary": "Show HN: Use your OpenAI subscription to create audiobooks",
+      "engagement_metrics": {
+        "points": 170,
+        "comments": 90
+      },
+      "content_type": "TECH_SHIFT",
+      "source_reliability": 0.65,
+      "public_source_label": "海外开发者社区",
+      "metadata": {
+        "original_url": "https://news.ycombinator.com/item?id=50069337",
+        "discussion_url": "https://news.ycombinator.com/item?id=50069337",
+        "evidence_scope": "公开原文核验；保留事实限定；摘要为编辑转述",
+        "event_key": "audiobook-tool",
+        "lane": "UTILITY_OPPORTUNITY",
+        "event_aliases": [],
+        "evidence_status": "author_claim_access_unverified",
+        "evidence_verified_at": "2026-10-14T14:11:15.352175+00:00",
+        "editorial_packet": {
+          "topic": "把现有AI订阅用于有声书工具的作者案例",
+          "proposed_headline": "已有AI订阅，能拿来做有声书？",
+          "stop_scroll_reason": "作者展示把AI订阅接入有声书制作工具，是否支持你的套餐和使用方式必须先核验。",
+          "interest_reason": "通勤、阅读与已有付费订阅的用途；没核实条款与收费，不能宣称免费即用。",
+          "china_relevance": "通勤、阅读与已有付费订阅的用途；没核实条款与收费，不能宣称免费即用。",
+          "headline_options": [],
+          "headline_hooks": [
+            "已有AI订阅，能拿来做有声书"
+          ]
+        },
+        "engagement_observed_at": "2026-10-15T02:56:50.686452+00:00",
+        "original_platform": "hacker_news"
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "5ce59f6a17e80fbcd89bd0fc",
+      "source": "hacker_news",
+      "source_type": "hacker_news",
+      "canonical_url": "https://guitoro.com/",
+      "title": "Show HN: Guitoro, a virtual guitar you strum with your keyboard",
+      "author": "talccc",
+      "published_at": "2026-10-13T19:11:48Z",
+      "fetched_at": "2026-10-14T12:21:15.129448Z",
+      "language": "en",
+      "raw_excerpt": "Guitoro is a free browser guitar using recordings of real instruments. You can strum with your keyboard, mouse, or touchscreen, choose acoustic, classical, electric guitar or bass, and see chord fingering and each stroke. Song practice can be slowed to 20%, and there are free chord tools and tuners. No signup or download. 1 minute video demo: https://youtu.be/DtcluMLdSgs I would love feedback on how the strumming feels and sounds.",
+      "summary": "Guitoro is a free browser guitar using recordings of real instruments. You can strum with your keyboard, mouse, or touchscreen, choose acoustic, classical, electric guitar or bass, and see chord fingering and each stroke. Song practice can be slowed to 20%, and there are free chord tools and tuners. No signup or download. 1 minute video demo: https://youtu.be/DtcluMLdSgs I would love feedback on how the strumming feels and sounds.",
+      "engagement_metrics": {
+        "points": 552,
+        "comments": 154
+      },
+      "source_reliability": 0.65,
+      "public_source_label": "海外开发者社区",
+      "metadata": {
+        "original_url": "https://news.ycombinator.com/item?id=50077020",
+        "discussion_url": "https://news.ycombinator.com/item?id=50077020",
+        "evidence_scope": "公开原文核验；保留事实限定；摘要为编辑转述",
+        "event_key": "virtual-guitar",
+        "lane": "UTILITY_OPPORTUNITY",
+        "event_aliases": [],
+        "evidence_status": "author_claim_access_unverified",
+        "evidence_verified_at": "2026-10-14T14:11:15.352175+00:00",
+        "editorial_packet": {
+          "topic": "浏览器里用键盘弹吉他",
+          "proposed_headline": "没买吉他，也能用键盘弹一段",
+          "stop_scroll_reason": "作者发布免费浏览器吉他，用键盘、鼠标或触屏拨弦，并使用真实乐器录音。",
+          "interest_reason": "直接能理解的娱乐与低成本体验；作者的免费宣称还需实际访问核验。",
+          "china_relevance": "直接能理解的娱乐与低成本体验；作者的免费宣称还需实际访问核验。",
+          "headline_options": [],
+          "headline_hooks": [
+            "没买吉他，也能用键盘弹一段"
+          ]
+        },
+        "engagement_observed_at": "2026-10-15T02:56:50.686452+00:00",
+        "original_platform": "hacker_news"
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "5d9d0aeaf025d80adb2a83c8",
+      "source": "hacker_news",
+      "source_type": "hacker_news",
+      "canonical_url": "https://lab.specr.net/rigged-draw/",
+      "title": "Show HN: How random are you?",
+      "author": "vunderba",
+      "published_at": "2026-10-13T16:57:57Z",
+      "fetched_at": "2026-10-14T12:21:15.130373Z",
+      "language": "en",
+      "summary": "Show HN: How random are you?",
+      "engagement_metrics": {
+        "points": 209,
+        "comments": 116
+      },
+      "source_reliability": 0.65,
+      "public_source_label": "海外开发者社区",
+      "metadata": {
+        "original_url": "https://news.ycombinator.com/item?id=50074909",
+        "discussion_url": "https://news.ycombinator.com/item?id=50074909",
+        "evidence_scope": "公开原文核验；保留事实限定；摘要为编辑转述",
+        "event_key": "random-human",
+        "lane": "WOW_WEIRD_INTERNET",
+        "event_aliases": [],
+        "evidence_status": "discussion_headline",
+        "evidence_verified_at": "2026-10-14T14:11:15.352175+00:00",
+        "editorial_packet": {
+          "topic": "一个测试人类随机性的公开实验",
+          "proposed_headline": "你以为随手选，其实有规律？",
+          "stop_scroll_reason": "公开实验邀请用户测试自己是否真的随机选择，标题入口有趣但结果与玩法尚待核验。",
+          "interest_reason": "好奇、自我认识和可参与体验；不能把未经检查的实验结果包装成科学结论。",
+          "china_relevance": "好奇、自我认识和可参与体验；不能把未经检查的实验结果包装成科学结论。",
+          "headline_options": [],
+          "headline_hooks": [
+            "你以为随手选，其实有规律"
+          ]
+        },
+        "engagement_observed_at": "2026-10-15T02:56:50.686452+00:00",
+        "original_platform": "hacker_news"
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "32aa3e2f453c148cfde98726",
+      "source": "hacker_news",
+      "source_type": "hacker_news",
+      "canonical_url": "https://machinelearning.apple.com/research/distributed-gpu-cloud",
+      "title": "A Dynamic and Distributed Virtual GPU Cloud Built on Idle Apple Silicon Devices",
+      "author": "acossta",
+      "published_at": "2026-10-13T12:26:36Z",
+      "fetched_at": "2026-10-14T07:24:50.415458Z",
+      "language": "en",
+      "summary": "A Dynamic and Distributed Virtual GPU Cloud Built on Idle Apple Silicon Devices",
+      "engagement_metrics": {
+        "points": 246,
+        "comments": 98
+      },
+      "source_reliability": 0.65,
+      "public_source_label": "海外开发者社区",
+      "metadata": {
+        "original_url": "https://news.ycombinator.com/item?id=50070593",
+        "discussion_url": "https://news.ycombinator.com/item?id=50070593",
+        "evidence_scope": "公开原文核验；保留事实限定；摘要为编辑转述",
+        "event_key": "apple-idle-cloud",
+        "lane": "GLOBAL_HOT_TOPIC",
+        "event_aliases": [],
+        "evidence_status": "discussion_headline",
+        "evidence_verified_at": "2026-10-14T14:11:15.352175+00:00",
+        "editorial_packet": {
+          "topic": "苹果研究用空闲设备组成分布式算力",
+          "proposed_headline": "闲着的苹果电脑，也能凑算力？",
+          "stop_scroll_reason": "苹果研究把闲置设备组成分布式算力，但它是否能改变普通人的费用仍缺少直接证据。",
+          "interest_reason": "闲置硬件与成本；技术研究不等于人人现在能赚钱或出租电脑。",
+          "china_relevance": "闲置硬件与成本；技术研究不等于人人现在能赚钱或出租电脑。",
+          "headline_options": [],
+          "headline_hooks": [
+            "闲着的苹果电脑，也能凑算力"
+          ]
+        },
+        "engagement_observed_at": "2026-10-15T02:56:50.686452+00:00",
+        "original_platform": "hacker_news"
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "68ceb9c6e39c0ba6ad2cdfac",
+      "source": "simon_willison",
+      "source_type": "rss",
+      "canonical_url": "https://simonwillison.net/2026/Oct/13/redesigning-source-control-at-anthropic/",
+      "title": "Redesigning source control at Anthropic",
+      "published_at": "2026-10-13T23:00:06Z",
+      "fetched_at": "2026-10-14T12:19:51.551397Z",
+      "language": "en-us",
+      "raw_excerpt": "Redesigning source control at Anthropic Interesting piece from Anthropic describing why and how they built their own custom alternative to Git, based on the dramatic increase in rate of changes to their code after the past six months. In May 2026, Anthropic averaged around 2,500 code changes merged per day; as of September, we merged over 30,000 per day. They included a chart showing those changes. I had Claude modify their chart ( code here ) to add markers for the public releases of each of their models in 2026: This shows public release dates, not the date when models became available for A",
+      "summary": "Redesigning source control at Anthropic Interesting piece from Anthropic describing why and how they built their own custom alternative to Git, based on the dramatic increase in rate of changes to their code after the past six months. In May 2026, Anthropic averaged around 2,500 code changes merged per day; as of September, we merged over 30,000 per day. They included a chart showing those changes. I had Claude modify their chart ( code here ) to add markers for the public releases of each of their models in 2026: This shows public release dates, not the date when models became available for A",
+      "tags": [
+        "git",
+        "migrations",
+        "version-control",
+        "ai",
+        "generative-ai",
+        "llms",
+        "anthropic",
+        "agentic-engineering"
+      ],
+      "source_reliability": 0.6,
+      "public_source_label": "海外科技圈",
+      "metadata": {
+        "original_url": "https://simonwillison.net/2026/Oct/13/redesigning-source-control-at-anthropic/",
+        "feed_url": "https://simonwillison.net/atom/everything/",
+        "evidence_scope": "公开原文核验；保留事实限定；摘要为编辑转述",
+        "source_tier": "S",
+        "evidence_role": "personal_author_account",
+        "event_key": "anthropic-version-control",
+        "lane": "GLOBAL_HOT_TOPIC",
+        "event_aliases": [],
+        "evidence_status": "discussion_headline",
+        "evidence_verified_at": "2026-10-14T14:11:15.352175+00:00",
+        "editorial_packet": {
+          "topic": "Anthropic重做开发版本管理流程",
+          "proposed_headline": "AI写代码太快，旧流程跟不上了？",
+          "stop_scroll_reason": "Anthropic工程文章讨论AI开发速度对版本管理的挑战，大众入口仍弱，不能因评论多就自动发。",
+          "interest_reason": "专业技术用户的协作问题，必须触发妈妈测试和程序员偏见检查。",
+          "china_relevance": "专业技术用户的协作问题，必须触发妈妈测试和程序员偏见检查。",
+          "headline_options": [],
+          "headline_hooks": [
+            "AI写代码太快，旧流程跟不上了"
+          ]
+        }
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "5e24b48196293980d63d3443",
+      "source": "telegram_public",
+      "source_type": "telegram_public",
+      "canonical_url": "https://t.me/aipost/8480",
+      "title": "❗️ Some students at Northwestern University are now asking whether they should stay in mathematics at all, after OpenAI posted hundreds of AI-generated papers on open problems in a",
+      "author": "aipost",
+      "published_at": "2026-10-14T11:02:01Z",
+      "fetched_at": "2026-10-14T14:16:07.050363Z",
+      "raw_excerpt": "❗️ Some students at Northwestern University are now asking whether they should stay in mathematics at all, after OpenAI posted hundreds of AI-generated papers on open problems in a single release. Antonio Auffinger, a professor of mathematics at Northwestern University says his own priority has moved to keeping talented people in the field and helping them grow. Source. @aipost 🏴",
+      "summary": "❗️ Some students at Northwestern University are now asking whether they should stay in mathematics at all, after OpenAI posted hundreds of AI-generated papers on open problems in a single release. Antonio Auffinger, a professor of mathematics at Northwestern University says his own priority has moved to keeping talented people in the field and helping them grow. Source. @aipost 🏴",
+      "engagement_metrics": {
+        "views": 1850
+      },
+      "content_type": "HUMAN_AI_STORY",
+      "source_reliability": 0.4,
+      "public_source_label": "海外社区",
+      "metadata": {
+        "original_url": "https://t.me/aipost/8480",
+        "original_platform": "telegram",
+        "evidence_scope": "public post text and displayed views; claims need corroboration",
+        "evidence_status": "public_post_unverified_claims",
+        "engagement_observed_at": "2026-10-14T22:16:07.037504+08:00",
+        "scan_observed_at": "2026-10-14T14:15:48.132428+00:00",
+        "editorial_packet": {
+          "topic": "公开帖子转述：AI数学进展让学生担忧专业",
+          "proposed_headline": "AI解题，让学生开始怀疑专业？",
+          "stop_scroll_reason": "一个公开帖子称数学学生因AI解题进展担心专业，但学生原始发言尚未核实。",
+          "interest_reason": "大学生的专业选择与职业焦虑；不能把频道转述当成学生群体的普遍事实。",
+          "china_relevance": "大学生的专业选择与职业焦虑；不能把频道转述当成学生群体的普遍事实。",
+          "headline_options": [],
+          "headline_hooks": [
+            "AI解题，让学生开始怀疑专业"
+          ]
+        },
+        "event_key": "lead-5e24b48196293980d63d3443",
+        "evidence_verified_at": "2026-10-14T14:20:57.662236+00:00"
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "2a90b2a2b4c5974a4c424b89",
+      "source": "live_news_search",
+      "source_type": "hot_search",
+      "canonical_url": "https://news.google.com/rss/articles/CBMilwJBVV95cUxNcUZyZkE2X041Wk55V2JZdmw2OEZvM05oREdaRXpUN1BkNlRaamc0d0lyRlZfSWF5NVEwRW4wdUpSTVNGdnZHV0FGZlY2TGJJVFpWX2FxaTlZTVBHREJjcmhySHdKZVFHTUhxTGpmbGRCcWwwR2dDc2doc1o1REJnVXBxYU5QLXRMMWExZ2JEUVVZdHRudDQyZmltcXByOFlqbW5NNzR3NThaa0U1NkExM2ppV3JLdTh1QjdYM3ZBT3k0V1BjVmhqVjhtSFlfekxFUXo4bEdTd3FFS2xXOUdEbkhKWk9UOHhxQW5LRlg4SXR4SExBdGRGLWJpYi1xejdDbWJYaWd3SDJtY3VOTHRDWkxSM0VSa3PSAZwCQVVfeXFMTU5aQmhFR0cwQm4xU2ZaeVFDazNKVGd5c0FWVjZqdXNPWFYxVW1KRjBJVEttYjF2OEk0eFFNRTFWVHlGSW40VFUxRC1ZdVlnYWZYeUp0TXB2bmE5dklmR01TNXRNRk9FdXFuN196SzlDRTd1N0E2UmdOTDRqRlJMcDVmdXZXN1RwQjFMMnNBMXB6bEtUR29XNW9qTjJXSzFkam15VGt3UEVOQlFvQldNdFp6Ym9acEFNamJYTXVobFZLQ0FoRGdIVWZQSVZhbTFuR0RmUmNaS1hySy1vTUJ5dGFFWWlIdk9PMzFuNUlPR3RHQ2puQUZkVldkZkl3R0x3TFpQWWRqMHdmSlR4ZzFuNTNNT09HR2F4c1V4XzY?oc=5",
+      "title": "Netflix announces its biggest layoffs to date, to fire 6% employees. Read the full letter of co-CEOs to st - The Economic Times",
+      "published_at": "2026-10-14T14:05:22Z",
+      "fetched_at": "2026-10-14T14:16:07.041795Z",
+      "raw_excerpt": "Netflix announces its biggest layoffs to date, to fire 6% employees. Read the full letter of co-CEOs to st The Economic Times",
+      "summary": "Netflix announces its biggest layoffs to date, to fire 6% employees. Read the full letter of co-CEOs to st The Economic Times",
+      "content_type": "CAREER_SHIFT",
+      "source_reliability": 0.4,
+      "metadata": {
+        "original_url": "https://news.google.com/rss/articles/CBMilwJBVV95cUxNcUZyZkE2X041Wk55V2JZdmw2OEZvM05oREdaRXpUN1BkNlRaamc0d0lyRlZfSWF5NVEwRW4wdUpSTVNGdnZHV0FGZlY2TGJJVFpWX2FxaTlZTVBHREJjcmhySHdKZVFHTUhxTGpmbGRCcWwwR2dDc2doc1o1REJnVXBxYU5QLXRMMWExZ2JEUVVZdHRudDQyZmltcXByOFlqbW5NNzR3NThaa0U1NkExM2ppV3JLdTh1QjdYM3ZBT3k0V1BjVmhqVjhtSFlfekxFUXo4bEdTd3FFS2xXOUdEbkhKWk9UOHhxQW5LRlg4SXR4SExBdGRGLWJpYi1xejdDbWJYaWd3SDJtY3VOTHRDWkxSM0VSa3PSAZwCQVVfeXFMTU5aQmhFR0cwQm4xU2ZaeVFDazNKVGd5c0FWVjZqdXNPWFYxVW1KRjBJVEttYjF2OEk0eFFNRTFWVHlGSW40VFUxRC1ZdVlnYWZYeUp0TXB2bmE5dklmR01TNXRNRk9FdXFuN196SzlDRTd1N0E2UmdOTDRqRlJMcDVmdXZXN1RwQjFMMnNBMXB6bEtUR29XNW9qTjJXSzFkam15VGt3UEVOQlFvQldNdFp6Ym9acEFNamJYTXVobFZLQ0FoRGdIVWZQSVZhbTFuR0RmUmNaS1hySy1vTUJ5dGFFWWlIdk9PMzFuNUlPR3RHQ2puQUZkVldkZkl3R0x3TFpQWWRqMHdmSlR4ZzFuNTNNT09HR2F4c1V4XzY?oc=5",
+        "search_query": "AI jobs layoffs hiring",
+        "search_window_hours": 24,
+        "discovery_channel": "hot_topic",
+        "evidence_status": "search_only",
+        "evidence_scope": "search result; publisher text not verified",
+        "scan_observed_at": "2026-10-14T14:15:48.132428+00:00",
+        "editorial_packet": {
+          "topic": "报道线索：Netflix动画业务裁员",
+          "proposed_headline": "Netflix动画业务传出大裁员",
+          "stop_scroll_reason": "搜索结果出现动画业务大裁员报道，直接碰到创意职业，但规模与AI因果关系尚未核验。",
+          "interest_reason": "创作职业与就业；不能宣称AI造成裁员，不能虚构具体人数。",
+          "china_relevance": "创作职业与就业；不能宣称AI造成裁员，不能虚构具体人数。",
+          "headline_options": [],
+          "headline_hooks": [
+            "Netflix动画业务传出大裁员"
+          ]
+        },
+        "event_key": "lead-2a90b2a2b4c5974a4c424b89",
+        "evidence_verified_at": "2026-10-14T14:20:57.670502+00:00"
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "89b12f3cfb213d363778c932",
+      "source": "live_news_search",
+      "source_type": "hot_search",
+      "canonical_url": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxPUi04VG53NGg5eV9GWTg4NmxvNzNROU9UenhvLU1sRzhWVGJkSExqZGh4S3lYU2hGUGQ0VUgyLUpTYm1fWmxtY21OZDNkeU90cFFhLXZ6MU1xalFPTDVsX2otemVDT1g2WkwyNF91d0lNU05wbDhuUVgxdVNsOUpfQWF1RjFFY1VObDU1RjhKcktHckpSdlNJak9tMEF4Ung4dFB5THlpY2Q5cGMzalZMQ1R0Yk9HZThXNHpuaEZUdHV5alNzSnNrMHIyYkU5M2hJNDROa0IwVzhGRDdQUGVOVWRwNzhUSnphWHBiSV9Qd0VzOHpiVlZGSldnY1Fyakk?oc=5",
+      "title": "Tech layoffs tracker 2026: All the job losses across Netflix, Amazon, Apple, Oracle, TikTok, Meta and others - Yahoo Tech",
+      "published_at": "2026-10-14T13:35:00Z",
+      "fetched_at": "2026-10-14T14:16:07.041607Z",
+      "raw_excerpt": "Tech layoffs tracker 2026: All the job losses across Netflix, Amazon, Apple, Oracle, TikTok, Meta and others Yahoo Tech",
+      "summary": "Tech layoffs tracker 2026: All the job losses across Netflix, Amazon, Apple, Oracle, TikTok, Meta and others Yahoo Tech",
+      "content_type": "CAREER_SHIFT",
+      "source_reliability": 0.4,
+      "metadata": {
+        "original_url": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxPUi04VG53NGg5eV9GWTg4NmxvNzNROU9UenhvLU1sRzhWVGJkSExqZGh4S3lYU2hGUGQ0VUgyLUpTYm1fWmxtY21OZDNkeU90cFFhLXZ6MU1xalFPTDVsX2otemVDT1g2WkwyNF91d0lNU05wbDhuUVgxdVNsOUpfQWF1RjFFY1VObDU1RjhKcktHckpSdlNJak9tMEF4Ung4dFB5THlpY2Q5cGMzalZMQ1R0Yk9HZThXNHpuaEZUdHV5alNzSnNrMHIyYkU5M2hJNDROa0IwVzhGRDdQUGVOVWRwNzhUSnphWHBiSV9Qd0VzOHpiVlZGSldnY1Fyakk?oc=5",
+        "search_query": "AI jobs layoffs hiring",
+        "search_window_hours": 24,
+        "discovery_channel": "hot_topic",
+        "evidence_status": "search_only",
+        "evidence_scope": "search result; publisher text not verified",
+        "scan_observed_at": "2026-10-14T14:15:48.132428+00:00",
+        "editorial_packet": {
+          "topic": "报道线索：海外科技公司裁员汇总",
+          "proposed_headline": "科技公司裁员清单，又更新了",
+          "stop_scroll_reason": "多家科技公司裁员汇总引出就业问题，但每项人数、日期与因果关系都要分别核验。",
+          "interest_reason": "职业机会与风险；裁员不自动等于AI替代，不以汇总标题推断中国就业。",
+          "china_relevance": "职业机会与风险；裁员不自动等于AI替代，不以汇总标题推断中国就业。",
+          "headline_options": [],
+          "headline_hooks": [
+            "科技公司裁员清单，又更新了"
+          ]
+        },
+        "event_key": "lead-89b12f3cfb213d363778c932",
+        "evidence_verified_at": "2026-10-14T14:20:57.681976+00:00"
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "e04c4d51f8712ba67fbfaaee",
+      "source": "live_news_search",
+      "source_type": "hot_search",
+      "canonical_url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQaVlzQ2o2VFRhOUpEM25YNzRiTUF4VkNjOGNxWDJKVnYzeXZ6bVZGV3Y4LS1qWkk4TDdLQXlGQUpUOXVzRVlrY1pVOUhoQ1RyM05OejZkWmhKRzlsMmN6TzAwQ1YyY05xWDg2ZjJTM0dfM0VhRUU5Wm5iRzc4WnVQeE9qdm5IRGdhM1R0Zl9kNHFXdw?oc=5",
+      "title": "Adobe software dupe maker takes on Microsoft Office, releasing free versions of Word, Powerpoint, and Excel - Mashable",
+      "published_at": "2026-10-14T12:29:19Z",
+      "fetched_at": "2026-10-14T14:16:07.042401Z",
+      "raw_excerpt": "Adobe software dupe maker takes on Microsoft Office, releasing free versions of Word, Powerpoint, and Excel Mashable",
+      "summary": "Adobe software dupe maker takes on Microsoft Office, releasing free versions of Word, Powerpoint, and Excel Mashable",
+      "source_reliability": 0.4,
+      "metadata": {
+        "original_url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQaVlzQ2o2VFRhOUpEM25YNzRiTUF4VkNjOGNxWDJKVnYzeXZ6bVZGV3Y4LS1qWkk4TDdLQXlGQUpUOXVzRVlrY1pVOUhoQ1RyM05OejZkWmhKRzlsMmN6TzAwQ1YyY05xWDg2ZjJTM0dfM0VhRUU5Wm5iRzc4WnVQeE9qdm5IRGdhM1R0Zl9kNHFXdw?oc=5",
+        "search_query": "AI free tools new release",
+        "search_window_hours": 24,
+        "discovery_channel": "hot_topic",
+        "evidence_status": "search_only",
+        "evidence_scope": "search result; publisher text not verified",
+        "scan_observed_at": "2026-10-14T14:15:48.132428+00:00",
+        "editorial_packet": {
+          "topic": "报道线索：免费办公软件替代品",
+          "proposed_headline": "免费办公软件，又有新替代品？",
+          "stop_scroll_reason": "搜索结果出现免费文档、表格与幻灯片工具报道，但官方价格和使用资格尚未核实。",
+          "interest_reason": "学生与打工人的软件费用；未核实前不能承诺国内用户可用或免费。",
+          "china_relevance": "学生与打工人的软件费用；未核实前不能承诺国内用户可用或免费。",
+          "headline_options": [],
+          "headline_hooks": [
+            "免费办公软件，又有新替代品"
+          ]
+        },
+        "event_key": "lead-e04c4d51f8712ba67fbfaaee",
+        "evidence_verified_at": "2026-10-14T14:20:57.689495+00:00"
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "15611aa550c8fd39217a24f3",
+      "source": "live_news_search",
+      "source_type": "hot_search",
+      "canonical_url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQcTFWSG54Tzc3blMxTE1WSGJIQzF0MkxPOHJwU2YteTVMR2dKTXVNYVZqekptay1seW9YU1A4MmpFdmgwTmFVaFFtVEl4Q2VYVFpnSXVYQlZKT25zTURsQllGTU91YXk0X1ducWtjRzJXWDMtaHgwTnlmSUV5UnZTRGtTc1l5WjJza2xnVTlPVklBeDY4cnZMWTFpVXMzRV90ekh4bnVpSWMxWG1jQzBTclE3YTFfTzVkblc1cnBOUzROV2NBVU5V?oc=5",
+      "title": "Musk said AI would fix U.S. debt in 3 years. Nearly a year later, debt has hit $40 trillion - TheStreet",
+      "published_at": "2026-10-14T12:30:00Z",
+      "fetched_at": "2026-10-14T14:16:07.043467Z",
+      "raw_excerpt": "Musk said AI would fix U.S. debt in 3 years. Nearly a year later, debt has hit $40 trillion TheStreet",
+      "summary": "Musk said AI would fix U.S. debt in 3 years. Nearly a year later, debt has hit $40 trillion TheStreet",
+      "content_type": "BIG_PERSON_IDEA",
+      "source_reliability": 0.4,
+      "metadata": {
+        "original_url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQcTFWSG54Tzc3blMxTE1WSGJIQzF0MkxPOHJwU2YteTVMR2dKTXVNYVZqekptay1seW9YU1A4MmpFdmgwTmFVaFFtVEl4Q2VYVFpnSXVYQlZKT25zTURsQllGTU91YXk0X1ducWtjRzJXWDMtaHgwTnlmSUV5UnZTRGtTc1l5WjJza2xnVTlPVklBeDY4cnZMWTFpVXMzRV90ekh4bnVpSWMxWG1jQzBTclE3YTFfTzVkblc1cnBOUzROV2NBVU5V?oc=5",
+        "search_query": "Elon Musk AI interview announcement",
+        "search_window_hours": 24,
+        "discovery_channel": "celebrity_watch",
+        "evidence_status": "search_only",
+        "evidence_scope": "search result; publisher text not verified",
+        "scan_observed_at": "2026-10-14T14:15:48.132428+00:00",
+        "editorial_packet": {
+          "topic": "媒体追踪：马斯克的AI债务预测",
+          "proposed_headline": "马斯克的AI预测，兑现了吗？",
+          "stop_scroll_reason": "媒体把马斯克过去的AI债务预测与后续现实对照，但原话日期和统计口径还需核验。",
+          "interest_reason": "大人物预测与现实的反差；不提供金融判断，不以单篇标题断言成败。",
+          "china_relevance": "大人物预测与现实的反差；不提供金融判断，不以单篇标题断言成败。",
+          "headline_options": [],
+          "headline_hooks": [
+            "马斯克的AI预测，兑现了吗"
+          ]
+        },
+        "event_key": "lead-15611aa550c8fd39217a24f3",
+        "evidence_verified_at": "2026-10-14T14:20:57.697263+00:00"
+      },
+      "discovery_score": 0.0,
+      "total_score": 0.0
+    },
+    {
+      "id": "tv4-deletion-correction-20261014",
+      "source": "TV4",
+      "source_type": "manual",
+      "canonical_url": "https://www.tv4.se/artikel/2iwfK5MNpFID98pxQbsC7t/hel-saesong-av-tv4-programmet-raderat-av-ai",
+      "title": "TV4 denies AI agent deleted edited season of The Challenge",
+      "published_at": "2026-10-14T09:14:00+00:00",
+      "fetched_at": "2026-10-15T02:56:50.686452+00:00",
+      "raw_excerpt": "TV4 10月14日报道：The Challenge已剪辑的一季节目被删除，首播推迟至2027年。Aftonbladet把删除归因于AI Agent；TV4节目负责人Mia Lindqvist明确否认是AI Agent所为，称备份失败，原始素材仍在，需从头重新剪辑。不能把AI删片当作已证实事实，也不能写全部原始素材永久丢失。",
+      "engagement_metrics": {},
+      "metadata": {
+        "lane": "WOW_WEIRD_INTERNET",
+        "event_key": "tv4-deletion",
+        "event_aliases": [
+          "tv4 postpones",
+          "the challenge until 2027"
+        ],
+        "evidence_status": "primary_source_checked",
+        "evidence_verified_at": "2026-10-15T02:56:50.686452+00:00",
+        "contradicted_claims": [
+          "AI Agent已被证实删除了整季节目",
+          "所有原始素材已丢失"
+        ],
+        "editorial_packet": {
+          "topic": "一季节目被删，电视台否认是AI干的",
+          "proposed_headline": "一季节目被删，真是AI干的？",
+          "stop_scroll_reason": "成片没了、节目延期，但电视台否认是AI删片：爆点故事先遇到了事实反转。",
+          "interest_reason": "百日工作、备份与把锅甩给AI；任何做过文档或剪视频的人都能理解。",
+          "china_relevance": "日常工作成果、备份和AI责任边界；不要求认识这档瑞典节目。",
+          "max_publishable_claim": "TV4确认节目成片丢失、需重剪并延期至2027年；节目负责人否认是AI Agent所为，原始素材还在。",
+          "cover_line": "成片没了，原始素材还在；电视台否认“AI删片”。",
+          "why_might_not_click": "不认识这档节目；AI删片的流行说法已遭当事方否认，不能继续用它做确定性钩子。",
+          "headline_options": [
+            "一季节目被删，电视台先给AI辟谣",
+            "成片没了，电视台否认是AI干的",
+            "节目没了，先别急着把锅甩给AI",
+            "剪好的节目没了，原始素材还在",
+            "百天剪辑要重来，备份没顶住",
+            "全季成片被删，真是AI闯的祸？",
+            "不是AI删片？电视台回应了",
+            "一季综艺延期，备份先出了问题",
+            "原片还在，百天剪辑却得重来",
+            "电视台否认AI删片，节目仍延期",
+            "AI背了锅？电视台否认删片说",
+            "整季节目重剪，AI删片说被否认",
+            "成片消失后，电视台先否认AI",
+            "百天工作要重来，锅该谁背",
+            "节目推迟到明年，原片并没丢",
+            "一季成片被删，备份为何没救场",
+            "先说AI删片，电视台却否认了",
+            "几个月剪辑归零，原片仍在",
+            "节目丢了，AI删片却未被证实",
+            "把锅甩给AI之前，先看看备份"
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -6,6 +6,8 @@
 >
 > 多赛道、热点主动搜索、公开 Telegram、人物监控、真实 DISLIKE 与闸门说明见 [CONTENT_SELECTION_V2.md](docs/CONTENT_SELECTION_V2.md)。
 
+V1.5沿用六赛道主线，加入可解释Stop Scroll、claim边界、20标题赛马、真实互动参照库和Blind Top 5。当前修正轮只生成内部候选报告，禁止自动发布。
+
 
 持续发现海外 AI、科技、人物观点、工作变化和互联网讨论，生成供 ChatGPT 与用户判断的高质量候选素材。工程初筛不替代最终编辑判断，不自动发布小红书。
 

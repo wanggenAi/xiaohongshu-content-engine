@@ -12,8 +12,15 @@ from datetime import UTC, datetime, timedelta
 from difflib import SequenceMatcher
 from pathlib import Path
 
+from .editorial_calibration import (
+    calibrate,
+    editorial_rank,
+    run_tournament_and_blind,
+    write_blind_report,
+)
 from .editorial_screening import SemanticJudge
 from .models import EditorialFeedback
+from .viral_references import build_library, write_reference_report
 
 LANES = (
     "GLOBAL_HOT_TOPIC",
@@ -65,6 +72,22 @@ def candidate_pool(items, people, config, now, mass_config=None):
         if i.published_at
         and i.published_at.tzinfo
         and timedelta(0) <= now - i.published_at <= timedelta(days=7)
+    ]
+    # The 7d window only fills gaps with continuing measured heat or documented information gap.
+    fresh = [
+        i
+        for i in fresh
+        if now - i.published_at <= timedelta(hours=72)
+        or i.metadata.get("china_dissemination_evidence")
+        or (
+            mass_config
+            and (social_heat(i, mass_config) or 0) >= 80
+            and i.metadata.get("engagement_observed_at")
+            and timedelta(0)
+            <= now
+            - datetime.fromisoformat(i.metadata["engagement_observed_at"].replace("Z", "+00:00"))
+            <= timedelta(hours=24)
+        )
     ]
     # This only bounds inference cost. Lane richness and first-person completeness give no bonus.
     fresh.sort(
@@ -162,6 +185,7 @@ class MassJudge(SemanticJudge):
                 "url": item.canonical_url,
                 "published_at": item.published_at.isoformat() if item.published_at else None,
                 "readable_evidence": item.raw_excerpt,
+                "visual_assets": item.metadata.get("visual_assets", []),
                 "evidence_status": item.metadata.get("evidence_status"),
                 "evidence_scope": item.metadata.get("evidence_scope"),
                 "observed_engagement": item.engagement_metrics,
@@ -269,7 +293,7 @@ class MassJudge(SemanticJudge):
         return request, f"mass_judgment:{digest}"
 
 
-def absolute_gate(row, gate, pool_count, scan_at, now, disliked=False):
+def legacy_absolute_gate(row, gate, pool_count, scan_at, now, disliked=False):
     reasons = []
     if disliked:
         reasons.append("explicit_user_DISLIKE")
@@ -299,6 +323,71 @@ def absolute_gate(row, gate, pool_count, scan_at, now, disliked=False):
         return "NO_PUBLISH", reasons
     if score < gate["publishability"]:
         reasons.append("publishability_below_75")
+    return ("REVIEW_ONLY" if reasons else "AUTO_PUBLISH_ELIGIBLE"), reasons
+
+
+def absolute_gate(row, gate, pool_count, scan_at, now, disliked=False):
+    """Hard facts cannot be traded for clicks; soft quality uses calibrated scores."""
+    reasons = []
+    hard = row.get("hard_gates", {})
+    if disliked:
+        reasons.append("explicit_user_DISLIKE")
+    for key in ("evidence", "scope", "safety", "fabrication"):
+        if hard.get(key) != "PASS":
+            reasons.append(f"hard_{key}_{hard.get(key, 'UNKNOWN').lower()}")
+    if row.get("headline_claim_status", "UNKNOWN") != "PASS":
+        reasons.append("chosen_headline_claim_failed_or_unknown")
+    if (row.get("headline_strength") or 0) < gate["title_potential"]:
+        reasons.append("chosen_headline_needs_improvement")
+    if pool_count < gate["minimum_candidates"]:
+        reasons.append("fewer_than_20_unique_candidates")
+    if not scan_at or not timedelta(0) <= now - scan_at <= timedelta(
+        hours=gate["max_scan_age_hours"]
+    ):
+        reasons.append("live_hot_scan_missing_or_expired")
+    if not row.get("calibration_complete"):
+        reasons.append("calibration_incomplete")
+    for field, threshold in (
+        ("mass_appeal_score", gate["mass_appeal"]),
+        ("stop_scroll_score", gate["stop_scroll"]),
+        ("title_potential_score", gate["title_potential"]),
+    ):
+        if row.get(field) is None or row[field] < threshold:
+            reasons.append(f"{field}_below_{threshold}_or_unknown")
+    # Two graded perspectives replace random one-shot PASS/FAIL. Large disagreement is reviewed.
+    if row.get("non_tech_reader_score", 0) < 60:
+        reasons.append("non_tech_reader_entrance_weak_or_unknown")
+    if row.get("programmer_bias_score", 100) >= 60:
+        reasons.append("programmer_bias_warning")
+    if row.get("soft_evaluator_disagreements"):
+        reasons.append("soft_evaluator_disagreement")
+    if row.get("score_distribution_conflict"):
+        reasons.append("mass_assessment_bimodal")
+    if row.get("requires_title_tournament") and not row.get("blind_click_winner"):
+        reasons.append("twenty_headline_tournament_incomplete")
+    if row.get("homepage_blind_required") and not row.get("homepage_blind_complete"):
+        reasons.append("homepage_blind_incomplete")
+    if row.get("negative_pattern_warning") and (row.get("non_tech_reader_score") or 0) < 75:
+        reasons.append("NEGATIVE_PATTERN_MATCH")
+    if not (
+        (row.get("viral_potential") or 0) >= gate["viral_potential"]
+        or (row.get("social_heat") or 0) >= gate["extreme_social_heat"]
+        or (
+            (row.get("viral_pattern_similarity") or 0) >= 80
+            and (row.get("non_tech_reader_score") or 0) >= 75
+            and (row.get("mass_appeal_score") or 0) >= 70
+        )
+    ):
+        reasons.append("insufficient_viral_heat_or_grounded_reference_match")
+    if row.get("lane") == "BIG_PERSON" and (row.get("substantive_action") or 0) < 60:
+        reasons.append("celebrity_without_substantive_action")
+    score = row.get("final_editorial_priority")
+    if disliked or "FAIL" in hard.values() or score is None or score < gate["no_publish_below"]:
+        return "NO_PUBLISH", reasons
+    if score < gate["publishability"]:
+        reasons.append("final_priority_below_75")
+    if score >= 70 and score < 75:
+        return "EDITOR_REVIEW_REQUIRED", reasons
     return ("REVIEW_ONLY" if reasons else "AUTO_PUBLISH_ELIGIBLE"), reasons
 
 
@@ -377,6 +466,13 @@ def compose(item, response, mode, error, config, pool_count, scan_at, now, disli
             and answers["lane"].confidence >= config["gate"]["minimum_score_confidence"]
         )
         threshold = config["gate"]["boolean_probability"]
+        row["score_distribution_conflict"] = [
+            k
+            for k in config["weights"]
+            if k in answers
+            and answers[k].probabilities.get("0", 0) >= 0.25
+            and answers[k].probabilities.get("4", 0) >= 0.25
+        ]
         for name in ("stop_scroll", "non_tech_reader", "evidence", "title_potential"):
             row[name + "_test"] = "PASS" if answers[name].noul >= threshold else "FAIL"
         row["contrarian_check"] = "PASS" if answers["contrarian"].noul <= 1 - threshold else "WARN"
@@ -404,27 +500,21 @@ def compose(item, response, mode, error, config, pool_count, scan_at, now, disli
         row["evidence_test"] = "FAIL"
     if not packet.get("proposed_headline") or len(packet["proposed_headline"]) > 20:
         row["title_potential_test"] = "FAIL"
-    row["verdict"], row["gate_failures"] = absolute_gate(
+    row["verdict"], row["gate_failures"] = legacy_absolute_gate(
         row, config["gate"], pool_count, scan_at, now, disliked
     )
     return row
 
 
 def write_report(root, rows, audit, pool, now):
-    rows.sort(
-        key=lambda r: (
-            r["publishability_score"] is not None,
-            r["publishability_score"] or 0,
-            r["mass_appeal_score"] or 0,
-        ),
-        reverse=True,
-    )
+    rows.sort(key=editorial_rank, reverse=True)
     count24 = sum(
         bool(i.published_at and timedelta(0) <= now - i.published_at <= timedelta(hours=24))
         for i in pool
     )
     result = {
         "generated_at": now.isoformat(),
+        "selection_version": "V1.5",
         "scan": audit,
         "candidate_count": len(rows),
         "assessed_candidate_count": sum(r["mass_appeal_score"] is not None for r in rows),
@@ -432,6 +522,15 @@ def write_report(root, rows, audit, pool, now):
         "provider_modes": dict(Counter(r["semantic_status"] for r in rows)),
         "unique_pool_count": len(pool),
         "current_24h_pool_count": count24,
+        "current_72h_pool_count": sum(
+            bool(i.published_at and timedelta(0) <= now - i.published_at <= timedelta(hours=72))
+            for i in pool
+        ),
+        "viral_reference_count": audit.get("viral_reference_count", 0),
+        "real_high_engagement_reference_count": audit.get(
+            "real_high_engagement_reference_count", 0
+        ),
+        "blind_top5": audit.get("blind_top5", {}),
         "lane_counts": {lane: sum(r["lane"] == lane for r in rows) for lane in LANES},
         "story_mining_count": json.loads(
             (root / "outputs" / "editorial_screening.json").read_text()
@@ -468,6 +567,10 @@ def write_report(root, rows, audit, pool, now):
             f"Lane：{result['lane_counts']}。"
         ),
         "",
+        f"72h池 {result['current_72h_pool_count']}；"
+        f"Viral References {result['viral_reference_count']}；"
+        f"真实高互动参照 {result['real_high_engagement_reference_count']}。",
+        "",
         (
             "热度仅使用实际取得的平台指标；未知保持 UNKNOWN。"
             "国内信息差没有传播检索证据时最多3.5/10。"
@@ -476,8 +579,8 @@ def write_report(root, rows, audit, pool, now):
         "",
         "## Top 20",
         "",
-        "|排名|Topic|Lane|Mass|Heat|Human|Viral|Publishability|Gate|",
-        "|---|---|---|---:|---:|---:|---:|---:|---|",
+        "|排名|Topic|Mass|Stop|Title|Similarity|Heat|Visual|Evidence|Final Priority|Gate|",
+        "|---|---|---:|---:|---:|---:|---:|---:|---|---:|---|",
     ]
     for i, r in enumerate(rows[:20], 1):
         lines.append(
@@ -486,17 +589,13 @@ def write_report(root, rows, audit, pool, now):
             "|"
             f"{r['topic'].replace('|', '/')}"
             "|"
-            f"{r['lane']}"
-            "|"
             f"{value(r['mass_appeal_score'])}"
             "|"
+            f"{value(r.get('stop_scroll_score'))}|{value(r.get('title_potential_score'))}|{value(r.get('viral_pattern_similarity'))}|"
             f"{value(r['social_heat'])}"
             "|"
-            f"{value(r['human_trigger_score'])}"
-            "|"
-            f"{value(r['viral_potential'])}"
-            "|"
-            f"{value(r['publishability_score'])}"
+            f"{value(r.get('visual_asset_strength'))}|{r.get('evidence_level', 'UNKNOWN')}|"
+            f"{value(r.get('final_editorial_priority'))}"
             "|"
             f"{r['verdict']}"
             "|"
@@ -507,6 +606,19 @@ def write_report(root, rows, audit, pool, now):
             f"### {i}. {r['topic']}",
             "",
             f"- 标题：{r['proposed_headline'] or '待核验后拟定'}",
+            f"- Stop Scroll Score：{r.get('stop_scroll_score')}；"
+            f"Title Potential：{r.get('title_potential_score')}；"
+            f"Viral Similarity：{r.get('viral_pattern_similarity')}；"
+            f"Visual Strength：{r.get('visual_asset_strength')}。",
+            f"- Evidence Level：{r.get('evidence_level')}；"
+            f"Evidence Fitness：{r.get('evidence_fitness')}；"
+            f"Final Editorial Priority：{r.get('final_editorial_priority')}。",
+            f"- Max Publishable Claim：{r.get('max_publishable_claim')}；"
+            f"Hard Gates：{r.get('hard_gates')}。",
+            f"- Why I Would Click：{r.get('why_would_click')}；"
+            f"Why I Might Not Click：{r.get('why_might_not_click')}。",
+            f"- 旧闸门：{r.get('legacy_verdict')}；旧失败项：{r.get('legacy_gate_failures')}；"
+            f"软评估分歧：{r.get('soft_evaluator_disagreements')}。",
             (
                 "- Lane："
                 f"{r['lane']}"
@@ -569,6 +681,14 @@ def write_report(root, rows, audit, pool, now):
                 "身不给发布资格。旧帖 Viral 39.58，且用户明确 DISLIKE，因此 NO_PUBLISH；原帖保留。"
             ),
         ]
+    lines += ["", "## Blind Top 5", "", "独立请求仅看到标题与封面；不是真实用户点击实验。", ""]
+    for entry in result["blind_top5"].get("ranking", []):
+        lines.append(f"{entry['rank']}. **{entry['title']}** — {entry['cover_line']}")
+    lines += [
+        "",
+        f"算法/盲排严重分歧：{result['blind_top5'].get('ranking_conflict', 'UNKNOWN')}。",
+        "",
+    ]
     lines += [
         "",
         "## 来源状态与数量",
@@ -620,6 +740,8 @@ def select(root, store, provider, config, lanes, people, audit, now=None, http=N
         packets.extend(
             ContentItem.model_validate(row) for row in json.loads(path.read_text()).get("items", [])
         )
+    # Later reviewed packets replace earlier snapshots of the same source, not the source date.
+    packets = list({p.canonical_url.rstrip("/"): p for p in packets}.values())
     for item in items:
         for packet in packets:
             if item.canonical_url.rstrip("/") == packet.canonical_url.rstrip("/"):
@@ -641,8 +763,10 @@ def select(root, store, provider, config, lanes, people, audit, now=None, http=N
     if (
         sum(config["weights"].values()) != 100
         or abs(sum(config["publishability_weights"].values()) - 1) > 0.001
+        or sum(config["stop_scroll_weights"].values()) != 100
+        or abs(sum(config["final_priority_weights"].values()) - 1) > 0.001
     ):
-        raise ValueError("mass appeal weights must total 100; publishability weights must total 1")
+        raise ValueError("dimension weights must total 100; composite weights must total 1")
     selected, pool = candidate_pool(items, people, lanes, now, config)
     for item in selected:
         item.metadata["routing_lane"] = routing_lane(item, people)
@@ -682,7 +806,32 @@ def select(root, store, provider, config, lanes, people, audit, now=None, http=N
                 (root / "outputs" / "negative_training_replay.json").write_text(
                     json.dumps(replay, ensure_ascii=False, indent=2)
                 )
-    blind_click(rows, provider, store, http)
+    library = build_library(root, pool, provider, config, store, feedback, now, http)
+    calibrate(rows, selected, provider, config, store, library, http)
+    blind = run_tournament_and_blind(rows, provider, store, http)
+    top = max(rows, key=editorial_rank) if rows else {}
+    top["requires_title_tournament"] = True
+    for row in rows:
+        row["homepage_blind_required"] = True
+        row["homepage_blind_complete"] = len(blind.get("ranking", [])) == 5
+        row["verdict"], row["gate_failures"] = absolute_gate(
+            row,
+            config["gate"],
+            assessed_count,
+            scan_at,
+            now,
+            row["id"] in disliked or row.get("feedback_candidate_id") in disliked,
+        )
+        if blind.get("ranking_conflict") and row["verdict"] == "AUTO_PUBLISH_ELIGIBLE":
+            row["verdict"] = "REVIEW_ONLY"
+            row["gate_failures"].append("algorithm_blind_rank_conflict")
+    audit["viral_reference_count"] = len(library["positive_references"]) + len(
+        library["negative_references"]
+    )
+    audit["real_high_engagement_reference_count"] = library["real_high_engagement_count"]
+    audit["blind_top5"] = blind
+    write_reference_report(root, library, rows)
+    write_blind_report(root, blind, top)
     return write_report(root, rows, audit, pool, now)
 
 
@@ -714,6 +863,9 @@ def check_publish_gate(root: Path, candidate_id, now=None):
     )
     if not row.get("blind_click_winner") or len(set(row.get("headline_options", []))) != 20:
         failures.append("twenty_headline_blind_click_test_missing")
+    blind = result.get("blind_top5", {})
+    if len(blind.get("ranking", [])) != 5 or blind.get("ranking_conflict"):
+        failures.append("homepage_blind_missing_or_rank_conflict")
     if verdict != "AUTO_PUBLISH_ELIGIBLE" or failures:
         raise ValueError("publication blocked: " + ", ".join(failures))
     return row
@@ -821,10 +973,18 @@ def verify_selection(root):
             now,
             "explicit_user_DISLIKE" in row["gate_failures"],
         )
-        if row["verdict"] == "AUTO_PUBLISH_ELIGIBLE" and (
-            verdict != row["verdict"] or failures or not row.get("blind_click_winner")
-        ):
+        if row["verdict"] == "AUTO_PUBLISH_ELIGIBLE" and (verdict != row["verdict"] or failures):
             raise ValueError("eligible candidate failed publication gate")
+        total = row.get("final_editorial_priority")
+        if (
+            total is not None
+            and abs(
+                total
+                - sum((row.get(k) or 0) * w for k, w in config["final_priority_weights"].items())
+            )
+            > 0.02
+        ):
+            raise ValueError("final editorial priority disagrees with dimensions")
     expected = (
         "AUTO_PUBLISH_ELIGIBLE"
         if rows and rows[0]["verdict"] == "AUTO_PUBLISH_ELIGIBLE"

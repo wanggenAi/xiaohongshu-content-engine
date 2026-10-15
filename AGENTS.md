@@ -6,12 +6,12 @@ Before any publication:
 
 1. Read latest remote main, the real publication ledger, current editorial feedback and latest available Actions artifact. Do not equate a successful checks job with a freshly scored candidate artifact.
 2. Run the active Live Hot Scan and cross-lane competition. Compare at least 20 distinct, actually assessed topics; merge repeated coverage of the same event. Keep source facts, discovery snippets and engagement evidence separate. A complete first-person story gives no global priority.
-3. Read `outputs/publish_candidates.md/json`, prepare 20 grounded headlines for the final candidate and run the independent blind click test.
+3. Read `outputs/publish_candidates.md/json` and `outputs/viral_reference_report.md`. Prepare 20 grounded headlines for the final candidate, run the pairwise Title Tournament and the separate homepage Blind Top 5. Keep topic strength, headline strength and claim support separate. Never restore the old one-shot soft booleans as publication vetoes.
 4. Run `uv run python -m xhs_content_engine check-publish-gate CANDIDATE_ID` immediately before drafting/publishing. Only AUTO_PUBLISH_ELIGIBLE passes. Research Deep, rank 1, a content quota, or a public-wording check does not override this command.
 
 No best-of-bad-batch. Missing credentials, unknown scores, missing evidence, stale scans, programmer-only interest or user DISLIKE must not become reasons to fill a daily publishing quota. NO_PUBLISH_TODAY is valid. Scores are editorial estimates, not measured audience behavior.
 
-The October 14 correction run is candidate review only; no second publication. Preserve the already published website-traffic post. The user's exact DISLIKE and reasons are recorded in `data/editorial_feedback.jsonl`; do not relabel them MAYBE or delete the post without a later explicit user request.
+The October 14 correction and V1.5 refinement runs are candidate review only; no second publication. Preserve the already published website-traffic post. The user's exact DISLIKE and reasons are recorded in `data/editorial_feedback.jsonl`; do not relabel them MAYBE, add this event to positive references, or delete the post without a later explicit user request.
 
 Public Telegram collection uses `config/telegram_channels.yaml`, no-login public channel/post pages and the manual inbox. Do not bypass login, CAPTCHA, private groups or account privacy. Public posts and views are discovery evidence, not automatic proof of their claims.
 

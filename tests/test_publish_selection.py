@@ -25,17 +25,26 @@ def passing():
         "evidence_test": "PASS",
         "title_potential_test": "PASS",
         "contrarian_check": "PASS",
+        "calibration_complete": True,
+        "headline_claim_status": "PASS",
+        "headline_strength": 80,
+        "stop_scroll_score": 80,
+        "title_potential_score": 80,
+        "final_editorial_priority": 78,
+        "non_tech_reader_score": 80,
+        "programmer_bias_score": 20,
+        "hard_gates": {k: "PASS" for k in ("evidence", "scope", "safety", "fabrication")},
     }
 
 
 def test_absolute_thresholds_no_best_of_bad_batch():
     row = passing()
-    row.update(viral_potential=39.58, mass_appeal_score=45, publishability_score=42)
+    row.update(viral_potential=39.58, mass_appeal_score=45, final_editorial_priority=42)
     assert absolute_gate(row, CONFIG["gate"], 20, NOW, NOW)[0] == "NO_PUBLISH"
     assert absolute_gate(passing(), CONFIG["gate"], 8, NOW, NOW)[0] == "REVIEW_ONLY"
     row = passing()
-    row["publishability_score"] = 74.99
-    assert absolute_gate(row, CONFIG["gate"], 20, NOW, NOW)[0] == "REVIEW_ONLY"
+    row["final_editorial_priority"] = 74.99
+    assert absolute_gate(row, CONFIG["gate"], 20, NOW, NOW)[0] == "EDITOR_REVIEW_REQUIRED"
     assert absolute_gate(passing(), CONFIG["gate"], 20, NOW, NOW)[0] == "AUTO_PUBLISH_ELIGIBLE"
 
 
@@ -44,12 +53,12 @@ def test_absolute_thresholds_no_best_of_bad_batch():
     [
         "mass_appeal_score",
         "viral_potential",
-        "publishability_score",
-        "evidence_test",
-        "stop_scroll_test",
-        "non_tech_reader_test",
-        "contrarian_check",
-        "score_confidence_pass",
+        "final_editorial_priority",
+        "hard_gates",
+        "stop_scroll_score",
+        "non_tech_reader_score",
+        "programmer_bias_score",
+        "calibration_complete",
     ],
 )
 def test_missing_or_low_confidence_never_publish(field):
@@ -70,7 +79,7 @@ def test_extreme_heat_only_replaces_viral_threshold():
     row = passing()
     row.update(viral_potential=40, social_heat=90)
     assert absolute_gate(row, CONFIG["gate"], 20, NOW, NOW)[0] == "AUTO_PUBLISH_ELIGIBLE"
-    row["non_tech_reader_test"] = "FAIL"
+    row["non_tech_reader_score"] = 40
     assert absolute_gate(row, CONFIG["gate"], 20, NOW, NOW)[0] == "REVIEW_ONLY"
 
 
@@ -183,7 +192,7 @@ def test_actual_published_weak_candidate_cannot_pass_new_gate():
     verdict, failures = absolute_gate(row, CONFIG["gate"], 40, NOW, NOW, disliked=True)
     assert verdict == "NO_PUBLISH"
     assert "explicit_user_DISLIKE" in failures
-    assert "viral_below_60_and_no_extreme_heat" in failures
+    assert "insufficient_viral_heat_or_grounded_reference_match" in failures
 
 
 def test_major_topic_beats_complete_niche_story_without_story_bonus():

@@ -7,4 +7,5 @@ __pycache__/
 data/*
 !data/published_posts.jsonl
 !data/editorial_feedback.jsonl
+!data/viral_references.jsonl
 outputs/

@@ -1,0 +1,189 @@
+{
+  "status": "live",
+  "error": null,
+  "input_cards": [
+    {
+      "title": "苹果新屏幕：一家6口，各看各的",
+      "cover_line": "同一块客厅屏幕，先认出你，再显示你的内容。"
+    },
+    {
+      "title": "机器人7连中，先学的是人类视频",
+      "cover_line": "人类视频 → 仿真训练 → 机器人实机7连中。"
+    },
+    {
+      "title": "AI朋友还在，公司却申请破产了",
+      "cover_line": "聊天还在继续，陪你的公司却在等买家。"
+    },
+    {
+      "title": "成片没了，电视台否认是AI干的",
+      "cover_line": "成片没了，原始素材还在；电视台否认“AI删片”。"
+    },
+    {
+      "title": "OpenAI员工被捕，涉及会议室录音",
+      "cover_line": "高管会议室里被发现录音设备；员工被控，尚未定罪。"
+    }
+  ],
+  "ranking": [
+    {
+      "id": "701eec96ceaacb29bbf44965",
+      "rank": 1,
+      "title": "OpenAI员工被捕，涉及会议室录音",
+      "cover_line": "高管会议室里被发现录音设备；员工被控，尚未定罪。",
+      "pairwise_wins": 2.86,
+      "algorithm_rank": 3
+    },
+    {
+      "id": "f83ddb49efb54e6d08546f19",
+      "rank": 2,
+      "title": "AI朋友还在，公司却申请破产了",
+      "cover_line": "聊天还在继续，陪你的公司却在等买家。",
+      "pairwise_wins": 2.4,
+      "algorithm_rank": 4
+    },
+    {
+      "id": "4bfbecf3d5e2506741d7c1f3",
+      "rank": 3,
+      "title": "苹果新屏幕：一家6口，各看各的",
+      "cover_line": "同一块客厅屏幕，先认出你，再显示你的内容。",
+      "pairwise_wins": 2.18,
+      "algorithm_rank": 1
+    },
+    {
+      "id": "tv4-deletion-correction-20261014",
+      "rank": 4,
+      "title": "成片没了，电视台否认是AI干的",
+      "cover_line": "成片没了，原始素材还在；电视台否认“AI删片”。",
+      "pairwise_wins": 1.76,
+      "algorithm_rank": 5
+    },
+    {
+      "id": "ab219434ffce4237f1b2c5fb",
+      "rank": 5,
+      "title": "机器人7连中，先学的是人类视频",
+      "cover_line": "人类视频 → 仿真训练 → 机器人实机7连中。",
+      "pairwise_wins": 0.8,
+      "algorithm_rank": 2
+    }
+  ],
+  "method": "独立请求，仅标题+封面；同一评估模型，不是真实用户实验或独立模型交叉验证。",
+  "judgment": {
+    "model": "jev-1.13.0",
+    "answers": {
+      "0_1": {
+        "type": "choice",
+        "score": null,
+        "confidence": 0.66,
+        "choice": "a",
+        "noul": null,
+        "probabilities": {
+          "a": 0.83,
+          "b": 0.17
+        }
+      },
+      "0_2": {
+        "type": "choice",
+        "score": null,
+        "confidence": 0.14,
+        "choice": "b",
+        "noul": null,
+        "probabilities": {
+          "a": 0.43,
+          "b": 0.57
+        }
+      },
+      "0_3": {
+        "type": "choice",
+        "score": null,
+        "confidence": 0.14,
+        "choice": "a",
+        "noul": null,
+        "probabilities": {
+          "a": 0.57,
+          "b": 0.43
+        }
+      },
+      "0_4": {
+        "type": "choice",
+        "score": null,
+        "confidence": 0.3,
+        "choice": "b",
+        "noul": null,
+        "probabilities": {
+          "a": 0.35,
+          "b": 0.65
+        }
+      },
+      "1_2": {
+        "type": "choice",
+        "score": null,
+        "confidence": 0.62,
+        "choice": "b",
+        "noul": null,
+        "probabilities": {
+          "a": 0.19,
+          "b": 0.81
+        }
+      },
+      "1_3": {
+        "type": "choice",
+        "score": null,
+        "confidence": 0.42,
+        "choice": "b",
+        "noul": null,
+        "probabilities": {
+          "a": 0.29,
+          "b": 0.71
+        }
+      },
+      "1_4": {
+        "type": "choice",
+        "score": null,
+        "confidence": 0.7,
+        "choice": "b",
+        "noul": null,
+        "probabilities": {
+          "a": 0.15,
+          "b": 0.85
+        }
+      },
+      "2_3": {
+        "type": "choice",
+        "score": null,
+        "confidence": 0.3,
+        "choice": "a",
+        "noul": null,
+        "probabilities": {
+          "a": 0.65,
+          "b": 0.35
+        }
+      },
+      "2_4": {
+        "type": "choice",
+        "score": null,
+        "confidence": 0.26,
+        "choice": "b",
+        "noul": null,
+        "probabilities": {
+          "a": 0.37,
+          "b": 0.63
+        }
+      },
+      "3_4": {
+        "type": "choice",
+        "score": null,
+        "confidence": 0.46,
+        "choice": "b",
+        "noul": null,
+        "probabilities": {
+          "a": 0.27,
+          "b": 0.73
+        }
+      }
+    },
+    "usage": {
+      "input_tokens": 2382,
+      "output_tokens": 303
+    }
+  },
+  "ranking_conflict": false
+}

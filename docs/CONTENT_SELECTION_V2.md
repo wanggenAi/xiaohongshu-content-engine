@@ -2,6 +2,28 @@
 
 本轮只修系统和跑候选，未发布、未删除任何小红书内容。
 
+## V1.5 当前实现
+
+V1.4多赛道、Mass Appeal、Human Trigger、Viral保持主线；下面的10月14日记录是历史审计。V1.5只校准软闸门、证据适配、标题和爆帖参照，不降低75总门槛。
+
+- 硬闸门为Evidence、Scope、Safety、Fabrication及最终标题claim。E0无来源、E1匿名/未验证转述不能自动发；E2可信有归因报道、E3原始/官方来源、E4一手加已核验独立交叉来源。URL数量不等于E4。E3足够报道公司宣布，不能自动证明用户效果。
+- `max_publishable_claim`从已读事实包或完整原句取得。Evidence Fitness判断来源是否支持这个claim；Scope检查该claim有没有把可能说成已经、指控说成定罪，而非要求一句话复述原文所有限制。硬失败为NO_PUBLISH，未知为待审。
+- Stop Scroll的六个0–100维度权重为25/20/20/15/10/10；两种独立评估视角分别判断，再取均值并保存原始输出。75以上显示PASS、60–74显示BORDERLINE、60以下FAIL；发布质量线仍按用户要求70。差异超过25的软项需要复核。同一模型的两次评估不是不同模型的独立验证。
+- Non-tech、Programmer Bias、负模式匹配各有正确方向的等级描述。分数分布集中于相邻等级时不会因为confidence偏低直接否决；低端和高端同时有显著概率的双峰分布需要复核。
+- Topic Strength保留原Publishability供回测；Headline Strength是具体标题强度。Title Potential衡量事实支持的标题机会。一个临时标题弱不等于题差；确定捏造的标题不参与潜力加分，待核验的标题不准用于发布。
+- 标题由事实包中的编辑备选和事实钩子组合产生，缺少事实不会凭空补20条。十类标题结构按实际分类，不硬造不存在的名人/数字/利益。榜首20标题做190对比较，输出Top 5；点击偏好和claim核验分开，最终必须选择事实通过且强度至少70的标题。
+- 首页Blind Top 5另起请求，只包含洗牌后的标题、封面一句话和受众；不传来源、分数、算法排名。算法第一落到盲排4/5时暂停自动资格并暴露冲突。它是模型编辑偏好测试，不是实测用户点击率。
+- Viral Reference Library持久化到`data/viral_references.jsonl`，按真实平台指标入库，保留30天；当前采样用最近7天，用户DISLIKE永不进入Positive Reference。没有取得的views/likes/shares/增长窗口保持null。传播结构和why-it-worked是待回测假设，不冒充互动因果。
+- Viral Pattern Similarity比较结构标签，按多个不同事件聚合，不比较文本。只有知名实体这一项不能匹配；少于3个结构参照最高60。不能用一条名人爆帖推导某人物永久加分。负模式相似另给`NEGATIVE_PATTERN_MATCH`警告，用户反馈有否决权。
+- Visual Asset Strength只认有URL和核验时间的素材。100要求核验过关键动作的原始视频，80为相关官方图片/演示，60为可据事实制作的信息图，20为文字卡。仿真演示不能冒充实机7连中视频。
+- 每次主动搜索分别检查24h、72h、7d。超过72h的候选要有近期观测到的强热度或已记录国内信息差才能留在发布竞争池。原始发布日期不因重新核验而更新。
+
+最终优先级权重：Mass .30、Viral .15、Stop .15、Title Potential .10、Social Heat .10、Viral Similarity .10、Evidence Fitness .05、Visual .05。Mass仍最大；视觉权重从建议公式中的Viral分出5%，并未提高Human Trigger权重。未知热度显示null，计算不加热度信用。硬证据失败的线索留在审计池，不占据有证据候选的优先位置。
+
+AUTO资格要求所有硬闸门通过；Mass≥70、Stop≥70、Title Potential≥70、具体标题强度≥70、Final Priority≥75；Viral≥60，或实测Heat≥80，或结构Similarity≥80且大众入口≥75；非技术入口、无强程序员偏见；至少20个实评不同事件；扫描≤6h；完成榜首标题赛马和首页盲测。70–74.99为EDITOR_REVIEW_REQUIRED；低于60、硬失败或用户DISLIKE为NO_PUBLISH。其他不完整条件为REVIEW_ONLY。AUTO资格不是本轮发布授权，本轮仍禁止发布。
+
+本轮真实数据和校准结果见`docs/selection_runs/2026-10-15/`。输出包含`publish_candidates.md/json`、`viral_reference_report.md`、`viral_reference_library.json`、`blind_top5.md/json`及永久DISLIKE回放。
+
 ## 已核对的真实状态与失败根因
 
 开始修改前，远端 main 与本地 HEAD 均为 `64446964ecc600f0d79fb0f88a10c85fc96ebc25`。最新有输出 artifact 的 Actions 是 [38565125461](https://github.com/wanggenAi/xiaohongshu-content-engine/actions/runs/38565125461)，artifact ID `11895160566`，创建于 2026-10-14 12:37:41 UTC，运行提交为 `f0744a7`；之后的 push 检查没有新候选 artifact。该云端运行的 Story Fast Filter 为50，Story Candidate为0，待评50。不能把这份无语义评分的云端 artifact 当成后来本地的8个 Story Candidates。
@@ -25,7 +47,7 @@
 
 `docs/live_scans/2026-10-14.json` 保存本次公开阅读后的事实摘要、中文入口、限制和真实来源；部分条目明确仍是待核验线索。常规采集可自动发现新题，准备发布时仍需为新题补核验与中文入口，不能拿一个英文新闻标题直接发布。旧证据包超过7天会退出竞争，不冒充当天新题。
 
-## 发布闸门与运行
+## V1.4 历史发布闸门与运行
 
 Mass Appeal ≥70；Viral ≥60或实测Social Heat ≥85；Stop Scroll、Non-tech、Evidence、Title PASS；程序员偏见检查通过；评分与赛道判断有足够置信度；Publishability ≥75；至少20个已评不同候选；主动扫描不超过6小时；没有用户DISLIKE；最终有20标题盲测。任何条件缺失都不会AUTO。
 

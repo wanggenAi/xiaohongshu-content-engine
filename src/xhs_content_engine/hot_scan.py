@@ -23,6 +23,7 @@ def scan(config, people, telegram, inbox=(), http=None):
         query, kind = task
         tried, rows = [], []
         for hours in config["windows_hours"]:
+            before = len(rows)
             period = {24: "1d", 72: "3d", 168: "7d"}[hours]
             response = http.get(
                 config["news_search_url"],
@@ -51,9 +52,7 @@ def scan(config, people, telegram, inbox=(), http=None):
                     scan_observed_at=now.isoformat(),
                 )
                 rows.append(row)
-            tried.append({"window_hours": hours, "hits": len(rows)})
-            if rows:
-                break
+            tried.append({"window_hours": hours, "hits": len(rows) - before})
         return rows, {
             "query": query,
             "channel": kind,
