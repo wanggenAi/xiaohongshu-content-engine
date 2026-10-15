@@ -169,7 +169,17 @@ def build_library(root, items, provider, config, store, feedback, now, http=None
             ref = json.loads(line)
             history[ref["event_key"]] = ref
     for ref in references:
-        history[ref["event_key"]] = ref
+        previous = history.get(ref["event_key"])
+        if previous and previous.get("content_pattern") and ref["semantic_status"] == "unavailable":
+            # A provider outage cannot erase learned historical examples. Keep their original
+            # observation and classification dates; new metrics are a separate observation.
+            previous["latest_metric_observation"] = {
+                "observed_at": ref["observed_at"],
+                "engagement_evidence": ref["engagement_evidence"],
+            }
+            previous["classification_refresh"] = "unavailable; historical classification retained"
+        else:
+            history[ref["event_key"]] = ref
     history = {
         k: r
         for k, r in history.items()

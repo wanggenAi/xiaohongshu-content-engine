@@ -28,4 +28,4 @@ Top20、Top10、每条分数和Stop Scroll Reason见`publish_candidates.md`与`r
 
 永久负样本《他的网站变慢了，来的却未必是读者》保留真实用户DISLIKE及全部理由，仍NO_PUBLISH；未进入Positive Reference，原帖和发布账本保持不变。
 
-本地pytest159通过；ruff check和format check通过；verify-publish-candidates通过；check-publish-gate验证榜首资格通过，命令没有发布。云端Actions结果需按提交SHA和artifact独立核对；云端缺语义凭证时应保持UNKNOWN/NO_PUBLISH，不能用此快照伪装成云端实时评分。
+本地pytest160通过（含评估器不可用时历史学习不丢失的回归）；ruff check和format check通过；verify-publish-candidates通过；check-publish-gate验证榜首资格通过，命令没有发布。云端Actions结果需按提交SHA和artifact独立核对；云端缺语义凭证时应保持UNKNOWN/NO_PUBLISH，不能用此快照伪装成云端实时评分。

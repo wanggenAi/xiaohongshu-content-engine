@@ -1279,10 +1279,11 @@
     ]
   },
   "validation": {
-    "pytest": "159 passed",
+    "pytest": "160 passed",
     "ruff_check": "passed",
     "ruff_format_check": "passed",
     "verify_publish_candidates": "passed",
-    "check_publish_gate_top1": "passed; no posting"
+    "check_publish_gate_top1": "passed; no posting",
+    "provider_outage_reference_retention": "passed; historical patterns preserved, new metric observation separate"
   }
 }

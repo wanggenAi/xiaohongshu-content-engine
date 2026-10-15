@@ -177,3 +177,39 @@ def test_explicit_dislike_cannot_enter_positive_reference_library(tmp_path):
     )
     assert library["positive_references"] == []
     assert library["negative_references"][0]["decision"] == "DISLIKE"
+
+
+def test_provider_outage_retains_historical_reference_structure(tmp_path, monkeypatch):
+    import json
+
+    from xhs_content_engine.viral_references import PatternJudge, build_library
+
+    item = ContentItem(
+        id="reference",
+        source="fixture",
+        source_type="manual",
+        canonical_url="https://example.org/observed",
+        title="Observed fixture",
+        published_at=NOW,
+        engagement_metrics={"points": 500, "comments": 200},
+    )
+    monkeypatch.setattr(
+        PatternJudge,
+        "assess",
+        lambda self, items: {i.id: (None, "unavailable", "TestProviderOffline") for i in items},
+    )
+    store = Store(tmp_path / "db")
+    provider = {"model": "fixture", "concurrency": 1}
+    build_library(tmp_path, [item], provider, CONFIG, store, [], NOW)
+    path = tmp_path / "data/viral_references.jsonl"
+    ref = json.loads(path.read_text())
+    ref.update(content_pattern=["relationship_loss"], semantic_status="historical_live")
+    path.write_text(json.dumps(ref) + "\n")
+    result = build_library(tmp_path, [item], provider, CONFIG, store, [], NOW)
+    preserved = result["positive_references"][0]
+    assert preserved["content_pattern"] == ["relationship_loss"]
+    assert preserved["semantic_status"] == "historical_live"
+    assert (
+        preserved["latest_metric_observation"]["engagement_evidence"]["observed_metrics"]["points"]
+        == 500
+    )
